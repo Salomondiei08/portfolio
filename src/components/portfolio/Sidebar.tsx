@@ -3,7 +3,7 @@
 import Link from "next/link";
 import Image from "next/image";
 import { usePathname } from "next/navigation";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useTheme } from "./ThemeProvider";
 
 const navigation = {
@@ -34,30 +34,53 @@ export function Sidebar() {
   const { theme, toggleTheme } = useTheme();
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [isHovered, setIsHovered] = useState(false);
+  const [isTransitioning, setIsTransitioning] = useState(false);
 
-  // On desktop, sidebar is collapsed by default and expands on hover
   const isExpanded = isHovered;
-  const sidebarWidth = isExpanded ? "w-64" : "w-16";
+
+  useEffect(() => {
+    setIsTransitioning(true);
+    const timer = setTimeout(() => setIsTransitioning(false), 300);
+    return () => clearTimeout(timer);
+  }, [isHovered]);
 
   const NavLink = ({ href, name, icon }: { href: string; name: string; icon: string }) => {
     const isActive = pathname === href || (href !== "/" && pathname.startsWith(href));
     return (
       <Link
         href={href}
-        className={`flex items-center gap-3 px-3 py-2 text-sm rounded-lg transition-all duration-300 ease-out group ${
-          isActive
-            ? "bg-primary/10 text-primary"
-            : "text-muted-foreground hover:text-foreground hover:bg-secondary"
-        } ${!isExpanded ? "justify-center" : ""}`}
+        className={`
+          relative flex items-center gap-3 px-3 py-2 text-sm rounded-lg overflow-hidden group
+          ${isActive ? "bg-primary/10 text-primary" : "text-muted-foreground hover:text-foreground hover:bg-secondary/80"}
+          ${!isExpanded ? "justify-center" : ""}
+          ${isActive && !isExpanded ? "before:absolute before:left-0 before:top-1/2 before:-translate-y-1/2 before:w-0.5 before:h-6 before:bg-primary before:rounded-r-full" : ""}
+        `}
+        style={{
+          transition: "background-color 0.15s cubic-bezier(0.32, 0.72, 0, 1), color 0.15s cubic-bezier(0.32, 0.72, 0, 1)"
+        }}
         onClick={() => setMobileMenuOpen(false)}
         title={!isExpanded ? name : undefined}
       >
-        <span className={`w-5 h-5 flex items-center justify-center text-xs font-medium shrink-0 ${isActive ? "text-primary" : ""}`}>
+        <span
+          className="w-5 h-5 flex items-center justify-center text-xs font-medium shrink-0"
+          style={{
+            transition: "transform 0.15s cubic-bezier(0.32, 0.72, 0, 1)",
+            transform: isActive ? "scale(1.1)" : "scale(1)"
+          }}
+        >
           {icon}
         </span>
-        <span className={`transition-all duration-300 ease-out overflow-hidden whitespace-nowrap ${
-          isExpanded ? "opacity-100 max-w-[200px]" : "opacity-0 max-w-0"
-        }`}>
+        <span
+          className="whitespace-nowrap"
+          style={{
+            opacity: isExpanded ? 1 : 0,
+            maxWidth: isExpanded ? "200px" : "0px",
+            transform: isExpanded ? "translateX(0)" : "translateX(-8px)",
+            transition: "opacity 0.25s cubic-bezier(0.32, 0.72, 0, 1), max-width 0.3s cubic-bezier(0.32, 0.72, 0, 1), transform 0.25s cubic-bezier(0.32, 0.72, 0, 1)",
+            transitionDelay: isExpanded ? "0.05s" : "0s",
+            overflow: "hidden"
+          }}
+        >
           {name}
         </span>
       </Link>
@@ -66,12 +89,19 @@ export function Sidebar() {
 
   const NavSection = ({ title, items }: { title: string; items: typeof navigation.main }) => (
     <div className="mb-4">
-      <p className={`px-3 mb-2 text-xs font-medium text-muted-foreground uppercase tracking-wider transition-all duration-300 ease-out overflow-hidden ${
-        isExpanded ? "opacity-100 max-h-6" : "opacity-0 max-h-0"
-      }`}>
+      <p
+        className="px-3 mb-2 text-xs font-medium text-muted-foreground uppercase tracking-wider overflow-hidden"
+        style={{
+          opacity: isExpanded ? 0.7 : 0,
+          maxHeight: isExpanded ? "24px" : "0px",
+          transform: isExpanded ? "translateY(0)" : "translateY(-4px)",
+          transition: "opacity 0.25s cubic-bezier(0.32, 0.72, 0, 1), max-height 0.3s cubic-bezier(0.32, 0.72, 0, 1), transform 0.25s cubic-bezier(0.32, 0.72, 0, 1)",
+          transitionDelay: isExpanded ? "0.08s" : "0s"
+        }}
+      >
         {title}
       </p>
-      <nav className="space-y-1">
+      <nav className="space-y-0.5">
         {items.map((item) => (
           <NavLink key={item.href} {...item} />
         ))}
@@ -132,18 +162,37 @@ export function Sidebar() {
       <aside
         onMouseEnter={() => setIsHovered(true)}
         onMouseLeave={() => setIsHovered(false)}
-        className={`fixed top-0 left-0 h-full ${sidebarWidth} bg-card border-r border-border z-40 transform transition-all duration-500 ease-[cubic-bezier(0.34,1.56,0.64,1)] lg:translate-x-0 ${
-          mobileMenuOpen ? "translate-x-0 w-64" : "-translate-x-full"
-        }`}
+        className={`
+          fixed top-0 left-0 h-full
+          bg-card/95 backdrop-blur-xl border-r border-border/50 z-40
+          lg:translate-x-0
+          ${mobileMenuOpen ? "translate-x-0 w-64" : "-translate-x-full"}
+        `}
+        style={{
+          width: isExpanded ? "16rem" : "4rem",
+          transition: "width 0.3s cubic-bezier(0.32, 0.72, 0, 1), box-shadow 0.3s cubic-bezier(0.32, 0.72, 0, 1)",
+          boxShadow: isExpanded
+            ? "0 20px 25px -5px rgb(0 0 0 / 0.1), 0 8px 10px -6px rgb(0 0 0 / 0.1)"
+            : "0 1px 2px 0 rgb(0 0 0 / 0.05)",
+          willChange: isTransitioning ? "width" : "auto"
+        }}
       >
         <div className="flex flex-col h-full p-3">
           {/* Profile */}
           <Link
             href="/"
-            className={`flex items-center gap-3 p-2 mb-4 rounded-lg group hover:bg-secondary transition-all duration-300 ease-out ${!isExpanded ? "justify-center" : ""}`}
+            className={`flex items-center gap-3 p-2 mb-4 rounded-lg group hover:bg-secondary/50 overflow-hidden ${!isExpanded ? "justify-center" : ""}`}
+            style={{
+              transition: "background-color 0.15s cubic-bezier(0.32, 0.72, 0, 1)"
+            }}
             onClick={() => setMobileMenuOpen(false)}
           >
-            <div className="w-9 h-9 rounded-full overflow-hidden ring-2 ring-primary/20 group-hover:ring-primary/40 transition-all duration-300 shrink-0">
+            <div
+              className="w-9 h-9 rounded-full overflow-hidden ring-2 ring-primary/20 shrink-0"
+              style={{
+                transition: "box-shadow 0.15s cubic-bezier(0.32, 0.72, 0, 1)"
+              }}
+            >
               <Image
                 src="/images/salomon.JPG"
                 alt="Salomon Diei"
@@ -152,11 +201,23 @@ export function Sidebar() {
                 className="object-cover w-full h-full"
               />
             </div>
-            <div className={`min-w-0 transition-all duration-300 ease-out overflow-hidden ${
-              isExpanded ? "opacity-100 max-w-[200px]" : "opacity-0 max-w-0"
-            }`}>
-              <p className="font-semibold text-foreground group-hover:text-primary transition-colors text-sm truncate">Salomon Diei</p>
-              <p className="text-xs text-muted-foreground truncate">AI Engineer & Researcher</p>
+            <div
+              className="min-w-0"
+              style={{
+                opacity: isExpanded ? 1 : 0,
+                maxWidth: isExpanded ? "200px" : "0px",
+                transform: isExpanded ? "translateX(0)" : "translateX(-8px)",
+                transition: "opacity 0.25s cubic-bezier(0.32, 0.72, 0, 1), max-width 0.3s cubic-bezier(0.32, 0.72, 0, 1), transform 0.25s cubic-bezier(0.32, 0.72, 0, 1)",
+                transitionDelay: isExpanded ? "0.06s" : "0s",
+                overflow: "hidden"
+              }}
+            >
+              <p className="font-semibold text-foreground text-sm truncate">
+                Salomon Diei
+              </p>
+              <p className="text-xs text-muted-foreground truncate">
+                AI Engineer & Researcher
+              </p>
             </div>
           </Link>
 
@@ -172,7 +233,10 @@ export function Sidebar() {
             {/* Theme toggle */}
             <button
               onClick={toggleTheme}
-              className={`hidden lg:flex items-center gap-3 w-full px-3 py-2 text-sm rounded-lg text-muted-foreground hover:text-foreground hover:bg-secondary transition-all duration-300 ease-out ${!isExpanded ? "justify-center" : ""}`}
+              className={`hidden lg:flex items-center gap-3 w-full px-3 py-2 text-sm rounded-lg text-muted-foreground hover:text-foreground hover:bg-secondary/50 ${!isExpanded ? "justify-center" : ""}`}
+              style={{
+                transition: "background-color 0.15s cubic-bezier(0.32, 0.72, 0, 1), color 0.15s cubic-bezier(0.32, 0.72, 0, 1)"
+              }}
               title={!isExpanded ? (theme === "dark" ? "Light mode" : "Dark mode") : undefined}
             >
               <span className="shrink-0">
@@ -186,26 +250,40 @@ export function Sidebar() {
                   </svg>
                 )}
               </span>
-              <span className={`transition-all duration-300 ease-out overflow-hidden whitespace-nowrap ${
-                isExpanded ? "opacity-100 max-w-[200px]" : "opacity-0 max-w-0"
-              }`}>
+              <span
+                className="whitespace-nowrap"
+                style={{
+                  opacity: isExpanded ? 1 : 0,
+                  maxWidth: isExpanded ? "200px" : "0px",
+                  transform: isExpanded ? "translateX(0)" : "translateX(-8px)",
+                  transition: "opacity 0.25s cubic-bezier(0.32, 0.72, 0, 1), max-width 0.3s cubic-bezier(0.32, 0.72, 0, 1), transform 0.25s cubic-bezier(0.32, 0.72, 0, 1)",
+                  transitionDelay: isExpanded ? "0.05s" : "0s",
+                  overflow: "hidden"
+                }}
+              >
                 {theme === "dark" ? "Light mode" : "Dark mode"}
               </span>
             </button>
 
             {/* Social Links */}
-            <div className={`flex gap-1 pt-2 transition-all duration-300 ease-out ${
-              isExpanded ? "justify-center" : "flex-col"
-            }`}>
+            <div
+              className="flex gap-1 pt-2"
+              style={{
+                justifyContent: isExpanded ? "center" : "flex-start",
+                flexDirection: isExpanded ? "row" : "column",
+                transition: "flex-direction 0.3s cubic-bezier(0.32, 0.72, 0, 1)"
+              }}
+            >
               {socialLinks.map((link) => (
                 <a
                   key={link.name}
                   href={link.href}
                   target={link.href.startsWith("mailto") ? undefined : "_blank"}
                   rel={link.href.startsWith("mailto") ? undefined : "noopener noreferrer"}
-                  className={`p-2 text-xs text-muted-foreground hover:text-primary hover:bg-secondary rounded-md transition-all duration-300 ease-out ${
-                    !isExpanded ? "flex justify-center" : ""
-                  }`}
+                  className={`p-2 text-xs text-muted-foreground hover:text-primary hover:bg-secondary/50 rounded-md ${!isExpanded ? "flex justify-center" : ""}`}
+                  style={{
+                    transition: "background-color 0.15s cubic-bezier(0.32, 0.72, 0, 1), color 0.15s cubic-bezier(0.32, 0.72, 0, 1), transform 0.15s cubic-bezier(0.32, 0.72, 0, 1)"
+                  }}
                   title={link.name}
                 >
                   {link.icon}
@@ -218,15 +296,33 @@ export function Sidebar() {
               href="https://github.com/salomondiei08/portfolio"
               target="_blank"
               rel="noopener noreferrer"
-              className={`flex items-center gap-2 px-3 py-2 text-xs text-muted-foreground hover:text-primary hover:bg-secondary rounded-lg transition-all duration-300 ease-out ${!isExpanded ? "justify-center" : ""}`}
+              className={`flex items-center gap-2 px-3 py-2 text-xs text-muted-foreground hover:text-primary hover:bg-secondary/50 rounded-lg ${!isExpanded ? "justify-center" : ""}`}
+              style={{
+                transition: "background-color 0.15s cubic-bezier(0.32, 0.72, 0, 1), color 0.15s cubic-bezier(0.32, 0.72, 0, 1)"
+              }}
               title={!isExpanded ? "View Source" : undefined}
             >
-              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-4 h-4 shrink-0">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                fill="none"
+                viewBox="0 0 24 24"
+                strokeWidth={1.5}
+                stroke="currentColor"
+                className="w-4 h-4 shrink-0"
+              >
                 <path strokeLinecap="round" strokeLinejoin="round" d="M17.25 6.75L22.5 12l-5.25 5.25m-10.5 0L1.5 12l5.25-5.25m7.5-3l-4.5 16.5" />
               </svg>
-              <span className={`transition-all duration-300 ease-out overflow-hidden whitespace-nowrap ${
-                isExpanded ? "opacity-100 max-w-[200px]" : "opacity-0 max-w-0"
-              }`}>
+              <span
+                className="whitespace-nowrap"
+                style={{
+                  opacity: isExpanded ? 1 : 0,
+                  maxWidth: isExpanded ? "200px" : "0px",
+                  transform: isExpanded ? "translateX(0)" : "translateX(-8px)",
+                  transition: "opacity 0.25s cubic-bezier(0.32, 0.72, 0, 1), max-width 0.3s cubic-bezier(0.32, 0.72, 0, 1), transform 0.25s cubic-bezier(0.32, 0.72, 0, 1)",
+                  transitionDelay: isExpanded ? "0.05s" : "0s",
+                  overflow: "hidden"
+                }}
+              >
                 View Source
               </span>
             </a>
@@ -235,7 +331,13 @@ export function Sidebar() {
       </aside>
 
       {/* Spacer for main content */}
-      <div className={`hidden lg:block ${sidebarWidth} shrink-0 transition-all duration-500 ease-[cubic-bezier(0.34,1.56,0.64,1)]`} />
+      <div
+        className="hidden lg:block shrink-0"
+        style={{
+          width: isExpanded ? "16rem" : "4rem",
+          transition: "width 0.3s cubic-bezier(0.32, 0.72, 0, 1)"
+        }}
+      />
     </>
   );
 }
