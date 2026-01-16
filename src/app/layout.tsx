@@ -31,10 +31,6 @@ export const metadata: Metadata = {
   authors: [{ name: "Salomon Diei", url: "https://github.com/salomondiei08" }],
   creator: "Salomon Diei",
   publisher: "Salomon Diei",
-  icons: {
-    icon: "/icon.jpg",
-    apple: "/icon.jpg",
-  },
   openGraph: {
     title: "Salomon Diei | AI Engineer & Researcher at KOREATECH",
     description: "AI Engineer and CTO at Sikili. Master's student at KOREATECH. Winner of MTN MoMo Hackathon, Orange SeedStar. Expert in Flutter, Python, Machine Learning. Google Cloud Certified.",
