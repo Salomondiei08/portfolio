@@ -1,14 +1,8 @@
 import type { Metadata, Viewport } from "next";
-import { Geist_Mono } from "next/font/google";
 import "./globals.css";
 import { Sidebar } from "@/components/portfolio";
 import { ChatWidget } from "@/components/portfolio/ChatWidget";
 import { ThemeProvider } from "@/components/portfolio/ThemeProvider";
-
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
-  subsets: ["latin"],
-});
 
 export const metadata: Metadata = {
   title: "Salomon Diei | AI Engineer & Researcher - KOREATECH Student",
@@ -159,7 +153,7 @@ export default function RootLayout({
           }}
         />
       </head>
-      <body className={`${geistMono.variable} antialiased min-h-screen`}>
+      <body className="antialiased min-h-screen">
         <ThemeProvider>
           <div className="flex min-h-screen">
             <Sidebar />
