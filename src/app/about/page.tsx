@@ -4,8 +4,24 @@ import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 
 export const metadata = {
-  title: "About | Salomon Diei - AI Engineer Portfolio",
-  description: "Learn more about Salomon Diei - AI Engineer, CTO at Sikili, and Master's student at KOREATECH.",
+  title: "About Salomon Diei | AI Engineer, KOREATECH Student, CTO at Sikili",
+  description: "Salomon Diei is an AI Engineer and researcher at Korea University of Technology and Education (KOREATECH), CTO at Sikili. GKS Scholar, Google Cloud Certified, winner of MTN MoMo Hackathon, Orange SeedStar. Expert in Flutter, Python, FastAPI, Machine Learning. Based in Cheonan, South Korea.",
+  keywords: [
+    "Salomon Diei biography",
+    "KOREATECH AI student",
+    "Sikili CTO",
+    "GKS scholarship recipient",
+    "Korean Government Scholarship",
+    "AI engineer South Korea",
+    "Cheonan software developer",
+    "Institut Ivoirien de Technologie alumni",
+    "Google Cloud Certified engineer",
+    "Flutter mobile developer",
+    "MTN MoMo hackathon winner",
+    "Orange SeedStar winner",
+    "Ivorian tech entrepreneur",
+    "Futurafric technical lead",
+  ],
 };
 
 const experience = [

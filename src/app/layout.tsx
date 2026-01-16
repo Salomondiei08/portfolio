@@ -11,14 +11,73 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Salomon Diei | AI Engineer & Researcher",
-  description: "Portfolio of Salomon Diei - AI Engineer, CTO at Sikili, and Master's student in AI at KOREATECH. Specializing in mobile development, machine learning, and innovative solutions.",
-  keywords: ["Salomon Diei", "AI", "Machine Learning", "Flutter", "Mobile Development", "KOREATECH", "Software Engineer"],
-  authors: [{ name: "Salomon Diei" }],
+  title: "Salomon Diei | AI Engineer & Researcher - KOREATECH Student",
+  description: "Salomon Diei - AI Engineer, CTO at Sikili, Master's student at Korea University of Technology and Education (KOREATECH). Winner of MTN MoMo Hackathon, Orange SeedStar. Expert in Flutter, Python, FastAPI, Machine Learning. Google Cloud Certified. Projects: Alladjai, TourCI, Helper AI.",
+  keywords: [
+    // Name variations
+    "Salomon Diei", "Salomon DIEI", "salomondiei", "salomondiei08",
+    // Current roles
+    "AI Engineer", "AI Researcher", "CTO Sikili", "Machine Learning Engineer",
+    // Education
+    "KOREATECH", "Korea University of Technology and Education", "KOREATECH AI", "GKS Scholar", "Korean Government Scholarship",
+    // Location
+    "Cheonan South Korea", "Côte d'Ivoire", "Ivorian Software Engineer",
+    // Skills
+    "Flutter Developer", "Python Developer", "FastAPI", "Mobile Development", "Cloud Engineer",
+    "Google Cloud Certified", "GCP", "Docker", "Terraform", "Vue.js",
+    // Projects
+    "Alladjai", "TourCI", "Helper AI", "ResiCar", "Sikili Platform",
+    // Achievements
+    "MTN MoMo Hackathon Winner", "Orange SeedStar", "Djamo Epitech Hackathon",
+    // Previous work
+    "Futurafric", "BUI Corporation", "Ebenyx Technologies",
+    // Education background
+    "Institut Ivoirien de Technologie", "Software Engineering Ivory Coast",
+  ],
+  authors: [{ name: "Salomon Diei", url: "https://github.com/salomondiei08" }],
+  creator: "Salomon Diei",
+  publisher: "Salomon Diei",
+  icons: {
+    icon: "/icon.jpg",
+    apple: "/icon.jpg",
+  },
   openGraph: {
-    title: "Salomon Diei | AI Engineer & Researcher",
-    description: "Portfolio of Salomon Diei - AI Engineer, CTO at Sikili, and Master's student in AI at KOREATECH.",
+    title: "Salomon Diei | AI Engineer & Researcher at KOREATECH",
+    description: "AI Engineer and CTO at Sikili. Master's student at KOREATECH. Winner of MTN MoMo Hackathon, Orange SeedStar. Expert in Flutter, Python, Machine Learning. Google Cloud Certified.",
     type: "website",
+    locale: "en_US",
+    url: "https://salomondiei.com",
+    siteName: "Salomon Diei Portfolio",
+    images: [
+      {
+        url: "/images/salomon.JPG",
+        width: 1200,
+        height: 630,
+        alt: "Salomon Diei - AI Engineer & Researcher",
+      },
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Salomon Diei | AI Engineer & Researcher",
+    description: "AI Engineer at Sikili, Master's student at KOREATECH. Expert in Flutter, Python, Machine Learning.",
+    images: ["/images/salomon.JPG"],
+  },
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      "max-video-preview": -1,
+      "max-image-preview": "large",
+      "max-snippet": -1,
+    },
+  },
+  verification: {
+    // Add these once you verify with Google/Bing
+    // google: "your-google-verification-code",
+    // bing: "your-bing-verification-code",
   },
 };
 
@@ -40,6 +99,66 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" suppressHydrationWarning>
+      <head>
+        {/* Structured Data for SEO */}
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
+              "@context": "https://schema.org",
+              "@type": "Person",
+              name: "Salomon Diei",
+              alternateName: "Salomon DIEI",
+              url: "https://salomondiei.com",
+              image: "https://salomondiei.com/images/salomon.JPG",
+              sameAs: [
+                "https://github.com/salomondiei08",
+                "https://linkedin.com/in/salomondiei",
+              ],
+              jobTitle: "AI Engineer & Researcher",
+              worksFor: {
+                "@type": "Organization",
+                name: "Sikili",
+              },
+              alumniOf: [
+                {
+                  "@type": "EducationalOrganization",
+                  name: "Korea University of Technology and Education",
+                  alternateName: "KOREATECH",
+                },
+                {
+                  "@type": "EducationalOrganization",
+                  name: "Institut Ivoirien de Technologie",
+                },
+              ],
+              knowsAbout: [
+                "Artificial Intelligence",
+                "Machine Learning",
+                "Flutter Development",
+                "Python Programming",
+                "Mobile Development",
+                "Cloud Computing",
+                "FastAPI",
+                "Computer Vision",
+                "Natural Language Processing",
+              ],
+              award: [
+                "MTN MoMo Hackathon 1st Place - AI & Tourism",
+                "Orange SeedStar 1st Place",
+                "Djamo x Epitech Hackathon 1st Place",
+                "GDG DevFest Hackathon Top 10",
+                "Korean Government Scholarship (GKS) Recipient",
+                "Google Cloud Certified Associate Cloud Engineer",
+              ],
+              address: {
+                "@type": "PostalAddress",
+                addressLocality: "Cheonan-si",
+                addressCountry: "South Korea",
+              },
+            }),
+          }}
+        />
+      </head>
       <body className={`${geistMono.variable} antialiased min-h-screen`}>
         <ThemeProvider>
           <div className="flex min-h-screen">

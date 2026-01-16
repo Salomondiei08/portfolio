@@ -4,8 +4,24 @@ import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 
 export const metadata = {
-  title: "Projects | Salomon Diei - AI Engineer Portfolio",
-  description: "Mobile apps, AI projects, and innovative solutions by Salomon Diei.",
+  title: "Projects by Salomon Diei | Alladjai, TourCI, Helper AI & More",
+  description: "Explore projects by Salomon Diei: Alladjai (MTN MoMo Hackathon winner), TourCI (360° tourism app), Helper AI (GPT-4 chatbot), ResiCar, and more. Flutter, Python, FastAPI, AI-powered mobile applications.",
+  keywords: [
+    "Salomon Diei projects",
+    "Alladjai app",
+    "Alladjai home services",
+    "TourCI tourism app",
+    "TourCI 360 degree",
+    "Helper AI chatbot",
+    "GPT-4 chatbot Flutter",
+    "ResiCar rental app",
+    "Sikili platform",
+    "MTN MoMo hackathon project",
+    "Orange SeedStar project",
+    "Flutter mobile apps",
+    "AI mobile applications",
+    "Côte d'Ivoire tech projects",
+  ],
 };
 
 const featuredProjects = [
