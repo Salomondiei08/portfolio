@@ -25,59 +25,43 @@ export const metadata = {
 
 const experience = [
   {
-    role: "CTO & Supply Manager",
-    company: "Sikili",
+    role: "Research Assistant",
+    company: "Korea University of Technology and Education (KOREATECH)",
     period: "Sep 2024 - Present",
     description:
-      "Leading technical strategy and supply chain operations. Building innovative solutions to connect markets and streamline operations.",
-    highlights: ["Technical Leadership", "Supply Chain", "Strategic Planning"],
+      "Conducting research in artificial intelligence and machine learning. Focus on deep learning algorithms, computer vision, and natural language processing. Contributing to academic publications and collaborative research projects.",
+    highlights: ["AI Research", "Deep Learning", "Computer Vision", "NLP"],
   },
   {
     role: "Technical Lead (Fullstack)",
-    company: "Futurafric I",
-    period: "Jun 2023 - Oct 2024",
+    company: "Freelance",
+    period: "Jun 2023 - Aug 2024",
     description:
-      "Led fullstack development initiatives, architecting scalable solutions and mentoring junior developers. Delivered multiple successful projects.",
-    highlights: ["Team Leadership", "Fullstack Dev", "Architecture"],
+      "Led development of multiple web and mobile applications for clients. Architected scalable solutions using modern frameworks and cloud infrastructure. Managed end-to-end project delivery from requirements to deployment.",
+    highlights: ["Project Management", "Full-Stack Development", "Cloud Architecture", "Client Relations"],
   },
   {
     role: "Flutter Developer",
-    company: "BUI Corporation",
+    company: "Freelance",
     period: "Feb 2023 - Jun 2023",
     description:
-      "Developed cross-platform mobile applications using Flutter. Focused on creating smooth, performant user experiences.",
-    highlights: ["Flutter", "Mobile Dev", "UI/UX"],
-  },
-  {
-    role: "Intern",
-    company: "Ebenyx Technologies",
-    period: "Feb 2022 - Dec 2022",
-    description:
-      "Gained hands-on experience in software development. Contributed to various projects while learning industry best practices.",
-    highlights: ["Software Dev", "Learning", "Team Collaboration"],
-  },
-  {
-    role: "Intern",
-    company: "Casys Technologies",
-    period: "Aug 2021 - Nov 2021",
-    description:
-      "First professional experience in tech. Learned foundational development skills and professional workflows.",
-    highlights: ["Foundations", "Professional Growth"],
+      "Developed cross-platform mobile applications for iOS and Android. Implemented modern UI/UX designs, integrated REST APIs, and optimized app performance. Delivered multiple successful projects with high client satisfaction.",
+    highlights: ["Flutter", "Mobile Development", "API Integration", "UI/UX Design"],
   },
 ];
 
 const education = [
   {
     degree: "M.S. Artificial Intelligence",
-    school: "Korea University of Technology and Education",
-    year: "2024 - Present",
+    school: "Korea University of Technology and Education (KOREATECH)",
+    year: "Sep 2024 - Present",
     focus: "AI & Machine Learning Research",
   },
   {
-    degree: "B.S. Software Engineering",
+    degree: "Bachelor of Software Engineering",
     school: "Institut Ivoirien de Technologie",
-    year: "2020 - 2023",
-    focus: "Software Development",
+    year: "Sep 2020 - Jun 2023",
+    focus: "Software Development & Computer Science",
   },
 ];
 
@@ -155,11 +139,12 @@ export default function AboutPage() {
           </Button>
           <Button variant="outline" asChild>
             <a
-              href="/Profesional_Resume_Salomon.pdf"
-              target="_blank"
-              rel="noopener noreferrer"
-              download
+              href="/Salomon_Academic_Resume.pdf"
+              download="Salomon_Diei_Resume.pdf"
             >
+              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-4 h-4 mr-2">
+                <path strokeLinecap="round" strokeLinejoin="round" d="M3 16.5v2.25A2.25 2.25 0 005.25 21h13.5A2.25 2.25 0 0021 18.75V16.5M16.5 12L12 16.5m0 0L7.5 12m4.5 4.5V3" />
+              </svg>
               Download Resume
             </a>
           </Button>

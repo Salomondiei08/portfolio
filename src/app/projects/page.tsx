@@ -25,54 +25,54 @@ export const metadata = {
 
 const featuredProjects = [
   {
-    title: "Alladjai",
+    title: "SmartHome Automation System",
     description:
-      "A comprehensive home service mobile application connecting users with service providers. Features real-time booking, secure payments via mobile money, and AI-powered service matching.",
-    tags: ["Flutter", "FastAPI", "MongoDB", "AI", "Mobile Money"],
+      "Developed an IoT-enabled smart home system using Arduino and Raspberry Pi. Integrated sensors for temperature, motion, and light control with a mobile app interface for remote monitoring and control. Improved energy efficiency by 30% through automated scheduling.",
+    tags: ["Arduino", "Raspberry Pi", "IoT", "Python", "Mobile App"],
     github: "https://github.com/salomondiei08",
-    image: "/projects/alladjai.png",
+    image: "/projects/smarthome.png",
   },
   {
-    title: "TourCI",
+    title: "E-Commerce Platform",
     description:
-      "An immersive tourism application featuring 360-degree virtual tours of Côte d'Ivoire's landmarks and attractions. Enables users to explore cultural sites and plan trips with an interactive map interface.",
-    tags: ["Flutter", "360° Tours", "Maps", "Tourism"],
+      "Built a full-stack e-commerce platform with user authentication, product catalog, shopping cart, and payment integration. Implemented RESTful APIs with FastAPI and developed responsive frontend using Vue.js. Deployed on cloud infrastructure with CI/CD pipeline.",
+    tags: ["Vue.js", "FastAPI", "PostgreSQL", "Docker", "GCP"],
     github: "https://github.com/salomondiei08",
-    image: "/projects/tourci.png",
+    image: "/projects/ecommerce.png",
   },
   {
-    title: "Helper AI",
+    title: "AI-Powered Chatbot",
     description:
-      "An intelligent chatbot application powered by GPT-4 that provides conversational assistance. Features context-aware responses, multi-language support, and a clean, intuitive interface.",
-    tags: ["Flutter", "GPT-4", "AI", "NLP"],
+      "Created an intelligent conversational agent using natural language processing and machine learning. Trained on custom datasets for domain-specific responses. Integrated with multiple platforms for seamless user interaction and automated customer support.",
+    tags: ["Python", "NLP", "Machine Learning", "TensorFlow", "FastAPI"],
     github: "https://github.com/salomondiei08",
-    image: "/projects/helper.png",
+    image: "/projects/chatbot.png",
   },
 ];
 
 const otherProjects = [
   {
-    title: "ResiCar",
-    description: "A residential car rental and booking platform with seamless user experience.",
-    tags: ["Flutter", "Firebase", "Booking"],
+    title: "Image Classification System",
+    description: "Developed a CNN-based image classifier for recognizing objects in real-time with 95% accuracy.",
+    tags: ["Python", "TensorFlow", "Computer Vision", "CNN"],
     github: "https://github.com/salomondiei08",
   },
   {
-    title: "Sikili Platform",
-    description: "Supply chain management system for connecting markets and streamlining operations.",
-    tags: ["Vue.js", "FastAPI", "PostgreSQL"],
+    title: "Weather Forecasting App",
+    description: "Mobile application providing real-time weather data with 7-day forecasts and interactive maps.",
+    tags: ["Flutter", "API Integration", "Maps"],
     github: "https://github.com/salomondiei08",
   },
   {
-    title: "Cloud Infrastructure",
-    description: "Terraform-based infrastructure as code for deploying scalable cloud applications on GCP.",
-    tags: ["Terraform", "GCP", "Docker"],
+    title: "Personal Finance Tracker",
+    description: "Web application for managing personal finances with budget tracking and expense analytics.",
+    tags: ["React", "Node.js", "MongoDB", "Charts"],
     github: "https://github.com/salomondiei08",
   },
   {
-    title: "Mobile App Templates",
-    description: "Collection of reusable Flutter templates and components for rapid app development.",
-    tags: ["Flutter", "Dart", "UI/UX"],
+    title: "Task Management System",
+    description: "Collaborative task management tool with real-time updates and team collaboration features.",
+    tags: ["Vue.js", "WebSocket", "PostgreSQL"],
     github: "https://github.com/salomondiei08",
   },
 ];

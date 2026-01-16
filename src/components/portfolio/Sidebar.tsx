@@ -291,6 +291,41 @@ export function Sidebar() {
               ))}
             </div>
 
+            {/* Download Resume */}
+            <a
+              href="/Salomon_Academic_Resume.pdf"
+              download="Salomon_Diei_Resume.pdf"
+              className={`flex items-center gap-2 px-3 py-2 text-xs text-muted-foreground hover:text-primary hover:bg-secondary/50 rounded-lg ${!isExpanded ? "justify-center" : ""}`}
+              style={{
+                transition: "background-color 0.15s cubic-bezier(0.32, 0.72, 0, 1), color 0.15s cubic-bezier(0.32, 0.72, 0, 1)"
+              }}
+              title={!isExpanded ? "Download Resume" : undefined}
+            >
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                fill="none"
+                viewBox="0 0 24 24"
+                strokeWidth={1.5}
+                stroke="currentColor"
+                className="w-4 h-4 shrink-0"
+              >
+                <path strokeLinecap="round" strokeLinejoin="round" d="M3 16.5v2.25A2.25 2.25 0 005.25 21h13.5A2.25 2.25 0 0021 18.75V16.5M16.5 12L12 16.5m0 0L7.5 12m4.5 4.5V3" />
+              </svg>
+              <span
+                className="whitespace-nowrap"
+                style={{
+                  opacity: isExpanded ? 1 : 0,
+                  maxWidth: isExpanded ? "200px" : "0px",
+                  transform: isExpanded ? "translateX(0)" : "translateX(-8px)",
+                  transition: "opacity 0.25s cubic-bezier(0.32, 0.72, 0, 1), max-width 0.3s cubic-bezier(0.32, 0.72, 0, 1), transform 0.25s cubic-bezier(0.32, 0.72, 0, 1)",
+                  transitionDelay: isExpanded ? "0.05s" : "0s",
+                  overflow: "hidden"
+                }}
+              >
+                Download Resume
+              </span>
+            </a>
+
             {/* Source Code Link */}
             <a
               href="https://github.com/salomondiei08/portfolio"
