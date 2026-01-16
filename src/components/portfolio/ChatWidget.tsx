@@ -18,7 +18,7 @@ const sampleResponses: Record<string, string> = {
   research:
     "I'm currently pursuing my Master's in AI at KOREATECH in South Korea, supported by the GKS scholarship. My research interests include machine learning, NLP, and computer vision. Check out the Research page!",
   projects:
-    "I've built apps like Alladjai (home services), TourCI (360° tourism), Helper AI (GPT-4 chatbot), and ResiCar. Won 1st place at MTN MoMo Hackathon! Check the Projects page for more.",
+    "I've built apps like Alladjai (home services), TourCI (360° tourism), Helper AI (GPT-4 chatbot), and ResiCar. Won 1st place at the Gorange 5G Hackathon! Check the Projects page for more.",
   skills:
     "Flutter, Python, FastAPI, Vue.js, Docker, and GCP. I'm a Google Cloud Certified Associate Cloud Engineer. I love building mobile apps and AI-powered solutions!",
   contact:
@@ -28,7 +28,7 @@ const sampleResponses: Record<string, string> = {
   education:
     "Master's in AI at KOREATECH (current, GKS scholar) and Bachelor's in Software Engineering from Institut Ivoirien de Technologie in Côte d'Ivoire.",
   hackathon:
-    "I've won multiple hackathons! 1st place at MTN MoMo (AI & Tourism), Orange SeedStar, and Djamo x Epitech. Also Top 10 at GDG DevFest!",
+    "I've won multiple hackathons! 1st place at Gorange 5G Hackathon and Djamo x Epitech. Also Top 10 at GDG DevFest!",
   default:
     "Interesting question! Feel free to explore the site or email me at salomondiei08@gmail.com for more info.",
 };

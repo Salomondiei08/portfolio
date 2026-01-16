@@ -5,7 +5,7 @@ import { Button } from "@/components/ui/button";
 
 export const metadata = {
   title: "Projects by Salomon Diei | Alladjai, TourCI, Helper AI & More",
-  description: "Explore projects by Salomon Diei: Alladjai (MTN MoMo Hackathon winner), TourCI (360° tourism app), Helper AI (GPT-4 chatbot), ResiCar, and more. Flutter, Python, FastAPI, AI-powered mobile applications.",
+  description: "Explore projects by Salomon Diei: Alladjai, TourCI (360° tourism app), Helper AI (GPT-4 chatbot), ResiCar, and more. Flutter, Python, FastAPI, AI-powered mobile applications.",
   keywords: [
     "Salomon Diei projects",
     "Alladjai app",
@@ -16,8 +16,7 @@ export const metadata = {
     "GPT-4 chatbot Flutter",
     "ResiCar rental app",
     "Sikili platform",
-    "MTN MoMo hackathon project",
-    "Orange SeedStar project",
+    "Gorange 5G hackathon project",
     "Flutter mobile apps",
     "AI mobile applications",
     "Côte d'Ivoire tech projects",
@@ -28,7 +27,7 @@ const featuredProjects = [
   {
     title: "Alladjai",
     description:
-      "A comprehensive home service mobile application connecting users with service providers. Features real-time booking, secure payments via mobile money, and AI-powered service matching. Built during the MTN MoMo Hackathon (1st Place - AI & Tourism category).",
+      "A comprehensive home service mobile application connecting users with service providers. Features real-time booking, secure payments via mobile money, and AI-powered service matching.",
     tags: ["Flutter", "FastAPI", "MongoDB", "AI", "Mobile Money"],
     github: "https://github.com/salomondiei08",
     image: "/projects/alladjai.png",
@@ -215,12 +214,7 @@ export default function ProjectsPage() {
             <div className="grid sm:grid-cols-2 gap-4">
               <div className="p-4 rounded-lg bg-secondary/50">
                 <Badge className="mb-2">1st Place</Badge>
-                <h4 className="font-semibold">MTN MoMo Hackathon</h4>
-                <p className="text-sm text-muted-foreground">AI & Tourism Category - 2023</p>
-              </div>
-              <div className="p-4 rounded-lg bg-secondary/50">
-                <Badge className="mb-2">1st Place</Badge>
-                <h4 className="font-semibold">Orange SeedStar</h4>
+                <h4 className="font-semibold">Gorange 5G Hackathon</h4>
                 <p className="text-sm text-muted-foreground">Innovation Challenge - 2022</p>
               </div>
               <div className="p-4 rounded-lg bg-secondary/50">

@@ -6,7 +6,7 @@ import { ThemeProvider } from "@/components/portfolio/ThemeProvider";
 
 export const metadata: Metadata = {
   title: "Salomon Diei | AI Engineer & Researcher - KOREATECH Student",
-  description: "Salomon Diei - AI Engineer, CTO at Sikili, Master's student at Korea University of Technology and Education (KOREATECH). Winner of MTN MoMo Hackathon, Orange SeedStar. Expert in Flutter, Python, FastAPI, Machine Learning. Google Cloud Certified. Projects: Alladjai, TourCI, Helper AI.",
+  description: "Salomon Diei - AI Engineer, CTO at Sikili, Master's student at Korea University of Technology and Education (KOREATECH). Winner of Gorange 5G Hackathon. Expert in Flutter, Python, FastAPI, Machine Learning. Google Cloud Certified. Projects: Alladjai, TourCI, Helper AI.",
   keywords: [
     // Name variations
     "Salomon Diei", "Salomon DIEI", "salomondiei", "salomondiei08",
@@ -22,7 +22,7 @@ export const metadata: Metadata = {
     // Projects
     "Alladjai", "TourCI", "Helper AI", "ResiCar", "Sikili Platform",
     // Achievements
-    "MTN MoMo Hackathon Winner", "Orange SeedStar", "Djamo Epitech Hackathon",
+    "Gorange 5G Hackathon Winner", "Djamo Epitech Hackathon",
     // Previous work
     "Futurafric", "BUI Corporation", "Ebenyx Technologies",
     // Education background
@@ -33,7 +33,7 @@ export const metadata: Metadata = {
   publisher: "Salomon Diei",
   openGraph: {
     title: "Salomon Diei | AI Engineer & Researcher at KOREATECH",
-    description: "AI Engineer and CTO at Sikili. Master's student at KOREATECH. Winner of MTN MoMo Hackathon, Orange SeedStar. Expert in Flutter, Python, Machine Learning. Google Cloud Certified.",
+    description: "AI Engineer and CTO at Sikili. Master's student at KOREATECH. Winner of Gorange 5G Hackathon. Expert in Flutter, Python, Machine Learning. Google Cloud Certified.",
     type: "website",
     locale: "en_US",
     url: "https://salomondiei.com",
@@ -133,8 +133,7 @@ export default function RootLayout({
                 "Natural Language Processing",
               ],
               award: [
-                "MTN MoMo Hackathon 1st Place - AI & Tourism",
-                "Orange SeedStar 1st Place",
+                "Gorange 5G Hackathon 1st Place",
                 "Djamo x Epitech Hackathon 1st Place",
                 "GDG DevFest Hackathon Top 10",
                 "Korean Government Scholarship (GKS) Recipient",

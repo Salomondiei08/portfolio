@@ -38,7 +38,12 @@ export function Contact() {
               </a>
             </Button>
             <Button variant="outline" size="lg" asChild>
-              <a href="/resume.pdf" target="_blank" rel="noopener noreferrer">
+              <a
+                href="/Profesional_Resume_Salomon.pdf"
+                target="_blank"
+                rel="noopener noreferrer"
+                download
+              >
                 Download Resume
               </a>
             </Button>

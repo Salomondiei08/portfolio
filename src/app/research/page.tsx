@@ -97,7 +97,7 @@ export default function ResearchPage() {
                   <h3 className="font-semibold text-lg">AI-Powered Service Matching</h3>
                   <p className="text-primary text-sm">Alladjai Project</p>
                 </div>
-                <Badge variant="secondary">MTN MoMo Hackathon Winner</Badge>
+                <Badge variant="secondary">Gorange 5G Hackathon Winner</Badge>
               </div>
               <p className="text-sm text-muted-foreground">
                 Developed intelligent algorithms for matching users with service providers

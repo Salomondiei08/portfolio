@@ -5,7 +5,7 @@ import { Button } from "@/components/ui/button";
 
 export const metadata = {
   title: "About Salomon Diei | AI Engineer, KOREATECH Student, CTO at Sikili",
-  description: "Salomon Diei is an AI Engineer and researcher at Korea University of Technology and Education (KOREATECH), CTO at Sikili. GKS Scholar, Google Cloud Certified, winner of MTN MoMo Hackathon, Orange SeedStar. Expert in Flutter, Python, FastAPI, Machine Learning. Based in Cheonan, South Korea.",
+  description: "Salomon Diei is an AI Engineer and researcher at Korea University of Technology and Education (KOREATECH), CTO at Sikili. GKS Scholar, Google Cloud Certified, winner of Gorange 5G Hackathon. Expert in Flutter, Python, FastAPI, Machine Learning. Based in Cheonan, South Korea.",
   keywords: [
     "Salomon Diei biography",
     "KOREATECH AI student",
@@ -17,8 +17,7 @@ export const metadata = {
     "Institut Ivoirien de Technologie alumni",
     "Google Cloud Certified engineer",
     "Flutter mobile developer",
-    "MTN MoMo hackathon winner",
-    "Orange SeedStar winner",
+    "Gorange 5G hackathon winner",
     "Ivorian tech entrepreneur",
     "Futurafric technical lead",
   ],
@@ -92,8 +91,7 @@ const certifications = [
 
 const awards = [
   "GKS (Korean Government Scholarship) Recipient - 2024",
-  "1st Place - MTN MoMo Hackathon: AI & Tourism - 2023",
-  "1st Place - Orange SeedStar - 2022",
+  "1st Place - Gorange 5G Hackathon - 2022",
   "Top 10 - GDG DevFest Hackathon - 2022",
   "1st Place - Djamo x Epitech Hackathon - 2022",
   "10,000 Codeurs Ambassador - 2021",
@@ -156,7 +154,12 @@ export default function AboutPage() {
             <a href="mailto:salomondiei08@gmail.com">Get in Touch</a>
           </Button>
           <Button variant="outline" asChild>
-            <a href="/resume.pdf" target="_blank" rel="noopener noreferrer">
+            <a
+              href="/Profesional_Resume_Salomon.pdf"
+              target="_blank"
+              rel="noopener noreferrer"
+              download
+            >
               Download Resume
             </a>
           </Button>
