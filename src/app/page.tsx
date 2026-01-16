@@ -1,185 +1,257 @@
+"use client";
+
 import Link from "next/link";
-import { Card, CardContent } from "@/components/ui/card";
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
+import { NewsletterForm } from "@/components/portfolio/NewsletterForm";
+import { FadeIn, SlideIn } from "@/components/portfolio/animations";
+
+const technologies = {
+  languages: ["Python", "Dart", "JavaScript", "TypeScript", "Java", "C#"],
+  frameworks: ["Flutter", "FastAPI", "Vue.js", "Express.js", ".NET"],
+  tools: ["Docker", "Terraform", "Firebase", "GCP", "MongoDB", "PostgreSQL"],
+};
 
 const recentPosts = [
-  {
-    title: "Understanding Transformers: A Visual Guide",
-    date: "Jan 20, 2024",
-    href: "/blog/understanding-transformers",
-  },
-  {
-    title: "Welcome to My Blog",
-    date: "Jan 15, 2024",
-    href: "/blog/welcome-to-my-blog",
-  },
+  { title: "Understanding Transformers: A Visual Guide", date: "Jan 20", href: "/blog/understanding-transformers" },
+  { title: "Welcome to My Blog", date: "Jan 15", href: "/blog/welcome-to-my-blog" },
 ];
 
-const featuredProjects = [
-  {
-    title: "Neural Architecture Search",
-    description: "Automated neural network design using evolutionary algorithms.",
-    tags: ["PyTorch", "AutoML"],
-    href: "/projects",
-  },
-  {
-    title: "LLM Fine-tuning Pipeline",
-    description: "Production-ready pipeline for fine-tuning large language models.",
-    tags: ["LLMs", "MLOps"],
-    href: "/projects",
-  },
-];
-
-const quickLinks = [
-  { label: "Blog", href: "/blog", count: "2 posts" },
-  { label: "Projects", href: "/projects", count: "6 projects" },
-  { label: "Research", href: "/research", count: "4 papers" },
-  { label: "Gallery", href: "/gallery", count: "8 apps" },
-];
+const featuredProject = {
+  title: "Alladjai",
+  description: "A comprehensive home service mobile application connecting users with service providers. Features real-time booking, secure payments, and AI-powered recommendations.",
+  tags: ["Flutter", "FastAPI", "MongoDB", "AI"],
+  href: "/projects",
+};
 
 export default function Home() {
   return (
-    <div className="max-w-4xl space-y-12">
-      {/* Hero */}
-      <section className="space-y-6">
-        <div className="space-y-2">
+    <div className="space-y-8">
+      {/* Hero Section */}
+      <SlideIn direction="down">
+        <section className="space-y-4 pb-4">
           <p className="text-muted-foreground">Hello, I&apos;m</p>
-          <h1 className="text-4xl md:text-5xl font-bold">Your Name</h1>
+          <h1 className="text-4xl md:text-5xl font-bold tracking-tight">
+            Salomon Diei
+          </h1>
           <div className="flex items-center gap-3">
-            <div className="h-px w-8 bg-primary" />
-            <p className="text-xl text-muted-foreground">AI Engineer & Researcher</p>
+            <div className="h-px w-12 bg-primary" />
+            <h2 className="text-xl text-muted-foreground">AI Engineer & Researcher</h2>
           </div>
-        </div>
+          <p className="text-muted-foreground leading-relaxed max-w-2xl">
+            Building intelligent systems and innovative mobile applications. Currently pursuing
+            a Master&apos;s in AI at Korea University of Technology and Education while leading tech at Sikili.
+          </p>
+        </section>
+      </SlideIn>
 
-        <p className="text-muted-foreground leading-relaxed max-w-2xl">
-          Building intelligent systems and pushing the boundaries of what&apos;s possible
-          with machine learning. Currently focused on large language models,
-          computer vision, and multimodal AI systems.
-        </p>
+      {/* Bento Grid */}
+      <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-4">
+        {/* About Card */}
+        <FadeIn delay={100}>
+          <Card className="bg-card border-border hover:border-primary/50 transition-all duration-300 group card-hover h-full">
+            <CardHeader className="pb-3">
+              <CardTitle className="text-base font-semibold flex items-center gap-2">
+                <span className="text-primary text-sm">01.</span>
+                About
+              </CardTitle>
+            </CardHeader>
+            <CardContent className="space-y-3">
+              <p className="text-sm text-muted-foreground leading-relaxed">
+                CTO & AI researcher with expertise in mobile development and machine learning.
+                GKS scholarship recipient and Google Cloud Certified Associate Cloud Engineer.
+              </p>
+              <Link href="/about" className="inline-flex text-sm text-primary hover:underline">
+                Learn more →
+              </Link>
+            </CardContent>
+          </Card>
+        </FadeIn>
 
-        {/* Quick Links */}
-        <div className="flex flex-wrap gap-3">
-          {quickLinks.map((link) => (
-            <Link key={link.href} href={link.href}>
-              <Badge
-                variant="secondary"
-                className="px-4 py-2 hover:bg-primary hover:text-primary-foreground transition-colors cursor-pointer"
-              >
-                {link.label}
-                <span className="ml-2 text-muted-foreground text-xs">{link.count}</span>
-              </Badge>
-            </Link>
-          ))}
-        </div>
-      </section>
-
-      {/* Recent Writing */}
-      <section className="space-y-4">
-        <div className="flex items-center justify-between">
-          <h2 className="text-lg font-semibold">Recent Writing</h2>
-          <Link href="/blog" className="text-sm text-muted-foreground hover:text-primary transition-colors">
-            View all →
-          </Link>
-        </div>
-
-        <div className="space-y-2">
-          {recentPosts.map((post) => (
-            <Link key={post.href} href={post.href} className="block group">
-              <div className="flex items-center justify-between py-3 border-b border-border hover:border-primary/50 transition-colors">
-                <span className="font-medium group-hover:text-primary transition-colors">
-                  {post.title}
-                </span>
-                <span className="text-sm text-muted-foreground">{post.date}</span>
-              </div>
-            </Link>
-          ))}
-        </div>
-      </section>
-
-      {/* Featured Projects */}
-      <section className="space-y-4">
-        <div className="flex items-center justify-between">
-          <h2 className="text-lg font-semibold">Featured Projects</h2>
-          <Link href="/projects" className="text-sm text-muted-foreground hover:text-primary transition-colors">
-            View all →
-          </Link>
-        </div>
-
-        <div className="grid sm:grid-cols-2 gap-4">
-          {featuredProjects.map((project) => (
-            <Link key={project.title} href={project.href}>
-              <Card className="h-full bg-card border-border hover:border-primary/50 transition-colors group">
-                <CardContent className="p-5 space-y-2">
-                  <h3 className="font-semibold group-hover:text-primary transition-colors">
-                    {project.title}
-                  </h3>
-                  <p className="text-sm text-muted-foreground">{project.description}</p>
-                  <div className="flex gap-2 pt-1">
-                    {project.tags.map((tag) => (
-                      <Badge key={tag} variant="secondary" className="text-xs">
-                        {tag}
+        {/* Tech Stack Card */}
+        <FadeIn delay={200}>
+          <Card className="bg-card border-border hover:border-primary/50 transition-all duration-300 card-hover h-full">
+            <CardHeader className="pb-3">
+              <CardTitle className="text-base font-semibold flex items-center gap-2">
+                <span className="text-primary text-sm">02.</span>
+                Tech Stack
+              </CardTitle>
+            </CardHeader>
+            <CardContent className="space-y-3">
+              {Object.entries(technologies).map(([category, techs]) => (
+                <div key={category}>
+                  <p className="text-xs text-muted-foreground capitalize mb-1.5">{category}</p>
+                  <div className="flex flex-wrap gap-1.5">
+                    {techs.map((tech) => (
+                      <Badge key={tech} variant="secondary" className="text-xs hover:bg-primary hover:text-primary-foreground transition-colors">
+                        {tech}
                       </Badge>
                     ))}
                   </div>
+                </div>
+              ))}
+            </CardContent>
+          </Card>
+        </FadeIn>
+
+        {/* Recent Writing Card */}
+        <FadeIn delay={300}>
+          <Card className="bg-card border-border hover:border-primary/50 transition-all duration-300 card-hover h-full">
+            <CardHeader className="pb-3">
+              <div className="flex items-center justify-between">
+                <CardTitle className="text-base font-semibold flex items-center gap-2">
+                  <span className="text-primary text-sm">03.</span>
+                  Writing
+                </CardTitle>
+                <Link href="/blog" className="text-xs text-muted-foreground hover:text-primary transition-colors">
+                  View all →
+                </Link>
+              </div>
+            </CardHeader>
+            <CardContent>
+              <div className="space-y-2">
+                {recentPosts.map((post) => (
+                  <Link key={post.href} href={post.href} className="block group/post">
+                    <div className="flex items-center justify-between py-2 border-b border-border/50 group-hover/post:border-primary/30 transition-colors">
+                      <span className="text-sm group-hover/post:text-primary transition-colors line-clamp-1 pr-2">
+                        {post.title}
+                      </span>
+                      <span className="text-xs text-muted-foreground shrink-0">{post.date}</span>
+                    </div>
+                  </Link>
+                ))}
+              </div>
+            </CardContent>
+          </Card>
+        </FadeIn>
+      </div>
+
+      {/* Featured Project - Full Width */}
+      <SlideIn direction="up" delay={400}>
+        <Link href={featuredProject.href} className="block group">
+          <Card className="bg-card border-border hover:border-primary/50 transition-all duration-300 overflow-hidden card-hover">
+            <CardContent className="p-6">
+              <div className="flex flex-col md:flex-row gap-6">
+                <div className="md:w-32 h-24 md:h-auto rounded-lg bg-gradient-to-br from-primary/20 to-secondary flex items-center justify-center shrink-0">
+                  <span className="text-4xl font-bold text-primary/50">A</span>
+                </div>
+                <div className="flex-1 space-y-3">
+                  <div className="flex items-start justify-between gap-4">
+                    <div>
+                      <Badge variant="outline" className="mb-2 text-xs border-primary/50 text-primary">Featured Project</Badge>
+                      <h3 className="text-xl font-semibold group-hover:text-primary transition-colors">
+                        {featuredProject.title}
+                      </h3>
+                    </div>
+                  </div>
+                  <p className="text-muted-foreground">{featuredProject.description}</p>
+                  <div className="flex flex-wrap gap-2">
+                    {featuredProject.tags.map((tag) => (
+                      <Badge key={tag} variant="secondary" className="text-xs">{tag}</Badge>
+                    ))}
+                  </div>
+                </div>
+              </div>
+            </CardContent>
+          </Card>
+        </Link>
+      </SlideIn>
+
+      {/* Gallery & Research Row */}
+      <div className="grid md:grid-cols-2 gap-4">
+        {/* Gallery Banner */}
+        <FadeIn delay={500}>
+          <Link href="/gallery/apps" className="block group">
+            <Card className="h-full bg-gradient-to-br from-primary/10 via-card to-card border-border hover:border-primary/50 transition-all duration-300 overflow-hidden card-hover">
+              <CardContent className="p-6 relative">
+                <Badge className="mb-3">Visual</Badge>
+                <h3 className="text-xl font-bold mb-2 group-hover:text-primary transition-colors">
+                  Gallery
+                </h3>
+                <p className="text-sm text-muted-foreground">
+                  Photos, visual work, and vibe-coded apps.
+                </p>
+                <span className="inline-block mt-3 text-sm text-primary">
+                  Explore →
+                </span>
+                <div className="absolute top-0 right-0 w-32 h-32 bg-primary/10 rounded-full blur-3xl" />
+              </CardContent>
+            </Card>
+          </Link>
+        </FadeIn>
+
+        {/* Research Card */}
+        <FadeIn delay={600}>
+          <Link href="/research" className="block group">
+            <Card className="h-full bg-card border-border hover:border-primary/50 transition-all duration-300 card-hover">
+              <CardContent className="p-6">
+                <div className="flex items-center gap-2 mb-3">
+                  <Badge variant="secondary">Research</Badge>
+                  <span className="text-xs text-muted-foreground">AI & ML</span>
+                </div>
+                <h3 className="text-xl font-bold mb-2 group-hover:text-primary transition-colors">
+                  Research & Learning
+                </h3>
+                <p className="text-sm text-muted-foreground mb-3">
+                  Exploring artificial intelligence and machine learning as part of my Master&apos;s studies at KOREATECH.
+                </p>
+                <span className="text-sm text-primary">View research →</span>
+              </CardContent>
+            </Card>
+          </Link>
+        </FadeIn>
+      </div>
+
+      {/* Quick Links Row */}
+      <div className="grid grid-cols-2 md:grid-cols-4 gap-3">
+        {[
+          { label: "Notes", href: "/notes", desc: "Quick tips" },
+          { label: "Reading", href: "/reading", desc: "Book list" },
+          { label: "Projects", href: "/projects", desc: "All work" },
+          { label: "About", href: "/about", desc: "Bio & contact" },
+        ].map((link, index) => (
+          <FadeIn key={link.href} delay={700 + index * 50}>
+            <Link href={link.href}>
+              <Card className="bg-card border-border hover:border-primary/50 hover:bg-secondary/50 transition-all duration-300 group card-hover h-full">
+                <CardContent className="p-4">
+                  <p className="font-medium group-hover:text-primary transition-colors">{link.label}</p>
+                  <p className="text-xs text-muted-foreground">{link.desc}</p>
                 </CardContent>
               </Card>
             </Link>
-          ))}
-        </div>
-      </section>
+          </FadeIn>
+        ))}
+      </div>
 
-      {/* Gallery Banner */}
-      <Link href="/gallery" className="block group">
-        <div className="relative overflow-hidden rounded-xl border border-border bg-gradient-to-br from-primary/10 via-card to-card p-6 hover:border-primary/50 transition-all">
-          <div className="relative z-10">
-            <Badge className="mb-2">Vibe Coded</Badge>
-            <h2 className="text-xl font-bold mb-1 group-hover:text-primary transition-colors">
-              App Gallery
-            </h2>
-            <p className="text-sm text-muted-foreground">
-              Quick experiments, creative tools, and fun side projects →
-            </p>
+      {/* Newsletter Section */}
+      <FadeIn delay={900}>
+        <section className="pt-8 border-t border-border">
+          <div className="flex flex-col md:flex-row md:items-center justify-between gap-6">
+            <div>
+              <h3 className="font-semibold mb-1">Stay Updated</h3>
+              <p className="text-sm text-muted-foreground">
+                Get notified about new research, projects, and blog posts.
+              </p>
+            </div>
+            <NewsletterForm />
           </div>
-          <div className="absolute top-0 right-0 w-32 h-32 bg-primary/10 rounded-full blur-2xl" />
-        </div>
-      </Link>
+        </section>
+      </FadeIn>
 
-      {/* Connect */}
-      <section className="space-y-4">
-        <h2 className="text-lg font-semibold">Connect</h2>
-        <div className="flex flex-wrap gap-3">
-          <a
-            href="https://github.com/yourusername"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="px-4 py-2 rounded-lg border border-border hover:border-primary hover:text-primary transition-colors text-sm"
-          >
+      {/* Footer Links */}
+      <FadeIn delay={1000}>
+        <section className="flex flex-wrap gap-4 pt-4 text-sm">
+          <a href="https://github.com/salomondiei08" target="_blank" rel="noopener noreferrer" className="text-muted-foreground hover:text-primary transition-colors">
             GitHub
           </a>
-          <a
-            href="https://twitter.com/yourusername"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="px-4 py-2 rounded-lg border border-border hover:border-primary hover:text-primary transition-colors text-sm"
-          >
-            Twitter
-          </a>
-          <a
-            href="https://linkedin.com/in/yourusername"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="px-4 py-2 rounded-lg border border-border hover:border-primary hover:text-primary transition-colors text-sm"
-          >
+          <a href="https://linkedin.com/in/salomondiei" target="_blank" rel="noopener noreferrer" className="text-muted-foreground hover:text-primary transition-colors">
             LinkedIn
           </a>
-          <a
-            href="mailto:your.email@example.com"
-            className="px-4 py-2 rounded-lg border border-border hover:border-primary hover:text-primary transition-colors text-sm"
-          >
+          <a href="mailto:salomondiei08@gmail.com" className="text-muted-foreground hover:text-primary transition-colors">
             Email
           </a>
-        </div>
-      </section>
+        </section>
+      </FadeIn>
     </div>
   );
 }

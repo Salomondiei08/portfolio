@@ -1,268 +1,225 @@
 import { Card, CardContent } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
-import { Button } from "@/components/ui/button";
 
 export const metadata = {
-  title: "Research | AI Engineer Portfolio",
-  description: "Academic publications, preprints, and research work in AI and machine learning.",
+  title: "Research | Salomon Diei - AI Engineer Portfolio",
+  description: "AI and machine learning research at Korea University of Technology and Education.",
 };
 
-const publications = [
-  {
-    title: "Efficient Attention Mechanisms for Long-Context Language Models",
-    authors: ["Your Name", "Co-Author One", "Co-Author Two"],
-    venue: "NeurIPS 2024",
-    year: 2024,
-    type: "conference",
-    abstract:
-      "We propose a novel attention mechanism that reduces computational complexity from O(n²) to O(n log n) while maintaining model quality on long-context tasks.",
-    links: {
-      paper: "#",
-      code: "#",
-      arxiv: "#",
-    },
-    tags: ["Attention", "Transformers", "Efficiency"],
-  },
-  {
-    title: "Cross-Modal Learning with Vision-Language Transformers",
-    authors: ["Co-Author One", "Your Name", "Co-Author Three"],
-    venue: "CVPR 2024",
-    year: 2024,
-    type: "conference",
-    abstract:
-      "A unified framework for learning joint representations across vision and language modalities, achieving state-of-the-art results on multiple benchmarks.",
-    links: {
-      paper: "#",
-      code: "#",
-    },
-    tags: ["Multimodal", "Vision-Language", "Transformers"],
-  },
-  {
-    title: "A Survey on Parameter-Efficient Fine-Tuning of Large Language Models",
-    authors: ["Your Name", "Co-Author Two"],
-    venue: "arXiv",
-    year: 2024,
-    type: "preprint",
-    abstract:
-      "A comprehensive survey covering LoRA, adapters, prompt tuning, and other parameter-efficient methods for adapting large language models to downstream tasks.",
-    links: {
-      arxiv: "#",
-    },
-    tags: ["LLMs", "PEFT", "Survey"],
-  },
-  {
-    title: "Scaling Laws for Neural Machine Translation",
-    authors: ["Your Name", "Co-Author One", "Co-Author Four"],
-    venue: "EMNLP 2023",
-    year: 2023,
-    type: "conference",
-    abstract:
-      "An empirical study of how translation quality scales with model size, data size, and compute budget across multiple language pairs.",
-    links: {
-      paper: "#",
-      arxiv: "#",
-    },
-    tags: ["NMT", "Scaling", "Empirical"],
-  },
-];
-
-const stats = [
-  { label: "Publications", value: "12" },
-  { label: "Citations", value: "450+" },
-  { label: "h-index", value: "8" },
-];
-
 export default function ResearchPage() {
-  const conferences = publications.filter((p) => p.type === "conference");
-  const preprints = publications.filter((p) => p.type === "preprint");
-
   return (
     <div className="space-y-12">
       {/* Header */}
       <div className="space-y-4">
         <h1 className="text-3xl font-bold">Research</h1>
         <p className="text-muted-foreground max-w-2xl">
-          My research focuses on making AI systems more efficient, interpretable, and capable.
-          I work on large language models, multimodal learning, and efficient training techniques.
+          Currently pursuing a Master&apos;s degree in Artificial Intelligence at Korea University
+          of Technology and Education (KOREATECH), supported by the Korean Government Scholarship (GKS).
         </p>
       </div>
 
-      {/* Stats */}
-      <div className="grid grid-cols-3 gap-4">
-        {stats.map((stat) => (
-          <Card key={stat.label} className="bg-card border-border">
-            <CardContent className="p-4 text-center">
-              <p className="text-2xl font-bold text-primary">{stat.value}</p>
-              <p className="text-sm text-muted-foreground">{stat.label}</p>
-            </CardContent>
-          </Card>
-        ))}
-      </div>
-
-      {/* Research Interests */}
-      <Card className="bg-card border-border">
+      {/* Current Status */}
+      <Card className="bg-gradient-to-br from-primary/10 via-card to-card border-border">
         <CardContent className="p-6">
-          <h2 className="text-lg font-semibold mb-4">Research Interests</h2>
-          <div className="grid sm:grid-cols-2 gap-4">
-            <div className="space-y-2">
-              <h3 className="font-medium text-primary">Efficient AI</h3>
-              <p className="text-sm text-muted-foreground">
-                Developing methods to train and deploy large models more efficiently,
-                including attention optimization and model compression.
-              </p>
+          <div className="flex items-start gap-4">
+            <div className="w-12 h-12 rounded-lg bg-primary/20 flex items-center justify-center shrink-0">
+              <span className="text-primary font-bold">AI</span>
             </div>
-            <div className="space-y-2">
-              <h3 className="font-medium text-primary">Multimodal Learning</h3>
-              <p className="text-sm text-muted-foreground">
-                Building systems that can understand and generate content across
-                text, images, audio, and video modalities.
-              </p>
-            </div>
-            <div className="space-y-2">
-              <h3 className="font-medium text-primary">Language Models</h3>
-              <p className="text-sm text-muted-foreground">
-                Understanding scaling laws, emergent capabilities, and alignment
-                of large language models.
-              </p>
-            </div>
-            <div className="space-y-2">
-              <h3 className="font-medium text-primary">AI Safety</h3>
-              <p className="text-sm text-muted-foreground">
-                Ensuring AI systems are safe, interpretable, and aligned with
-                human values and intentions.
+            <div>
+              <Badge className="mb-2">In Progress</Badge>
+              <h2 className="text-xl font-semibold">M.S. in Artificial Intelligence</h2>
+              <p className="text-primary">Korea University of Technology and Education</p>
+              <p className="text-sm text-muted-foreground mt-2">
+                2024 - Present | Cheonan-si, South Korea
               </p>
             </div>
           </div>
         </CardContent>
       </Card>
 
-      {/* Conference Papers */}
+      {/* Research Interests */}
       <section className="space-y-6">
         <h2 className="text-xl font-semibold flex items-center gap-3">
           <span className="text-primary">01.</span>
-          Conference Papers
+          Research Interests
           <div className="h-px flex-1 bg-border" />
         </h2>
 
-        <div className="space-y-4">
-          {conferences.map((paper, index) => (
-            <Card
-              key={index}
-              className="bg-card border-border hover:border-primary/50 transition-colors"
-            >
-              <CardContent className="p-6 space-y-4">
-                <div className="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-2">
-                  <div className="flex-1">
-                    <h3 className="font-semibold text-lg">{paper.title}</h3>
-                    <p className="text-sm text-muted-foreground mt-1">
-                      {paper.authors.join(", ")}
-                    </p>
-                  </div>
-                  <div className="flex items-center gap-2">
-                    <Badge className="bg-primary/20 text-primary border-0">
-                      {paper.venue}
-                    </Badge>
-                  </div>
-                </div>
-                <p className="text-sm text-muted-foreground">{paper.abstract}</p>
-                <div className="flex flex-wrap items-center gap-3">
-                  <div className="flex gap-2">
-                    {paper.tags.map((tag) => (
-                      <Badge key={tag} variant="secondary" className="text-xs">
-                        {tag}
-                      </Badge>
-                    ))}
-                  </div>
-                  <div className="flex-1" />
-                  <div className="flex gap-2">
-                    {paper.links.paper && (
-                      <Button variant="outline" size="sm" asChild>
-                        <a href={paper.links.paper} target="_blank" rel="noopener noreferrer">
-                          Paper
-                        </a>
-                      </Button>
-                    )}
-                    {paper.links.arxiv && (
-                      <Button variant="outline" size="sm" asChild>
-                        <a href={paper.links.arxiv} target="_blank" rel="noopener noreferrer">
-                          arXiv
-                        </a>
-                      </Button>
-                    )}
-                    {paper.links.code && (
-                      <Button variant="ghost" size="sm" asChild>
-                        <a href={paper.links.code} target="_blank" rel="noopener noreferrer">
-                          Code
-                        </a>
-                      </Button>
-                    )}
-                  </div>
-                </div>
-              </CardContent>
-            </Card>
-          ))}
-        </div>
+        <Card className="bg-card border-border">
+          <CardContent className="p-6">
+            <div className="grid sm:grid-cols-2 gap-6">
+              <div className="space-y-2">
+                <h3 className="font-medium text-primary">Machine Learning</h3>
+                <p className="text-sm text-muted-foreground">
+                  Exploring supervised and unsupervised learning techniques,
+                  with focus on practical applications in mobile and web platforms.
+                </p>
+              </div>
+              <div className="space-y-2">
+                <h3 className="font-medium text-primary">Natural Language Processing</h3>
+                <p className="text-sm text-muted-foreground">
+                  Building intelligent conversational systems and text analysis tools,
+                  including GPT-powered applications like Helper AI.
+                </p>
+              </div>
+              <div className="space-y-2">
+                <h3 className="font-medium text-primary">Computer Vision</h3>
+                <p className="text-sm text-muted-foreground">
+                  Image recognition and processing applications for mobile platforms,
+                  including 360-degree virtual tour technologies.
+                </p>
+              </div>
+              <div className="space-y-2">
+                <h3 className="font-medium text-primary">AI-Powered Applications</h3>
+                <p className="text-sm text-muted-foreground">
+                  Integrating AI/ML capabilities into production applications,
+                  including recommendation systems and intelligent matching.
+                </p>
+              </div>
+            </div>
+          </CardContent>
+        </Card>
       </section>
 
-      {/* Preprints */}
+      {/* Applied Research */}
       <section className="space-y-6">
         <h2 className="text-xl font-semibold flex items-center gap-3">
           <span className="text-primary">02.</span>
-          Preprints
+          Applied Research Projects
           <div className="h-px flex-1 bg-border" />
         </h2>
 
         <div className="space-y-4">
-          {preprints.map((paper, index) => (
-            <Card
-              key={index}
-              className="bg-card border-border hover:border-primary/50 transition-colors"
-            >
-              <CardContent className="p-6 space-y-4">
-                <div className="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-2">
-                  <div className="flex-1">
-                    <h3 className="font-semibold">{paper.title}</h3>
-                    <p className="text-sm text-muted-foreground mt-1">
-                      {paper.authors.join(", ")}
-                    </p>
-                  </div>
-                  <Badge variant="secondary">{paper.venue}</Badge>
+          <Card className="bg-card border-border">
+            <CardContent className="p-6 space-y-4">
+              <div className="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-2">
+                <div>
+                  <h3 className="font-semibold text-lg">AI-Powered Service Matching</h3>
+                  <p className="text-primary text-sm">Alladjai Project</p>
                 </div>
-                <p className="text-sm text-muted-foreground">{paper.abstract}</p>
-                <div className="flex items-center gap-3">
-                  <div className="flex gap-2">
-                    {paper.tags.map((tag) => (
-                      <Badge key={tag} variant="secondary" className="text-xs">
-                        {tag}
-                      </Badge>
-                    ))}
-                  </div>
-                  <div className="flex-1" />
-                  {paper.links.arxiv && (
-                    <Button variant="outline" size="sm" asChild>
-                      <a href={paper.links.arxiv} target="_blank" rel="noopener noreferrer">
-                        arXiv
-                      </a>
-                    </Button>
-                  )}
+                <Badge variant="secondary">MTN MoMo Hackathon Winner</Badge>
+              </div>
+              <p className="text-sm text-muted-foreground">
+                Developed intelligent algorithms for matching users with service providers
+                based on location, availability, ratings, and user preferences. The system
+                optimizes for both user satisfaction and provider efficiency.
+              </p>
+              <div className="flex flex-wrap gap-2">
+                <Badge variant="secondary" className="text-xs">Recommendation Systems</Badge>
+                <Badge variant="secondary" className="text-xs">Matching Algorithms</Badge>
+                <Badge variant="secondary" className="text-xs">Mobile AI</Badge>
+              </div>
+            </CardContent>
+          </Card>
+
+          <Card className="bg-card border-border">
+            <CardContent className="p-6 space-y-4">
+              <div className="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-2">
+                <div>
+                  <h3 className="font-semibold text-lg">Conversational AI Assistant</h3>
+                  <p className="text-primary text-sm">Helper AI Project</p>
                 </div>
-              </CardContent>
-            </Card>
-          ))}
+                <Badge variant="secondary">GPT-4 Integration</Badge>
+              </div>
+              <p className="text-sm text-muted-foreground">
+                Built an intelligent chatbot application leveraging GPT-4 for natural
+                language understanding and generation. Features include context-aware
+                responses, multi-turn conversations, and multi-language support.
+              </p>
+              <div className="flex flex-wrap gap-2">
+                <Badge variant="secondary" className="text-xs">LLMs</Badge>
+                <Badge variant="secondary" className="text-xs">NLP</Badge>
+                <Badge variant="secondary" className="text-xs">Flutter</Badge>
+              </div>
+            </CardContent>
+          </Card>
+
+          <Card className="bg-card border-border">
+            <CardContent className="p-6 space-y-4">
+              <div className="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-2">
+                <div>
+                  <h3 className="font-semibold text-lg">360° Virtual Tourism</h3>
+                  <p className="text-primary text-sm">TourCI Project</p>
+                </div>
+                <Badge variant="secondary">Computer Vision</Badge>
+              </div>
+              <p className="text-sm text-muted-foreground">
+                Implemented immersive 360-degree virtual tour experiences for cultural
+                and tourism applications. Combines computer vision techniques with
+                interactive mobile interfaces for seamless exploration.
+              </p>
+              <div className="flex flex-wrap gap-2">
+                <Badge variant="secondary" className="text-xs">360° Imaging</Badge>
+                <Badge variant="secondary" className="text-xs">Interactive Media</Badge>
+                <Badge variant="secondary" className="text-xs">Tourism Tech</Badge>
+              </div>
+            </CardContent>
+          </Card>
         </div>
       </section>
 
-      {/* Google Scholar link */}
-      <div className="text-center pt-4">
-        <a
-          href="https://scholar.google.com/citations?user=yourid"
-          target="_blank"
-          rel="noopener noreferrer"
-          className="text-sm text-muted-foreground hover:text-primary transition-colors"
-        >
-          View all publications on Google Scholar →
-        </a>
-      </div>
+      {/* Academic Background */}
+      <section className="space-y-6">
+        <h2 className="text-xl font-semibold flex items-center gap-3">
+          <span className="text-primary">03.</span>
+          Academic Background
+          <div className="h-px flex-1 bg-border" />
+        </h2>
+
+        <div className="grid sm:grid-cols-2 gap-4">
+          <Card className="bg-card border-border">
+            <CardContent className="p-5">
+              <Badge className="mb-2">Current</Badge>
+              <h3 className="font-semibold">M.S. Artificial Intelligence</h3>
+              <p className="text-primary text-sm">KOREATECH</p>
+              <p className="text-sm text-muted-foreground mt-2">
+                GKS Scholarship Recipient
+              </p>
+              <p className="text-xs text-muted-foreground">2024 - Present</p>
+            </CardContent>
+          </Card>
+
+          <Card className="bg-card border-border">
+            <CardContent className="p-5">
+              <Badge variant="secondary" className="mb-2">Completed</Badge>
+              <h3 className="font-semibold">B.S. Software Engineering</h3>
+              <p className="text-primary text-sm">Institut Ivoirien de Technologie</p>
+              <p className="text-sm text-muted-foreground mt-2">
+                Côte d&apos;Ivoire
+              </p>
+              <p className="text-xs text-muted-foreground">2020 - 2023</p>
+            </CardContent>
+          </Card>
+        </div>
+      </section>
+
+      {/* Future Research */}
+      <Card className="bg-card border-border">
+        <CardContent className="p-6">
+          <h3 className="font-semibold mb-3">Future Research Directions</h3>
+          <p className="text-sm text-muted-foreground">
+            As I continue my Master&apos;s studies, I aim to contribute to research in:
+          </p>
+          <ul className="mt-3 space-y-2 text-sm text-muted-foreground">
+            <li className="flex items-start gap-2">
+              <span className="text-primary">→</span>
+              Mobile-first AI applications for emerging markets
+            </li>
+            <li className="flex items-start gap-2">
+              <span className="text-primary">→</span>
+              Efficient ML models for resource-constrained environments
+            </li>
+            <li className="flex items-start gap-2">
+              <span className="text-primary">→</span>
+              AI-powered solutions for African technology ecosystems
+            </li>
+            <li className="flex items-start gap-2">
+              <span className="text-primary">→</span>
+              Cross-platform intelligent applications
+            </li>
+          </ul>
+        </CardContent>
+      </Card>
     </div>
   );
 }

@@ -1,36 +1,193 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Salomon Diei - AI Engineer Portfolio
 
-## Getting Started
+A modern, animated portfolio website showcasing my work as an AI Engineer and Researcher. Built with Next.js 15, TypeScript, and Tailwind CSS.
 
-First, run the development server:
+## 🚀 Features
+
+- **Responsive Design** - Fully responsive across all devices with mobile-first approach
+- **Dark/Light Mode** - Smooth theme switching with system preference detection
+- **Animated UI** - Beautiful scroll-triggered animations and smooth transitions
+- **Collapsible Sidebar** - Hover-to-expand navigation with elastic animations
+- **Interactive Chat Widget** - AI-powered chatbot for quick information
+- **Blog System** - Markdown-based blog with full MDX support
+- **App Gallery** - Showcase of vibe-coded applications
+- **Photography Gallery** - Personal photography collection
+- **Newsletter Integration** - Email subscription system
+
+## 🛠️ Tech Stack
+
+- **Framework:** [Next.js 15](https://nextjs.org/) (App Router)
+- **Language:** [TypeScript](https://www.typescriptlang.org/)
+- **Styling:** [Tailwind CSS v4](https://tailwindcss.com/)
+- **UI Components:** [shadcn/ui](https://ui.shadcn.com/)
+- **Animations:** CSS animations with IntersectionObserver
+- **Deployment:** Vercel (recommended)
+
+## 📦 Installation
+
+1. Clone the repository:
+
+```bash
+git clone https://github.com/salomondiei08/portfolio.git
+cd portfolio
+```
+
+2. Install dependencies:
+
+```bash
+npm install
+```
+
+3. Run the development server:
 
 ```bash
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+4. Open [http://localhost:3000](http://localhost:3000) in your browser.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## 📁 Project Structure
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+```text
+portfolio/
+├── src/
+│   ├── app/                    # Next.js app directory
+│   │   ├── about/             # About page
+│   │   ├── blog/              # Blog pages
+│   │   ├── gallery/           # Photography & app galleries
+│   │   ├── notes/             # Quick notes
+│   │   ├── projects/          # Projects showcase
+│   │   ├── reading/           # Reading list
+│   │   ├── research/          # Research papers
+│   │   ├── layout.tsx         # Root layout
+│   │   ├── page.tsx           # Homepage
+│   │   └── globals.css        # Global styles
+│   ├── components/
+│   │   ├── portfolio/         # Custom portfolio components
+│   │   │   ├── Sidebar.tsx    # Navigation sidebar
+│   │   │   ├── ChatWidget.tsx # Interactive chatbot
+│   │   │   ├── ThemeProvider.tsx
+│   │   │   └── animations.tsx # Animation components
+│   │   └── ui/                # shadcn/ui components
+│   └── lib/                   # Utility functions
+├── public/
+│   └── images/                # Static images
+└── content/                   # Markdown content
+    ├── blog/                  # Blog posts
+    └── notes/                 # Note files
+```
 
-## Learn More
+## 🎨 Customization
 
-To learn more about Next.js, take a look at the following resources:
+### Theme Colors
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+Edit the CSS variables in `src/app/globals.css`:
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+```css
+:root {
+  --primary: /* Your primary color */;
+  --secondary: /* Your secondary color */;
+  /* ... */
+}
+```
 
-## Deploy on Vercel
+### Adding Blog Posts
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+Create a new `.md` file in `content/blog/`:
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+```markdown
+---
+title: "Your Post Title"
+date: "2024-01-16"
+excerpt: "Brief description"
+tags: ["tag1", "tag2"]
+---
+
+Your content here...
+```
+
+### Navigation
+
+Update navigation links in `src/components/portfolio/Sidebar.tsx`:
+
+```typescript
+const navigation = {
+  main: [
+    { name: "Home", href: "/", icon: "H" },
+    // Add your links...
+  ],
+};
+```
+
+## 🚢 Deployment
+
+### Vercel (Recommended)
+
+1. Push your code to GitHub
+2. Import your repository on [Vercel](https://vercel.com)
+3. Deploy with one click
+
+### Other Platforms
+
+Build the production bundle:
+
+```bash
+npm run build
+```
+
+Start the production server:
+
+```bash
+npm start
+```
+
+## 📝 Available Scripts
+
+- `npm run dev` - Start development server
+- `npm run build` - Build for production
+- `npm start` - Start production server
+- `npm run lint` - Run ESLint
+
+## 🌟 Features in Detail
+
+### Animated Sidebar
+
+- Collapses to icons-only by default
+- Expands smoothly on hover with elastic easing
+- Shows tooltips when collapsed
+- Fully responsive for mobile devices
+
+### Chat Widget
+
+- Keyword-based response system
+- Smooth animations and typing indicators
+- Context-aware responses about experience, projects, skills, etc.
+
+### Theme System
+
+- Automatic system preference detection
+- Smooth color transitions
+- Persistent user preference
+
+## 📄 License
+
+This project is open source and available under the [MIT License](LICENSE).
+
+## 👤 Author
+
+Salomon DIEI
+
+- Website: <https://salomondiei.com>
+- GitHub: [@salomondiei08](https://github.com/salomondiei08)
+- LinkedIn: [in/salomondiei](https://linkedin.com/in/salomondiei)
+- Email: <salomondiei08@gmail.com>
+
+## 🙏 Acknowledgments
+
+- Design inspiration from [kyson.dev](https://kyson.dev/) and [shloked.com](https://www.shloked.com/)
+- UI components from [shadcn/ui](https://ui.shadcn.com/)
+- Built with [Next.js](https://nextjs.org/)
+
+---
+
+Made with ❤️ by [Salomon DIEI](https://github.com/salomondiei08)

@@ -1,60 +1,74 @@
 "use client";
 
 import Link from "next/link";
+import Image from "next/image";
 import { usePathname } from "next/navigation";
 import { useState } from "react";
+import { useTheme } from "./ThemeProvider";
 
 const navigation = {
   main: [
-    { name: "Home", href: "/" },
-    { name: "About", href: "/about" },
+    { name: "Home", href: "/", icon: "H" },
+    { name: "About", href: "/about", icon: "A" },
   ],
   create: [
-    { name: "Blog", href: "/blog" },
-    { name: "Projects", href: "/projects" },
-    { name: "Research", href: "/research" },
+    { name: "Blog", href: "/blog", icon: "B" },
+    { name: "Projects", href: "/projects", icon: "P" },
+    { name: "Research", href: "/research", icon: "R" },
   ],
   explore: [
-    { name: "Gallery", href: "/gallery" },
-    { name: "Notes", href: "/notes" },
-    { name: "Reading", href: "/reading" },
-  ],
-  connect: [
-    { name: "Newsletter", href: "/newsletter" },
-    { name: "Chatbot", href: "/chatbot" },
+    { name: "Gallery", href: "/gallery", icon: "G" },
+    { name: "Notes", href: "/notes", icon: "N" },
+    { name: "Reading", href: "/reading", icon: "L" },
   ],
 };
 
 const socialLinks = [
-  { name: "GitHub", href: "https://github.com/yourusername", icon: "GH" },
-  { name: "Twitter", href: "https://twitter.com/yourusername", icon: "X" },
-  { name: "LinkedIn", href: "https://linkedin.com/in/yourusername", icon: "IN" },
+  { name: "GitHub", href: "https://github.com/salomondiei08", icon: "GH" },
+  { name: "LinkedIn", href: "https://linkedin.com/in/salomondiei", icon: "IN" },
+  { name: "Email", href: "mailto:salomondiei08@gmail.com", icon: "@" },
 ];
 
 export function Sidebar() {
   const pathname = usePathname();
+  const { theme, toggleTheme } = useTheme();
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const [isHovered, setIsHovered] = useState(false);
 
-  const NavLink = ({ href, name }: { href: string; name: string }) => {
-    const isActive = pathname === href;
+  // On desktop, sidebar is collapsed by default and expands on hover
+  const isExpanded = isHovered;
+  const sidebarWidth = isExpanded ? "w-64" : "w-16";
+
+  const NavLink = ({ href, name, icon }: { href: string; name: string; icon: string }) => {
+    const isActive = pathname === href || (href !== "/" && pathname.startsWith(href));
     return (
       <Link
         href={href}
-        className={`block px-3 py-1.5 text-sm rounded-md transition-colors ${
+        className={`flex items-center gap-3 px-3 py-2 text-sm rounded-lg transition-all duration-300 ease-out group ${
           isActive
             ? "bg-primary/10 text-primary"
             : "text-muted-foreground hover:text-foreground hover:bg-secondary"
-        }`}
+        } ${!isExpanded ? "justify-center" : ""}`}
         onClick={() => setMobileMenuOpen(false)}
+        title={!isExpanded ? name : undefined}
       >
-        {name}
+        <span className={`w-5 h-5 flex items-center justify-center text-xs font-medium shrink-0 ${isActive ? "text-primary" : ""}`}>
+          {icon}
+        </span>
+        <span className={`transition-all duration-300 ease-out overflow-hidden whitespace-nowrap ${
+          isExpanded ? "opacity-100 max-w-[200px]" : "opacity-0 max-w-0"
+        }`}>
+          {name}
+        </span>
       </Link>
     );
   };
 
   const NavSection = ({ title, items }: { title: string; items: typeof navigation.main }) => (
-    <div className="mb-6">
-      <p className="px-3 mb-2 text-xs font-medium text-muted-foreground uppercase tracking-wider">
+    <div className="mb-4">
+      <p className={`px-3 mb-2 text-xs font-medium text-muted-foreground uppercase tracking-wider transition-all duration-300 ease-out overflow-hidden ${
+        isExpanded ? "opacity-100 max-h-6" : "opacity-0 max-h-0"
+      }`}>
         {title}
       </p>
       <nav className="space-y-1">
@@ -70,7 +84,8 @@ export function Sidebar() {
       {/* Mobile menu button */}
       <button
         onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-        className="fixed top-4 left-4 z-50 p-2 rounded-md bg-card border border-border lg:hidden"
+        className="fixed top-4 left-4 z-50 p-2.5 rounded-lg bg-card border border-border lg:hidden active:scale-95 transition-transform"
+        aria-label="Toggle menu"
       >
         <svg
           xmlns="http://www.w3.org/2000/svg"
@@ -88,6 +103,23 @@ export function Sidebar() {
         </svg>
       </button>
 
+      {/* Mobile theme toggle */}
+      <button
+        onClick={toggleTheme}
+        className="fixed top-4 right-4 z-50 p-2.5 rounded-lg bg-card border border-border lg:hidden active:scale-95 transition-transform"
+        aria-label="Toggle theme"
+      >
+        {theme === "dark" ? (
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-5 h-5">
+            <path strokeLinecap="round" strokeLinejoin="round" d="M12 3v2.25m6.364.386l-1.591 1.591M21 12h-2.25m-.386 6.364l-1.591-1.591M12 18.75V21m-4.773-4.227l-1.591 1.591M5.25 12H3m4.227-4.773L5.636 5.636M15.75 12a3.75 3.75 0 11-7.5 0 3.75 3.75 0 017.5 0z" />
+          </svg>
+        ) : (
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-5 h-5">
+            <path strokeLinecap="round" strokeLinejoin="round" d="M21.752 15.002A9.718 9.718 0 0118 15.75c-5.385 0-9.75-4.365-9.75-9.75 0-1.33.266-2.597.748-3.752A9.753 9.753 0 003 11.25C3 16.635 7.365 21 12.75 21a9.753 9.753 0 009.002-5.998z" />
+          </svg>
+        )}
+      </button>
+
       {/* Overlay */}
       {mobileMenuOpen && (
         <div
@@ -98,49 +130,112 @@ export function Sidebar() {
 
       {/* Sidebar */}
       <aside
-        className={`fixed top-0 left-0 h-full w-64 bg-card border-r border-border z-40 transform transition-transform duration-300 lg:translate-x-0 ${
-          mobileMenuOpen ? "translate-x-0" : "-translate-x-full"
+        onMouseEnter={() => setIsHovered(true)}
+        onMouseLeave={() => setIsHovered(false)}
+        className={`fixed top-0 left-0 h-full ${sidebarWidth} bg-card border-r border-border z-40 transform transition-all duration-500 ease-[cubic-bezier(0.34,1.56,0.64,1)] lg:translate-x-0 ${
+          mobileMenuOpen ? "translate-x-0 w-64" : "-translate-x-full"
         }`}
       >
-        <div className="flex flex-col h-full p-4">
+        <div className="flex flex-col h-full p-3">
           {/* Profile */}
-          <Link href="/" className="flex items-center gap-3 p-3 mb-6" onClick={() => setMobileMenuOpen(false)}>
-            <div className="w-10 h-10 rounded-full bg-primary/20 flex items-center justify-center">
-              <span className="text-primary font-bold">YN</span>
+          <Link
+            href="/"
+            className={`flex items-center gap-3 p-2 mb-4 rounded-lg group hover:bg-secondary transition-all duration-300 ease-out ${!isExpanded ? "justify-center" : ""}`}
+            onClick={() => setMobileMenuOpen(false)}
+          >
+            <div className="w-9 h-9 rounded-full overflow-hidden ring-2 ring-primary/20 group-hover:ring-primary/40 transition-all duration-300 shrink-0">
+              <Image
+                src="/images/salomon.JPG"
+                alt="Salomon Diei"
+                width={36}
+                height={36}
+                className="object-cover w-full h-full"
+              />
             </div>
-            <div>
-              <p className="font-semibold text-foreground">Your Name</p>
-              <p className="text-xs text-muted-foreground">AI Engineer</p>
+            <div className={`min-w-0 transition-all duration-300 ease-out overflow-hidden ${
+              isExpanded ? "opacity-100 max-w-[200px]" : "opacity-0 max-w-0"
+            }`}>
+              <p className="font-semibold text-foreground group-hover:text-primary transition-colors text-sm truncate">Salomon Diei</p>
+              <p className="text-xs text-muted-foreground truncate">AI Engineer & Researcher</p>
             </div>
           </Link>
 
           {/* Navigation */}
-          <div className="flex-1 overflow-y-auto">
+          <div className="flex-1 overflow-y-auto overflow-x-hidden">
             <NavSection title="Main" items={navigation.main} />
             <NavSection title="Create" items={navigation.create} />
             <NavSection title="Explore" items={navigation.explore} />
-            <NavSection title="Connect" items={navigation.connect} />
           </div>
 
-          {/* Social Links */}
-          <div className="pt-4 border-t border-border">
-            <div className="flex justify-center gap-2">
+          {/* Bottom section */}
+          <div className="pt-3 border-t border-border space-y-2">
+            {/* Theme toggle */}
+            <button
+              onClick={toggleTheme}
+              className={`hidden lg:flex items-center gap-3 w-full px-3 py-2 text-sm rounded-lg text-muted-foreground hover:text-foreground hover:bg-secondary transition-all duration-300 ease-out ${!isExpanded ? "justify-center" : ""}`}
+              title={!isExpanded ? (theme === "dark" ? "Light mode" : "Dark mode") : undefined}
+            >
+              <span className="shrink-0">
+                {theme === "dark" ? (
+                  <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-5 h-5">
+                    <path strokeLinecap="round" strokeLinejoin="round" d="M12 3v2.25m6.364.386l-1.591 1.591M21 12h-2.25m-.386 6.364l-1.591-1.591M12 18.75V21m-4.773-4.227l-1.591 1.591M5.25 12H3m4.227-4.773L5.636 5.636M15.75 12a3.75 3.75 0 11-7.5 0 3.75 3.75 0 017.5 0z" />
+                  </svg>
+                ) : (
+                  <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-5 h-5">
+                    <path strokeLinecap="round" strokeLinejoin="round" d="M21.752 15.002A9.718 9.718 0 0118 15.75c-5.385 0-9.75-4.365-9.75-9.75 0-1.33.266-2.597.748-3.752A9.753 9.753 0 003 11.25C3 16.635 7.365 21 12.75 21a9.753 9.753 0 009.002-5.998z" />
+                  </svg>
+                )}
+              </span>
+              <span className={`transition-all duration-300 ease-out overflow-hidden whitespace-nowrap ${
+                isExpanded ? "opacity-100 max-w-[200px]" : "opacity-0 max-w-0"
+              }`}>
+                {theme === "dark" ? "Light mode" : "Dark mode"}
+              </span>
+            </button>
+
+            {/* Social Links */}
+            <div className={`flex gap-1 pt-2 transition-all duration-300 ease-out ${
+              isExpanded ? "justify-center" : "flex-col"
+            }`}>
               {socialLinks.map((link) => (
                 <a
                   key={link.name}
                   href={link.href}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="p-2 text-xs text-muted-foreground hover:text-primary transition-colors"
+                  target={link.href.startsWith("mailto") ? undefined : "_blank"}
+                  rel={link.href.startsWith("mailto") ? undefined : "noopener noreferrer"}
+                  className={`p-2 text-xs text-muted-foreground hover:text-primary hover:bg-secondary rounded-md transition-all duration-300 ease-out ${
+                    !isExpanded ? "flex justify-center" : ""
+                  }`}
                   title={link.name}
                 >
                   {link.icon}
                 </a>
               ))}
             </div>
+
+            {/* Source Code Link */}
+            <a
+              href="https://github.com/salomondiei08/portfolio"
+              target="_blank"
+              rel="noopener noreferrer"
+              className={`flex items-center gap-2 px-3 py-2 text-xs text-muted-foreground hover:text-primary hover:bg-secondary rounded-lg transition-all duration-300 ease-out ${!isExpanded ? "justify-center" : ""}`}
+              title={!isExpanded ? "View Source" : undefined}
+            >
+              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-4 h-4 shrink-0">
+                <path strokeLinecap="round" strokeLinejoin="round" d="M17.25 6.75L22.5 12l-5.25 5.25m-10.5 0L1.5 12l5.25-5.25m7.5-3l-4.5 16.5" />
+              </svg>
+              <span className={`transition-all duration-300 ease-out overflow-hidden whitespace-nowrap ${
+                isExpanded ? "opacity-100 max-w-[200px]" : "opacity-0 max-w-0"
+              }`}>
+                View Source
+              </span>
+            </a>
           </div>
         </div>
       </aside>
+
+      {/* Spacer for main content */}
+      <div className={`hidden lg:block ${sidebarWidth} shrink-0 transition-all duration-500 ease-[cubic-bezier(0.34,1.56,0.64,1)]`} />
     </>
   );
 }

@@ -66,13 +66,6 @@ export default function NotesPage() {
         </div>
       )}
 
-      {/* Add note hint */}
-      <div className="p-6 rounded-lg border border-dashed border-border">
-        <p className="text-sm text-muted-foreground text-center">
-          Add new notes by creating <code className="text-primary">.md</code> files in{" "}
-          <code className="text-primary">content/notes/</code>
-        </p>
-      </div>
     </div>
   );
 }

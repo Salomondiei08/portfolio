@@ -4,63 +4,61 @@ import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 
 export const metadata = {
-  title: "Projects | AI Engineer Portfolio",
-  description: "AI/ML projects, research implementations, and vibe-coded applications.",
+  title: "Projects | Salomon Diei - AI Engineer Portfolio",
+  description: "Mobile apps, AI projects, and innovative solutions by Salomon Diei.",
 };
 
 const featuredProjects = [
   {
-    title: "Neural Architecture Search",
+    title: "Alladjai",
     description:
-      "Automated neural network design using evolutionary algorithms and reinforcement learning. Achieved state-of-the-art results on image classification benchmarks.",
-    tags: ["PyTorch", "RL", "AutoML"],
-    github: "https://github.com/yourusername/nas",
-    demo: "#",
-    image: "/projects/nas.png",
+      "A comprehensive home service mobile application connecting users with service providers. Features real-time booking, secure payments via mobile money, and AI-powered service matching. Built during the MTN MoMo Hackathon (1st Place - AI & Tourism category).",
+    tags: ["Flutter", "FastAPI", "MongoDB", "AI", "Mobile Money"],
+    github: "https://github.com/salomondiei08",
+    image: "/projects/alladjai.png",
   },
   {
-    title: "Multimodal Sentiment Analysis",
+    title: "TourCI",
     description:
-      "A transformer-based model that combines text, audio, and visual cues to predict sentiment with high accuracy across multiple languages.",
-    tags: ["Transformers", "NLP", "Computer Vision"],
-    github: "https://github.com/yourusername/multimodal-sentiment",
-    demo: "#",
-    image: "/projects/sentiment.png",
+      "An immersive tourism application featuring 360-degree virtual tours of Côte d'Ivoire's landmarks and attractions. Enables users to explore cultural sites and plan trips with an interactive map interface.",
+    tags: ["Flutter", "360° Tours", "Maps", "Tourism"],
+    github: "https://github.com/salomondiei08",
+    image: "/projects/tourci.png",
   },
   {
-    title: "LLM Fine-tuning Pipeline",
+    title: "Helper AI",
     description:
-      "Production-ready pipeline for fine-tuning large language models with LoRA and QLoRA techniques. Supports multiple model architectures.",
-    tags: ["LLMs", "PEFT", "MLOps"],
-    github: "https://github.com/yourusername/llm-finetune",
-    image: "/projects/llm.png",
+      "An intelligent chatbot application powered by GPT-4 that provides conversational assistance. Features context-aware responses, multi-language support, and a clean, intuitive interface.",
+    tags: ["Flutter", "GPT-4", "AI", "NLP"],
+    github: "https://github.com/salomondiei08",
+    image: "/projects/helper.png",
   },
 ];
 
 const otherProjects = [
   {
-    title: "Real-time Object Detection",
-    description: "Optimized YOLO variant for edge deployment at 60 FPS.",
-    tags: ["Computer Vision", "Edge AI"],
-    github: "#",
+    title: "ResiCar",
+    description: "A residential car rental and booking platform with seamless user experience.",
+    tags: ["Flutter", "Firebase", "Booking"],
+    github: "https://github.com/salomondiei08",
   },
   {
-    title: "Text-to-SQL Engine",
-    description: "Natural language to SQL query converter using fine-tuned LLMs.",
-    tags: ["NLP", "Databases"],
-    github: "#",
+    title: "Sikili Platform",
+    description: "Supply chain management system for connecting markets and streamlining operations.",
+    tags: ["Vue.js", "FastAPI", "PostgreSQL"],
+    github: "https://github.com/salomondiei08",
   },
   {
-    title: "Distributed Training Framework",
-    description: "Custom framework for training models across multiple GPUs and nodes.",
-    tags: ["PyTorch", "Distributed"],
-    github: "#",
+    title: "Cloud Infrastructure",
+    description: "Terraform-based infrastructure as code for deploying scalable cloud applications on GCP.",
+    tags: ["Terraform", "GCP", "Docker"],
+    github: "https://github.com/salomondiei08",
   },
   {
-    title: "AI Code Review Bot",
-    description: "GitHub bot that automatically reviews PRs using LLMs.",
-    tags: ["LLMs", "DevTools"],
-    github: "#",
+    title: "Mobile App Templates",
+    description: "Collection of reusable Flutter templates and components for rapid app development.",
+    tags: ["Flutter", "Dart", "UI/UX"],
+    github: "https://github.com/salomondiei08",
   },
 ];
 
@@ -71,12 +69,12 @@ export default function ProjectsPage() {
       <div className="space-y-4">
         <h1 className="text-3xl font-bold">Projects</h1>
         <p className="text-muted-foreground">
-          A collection of AI/ML projects, research implementations, and experiments.
+          A collection of mobile applications, AI projects, and innovative solutions.
         </p>
       </div>
 
       {/* Gallery Banner */}
-      <Link href="/gallery" className="block group">
+      <Link href="/gallery/apps" className="block group">
         <div className="relative overflow-hidden rounded-xl border border-border bg-gradient-to-br from-primary/20 via-card to-card p-8 hover:border-primary/50 transition-all duration-300">
           <div className="relative z-10">
             <Badge className="mb-4">Vibe Coded</Badge>
@@ -114,8 +112,8 @@ export default function ProjectsPage() {
               <CardContent className="p-6">
                 <div className="flex flex-col lg:flex-row gap-6">
                   {/* Project Image Placeholder */}
-                  <div className="lg:w-48 h-32 lg:h-auto rounded-lg bg-secondary flex items-center justify-center shrink-0">
-                    <span className="text-4xl text-muted-foreground/50">
+                  <div className="lg:w-48 h-32 lg:h-auto rounded-lg bg-gradient-to-br from-primary/20 to-secondary flex items-center justify-center shrink-0">
+                    <span className="text-4xl font-bold text-primary/50">
                       {project.title.charAt(0)}
                     </span>
                   </div>
@@ -139,13 +137,6 @@ export default function ProjectsPage() {
                           GitHub
                         </a>
                       </Button>
-                      {project.demo && (
-                        <Button size="sm" asChild>
-                          <a href={project.demo} target="_blank" rel="noopener noreferrer">
-                            Live Demo
-                          </a>
-                        </Button>
-                      )}
                     </div>
                   </div>
                 </div>
@@ -193,6 +184,42 @@ export default function ProjectsPage() {
             </Card>
           ))}
         </div>
+      </section>
+
+      {/* Hackathon Wins */}
+      <section className="space-y-6">
+        <h2 className="text-xl font-semibold flex items-center gap-3">
+          <span className="text-primary">03.</span>
+          Hackathon Achievements
+          <div className="h-px flex-1 bg-border" />
+        </h2>
+
+        <Card className="bg-card border-border">
+          <CardContent className="p-6">
+            <div className="grid sm:grid-cols-2 gap-4">
+              <div className="p-4 rounded-lg bg-secondary/50">
+                <Badge className="mb-2">1st Place</Badge>
+                <h4 className="font-semibold">MTN MoMo Hackathon</h4>
+                <p className="text-sm text-muted-foreground">AI & Tourism Category - 2023</p>
+              </div>
+              <div className="p-4 rounded-lg bg-secondary/50">
+                <Badge className="mb-2">1st Place</Badge>
+                <h4 className="font-semibold">Orange SeedStar</h4>
+                <p className="text-sm text-muted-foreground">Innovation Challenge - 2022</p>
+              </div>
+              <div className="p-4 rounded-lg bg-secondary/50">
+                <Badge className="mb-2">1st Place</Badge>
+                <h4 className="font-semibold">Djamo x Epitech Hackathon</h4>
+                <p className="text-sm text-muted-foreground">FinTech Innovation - 2022</p>
+              </div>
+              <div className="p-4 rounded-lg bg-secondary/50">
+                <Badge variant="secondary" className="mb-2">Top 10</Badge>
+                <h4 className="font-semibold">GDG DevFest Hackathon</h4>
+                <p className="text-sm text-muted-foreground">Developer Community - 2022</p>
+              </div>
+            </div>
+          </CardContent>
+        </Card>
       </section>
     </div>
   );
