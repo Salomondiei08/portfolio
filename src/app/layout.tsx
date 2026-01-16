@@ -6,7 +6,7 @@ import { ThemeProvider } from "@/components/portfolio/ThemeProvider";
 
 export const metadata: Metadata = {
   title: "Salomon Diei | AI Engineer & Researcher - KOREATECH Student",
-  description: "Salomon Diei - AI Engineer, CTO at Sikili, Master's student at Korea University of Technology and Education (KOREATECH). Winner of Gorange 5G Hackathon. Expert in Flutter, Python, FastAPI, Machine Learning. Google Cloud Certified. Projects: Alladjai, TourCI, Helper AI.",
+  description: "Salomon Diei - AI Engineer, CTO at Sikili, Master's student at Korea University of Technology and Education (KOREATECH). Winner of Gorange 5G Hackathon. Experienced in Flutter, Python, FastAPI, Machine Learning. Google Cloud Certified. Projects: Alladjai, TourCI, Helper AI.",
   keywords: [
     // Name variations
     "Salomon Diei", "Salomon DIEI", "salomondiei", "salomondiei08",
@@ -33,7 +33,7 @@ export const metadata: Metadata = {
   publisher: "Salomon Diei",
   openGraph: {
     title: "Salomon Diei | AI Engineer & Researcher at KOREATECH",
-    description: "AI Engineer and CTO at Sikili. Master's student at KOREATECH. Winner of Gorange 5G Hackathon. Expert in Flutter, Python, Machine Learning. Google Cloud Certified.",
+    description: "AI Engineer and CTO at Sikili. Master's student at KOREATECH. Winner of Gorange 5G Hackathon. Experienced in Flutter, Python, Machine Learning. Google Cloud Certified.",
     type: "website",
     locale: "en_US",
     url: "https://salomondiei.com",
@@ -50,7 +50,7 @@ export const metadata: Metadata = {
   twitter: {
     card: "summary_large_image",
     title: "Salomon Diei | AI Engineer & Researcher",
-    description: "AI Engineer at Sikili, Master's student at KOREATECH. Expert in Flutter, Python, Machine Learning.",
+    description: "AI Engineer at Sikili, Master's student at KOREATECH. Experienced in Flutter, Python, Machine Learning.",
     images: ["/images/salomon.JPG"],
   },
   robots: {

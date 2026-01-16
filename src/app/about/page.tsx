@@ -5,7 +5,7 @@ import { Button } from "@/components/ui/button";
 
 export const metadata = {
   title: "About Salomon Diei | AI Engineer, KOREATECH Student, CTO at Sikili",
-  description: "Salomon Diei is an AI Engineer and researcher at Korea University of Technology and Education (KOREATECH), CTO at Sikili. GKS Scholar, Google Cloud Certified, winner of Gorange 5G Hackathon. Expert in Flutter, Python, FastAPI, Machine Learning. Based in Cheonan, South Korea.",
+  description: "Salomon Diei is an AI Engineer and researcher at Korea University of Technology and Education (KOREATECH), CTO at Sikili. GKS Scholar, Google Cloud Certified, winner of Gorange 5G Hackathon. Experienced in Flutter, Python, FastAPI, Machine Learning. Based in Cheonan, South Korea.",
   keywords: [
     "Salomon Diei biography",
     "KOREATECH AI student",
