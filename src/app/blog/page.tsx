@@ -39,7 +39,7 @@ export default function BlogPage() {
             >
               <Link href={`/blog/${post.slug}`} className="block">
                 {post.coverImage && (
-                  <div className="relative w-full aspect-[16/9] bg-secondary/40">
+                  <div className="relative w-full h-48 sm:h-56 bg-secondary/40">
                     <Image
                       src={post.coverImage}
                       alt={post.coverAlt || post.title}

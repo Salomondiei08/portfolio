@@ -190,6 +190,115 @@ button, [role="button"] {
   transition: background-color 0.2s ease, border-color 0.2s ease, color 0.15s ease;
 }
 
+/* Blog content typography (markdown output) */
+.blog-content {
+  color: var(--foreground);
+}
+
+.blog-content > * + * {
+  margin-top: 1rem;
+}
+
+.blog-content h2 {
+  margin-top: 2.25rem;
+  margin-bottom: 0.75rem;
+  padding: 0;
+  font-size: 1.6rem;
+  line-height: 1.25;
+  font-weight: 700;
+  color: var(--foreground);
+  background: transparent;
+  border: 0;
+}
+
+.blog-content h3 {
+  margin-top: 2rem;
+  margin-bottom: 0.5rem;
+  font-size: 1.35rem;
+  line-height: 1.3;
+  font-weight: 600;
+  color: var(--foreground);
+}
+
+.blog-content p {
+  font-size: 1.2rem;
+  line-height: 1.7;
+  color: var(--foreground);
+}
+
+.blog-content ul,
+.blog-content ol {
+  padding-left: 1.25rem;
+  margin-top: 1.25rem;
+  margin-bottom: 1.25rem;
+}
+
+.blog-content li {
+  margin: 0.5rem 0;
+  line-height: 1.6;
+  color: var(--foreground);
+}
+
+.blog-content a {
+  color: var(--primary);
+  text-decoration: none;
+}
+
+.blog-content a:hover {
+  text-decoration: underline;
+}
+
+.blog-content strong {
+  color: var(--foreground);
+}
+
+.blog-content img {
+  display: block;
+  width: 100%;
+  max-width: 720px;
+  max-height: 480px;
+  height: auto;
+  object-fit: cover;
+  margin: 2.5rem auto;
+  border-radius: 0.75rem;
+  border: 1px solid var(--border);
+}
+
+.blog-content hr {
+  margin: 3rem 0;
+  border-color: var(--border);
+}
+
+.blog-content blockquote {
+  margin: 2.5rem 0;
+  padding: 1.25rem 1.5rem;
+  border-left: 4px solid color-mix(in srgb, var(--primary) 60%, transparent);
+  background: color-mix(in srgb, var(--secondary) 60%, transparent);
+  border-radius: 0.5rem;
+  color: var(--foreground);
+}
+
+@media (min-width: 640px) {
+  .blog-content h2 {
+    font-size: 2rem;
+    padding: 1.5rem 1.75rem;
+  }
+
+  .blog-content p {
+    font-size: 1.25rem;
+  }
+}
+
+@media (min-width: 1024px) {
+  .blog-content h2 {
+    font-size: 2.25rem;
+  }
+
+  .blog-content p {
+    font-size: 1.375rem;
+  }
+}
+
 /* Disable transitions on page load */
 .no-transitions * {
   transition: none !important;

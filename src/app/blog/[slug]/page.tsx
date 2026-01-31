@@ -40,41 +40,45 @@ export default async function BlogPostPage({ params }: Props) {
   }
 
   return (
-    <article className="max-w-3xl">
+    <article className="max-w-4xl mx-auto px-6 sm:px-8 lg:px-12">
       {/* Back link */}
       <Link
         href="/blog"
-        className="inline-flex items-center gap-2 text-sm text-muted-foreground hover:text-primary transition-colors mb-8"
+        className="inline-flex items-center gap-2 text-lg text-muted-foreground hover:text-primary transition-colors mb-12 font-medium"
       >
         ← Back to Blog
       </Link>
 
       {post.coverImage && (
-        <div className="relative w-full aspect-[16/9] overflow-hidden rounded-lg border border-border bg-secondary/40 mb-8">
+        <div className="relative w-full aspect-[16/9] overflow-hidden rounded-2xl border-2 border-border bg-secondary/40 mb-16 shadow-xl shadow-black/20">
           <Image
             src={post.coverImage}
             alt={post.coverAlt || post.title}
             fill
             className="object-cover"
-            sizes="(max-width: 768px) 100vw, 768px"
+            sizes="(max-width: 768px) 100vw, 896px"
             priority
           />
         </div>
       )}
 
-      {/* Header */}
-      <header className="mb-8 pb-8 border-b border-border">
-        <div className="flex items-center gap-3 text-sm text-muted-foreground mb-4">
+      {/* Header - Centered, professional */}
+      <header className="mb-20 pb-12 border-b-2 border-border text-center">
+        <div className="text-lg text-muted-foreground mb-8">
           <time dateTime={post.date}>
             {format(new Date(post.date), "MMMM d, yyyy")}
           </time>
         </div>
-        <h1 className="text-4xl font-bold mb-4">{post.title}</h1>
-        <p className="text-lg text-muted-foreground">{post.description}</p>
+        <h1 className="text-3xl sm:text-4xl lg:text-5xl font-bold tracking-tight mb-10 leading-tight">
+          {post.title}
+        </h1>
+        <p className="text-xl sm:text-2xl text-muted-foreground leading-relaxed max-w-2xl mx-auto">
+          {post.description}
+        </p>
         {post.tags && post.tags.length > 0 && (
-          <div className="flex gap-2 mt-4">
+          <div className="flex flex-wrap justify-center gap-3 mt-10">
             {post.tags.map((tag) => (
-              <Badge key={tag} variant="secondary">
+              <Badge key={tag} variant="secondary" className="text-base px-5 py-2">
                 {tag}
               </Badge>
             ))}
@@ -84,15 +88,7 @@ export default async function BlogPostPage({ params }: Props) {
 
       {/* Content */}
       <div
-        className="prose prose-invert prose-green max-w-none
-          prose-headings:text-foreground prose-headings:font-semibold
-          prose-p:text-muted-foreground prose-p:leading-relaxed
-          prose-a:text-primary prose-a:no-underline hover:prose-a:underline
-          prose-strong:text-foreground
-          prose-code:text-primary prose-code:bg-secondary prose-code:px-1 prose-code:py-0.5 prose-code:rounded
-          prose-pre:bg-secondary prose-pre:border prose-pre:border-border
-          prose-ul:text-muted-foreground prose-ol:text-muted-foreground
-          prose-li:marker:text-primary"
+        className="blog-content"
         dangerouslySetInnerHTML={{ __html: post.content }}
       />
     </article>
