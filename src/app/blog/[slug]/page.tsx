@@ -17,14 +17,41 @@ export async function generateStaticParams() {
 export async function generateMetadata({ params }: Props) {
   const { slug } = await params;
   const post = await getPostBySlug("blog", slug);
+  const baseUrl = "https://salomondiei.com";
 
   if (!post) {
     return { title: "Post Not Found" };
   }
 
+  const ogImage = post.coverImage
+    ? `${baseUrl}${post.coverImage}`
+    : `${baseUrl}/images/salomon.JPG`;
+
   return {
     title: `${post.title} | Blog`,
     description: post.description,
+    openGraph: {
+      title: post.title,
+      description: post.description,
+      type: "article",
+      publishedTime: post.date,
+      url: `${baseUrl}/blog/${slug}`,
+      siteName: "Salomon Diei",
+      images: [
+        {
+          url: ogImage,
+          width: 1200,
+          height: 630,
+          alt: post.coverAlt || post.title,
+        },
+      ],
+    },
+    twitter: {
+      card: "summary_large_image",
+      title: post.title,
+      description: post.description,
+      images: [ogImage],
+    },
   };
 }
 
