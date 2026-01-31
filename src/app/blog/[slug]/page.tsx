@@ -1,5 +1,6 @@
 import { notFound } from "next/navigation";
 import Link from "next/link";
+import Image from "next/image";
 import { getAllPostSlugs, getPostBySlug } from "@/lib/markdown";
 import { Badge } from "@/components/ui/badge";
 import { format } from "date-fns";
@@ -27,6 +28,9 @@ export async function generateMetadata({ params }: Props) {
   };
 }
 
+/**
+ * Individual blog post page with optional cover image.
+ */
 export default async function BlogPostPage({ params }: Props) {
   const { slug } = await params;
   const post = await getPostBySlug("blog", slug);
@@ -44,6 +48,19 @@ export default async function BlogPostPage({ params }: Props) {
       >
         ← Back to Blog
       </Link>
+
+      {post.coverImage && (
+        <div className="relative w-full aspect-[16/9] overflow-hidden rounded-lg border border-border bg-secondary/40 mb-8">
+          <Image
+            src={post.coverImage}
+            alt={post.coverAlt || post.title}
+            fill
+            className="object-cover"
+            sizes="(max-width: 768px) 100vw, 768px"
+            priority
+          />
+        </div>
+      )}
 
       {/* Header */}
       <header className="mb-8 pb-8 border-b border-border">

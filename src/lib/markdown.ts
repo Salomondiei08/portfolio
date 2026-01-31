@@ -11,6 +11,8 @@ export interface PostMeta {
   title: string;
   date: string;
   description: string;
+  coverImage?: string;
+  coverAlt?: string;
   tags?: string[];
   published?: boolean;
 }
@@ -45,6 +47,8 @@ export function getAllPosts(type: "blog" | "notes"): PostMeta[] {
         title: data.title || slug,
         date: data.date || new Date().toISOString(),
         description: data.description || "",
+        coverImage: data.coverImage || undefined,
+        coverAlt: data.coverAlt || "",
         tags: data.tags || [],
         published: data.published !== false,
       };
@@ -77,6 +81,8 @@ export async function getPostBySlug(type: "blog" | "notes", slug: string): Promi
     title: data.title || slug,
     date: data.date || new Date().toISOString(),
     description: data.description || "",
+    coverImage: data.coverImage || undefined,
+    coverAlt: data.coverAlt || "",
     tags: data.tags || [],
     published: data.published !== false,
     content: contentHtml,
