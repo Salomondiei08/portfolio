@@ -20,15 +20,15 @@ const sampleResponses: Record<string, string> = {
   projects:
     "My top projects are Autonomous AI Agent Researcher, TourCI (#2 tourism app in Cote d'Ivoire), and Help AI. Check the Projects page for details and links.",
   skills:
-    "Flutter, Python, FastAPI, Vue.js, Docker, and GCP. I'm a Google Cloud Certified Associate Cloud Engineer. I love building mobile apps and AI-powered solutions!",
+    "Flutter, Python, FastAPI, Vue.js, Docker, and GCP. I also speak French, English, and Korean. I'm a Google Cloud Certified Associate Cloud Engineer.",
   contact:
     "Reach me at salomondiei08@gmail.com or connect on LinkedIn/GitHub. Links are in the sidebar!",
   experience:
-    "I'm CTO at Sikili and previously was Technical Lead at Futurafric. I've worked with BUI Corporation, Ebenyx Technologies, and Casys Technologies.",
+    "I am CTO and Supply Manager (Contract) at Sikili. Previously, I was Software Engineer at BUI Corporation, Technical Lead Mobile at Futurafric IA, and Junior Software Engineer at Casys Technologies.",
   education:
     "Master's in AI at KOREATECH (current, GKS scholar) and Bachelor's in Software Engineering from Institut Ivoirien de Technologie in Côte d'Ivoire.",
   hackathon:
-    "I've won multiple hackathons! 1st place at Gorange 5G Hackathon and Djamo x Epitech. Also Top 10 at GDG DevFest!",
+    "I've won multiple hackathons: 1st place at Gorange 5G Hackathon and Top 10 at GDG DevFest.",
   default:
     "Interesting question! Feel free to explore the site or email me at salomondiei08@gmail.com for more info.",
 };

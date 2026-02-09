@@ -4,22 +4,28 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 
 const experiences = [
   {
-    role: "Senior AI Engineer",
-    company: "Tech Company",
-    period: "2023 - Present",
-    description: "Leading development of LLM-based applications and ML infrastructure.",
+    role: "CTO and Supply Manager (Contract)",
+    company: "Sikili",
+    period: "Nov 2024 - Present",
+    description: "Built internal management tools and an AI sales automation bot while coordinating engineering workflows and supply chain operations.",
   },
   {
-    role: "ML Research Engineer",
-    company: "Research Lab",
-    period: "2021 - 2023",
-    description: "Published research on multimodal learning and transformer architectures.",
+    role: "Software Engineer (Full-time)",
+    company: "BUI Corporation",
+    period: "May 2024 - Jun 2024",
+    description: "Contributed to mobile and backend development and collaborated on scalable software architecture.",
   },
   {
-    role: "AI Research Intern",
-    company: "AI Startup",
-    period: "2020 - 2021",
-    description: "Developed computer vision models for real-time object detection.",
+    role: "Technical Lead Mobile",
+    company: "Futurafric IA",
+    period: "Aug 2023 - May 2024",
+    description: "Led end-to-end mobile app delivery from UI/UX to production and established cross-platform best practices.",
+  },
+  {
+    role: "Junior Software Engineer",
+    company: "Casys Technologies",
+    period: "Oct 2021 - Feb 2022",
+    description: "Built a JavaCard and Batch CLI tool for smart-card encoding automation, improving process speed by 300%.",
   },
 ];
 

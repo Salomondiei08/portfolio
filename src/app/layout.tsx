@@ -22,9 +22,9 @@ export const metadata: Metadata = {
     // Projects
     "Alladjai", "TourCI", "Helper AI", "ResiCar", "Sikili Platform",
     // Achievements
-    "Gorange 5G Hackathon Winner", "Djamo Epitech Hackathon",
+    "Gorange 5G Hackathon Winner",
     // Previous work
-    "Futurafric", "BUI Corporation", "Ebenyx Technologies",
+    "Futurafric", "BUI Corporation", "Casys Technologies",
     // Education background
     "Institut Ivoirien de Technologie", "Software Engineering Ivory Coast",
   ],
@@ -134,7 +134,6 @@ export default function RootLayout({
               ],
               award: [
                 "Gorange 5G Hackathon 1st Place",
-                "Djamo x Epitech Hackathon 1st Place",
                 "GDG DevFest Hackathon Top 10",
                 "Korean Government Scholarship (GKS) Recipient",
                 "Google Cloud Certified Associate Cloud Engineer",

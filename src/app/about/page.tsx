@@ -25,28 +25,40 @@ export const metadata = {
 
 const experience = [
   {
-    role: "Research Assistant",
-    company: "Korea University of Technology and Education (KOREATECH)",
-    period: "Sep 2024 - Present",
+    role: "CTO and Supply Manager (Contract)",
+    company: "Sikili",
+    period: "Nov 2024 - Present",
+    location: "Remote",
     description:
-      "Conducting research in artificial intelligence and machine learning. Focus on deep learning algorithms, computer vision, and natural language processing. Contributing to academic publications and collaborative research projects.",
-    highlights: ["AI Research", "Deep Learning", "Computer Vision", "NLP"],
+      "Set up internal tools to manage activities, created an AI bot for sales automation, and managed engineering workflows and supply chain coordination.",
+    highlights: ["AI Sales Automation", "Internal Tools", "Engineering Operations", "Supply Chain"],
   },
   {
-    role: "Technical Lead (Fullstack)",
-    company: "Freelance",
-    period: "Jun 2023 - Aug 2024",
+    role: "Software Engineer (Full-time)",
+    company: "BUI Corporation",
+    period: "May 2024 - Jun 2024",
+    location: "Cote d'Ivoire",
     description:
-      "Led development of multiple web and mobile applications for clients. Architected scalable solutions using modern frameworks and cloud infrastructure. Managed end-to-end project delivery from requirements to deployment.",
-    highlights: ["Project Management", "Full-Stack Development", "Cloud Architecture", "Client Relations"],
+      "Contributed to mobile and backend application development while collaborating with cross-functional teams on scalable software architecture.",
+    highlights: ["Mobile Development", "Backend Development", "Scalable Architecture", "Team Collaboration"],
   },
   {
-    role: "Flutter Developer",
-    company: "Freelance",
-    period: "Feb 2023 - Jun 2023",
+    role: "Technical Lead Mobile",
+    company: "Futurafric IA",
+    period: "Aug 2023 - May 2024",
+    location: "Cote d'Ivoire",
     description:
-      "Developed cross-platform mobile applications for iOS and Android. Implemented modern UI/UX designs, integrated REST APIs, and optimized app performance. Delivered multiple successful projects with high client satisfaction.",
-    highlights: ["Flutter", "Mobile Development", "API Integration", "UI/UX Design"],
+      "Oversaw end-to-end mobile app development from UI/UX design to deployment, led the mobile team, and established best practices for cross-platform delivery.",
+    highlights: ["Mobile Leadership", "Flutter", "UI/UX to Deployment", "Cross-platform Standards"],
+  },
+  {
+    role: "Junior Software Engineer",
+    company: "Casys Technologies",
+    period: "Oct 2021 - Feb 2022",
+    location: "Cote d'Ivoire",
+    description:
+      "Developed a CLI tool to automate smart card encoding with JavaCard and Batch, improving process speed by 300%.",
+    highlights: ["JavaCard", "Batch", "CLI Automation", "Process Optimization"],
   },
 ];
 
@@ -77,12 +89,12 @@ const awards = [
   "GKS (Korean Government Scholarship) Recipient - 2024",
   "1st Place - Gorange 5G Hackathon - 2022",
   "Top 10 - GDG DevFest Hackathon - 2022",
-  "1st Place - Djamo x Epitech Hackathon - 2022",
   "10,000 Codeurs Ambassador - 2021",
 ];
 
 const skills = {
   languages: ["Python", "Dart", "JavaScript", "TypeScript", "Java", "C#", "SQL"],
+  "spoken languages": ["French", "English", "Korean"],
   frameworks: ["Flutter", "FastAPI", "Vue.js", "Express.js", ".NET"],
   databases: ["MongoDB", "PostgreSQL", "MySQL", "Firebase"],
   tools: ["Docker", "Terraform", "GCP", "Git"],
@@ -126,6 +138,9 @@ export default function AboutPage() {
             and cloud architecture as a Google Cloud Certified Associate Cloud Engineer.
           </p>
           <p className="text-muted-foreground leading-relaxed">
+            I speak French, English, and Korean.
+          </p>
+          <p className="text-muted-foreground leading-relaxed">
             I&apos;m passionate about building innovative solutions that make a real impact.
             My hackathon wins and industry experience drive me to constantly push boundaries
             and explore new technologies.
@@ -167,6 +182,7 @@ export default function AboutPage() {
                   <div>
                     <h3 className="font-semibold">{job.role}</h3>
                     <p className="text-primary">{job.company}</p>
+                    {job.location && <p className="text-sm text-muted-foreground">{job.location}</p>}
                   </div>
                   <p className="text-sm text-muted-foreground">{job.period}</p>
                 </div>
