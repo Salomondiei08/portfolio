@@ -18,9 +18,9 @@ const recentPosts = [
 ];
 
 const featuredProject = {
-  title: "Alladjai",
-  description: "A comprehensive home service mobile application connecting users with service providers. Features real-time booking, secure payments, and AI-powered recommendations.",
-  tags: ["Flutter", "FastAPI", "MongoDB", "AI"],
+  title: "Autonomous AI Agent Researcher",
+  description: "An end-to-end AI research assistant that takes a problem, proposes hypotheses, runs experiments, and produces research outputs.",
+  tags: ["AI", "Research", "Automation"],
   href: "/projects",
 };
 
