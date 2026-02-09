@@ -1,4 +1,5 @@
 import Image from "next/image";
+import Link from "next/link";
 import { Card, CardContent } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
@@ -77,6 +78,26 @@ export default function ProjectsPage() {
           A focused list of key products and research tools.
         </p>
       </div>
+
+      {/* App Gallery Banner */}
+      <Link href="/gallery/apps" className="block group">
+        <div className="relative overflow-hidden rounded-xl border border-border bg-gradient-to-br from-primary/20 via-card to-card p-8 hover:border-primary/50 transition-all duration-300">
+          <div className="relative z-10">
+            <Badge className="mb-4">Vibe Coded</Badge>
+            <h2 className="text-2xl font-bold mb-2 group-hover:text-primary transition-colors">
+              App Gallery
+            </h2>
+            <p className="text-muted-foreground mb-4 max-w-xl">
+              A curated gallery of apps and experiments, from practical utilities to creative AI tools.
+            </p>
+            <span className="inline-flex items-center text-primary font-medium">
+              Explore the gallery →
+            </span>
+          </div>
+          <div className="absolute top-0 right-0 w-64 h-64 bg-primary/10 rounded-full blur-3xl" />
+          <div className="absolute bottom-0 right-20 w-32 h-32 bg-primary/5 rounded-full blur-2xl" />
+        </div>
+      </Link>
 
       <section className="space-y-4">
         <div className="grid gap-5">

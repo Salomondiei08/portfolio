@@ -34,7 +34,21 @@ const apps = [
   },
 ];
 
-export default function AppGalleryPage() {
+type AppGalleryPageProps = {
+  searchParams?: {
+    q?: string | string[];
+  };
+};
+
+export default function AppGalleryPage({ searchParams }: AppGalleryPageProps) {
+  const rawQuery = Array.isArray(searchParams?.q) ? searchParams?.q[0] : (searchParams?.q ?? "");
+  const query = rawQuery.trim().toLowerCase();
+  const filteredApps = query.length === 0
+    ? apps
+    : apps.filter((app) =>
+      `${app.title} ${app.description} ${app.tags.join(" ")}`.toLowerCase().includes(query)
+    );
+
   return (
     <div className="space-y-8">
       {/* Header */}
@@ -55,17 +69,38 @@ export default function AppGalleryPage() {
       </div>
 
       <section className="space-y-4">
+        <form action="/gallery/apps" method="get" className="space-y-2">
+          <label htmlFor="gallery-search" className="text-sm font-medium text-foreground">
+            Search projects
+          </label>
+          <div className="flex gap-2">
+            <input
+              id="gallery-search"
+              name="q"
+              defaultValue={rawQuery}
+              placeholder="Search by title, description, or tag..."
+              className="w-full rounded-lg border border-border bg-card px-3 py-2 text-sm text-foreground placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-primary/40"
+            />
+            <button
+              type="submit"
+              className="rounded-lg bg-primary px-4 py-2 text-sm font-medium text-primary-foreground hover:opacity-90 transition-opacity min-w-20"
+            >
+              Search
+            </button>
+          </div>
+        </form>
+
         <h2 className="text-lg font-semibold flex items-center gap-3">
           <span className="w-2 h-2 rounded-full bg-green-500" />
           Live Apps
           <Badge variant="secondary" className="text-xs font-normal">
-            {apps.length} apps
+            {filteredApps.length} apps
           </Badge>
           <div className="h-px flex-1 bg-border" />
         </h2>
 
         <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
-          {apps.map((app, index) => (
+          {filteredApps.map((app, index) => (
             <a key={index} href={app.href} target="_blank" rel="noopener noreferrer">
               <Card className="h-full bg-card border-border hover:border-primary/50 transition-all group active:scale-[0.98]">
                 <CardContent className="p-5 space-y-3">
@@ -92,6 +127,12 @@ export default function AppGalleryPage() {
             </a>
           ))}
         </div>
+
+        {filteredApps.length === 0 && (
+          <p className="text-sm text-muted-foreground">
+            No app matches this search.
+          </p>
+        )}
       </section>
     </div>
   );
