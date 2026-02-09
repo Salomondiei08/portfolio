@@ -34,7 +34,7 @@ const topProjects: Project[] = [
     description:
       "An end-to-end AI research assistant that takes a problem, proposes hypotheses, runs experiments, and produces research outputs.",
     tags: ["AI", "Research", "Automation"],
-    image: "/projects/autonomous-ai-agent-researcher.jpg",
+    image: "https://res.cloudinary.com/dadnrpnid/image/upload/v1770615297/ai_Resraercher_zjj10d.png",
     links: [],
   },
   {
@@ -42,7 +42,7 @@ const topProjects: Project[] = [
     description:
       "TourCI is the #2 tourism app in Cote d'Ivoire. It helps users discover places and explore them in 360.",
     tags: ["Tourism", "Mobile", "360"],
-    image: "/projects/tourci.jpg",
+    image: "https://www.tour.ci/images/logo.png",
     links: [
       {
         label: "Website",
@@ -55,7 +55,7 @@ const topProjects: Project[] = [
     description:
       "An open-source Python project using GPT-3/GPT-4 and LangChain to build a customer-service AI agent, with company help-center data vectorized in Pinecone.",
     tags: ["Python", "OpenAI", "LangChain", "Pinecone"],
-    image: "/projects/help-ai.jpg",
+    image: "https://res.cloudinary.com/dadnrpnid/image/upload/v1770615655/Gemini_Generated_Image_wy5yecwy5yecwy5y_iprjeu.png",
     links: [
       {
         label: "GitHub",
