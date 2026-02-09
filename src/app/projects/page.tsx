@@ -3,6 +3,7 @@ import Link from "next/link";
 import { Card, CardContent } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
+import { portfolioProjects } from "@/lib/portfolio-data";
 
 export const metadata = {
   title: "Projects | Salomon Diei",
@@ -15,56 +16,6 @@ export const metadata = {
     "Cote d'Ivoire tourism app",
   ],
 };
-
-type ProjectLink = {
-  label: string;
-  href: string;
-};
-
-type Project = {
-  title: string;
-  description: string;
-  tags: string[];
-  image: string;
-  links: ProjectLink[];
-};
-
-const topProjects: Project[] = [
-  {
-    title: "Autonomous AI Agent Researcher",
-    description:
-      "An end-to-end AI research assistant that takes a problem, proposes hypotheses, runs experiments, and produces research outputs.",
-    tags: ["AI", "Research", "Automation"],
-    image: "https://res.cloudinary.com/dadnrpnid/image/upload/v1770615297/ai_Resraercher_zjj10d.png",
-    links: [],
-  },
-  {
-    title: "TourCI",
-    description:
-      "TourCI is the #2 tourism app in Cote d'Ivoire. It helps users discover places and explore them in 360.",
-    tags: ["Tourism", "Mobile", "360"],
-    image: "https://www.tour.ci/images/logo.png",
-    links: [
-      {
-        label: "Website",
-        href: "https://www.tour.ci/",
-      },
-    ],
-  },
-  {
-    title: "Help AI",
-    description:
-      "An open-source Python project using GPT-3/GPT-4 and LangChain to build a customer-service AI agent, with company help-center data vectorized in Pinecone.",
-    tags: ["Python", "OpenAI", "LangChain", "Pinecone"],
-    image: "https://res.cloudinary.com/dadnrpnid/image/upload/v1770615655/Gemini_Generated_Image_wy5yecwy5yecwy5y_iprjeu.png",
-    links: [
-      {
-        label: "GitHub",
-        href: "https://github.com/Salomondiei08/HelpAI",
-      },
-    ],
-  },
-];
 
 /**
  * Displays the top portfolio projects with short descriptions, links, and image placeholders.
@@ -101,9 +52,10 @@ export default function ProjectsPage() {
 
       <section className="space-y-4">
         <div className="grid gap-5">
-          {topProjects.map((project) => (
+          {portfolioProjects.map((project) => (
             <Card
               key={project.title}
+              id={project.id}
               className="bg-card border-border hover:border-primary/50 transition-all duration-300 overflow-hidden"
             >
               <CardContent className="p-4 sm:p-6">

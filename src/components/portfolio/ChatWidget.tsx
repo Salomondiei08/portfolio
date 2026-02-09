@@ -18,7 +18,7 @@ const sampleResponses: Record<string, string> = {
   research:
     "I'm currently pursuing my Master's in AI at KOREATECH in South Korea, supported by the GKS scholarship. My research interests include machine learning, NLP, and computer vision. Check out the Research page!",
   projects:
-    "I've built apps like Alladjai (home services), TourCI (360° tourism), Helper AI (GPT-4 chatbot), and ResiCar. Won 1st place at the Gorange 5G Hackathon! Check the Projects page for more.",
+    "My top projects are Autonomous AI Agent Researcher, TourCI (#2 tourism app in Cote d'Ivoire), and Help AI. Check the Projects page for details and links.",
   skills:
     "Flutter, Python, FastAPI, Vue.js, Docker, and GCP. I'm a Google Cloud Certified Associate Cloud Engineer. I love building mobile apps and AI-powered solutions!",
   contact:
@@ -53,7 +53,7 @@ export function ChatWidget() {
     if (lowerQuery.includes("research") || lowerQuery.includes("study") || lowerQuery.includes("master")) {
       return sampleResponses.research;
     }
-    if (lowerQuery.includes("project") || lowerQuery.includes("app") || lowerQuery.includes("built") || lowerQuery.includes("alladjai") || lowerQuery.includes("tourci")) {
+    if (lowerQuery.includes("project") || lowerQuery.includes("app") || lowerQuery.includes("built") || lowerQuery.includes("autonomous") || lowerQuery.includes("tourci") || lowerQuery.includes("help ai")) {
       return sampleResponses.projects;
     }
     if (lowerQuery.includes("skill") || lowerQuery.includes("tech") || lowerQuery.includes("stack") || lowerQuery.includes("flutter") || lowerQuery.includes("python")) {

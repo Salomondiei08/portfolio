@@ -5,6 +5,7 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { NewsletterForm } from "@/components/portfolio/NewsletterForm";
 import { FadeIn, SlideIn } from "@/components/portfolio/animations";
+import { featuredProject } from "@/lib/portfolio-data";
 
 const technologies = {
   languages: ["Python", "Dart", "JavaScript", "TypeScript", "Java", "C#"],
@@ -16,13 +17,6 @@ const recentPosts = [
   { title: "Understanding Transformers: A Visual Guide", date: "Jan 20", href: "/blog/understanding-transformers" },
   { title: "Welcome to My Blog", date: "Jan 15", href: "/blog/welcome-to-my-blog" },
 ];
-
-const featuredProject = {
-  title: "Autonomous AI Agent Researcher",
-  description: "An end-to-end AI research assistant that takes a problem, proposes hypotheses, runs experiments, and produces research outputs.",
-  tags: ["AI", "Research", "Automation"],
-  href: "/projects",
-};
 
 export default function Home() {
   return (
@@ -140,7 +134,7 @@ export default function Home() {
 
       {/* Featured Project - Full Width */}
       <SlideIn direction="up" delay={400}>
-        <Link href={featuredProject.href} className="block group">
+        <Link href={`/projects#${featuredProject.id}`} className="block group">
           <Card className="bg-card border-border hover:border-primary/50 transition-all duration-300 overflow-hidden card-hover">
             <CardContent className="p-6">
               <div className="flex flex-col md:flex-row gap-6">
