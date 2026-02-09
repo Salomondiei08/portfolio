@@ -17,7 +17,8 @@ const navigation = {
     { name: "Research", href: "/research", icon: "R" },
   ],
   explore: [
-    { name: "Gallery", href: "/gallery", icon: "G" },
+    { name: "Photo Gallery", href: "/photo-gallery", icon: "PH" },
+    { name: "App Gallery", href: "/gallery/apps", icon: "AP" },
     { name: "Notes", href: "/notes", icon: "N" },
     { name: "Reading", href: "/reading", icon: "L" },
   ],

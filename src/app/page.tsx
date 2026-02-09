@@ -178,10 +178,10 @@ export default function Home() {
               <CardContent className="p-6 relative">
                 <Badge className="mb-3">Visual</Badge>
                 <h3 className="text-xl font-bold mb-2 group-hover:text-primary transition-colors">
-                  Gallery
+                  App Gallery
                 </h3>
                 <p className="text-sm text-muted-foreground">
-                  Photos, visual work, and vibe-coded apps.
+                  Production apps, experiments, and practical tools.
                 </p>
                 <span className="inline-block mt-3 text-sm text-primary">
                   Explore →
