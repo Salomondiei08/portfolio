@@ -16,7 +16,7 @@ const initialMessages: Message[] = [
 
 const sampleResponses: Record<string, string> = {
   research:
-    "I'm currently pursuing my Master's in AI at KOREATECH in South Korea, supported by the GKS scholarship. My research interests include machine learning, NLP, and computer vision. Check out the Research page!",
+    "I research how to make AI agents more efficient and make them automate human work. My primary focus is autonomous agent researcher systems and autonomous coding. Check out the Research page!",
   projects:
     "My top projects are Autonomous AI Agent Researcher, TourCI (#2 tourism app in Cote d'Ivoire), and Help AI. Check the Projects page for details and links.",
   skills:
@@ -26,7 +26,7 @@ const sampleResponses: Record<string, string> = {
   experience:
     "I am CTO and Supply Manager (Contract) at Sikili. Previously, I was Software Engineer at BUI Corporation, Technical Lead Mobile at Futurafric IA, and Junior Software Engineer at Casys Technologies.",
   education:
-    "Master's in AI at KOREATECH (current, GKS scholar) and Bachelor's in Software Engineering from Institut Ivoirien de Technologie in Côte d'Ivoire.",
+    "Research focus: efficient autonomous agents for work automation. Education: Bachelor's in Software Engineering from Institut Ivoirien de Technologie in Côte d'Ivoire.",
   hackathon:
     "I've won multiple hackathons: 1st place at Gorange 5G Hackathon and Top 10 at GDG DevFest.",
   default:

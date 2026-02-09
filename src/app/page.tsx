@@ -1,11 +1,11 @@
-"use client";
-
 import Link from "next/link";
+import { format } from "date-fns";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { NewsletterForm } from "@/components/portfolio/NewsletterForm";
 import { FadeIn, SlideIn } from "@/components/portfolio/animations";
 import { featuredProject } from "@/lib/portfolio-data";
+import { getAllPosts } from "@/lib/markdown";
 
 const technologies = {
   languages: ["Python", "Dart", "JavaScript", "TypeScript", "Java", "C#"],
@@ -13,12 +13,13 @@ const technologies = {
   tools: ["Docker", "Terraform", "Firebase", "GCP", "MongoDB", "PostgreSQL"],
 };
 
-const recentPosts = [
-  { title: "Understanding Transformers: A Visual Guide", date: "Jan 20", href: "/blog/understanding-transformers" },
-  { title: "Welcome to My Blog", date: "Jan 15", href: "/blog/welcome-to-my-blog" },
-];
-
 export default function Home() {
+  const recentPosts = getAllPosts("blog").slice(0, 4).map((post) => ({
+    title: post.title,
+    date: format(new Date(post.date), "MMM d"),
+    href: `/blog/${post.slug}`,
+  }));
+
   return (
     <div className="space-y-8">
       {/* Hero Section */}
@@ -33,8 +34,7 @@ export default function Home() {
             <h2 className="text-xl text-muted-foreground">AI Engineer & Researcher</h2>
           </div>
           <p className="text-muted-foreground leading-relaxed max-w-2xl">
-            Building intelligent systems and innovative mobile applications. Currently pursuing
-            a Master&apos;s in AI at Korea University of Technology and Education while leading tech at Sikili.
+            Building intelligent systems and researching how to make AI agents more efficient and automate human work while leading tech at Sikili.
           </p>
         </section>
       </SlideIn>
@@ -196,10 +196,10 @@ export default function Home() {
                   <span className="text-xs text-muted-foreground">AI & ML</span>
                 </div>
                 <h3 className="text-xl font-bold mb-2 group-hover:text-primary transition-colors">
-                  Research & Learning
+                  Autonomous Agent Research
                 </h3>
                 <p className="text-sm text-muted-foreground mb-3">
-                  Exploring artificial intelligence and machine learning as part of my Master&apos;s studies at KOREATECH.
+                  Researching how to make AI agents more efficient and automate human work, with focus on autonomous researcher and coding agents.
                 </p>
                 <span className="text-sm text-primary">View research →</span>
               </CardContent>

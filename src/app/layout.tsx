@@ -5,13 +5,13 @@ import { ChatWidget } from "@/components/portfolio/ChatWidget";
 import { ThemeProvider } from "@/components/portfolio/ThemeProvider";
 
 export const metadata: Metadata = {
-  title: "Salomon Diei | AI Engineer & Researcher - KOREATECH Student",
-  description: "Salomon Diei - AI Engineer, CTO at Sikili, Master's student at Korea University of Technology and Education (KOREATECH). Winner of Gorange 5G Hackathon. Experienced in Flutter, Python, FastAPI, Machine Learning. Google Cloud Certified. Projects: Alladjai, TourCI, Helper AI.",
+  title: "Salomon Diei | AI Engineer & Autonomous Agents Researcher",
+  description: "Salomon Diei - AI Engineer, CTO at Sikili, and researcher focused on making AI agents more efficient and automating human work. Primary focus: autonomous agent researcher and autonomous coding.",
   keywords: [
     // Name variations
     "Salomon Diei", "Salomon DIEI", "salomondiei", "salomondiei08",
     // Current roles
-    "AI Engineer", "AI Researcher", "CTO Sikili", "Machine Learning Engineer",
+    "AI Engineer", "AI Researcher", "Autonomous Agents Researcher", "CTO Sikili",
     // Education
     "KOREATECH", "Korea University of Technology and Education", "KOREATECH AI", "GKS Scholar", "Korean Government Scholarship",
     // Location
@@ -20,7 +20,7 @@ export const metadata: Metadata = {
     "Flutter Developer", "Python Developer", "FastAPI", "Mobile Development", "Cloud Engineer",
     "Google Cloud Certified", "GCP", "Docker", "Terraform", "Vue.js",
     // Projects
-    "Alladjai", "TourCI", "Helper AI", "ResiCar", "Sikili Platform",
+    "Autonomous AI Agent Researcher", "TourCI", "Help AI", "Sikili Platform",
     // Achievements
     "Gorange 5G Hackathon Winner",
     // Previous work
@@ -32,8 +32,8 @@ export const metadata: Metadata = {
   creator: "Salomon Diei",
   publisher: "Salomon Diei",
   openGraph: {
-    title: "Salomon Diei | AI Engineer & Researcher at KOREATECH",
-    description: "AI Engineer and CTO at Sikili. Master's student at KOREATECH. Winner of Gorange 5G Hackathon. Experienced in Flutter, Python, Machine Learning. Google Cloud Certified.",
+    title: "Salomon Diei | AI Engineer & Autonomous Agents Researcher",
+    description: "AI Engineer and CTO at Sikili, researching efficient AI agents that automate human work. Focused on autonomous agent researcher systems and autonomous coding.",
     type: "website",
     locale: "en_US",
     url: "https://salomondiei.com",
@@ -50,7 +50,7 @@ export const metadata: Metadata = {
   twitter: {
     card: "summary_large_image",
     title: "Salomon Diei | AI Engineer & Researcher",
-    description: "AI Engineer at Sikili, Master's student at KOREATECH. Experienced in Flutter, Python, Machine Learning.",
+    description: "AI Engineer at Sikili focused on autonomous agents, work automation, and efficient AI systems.",
     images: ["/images/salomon.JPG"],
   },
   robots: {

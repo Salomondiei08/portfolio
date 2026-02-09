@@ -4,8 +4,8 @@ import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 
 export const metadata = {
-  title: "About Salomon Diei | AI Engineer, KOREATECH Student, CTO at Sikili",
-  description: "Salomon Diei is an AI Engineer and researcher at Korea University of Technology and Education (KOREATECH), CTO at Sikili. GKS Scholar, Google Cloud Certified, winner of Gorange 5G Hackathon. Experienced in Flutter, Python, FastAPI, Machine Learning. Based in Cheonan, South Korea.",
+  title: "About Salomon Diei | AI Engineer & Autonomous Agents Researcher",
+  description: "Salomon Diei is an AI Engineer, CTO at Sikili, and autonomous agents researcher focused on improving agent efficiency and automating human work.",
   keywords: [
     "Salomon Diei biography",
     "KOREATECH AI student",
@@ -128,13 +128,10 @@ export default function AboutPage() {
 
         <div className="space-y-4 max-w-2xl">
           <p className="text-muted-foreground leading-relaxed">
-            I&apos;m an AI engineer and researcher currently pursuing my Master&apos;s degree in
-            Artificial Intelligence at Korea University of Technology and Education (KOREATECH),
-            supported by the prestigious Korean Government Scholarship (GKS).
+            I&apos;m an AI engineer and researcher focused on making AI agents more efficient and helping them automate human work.
           </p>
           <p className="text-muted-foreground leading-relaxed">
-            As CTO at Sikili, I lead technical strategy while balancing my academic research in AI
-            and machine learning. My background spans fullstack development, mobile apps with Flutter,
+            As CTO at Sikili, I lead technical strategy while building and evaluating agentic AI systems for real-world automation. My background spans fullstack development, mobile apps with Flutter,
             and cloud architecture as a Google Cloud Certified Associate Cloud Engineer.
           </p>
           <p className="text-muted-foreground leading-relaxed">
