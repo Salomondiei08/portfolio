@@ -28,4 +28,4 @@ As an AI engineer and researcher, I've learned that teaching is one of the best 
 I'd love to hear from you. Feel free to reach out via email or connect with me on social media. Let's learn together!
 
 Stay curious,
-*Your Name*
+*Salomon DIEI*

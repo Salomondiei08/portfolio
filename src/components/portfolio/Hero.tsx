@@ -21,7 +21,7 @@ export function Hero() {
             onMouseLeave={() => setIsHovered(false)}
           >
             <span className={`inline-block transition-all duration-500 ${isHovered ? 'text-primary scale-105' : 'text-foreground'}`}>
-              Your Name
+              Salomon DIEI
             </span>
           </h1>
 
