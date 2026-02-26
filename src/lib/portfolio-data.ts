@@ -18,6 +18,7 @@ export type AppGalleryItem = {
   description: string;
   tags: string[];
   href: string;
+  sourceHref?: string;
 };
 
 // Central source of truth for projects used across pages.
@@ -94,5 +95,28 @@ export const appGalleryItems: AppGalleryItem[] = [
     description: "Sends emails in bulk through a simple automation workflow.",
     tags: ["Email", "Automation"],
     href: "https://automail.reinvent-labs.com/",
+  },
+  {
+    id: "papersnap",
+    title: "PaperSnap",
+    description: "A document-focused app by Reinvent Labs for snapping and working with papers.",
+    tags: ["Documents", "Productivity", "Reinvent Labs"],
+    href: "https://papersnap.reinvent-labs.com",
+    sourceHref: "https://github.com/Salomondiei08/papersnap",
+  },
+  {
+    id: "reinvent-labs-website",
+    title: "Reinvent Labs Website",
+    description: "Official Reinvent Labs website and company web presence.",
+    tags: ["Website", "Company", "Reinvent Labs"],
+    href: "https://www.reinvent-labs.com/",
+    sourceHref: "https://github.com/Salomondiei08/reinventweb",
+  },
+  {
+    id: "valentines-proposal-app",
+    title: "Valentine's Proposal App",
+    description: "A playful proposal-themed web app project.",
+    tags: ["Creative", "Web App", "Interactive"],
+    href: "https://github.com/Salomondiei08/valentines-proposal-app",
   },
 ];

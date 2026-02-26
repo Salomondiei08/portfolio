@@ -75,9 +75,9 @@ export default function AppGalleryPage({ searchParams }: AppGalleryPageProps) {
 
         <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
           {filteredApps.map((app) => (
-            <a key={app.id} href={app.href} target="_blank" rel="noopener noreferrer">
-              <Card className="h-full bg-card border-border hover:border-primary/50 transition-all group active:scale-[0.98]">
-                <CardContent className="p-5 space-y-3">
+            <Card key={app.id} className="h-full bg-card border-border hover:border-primary/50 transition-all group">
+              <CardContent className="p-5 space-y-3 h-full flex flex-col">
+                <a href={app.href} target="_blank" rel="noopener noreferrer" className="block">
                   <div className="w-12 h-12 rounded-xl bg-primary/10 flex items-center justify-center text-xl font-bold text-primary">
                     {app.title.charAt(0)}
                   </div>
@@ -89,16 +89,38 @@ export default function AppGalleryPage({ searchParams }: AppGalleryPageProps) {
                       {app.description}
                     </p>
                   </div>
-                  <div className="flex flex-wrap gap-1.5">
-                    {app.tags.map((tag) => (
-                      <Badge key={tag} variant="secondary" className="text-xs">
-                        {tag}
-                      </Badge>
-                    ))}
-                  </div>
-                </CardContent>
-              </Card>
-            </a>
+                </a>
+
+                <div className="flex flex-wrap gap-1.5">
+                  {app.tags.map((tag) => (
+                    <Badge key={tag} variant="secondary" className="text-xs">
+                      {tag}
+                    </Badge>
+                  ))}
+                </div>
+
+                <div className="mt-auto flex flex-wrap gap-2 pt-1">
+                  <a
+                    href={app.href}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-flex min-h-11 items-center justify-center rounded-lg bg-primary px-3 py-2 text-sm font-medium text-primary-foreground hover:opacity-90 transition-opacity"
+                  >
+                    {app.href.includes("github.com") ? "View Source" : "Open App"}
+                  </a>
+                  {app.sourceHref && (
+                    <a
+                      href={app.sourceHref}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="inline-flex min-h-11 items-center justify-center rounded-lg border border-border px-3 py-2 text-sm font-medium text-foreground hover:bg-muted transition-colors"
+                    >
+                      GitHub
+                    </a>
+                  )}
+                </div>
+              </CardContent>
+            </Card>
           ))}
         </div>
 
