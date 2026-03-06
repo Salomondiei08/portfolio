@@ -17,9 +17,7 @@ const navigation = {
     { name: "Research", href: "/research", icon: "R" },
   ],
   explore: [
-    { name: "Photo Gallery", href: "/photo-gallery", icon: "PH" },
     { name: "App Gallery", href: "/gallery/apps", icon: "AP" },
-    { name: "Notes", href: "/notes", icon: "N" },
     { name: "Reading", href: "/reading", icon: "L" },
   ],
 };
@@ -327,41 +325,6 @@ export function Sidebar() {
               </span>
             </a>
 
-            {/* Source Code Link */}
-            <a
-              href="https://github.com/salomondiei08/portfolio"
-              target="_blank"
-              rel="noopener noreferrer"
-              className={`flex items-center gap-2 px-3 py-2 text-xs text-muted-foreground hover:text-primary hover:bg-secondary/50 rounded-lg ${!isExpanded ? "justify-center" : ""}`}
-              style={{
-                transition: "background-color 0.15s cubic-bezier(0.32, 0.72, 0, 1), color 0.15s cubic-bezier(0.32, 0.72, 0, 1)"
-              }}
-              title={!isExpanded ? "View Source" : undefined}
-            >
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                fill="none"
-                viewBox="0 0 24 24"
-                strokeWidth={1.5}
-                stroke="currentColor"
-                className="w-4 h-4 shrink-0"
-              >
-                <path strokeLinecap="round" strokeLinejoin="round" d="M17.25 6.75L22.5 12l-5.25 5.25m-10.5 0L1.5 12l5.25-5.25m7.5-3l-4.5 16.5" />
-              </svg>
-              <span
-                className="whitespace-nowrap"
-                style={{
-                  opacity: isExpanded ? 1 : 0,
-                  maxWidth: isExpanded ? "200px" : "0px",
-                  transform: isExpanded ? "translateX(0)" : "translateX(-8px)",
-                  transition: "opacity 0.25s cubic-bezier(0.32, 0.72, 0, 1), max-width 0.3s cubic-bezier(0.32, 0.72, 0, 1), transform 0.25s cubic-bezier(0.32, 0.72, 0, 1)",
-                  transitionDelay: isExpanded ? "0.05s" : "0s",
-                  overflow: "hidden"
-                }}
-              >
-                View Source
-              </span>
-            </a>
           </div>
         </div>
       </aside>

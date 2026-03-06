@@ -28,9 +28,13 @@ export const metadata: Metadata = {
     // Education background
     "Institut Ivoirien de Technologie", "Software Engineering Ivory Coast",
   ],
+  metadataBase: new URL("https://salomondiei.com"),
   authors: [{ name: "Salomon Diei", url: "https://github.com/salomondiei08" }],
   creator: "Salomon Diei",
   publisher: "Salomon Diei",
+  alternates: {
+    canonical: "https://salomondiei.com",
+  },
   openGraph: {
     title: "Salomon Diei | AI Engineer & Autonomous Agents Researcher",
     description: "AI Engineer and CTO at Sikili, researching efficient AI agents that automate human work. Focused on autonomous agent researcher systems and autonomous coding.",
@@ -40,7 +44,7 @@ export const metadata: Metadata = {
     siteName: "Salomon Diei Portfolio",
     images: [
       {
-        url: "/images/salomon.JPG",
+        url: "https://salomondiei.com/images/salomon.JPG",
         width: 1200,
         height: 630,
         alt: "Salomon Diei - AI Engineer & Researcher",
@@ -51,7 +55,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "Salomon Diei | AI Engineer & Researcher",
     description: "AI Engineer at Sikili focused on autonomous agents, work automation, and efficient AI systems.",
-    images: ["/images/salomon.JPG"],
+    images: ["https://salomondiei.com/images/salomon.JPG"],
   },
   robots: {
     index: true,
@@ -74,8 +78,7 @@ export const metadata: Metadata = {
 export const viewport: Viewport = {
   width: "device-width",
   initialScale: 1,
-  maximumScale: 1,
-  userScalable: false,
+  // Do NOT set maximumScale or userScalable=false — Google penalizes sites that block pinch-zoom.
   themeColor: [
     { media: "(prefers-color-scheme: light)", color: "#fafafa" },
     { media: "(prefers-color-scheme: dark)", color: "#0a0a0a" },

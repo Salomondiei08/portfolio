@@ -209,9 +209,8 @@ export default function Home() {
       </div>
 
       {/* Quick Links Row */}
-      <div className="grid grid-cols-2 md:grid-cols-4 gap-3">
+      <div className="grid grid-cols-3 gap-3">
         {[
-          { label: "Notes", href: "/notes", desc: "Quick tips" },
           { label: "Reading", href: "/reading", desc: "Book list" },
           { label: "Projects", href: "/projects", desc: "All work" },
           { label: "About", href: "/about", desc: "Bio & contact" },

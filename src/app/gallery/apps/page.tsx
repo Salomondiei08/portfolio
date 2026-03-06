@@ -28,13 +28,13 @@ export default function AppGalleryPage({ searchParams }: AppGalleryPageProps) {
       {/* Header */}
       <div className="space-y-4">
         <Link
-          href="/photo-gallery"
+          href="/"
           className="inline-flex items-center gap-2 text-sm text-muted-foreground hover:text-primary transition-colors"
         >
           <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-4 h-4">
             <path strokeLinecap="round" strokeLinejoin="round" d="M15.75 19.5L8.25 12l7.5-7.5" />
           </svg>
-          Back to Photo Gallery
+          Back to Home
         </Link>
         <h1 className="text-3xl font-bold">App Gallery</h1>
         <p className="text-muted-foreground">

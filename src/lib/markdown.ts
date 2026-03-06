@@ -15,6 +15,16 @@ export interface PostMeta {
   coverAlt?: string;
   tags?: string[];
   published?: boolean;
+  readingTime: number;
+}
+
+/**
+ * Estimate reading time in minutes from raw markdown content.
+ * Assumes an average reading speed of 200 words per minute.
+ */
+function calculateReadingTime(content: string): number {
+  const wordCount = content.trim().split(/\s+/).length;
+  return Math.max(1, Math.ceil(wordCount / 200));
 }
 
 export interface Post extends PostMeta {
@@ -48,7 +58,7 @@ export function getAllPosts(type: "blog" | "notes"): PostMeta[] {
       const slug = fileName.replace(/\.md$/, "");
       const fullPath = path.join(directory, fileName);
       const fileContents = fs.readFileSync(fullPath, "utf8");
-      const { data } = matter(fileContents);
+      const { data, content } = matter(fileContents);
 
       return {
         slug,
@@ -59,6 +69,7 @@ export function getAllPosts(type: "blog" | "notes"): PostMeta[] {
         coverAlt: data.coverAlt || "",
         tags: data.tags || [],
         published: data.published !== false,
+        readingTime: calculateReadingTime(content),
       };
     })
     .filter((post) => post.published)
@@ -93,6 +104,7 @@ export async function getPostBySlug(type: "blog" | "notes", slug: string): Promi
     coverAlt: data.coverAlt || "",
     tags: data.tags || [],
     published: data.published !== false,
+    readingTime: calculateReadingTime(content),
     content: contentHtml,
   };
 }
