@@ -99,30 +99,6 @@ export default function ResearchPage() {
             <CardContent className="p-6 space-y-4">
               <div className="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-2">
                 <div>
-                  <h3 className="font-semibold text-lg">Help AI</h3>
-                  <p className="text-primary text-sm">Open-source customer service agent</p>
-                </div>
-                <Badge variant="secondary">GPT-3/GPT-4 + LangChain + Pinecone</Badge>
-              </div>
-              <p className="text-sm text-muted-foreground">
-                Help AI is an open-source Python project that uses OpenAI GPT models with LangChain
-                to create a customer-service AI agent. It vectorizes and stores help-center data in Pinecone,
-                then performs similarity retrieval on user queries to provide grounded, accurate responses.
-              </p>
-              <div className="flex flex-wrap gap-2">
-                <Badge variant="secondary" className="text-xs">Python</Badge>
-                <Badge variant="secondary" className="text-xs">OpenAI</Badge>
-                <Badge variant="secondary" className="text-xs">LangChain</Badge>
-                <Badge variant="secondary" className="text-xs">Pinecone</Badge>
-                <Badge variant="secondary" className="text-xs">RAG</Badge>
-              </div>
-            </CardContent>
-          </Card>
-
-          <Card className="bg-card border-border">
-            <CardContent className="p-6 space-y-4">
-              <div className="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-2">
-                <div>
                   <h3 className="font-semibold text-lg">Autonomous AI Agent Researcher</h3>
                   <p className="text-primary text-sm">End-to-end autonomous research assistant</p>
                 </div>
@@ -140,6 +116,14 @@ export default function ResearchPage() {
                 <Badge variant="secondary" className="text-xs">Experimentation</Badge>
                 <Badge variant="secondary" className="text-xs">AI Systems</Badge>
               </div>
+              <a
+                href="https://github.com/Salomondiei08/The-AI-Researcher"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-1.5 text-sm text-primary hover:underline mt-1"
+              >
+                View on GitHub →
+              </a>
             </CardContent>
           </Card>
         </div>
