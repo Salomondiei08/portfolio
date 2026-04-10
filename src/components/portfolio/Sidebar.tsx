@@ -1,31 +1,92 @@
 "use client";
 
+import React from "react";
 import Link from "next/link";
 import Image from "next/image";
 import { usePathname } from "next/navigation";
 import { useState, useEffect } from "react";
 import { useTheme } from "./ThemeProvider";
 
+const HomeIcon = () => (
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={1.5} strokeLinecap="round" strokeLinejoin="round" className="w-5 h-5">
+    <path d="M3 9.5L12 3l9 6.5V20a1 1 0 01-1 1H4a1 1 0 01-1-1V9.5z" />
+    <path d="M9 21V12h6v9" />
+  </svg>
+);
+const AboutIcon = () => (
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={1.5} strokeLinecap="round" strokeLinejoin="round" className="w-5 h-5">
+    <circle cx="12" cy="8" r="4" />
+    <path d="M4 20c0-4 3.6-7 8-7s8 3 8 7" />
+  </svg>
+);
+const BlogIcon = () => (
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={1.5} strokeLinecap="round" strokeLinejoin="round" className="w-5 h-5">
+    <path d="M4 4h16v14a2 2 0 01-2 2H6a2 2 0 01-2-2V4z" />
+    <path d="M8 9h8M8 13h6" />
+  </svg>
+);
+const ProjectsIcon = () => (
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={1.5} strokeLinecap="round" strokeLinejoin="round" className="w-5 h-5">
+    <rect x="3" y="3" width="7" height="7" rx="1" />
+    <rect x="14" y="3" width="7" height="7" rx="1" />
+    <rect x="3" y="14" width="7" height="7" rx="1" />
+    <rect x="14" y="14" width="7" height="7" rx="1" />
+  </svg>
+);
+const ResearchIcon = () => (
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={1.5} strokeLinecap="round" strokeLinejoin="round" className="w-5 h-5">
+    <path d="M9 3H5a2 2 0 00-2 2v4m6-6h10a2 2 0 012 2v4M9 3v18m0 0h10a2 2 0 002-2V9M9 21H5a2 2 0 01-2-2V9m0 0h18" />
+  </svg>
+);
+const GalleryIcon = () => (
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={1.5} strokeLinecap="round" strokeLinejoin="round" className="w-5 h-5">
+    <rect x="3" y="3" width="18" height="18" rx="2" />
+    <circle cx="8.5" cy="8.5" r="1.5" />
+    <path d="M21 15l-5-5L5 21" />
+  </svg>
+);
+const ReadingIcon = () => (
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={1.5} strokeLinecap="round" strokeLinejoin="round" className="w-5 h-5">
+    <path d="M12 6.5a9.77 9.77 0 015.26-1.5C18.83 5 20.5 5.5 21 6v13c-.5-.5-2.17-1-3.74-1A9.77 9.77 0 0012 19.5m0-13A9.77 9.77 0 006.74 5C5.17 5 3.5 5.5 3 6v13c.5-.5 2.17-1 3.74-1A9.77 9.77 0 0112 19.5m0-13v13" />
+  </svg>
+);
+const GitHubIcon = () => (
+  <svg viewBox="0 0 24 24" fill="currentColor" className="w-5 h-5">
+    <path d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z" />
+  </svg>
+);
+const LinkedInIcon = () => (
+  <svg viewBox="0 0 24 24" fill="currentColor" className="w-5 h-5">
+    <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z" />
+  </svg>
+);
+const EmailIcon = () => (
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={1.5} strokeLinecap="round" strokeLinejoin="round" className="w-5 h-5">
+    <rect x="2" y="4" width="20" height="16" rx="2" />
+    <path d="M2 7l10 7 10-7" />
+  </svg>
+);
+
 const navigation = {
   main: [
-    { name: "Home", href: "/", icon: "H" },
-    { name: "About", href: "/about", icon: "A" },
+    { name: "Home", href: "/", icon: <HomeIcon /> },
+    { name: "About", href: "/about", icon: <AboutIcon /> },
   ],
   create: [
-    { name: "Blog", href: "/blog", icon: "B" },
-    { name: "Projects", href: "/projects", icon: "P" },
-    { name: "Research", href: "/research", icon: "R" },
+    { name: "Blog", href: "/blog", icon: <BlogIcon /> },
+    { name: "Projects", href: "/projects", icon: <ProjectsIcon /> },
+    { name: "Research", href: "/research", icon: <ResearchIcon /> },
   ],
   explore: [
-    { name: "App Gallery", href: "/gallery/apps", icon: "AP" },
-    { name: "Reading", href: "/reading", icon: "L" },
+    { name: "App Gallery", href: "/gallery/apps", icon: <GalleryIcon /> },
+    { name: "Reading", href: "/reading", icon: <ReadingIcon /> },
   ],
 };
 
 const socialLinks = [
-  { name: "GitHub", href: "https://github.com/salomondiei08", icon: "GH" },
-  { name: "LinkedIn", href: "https://linkedin.com/in/salomondiei", icon: "IN" },
-  { name: "Email", href: "mailto:salomondiei08@gmail.com", icon: "@" },
+  { name: "GitHub", href: "https://github.com/salomondiei08", icon: <GitHubIcon /> },
+  { name: "LinkedIn", href: "https://linkedin.com/in/salomondiei", icon: <LinkedInIcon /> },
+  { name: "Email", href: "mailto:salomondiei08@gmail.com", icon: <EmailIcon /> },
 ];
 
 export function Sidebar() {
@@ -43,13 +104,13 @@ export function Sidebar() {
     return () => clearTimeout(timer);
   }, [isHovered]);
 
-  const NavLink = ({ href, name, icon }: { href: string; name: string; icon: string }) => {
+  const NavLink = ({ href, name, icon }: { href: string; name: string; icon: React.ReactNode }) => {
     const isActive = pathname === href || (href !== "/" && pathname.startsWith(href));
     return (
       <Link
         href={href}
         className={`
-          relative flex items-center gap-3 px-3 py-2 text-sm rounded-lg overflow-hidden group
+          relative flex items-center gap-3 px-3 py-3 text-sm rounded-lg overflow-hidden group
           ${isActive ? "bg-primary/10 text-primary" : "text-muted-foreground hover:text-foreground hover:bg-secondary/80"}
           ${!isExpanded ? "justify-center" : ""}
           ${isActive && !isExpanded ? "before:absolute before:left-0 before:top-1/2 before:-translate-y-1/2 before:w-0.5 before:h-6 before:bg-primary before:rounded-r-full" : ""}
@@ -113,7 +174,7 @@ export function Sidebar() {
       {/* Mobile menu button */}
       <button
         onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-        className="fixed top-4 left-4 z-50 p-2.5 rounded-lg bg-card border border-border lg:hidden active:scale-95 transition-transform"
+        className="fixed top-4 left-4 z-50 p-3 rounded-lg bg-card border border-border lg:hidden active:scale-95 transition-transform"
         aria-label="Toggle menu"
       >
         <svg
@@ -135,7 +196,7 @@ export function Sidebar() {
       {/* Mobile theme toggle */}
       <button
         onClick={toggleTheme}
-        className="fixed top-4 right-4 z-50 p-2.5 rounded-lg bg-card border border-border lg:hidden active:scale-95 transition-transform"
+        className="fixed top-4 right-4 z-50 p-3 rounded-lg bg-card border border-border lg:hidden active:scale-95 transition-transform"
         aria-label="Toggle theme"
       >
         {theme === "dark" ? (

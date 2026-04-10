@@ -8,13 +8,9 @@ import { portfolioProjects } from "@/lib/portfolio-data";
 export const metadata = {
   title: "Projects | Salomon Diei",
   description: "Top projects by Salomon Diei: Autonomous AI Agent Researcher, TourCI, and Help AI.",
-  keywords: [
-    "Autonomous AI Agent Researcher",
-    "TourCI",
-    "Help AI",
-    "AI research assistant",
-    "Cote d'Ivoire tourism app",
-  ],
+  alternates: {
+    canonical: "https://salomondiei.com/projects",
+  },
 };
 
 /**
@@ -60,13 +56,13 @@ export default function ProjectsPage() {
             >
               <CardContent className="p-4 sm:p-6">
                 <div className="flex flex-col gap-4 md:flex-row md:gap-6">
-                  <div className="relative w-full md:w-56 h-44 md:h-36 rounded-lg overflow-hidden bg-secondary shrink-0">
+                  <div className="relative w-full md:w-56 h-44 md:h-36 rounded-lg overflow-hidden bg-zinc-900 dark:bg-zinc-800 shrink-0 flex items-center justify-center p-4">
                     <Image
                       src={project.image}
                       alt={project.title}
                       fill
                       sizes="(max-width: 768px) 100vw, 224px"
-                      className="object-cover"
+                      className="object-contain p-4"
                     />
                   </div>
 
