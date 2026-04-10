@@ -22,22 +22,20 @@ export default function Home() {
 
   return (
     <div className="space-y-8">
-      {/* Hero Section */}
-      <SlideIn direction="down">
-        <section className="space-y-4 pb-4">
-          <p className="text-muted-foreground">Hello, I&apos;m</p>
-          <h1 className="text-4xl md:text-5xl font-bold tracking-tight">
-            Salomon Diei
-          </h1>
-          <div className="flex items-center gap-3">
-            <div className="h-px w-12 bg-primary" />
-            <h2 className="text-xl text-muted-foreground">AI Engineer & Researcher</h2>
-          </div>
-          <p className="text-muted-foreground leading-relaxed max-w-2xl">
-            Building intelligent systems and researching how to make AI agents more efficient and automate human work while leading tech at Sikili.
-          </p>
-        </section>
-      </SlideIn>
+      {/* Hero Section — rendered immediately (no animation wrapper) so the h1 is the LCP element */}
+      <section className="space-y-4 pb-4">
+        <p className="text-muted-foreground">Hello, I&apos;m</p>
+        <h1 className="text-4xl md:text-5xl font-bold tracking-tight">
+          Salomon Diei
+        </h1>
+        <div className="flex items-center gap-3">
+          <div className="h-px w-12 bg-primary" />
+          <h2 className="text-xl text-muted-foreground">AI Engineer & Researcher</h2>
+        </div>
+        <p className="text-muted-foreground leading-relaxed max-w-2xl">
+          Building intelligent systems and researching how to make AI agents more efficient and automate human work while leading tech at Sikili.
+        </p>
+      </section>
 
       {/* Bento Grid */}
       <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-4">
@@ -52,8 +50,7 @@ export default function Home() {
             </CardHeader>
             <CardContent className="space-y-3">
               <p className="text-sm text-muted-foreground leading-relaxed">
-                CTO & AI researcher with expertise in mobile development and machine learning.
-                GKS scholarship recipient and Google Cloud Certified Associate Cloud Engineer.
+                Passionate about building impactful tech. Focused on making AI agents truly autonomous — one agent at a time.
               </p>
               <div className="flex items-center gap-3">
                 <Link href="/about" className="inline-flex text-sm text-primary hover:underline">

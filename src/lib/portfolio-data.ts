@@ -24,6 +24,20 @@ export type AppGalleryItem = {
 // Central source of truth for projects used across pages.
 export const portfolioProjects: PortfolioProject[] = [
   {
+    id: "aya",
+    title: "Aya",
+    description:
+      "An AI-powered English learning bot for French speakers in West Africa, delivered entirely through WhatsApp and Telegram. Features personalized learning plans, spaced repetition, voice exercises, and emotion-aware conversations. 100 users in 24 hours, 200 in 3 days — no ads.",
+    tags: ["AI", "Telegram", "WhatsApp", "EdTech", "TypeScript"],
+    image: "https://res.cloudinary.com/dadnrpnid/image/upload/v1770615297/ai_Resraercher_zjj10d.png",
+    links: [
+      {
+        label: "Website",
+        href: "https://learnwithaya.com",
+      },
+    ],
+  },
+  {
     id: "autonomous-ai-agent-researcher",
     title: "Autonomous AI Agent Researcher",
     description:
