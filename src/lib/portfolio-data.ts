@@ -76,7 +76,7 @@ export const portfolioProjects: PortfolioProject[] = [
   },
 ];
 
-export const featuredProjectId = "autonomous-ai-agent-researcher";
+export const featuredProjectId = "aya";
 
 export const featuredProject =
   portfolioProjects.find((project) => project.id === featuredProjectId) ?? portfolioProjects[0];
