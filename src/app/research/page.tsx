@@ -3,7 +3,10 @@ import { Badge } from "@/components/ui/badge";
 
 export const metadata = {
   title: "Research | Salomon Diei - Autonomous Agents",
-  description: "Research focused on building efficient AI agents that automate human work, with emphasis on autonomous agent researcher systems and autonomous coding.",
+  description: "Research focused on building AI agent memory systems that enable agents to learn, continuously improve, and operate autonomously over time.",
+  alternates: {
+    canonical: "https://salomondiei.com/research",
+  },
 };
 
 export default function ResearchPage() {
@@ -13,8 +16,9 @@ export default function ResearchPage() {
       <div className="space-y-4">
         <h1 className="text-3xl font-bold">Research</h1>
         <p className="text-muted-foreground max-w-2xl">
-          I am researching how to make AI agents more efficient and how to make them automate human work.
-          My primary focus is autonomous agent researcher systems and autonomous coding.
+          I am researching how to make AI agents truly autonomous — not just reactive, but capable of
+          learning from their own experience and improving over time. The focus is on memory, self-correction,
+          and long-horizon reasoning.
         </p>
       </div>
 
@@ -27,10 +31,11 @@ export default function ResearchPage() {
             </div>
             <div>
               <Badge className="mb-2">Active Focus</Badge>
-              <h2 className="text-xl font-semibold">Autonomous Agents for Work Automation</h2>
-              <p className="text-primary">Efficiency, reliability, and end-to-end execution</p>
+              <h2 className="text-xl font-semibold">Agent Memory & Continuous Learning</h2>
+              <p className="text-primary">Making agents that learn, retain, and self-improve</p>
               <p className="text-sm text-muted-foreground mt-2">
-                Researching practical agent architectures that can reason, run tasks, and deliver measurable outcomes.
+                Researching memory architectures that allow agents to retain knowledge across sessions,
+                learn from past decisions, and continuously improve their own reasoning and execution quality.
               </p>
             </div>
           </div>
@@ -49,31 +54,31 @@ export default function ResearchPage() {
           <CardContent className="p-6">
             <div className="grid sm:grid-cols-2 gap-6">
               <div className="space-y-2">
-                <h3 className="font-medium text-primary">Autonomous Agent Researcher</h3>
+                <h3 className="font-medium text-primary">Agent Memory Systems</h3>
                 <p className="text-sm text-muted-foreground">
-                  Designing agents that can generate hypotheses, run experiments, evaluate results,
-                  and produce research outputs with minimal human intervention.
+                  Building persistent memory layers that let agents retain context, recall past experiences,
+                  and apply learned knowledge to new situations without starting from scratch.
                 </p>
               </div>
               <div className="space-y-2">
-                <h3 className="font-medium text-primary">Autonomous Coding</h3>
+                <h3 className="font-medium text-primary">Continuous Self-Improvement</h3>
                 <p className="text-sm text-muted-foreground">
-                  Building coding agents that can plan implementation steps, write code,
-                  execute validations, and iterate toward production-ready solutions.
+                  Designing feedback loops where agents evaluate their own outputs, identify failure patterns,
+                  and update their behavior over time without human intervention.
                 </p>
               </div>
               <div className="space-y-2">
                 <h3 className="font-medium text-primary">Agent Efficiency</h3>
                 <p className="text-sm text-muted-foreground">
-                  Improving latency, tool usage, memory strategies, and decision quality
-                  so agents complete tasks faster with higher reliability.
+                  Improving latency, tool usage, and decision quality so agents complete
+                  long-horizon tasks with higher reliability and fewer failures.
                 </p>
               </div>
               <div className="space-y-2">
-                <h3 className="font-medium text-primary">Work Automation Systems</h3>
+                <h3 className="font-medium text-primary">Autonomous Agent Researcher</h3>
                 <p className="text-sm text-muted-foreground">
-                  Applying agentic systems to automate high-friction workflows across
-                  engineering, operations, and customer-facing processes.
+                  Designing agents that can generate hypotheses, run experiments, evaluate results,
+                  and produce research outputs with minimal human intervention.
                 </p>
               </div>
             </div>
@@ -126,12 +131,13 @@ export default function ResearchPage() {
               <p className="text-sm text-muted-foreground">
                 An end-to-end AI research assistant designed to take a problem statement,
                 propose hypotheses, run structured experiments, and produce research outputs.
-                The goal is to automate high-value research workflows with stronger consistency and speed.
+                The goal is to give agents the ability to conduct meaningful research independently,
+                retaining what they learn across runs.
               </p>
               <div className="flex flex-wrap gap-2">
                 <Badge variant="secondary" className="text-xs">Autonomous Agents</Badge>
+                <Badge variant="secondary" className="text-xs">Memory Systems</Badge>
                 <Badge variant="secondary" className="text-xs">Experimentation</Badge>
-                <Badge variant="secondary" className="text-xs">Research Automation</Badge>
                 <Badge variant="secondary" className="text-xs">AI Systems</Badge>
               </div>
             </CardContent>
@@ -144,16 +150,20 @@ export default function ResearchPage() {
         <CardContent className="p-6">
           <h3 className="font-semibold mb-3">Next Direction</h3>
           <p className="text-sm text-muted-foreground">
-            I am continuing to push agent efficiency and autonomous execution quality in two directions:
+            The next steps in my research push toward agents that genuinely grow over time:
           </p>
           <ul className="mt-3 space-y-2 text-sm text-muted-foreground">
             <li className="flex items-start gap-2">
               <span className="text-primary">→</span>
-              Autonomous researcher agents with stronger experiment loops and result validation
+              Memory architectures that persist across sessions and surface the right knowledge at the right moment
             </li>
             <li className="flex items-start gap-2">
               <span className="text-primary">→</span>
-              Autonomous coding agents that can plan, implement, test, and iterate reliably
+              Self-evaluation loops where agents score their own outputs and adjust strategy accordingly
+            </li>
+            <li className="flex items-start gap-2">
+              <span className="text-primary">→</span>
+              Long-horizon agents that can plan, execute, and learn from multi-day tasks autonomously
             </li>
           </ul>
         </CardContent>
