@@ -24,6 +24,20 @@ export type AppGalleryItem = {
 // Central source of truth for projects used across pages.
 export const portfolioProjects: PortfolioProject[] = [
   {
+    id: "oh-my-hermes",
+    title: "Oh My Hermes",
+    description:
+      "An open-source AI agent framework that turns Claude Code into a full CTO — from product brief to deployed code. Orchestrates multi-agent workflows, manages Kanban tasks, runs autonomous dev loops, and ships features end-to-end. 400 stars on GitHub.",
+    tags: ["AI Agents", "Claude Code", "Automation", "TypeScript", "Open Source"],
+    image: "https://res.cloudinary.com/dadnrpnid/image/upload/v1770615297/ai_Resraercher_zjj10d.png",
+    links: [
+      {
+        label: "GitHub",
+        href: "https://github.com/Salomondiei08/oh-my-hermes",
+      },
+    ],
+  },
+  {
     id: "aya",
     title: "Aya",
     description:
@@ -76,7 +90,7 @@ export const portfolioProjects: PortfolioProject[] = [
   },
 ];
 
-export const featuredProjectId = "aya";
+export const featuredProjectId = "oh-my-hermes";
 
 export const featuredProject =
   portfolioProjects.find((project) => project.id === featuredProjectId) ?? portfolioProjects[0];
