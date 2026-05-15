@@ -57,7 +57,7 @@ export const portfolioProjects: PortfolioProject[] = [
     description:
       "A shared memory layer for AI agents. Kernel gives agents persistent, structured memory so they can learn, recall context, and collaborate across sessions.",
     tags: ["AI Agents", "Memory", "Open Source", "TypeScript"],
-    image: "https://github.com/Salomondiei08/kernel-agent-memory/raw/main/docs/assets/kernel-logo.png",
+    image: "https://raw.githubusercontent.com/Salomondiei08/kernel-agent-memory/main/docs/assets/kernel-logo.png",
     links: [
       {
         label: "Website",
