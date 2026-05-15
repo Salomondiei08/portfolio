@@ -18,8 +18,8 @@ const experience = [
     period: "Nov 2024 - Present",
     location: "Remote",
     description:
-      "Set up internal tools to manage activities, created an AI bot for sales automation, and managed engineering workflows and supply chain coordination.",
-    highlights: ["AI Sales Automation", "Internal Tools", "Engineering Operations", "Supply Chain"],
+      "Early team member at Sikili (seed, $800K raised). Designed and deployed internal tools and automation systems that enabled revenue growth from $0 to $200K ARR within the first year.",
+    highlights: ["AI Sales Automation", "Internal Tools", "$200K ARR", "$800K Seed"],
   },
   {
     role: "Software Engineer (Full-time)",
@@ -74,8 +74,10 @@ const certifications = [
 ];
 
 const awards = [
-  "GKS (Korean Government Scholarship) Recipient - 2024",
-  "1st Place - Gorange 5G Hackathon - 2022",
+  "1st Runner Up — Best Overall App, Supabase Flutter Hackathon - 2023",
+  "1st Prize — INPHB Freelance Hackathon - 2023",
+  "GKS (Global Korean Scholarship) Recipient - 2024",
+  "1st Prize — Orange CI 5G Challenge - 2022",
   "10,000 Codeurs Ambassador - 2021",
 ];
 
