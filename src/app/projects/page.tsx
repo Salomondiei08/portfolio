@@ -57,8 +57,8 @@ export default function ProjectsPage() {
               <div className="flex gap-4">
                 <ProjectThumbnail id={project.id} image={project.image} title={project.title} />
                 <div className="flex-1 min-w-0 space-y-2">
-                  <div className="flex flex-wrap items-center gap-2">
-                    <h2 className="text-base font-semibold">{project.title}</h2>
+                  <div className="space-y-1">
+                    <h2 className="text-lg font-semibold">{project.title}</h2>
                     <div className="flex flex-wrap gap-1.5">
                       {project.tags.map((tag) => (
                         <Badge key={tag} variant="secondary" className="text-xs px-1.5 py-0">
@@ -67,7 +67,7 @@ export default function ProjectsPage() {
                       ))}
                     </div>
                   </div>
-                  <p className="text-sm text-muted-foreground leading-relaxed">{project.description}</p>
+                  <p className="text-base text-muted-foreground leading-relaxed">{project.description}</p>
                   {project.links.length > 0 && (
                     <div className="flex flex-wrap gap-2 pt-1">
                       {project.links.map((link) => (
