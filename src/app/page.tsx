@@ -7,12 +7,6 @@ import { FadeIn, SlideIn } from "@/components/portfolio/animations";
 import { featuredProject } from "@/lib/portfolio-data";
 import { getAllPosts } from "@/lib/markdown";
 
-const technologies = {
-  languages: ["Python", "Dart", "JavaScript", "TypeScript", "Java", "C#"],
-  frameworks: ["Flutter", "FastAPI", "Vue.js", "Express.js", ".NET"],
-  tools: ["Docker", "Terraform", "Firebase", "GCP", "MongoDB", "PostgreSQL"],
-};
-
 export default function Home() {
   const recentPosts = getAllPosts("blog").slice(0, 4).map((post) => ({
     title: post.title,
@@ -37,8 +31,8 @@ export default function Home() {
         </p>
       </section>
 
-      {/* Bento Grid */}
-      <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-4">
+      {/* Top Cards: About + Writing */}
+      <div className="grid md:grid-cols-2 gap-4">
         {/* About Card */}
         <FadeIn delay={100}>
           <Card className="bg-card border-border hover:border-primary/50 transition-all duration-300 group card-hover h-full">
@@ -71,39 +65,13 @@ export default function Home() {
           </Card>
         </FadeIn>
 
-        {/* Tech Stack Card */}
-        <FadeIn delay={200}>
-          <Card className="bg-card border-border hover:border-primary/50 transition-all duration-300 card-hover h-full">
-            <CardHeader className="pb-3">
-              <CardTitle className="text-base font-semibold flex items-center gap-2">
-                <span className="text-primary text-sm">02.</span>
-                Tech Stack
-              </CardTitle>
-            </CardHeader>
-            <CardContent className="space-y-3">
-              {Object.entries(technologies).map(([category, techs]) => (
-                <div key={category}>
-                  <p className="text-xs text-muted-foreground capitalize mb-1.5">{category}</p>
-                  <div className="flex flex-wrap gap-1.5">
-                    {techs.map((tech) => (
-                      <Badge key={tech} variant="secondary" className="text-xs hover:bg-primary hover:text-primary-foreground transition-colors">
-                        {tech}
-                      </Badge>
-                    ))}
-                  </div>
-                </div>
-              ))}
-            </CardContent>
-          </Card>
-        </FadeIn>
-
         {/* Recent Writing Card */}
-        <FadeIn delay={300}>
+        <FadeIn delay={200}>
           <Card className="bg-card border-border hover:border-primary/50 transition-all duration-300 card-hover h-full">
             <CardHeader className="pb-3">
               <div className="flex items-center justify-between">
                 <CardTitle className="text-base font-semibold flex items-center gap-2">
-                  <span className="text-primary text-sm">03.</span>
+                  <span className="text-primary text-sm">02.</span>
                   Writing
                 </CardTitle>
                 <Link href="/blog" className="text-xs text-muted-foreground hover:text-primary transition-colors">
@@ -130,7 +98,7 @@ export default function Home() {
       </div>
 
       {/* Featured Project - Full Width */}
-      <SlideIn direction="up" delay={400}>
+      <SlideIn direction="up" delay={300}>
         <Link href={`/projects#${featuredProject.id}`} className="block group">
           <Card className="bg-card border-border hover:border-primary/50 transition-all duration-300 overflow-hidden card-hover">
             <CardContent className="p-6">
@@ -160,73 +128,29 @@ export default function Home() {
         </Link>
       </SlideIn>
 
-      {/* Gallery & Research Row */}
-      <div className="grid md:grid-cols-2 gap-4">
-        {/* Gallery Banner */}
-        <FadeIn delay={500}>
-          <Link href="/gallery/apps" className="block group">
-            <Card className="h-full bg-gradient-to-br from-primary/10 via-card to-card border-border hover:border-primary/50 transition-all duration-300 overflow-hidden card-hover">
-              <CardContent className="p-6 relative">
-                <Badge className="mb-3">Visual</Badge>
-                <h3 className="text-xl font-bold mb-2 group-hover:text-primary transition-colors">
-                  App Gallery
-                </h3>
-                <p className="text-sm text-muted-foreground">
-                  Production apps, experiments, and practical tools.
-                </p>
-                <span className="inline-block mt-3 text-sm text-primary">
-                  Explore →
-                </span>
-                <div className="absolute top-0 right-0 w-32 h-32 bg-primary/10 rounded-full blur-3xl" />
-              </CardContent>
-            </Card>
-          </Link>
-        </FadeIn>
-
-        {/* Research Card */}
-        <FadeIn delay={600}>
-          <Link href="/research" className="block group">
-            <Card className="h-full bg-card border-border hover:border-primary/50 transition-all duration-300 card-hover">
-              <CardContent className="p-6">
-                <div className="flex items-center gap-2 mb-3">
-                  <Badge variant="secondary">Research</Badge>
-                  <span className="text-xs text-muted-foreground">AI & ML</span>
-                </div>
-                <h3 className="text-xl font-bold mb-2 group-hover:text-primary transition-colors">
-                  Autonomous Agent Research
-                </h3>
-                <p className="text-sm text-muted-foreground mb-3">
-                  Researching how to make AI agents more efficient and automate human work, with focus on autonomous researcher and coding agents.
-                </p>
-                <span className="text-sm text-primary">View research →</span>
-              </CardContent>
-            </Card>
-          </Link>
-        </FadeIn>
-      </div>
-
-      {/* Quick Links Row */}
-      <div className="grid grid-cols-3 gap-3">
-        {[
-          { label: "Reading", href: "/reading", desc: "Book list" },
-          { label: "Projects", href: "/projects", desc: "All work" },
-          { label: "About", href: "/about", desc: "Bio & contact" },
-        ].map((link, index) => (
-          <FadeIn key={link.href} delay={700 + index * 50}>
-            <Link href={link.href}>
-              <Card className="bg-card border-border hover:border-primary/50 hover:bg-secondary/50 transition-all duration-300 group card-hover h-full">
-                <CardContent className="p-4">
-                  <p className="font-medium group-hover:text-primary transition-colors">{link.label}</p>
-                  <p className="text-xs text-muted-foreground">{link.desc}</p>
-                </CardContent>
-              </Card>
-            </Link>
-          </FadeIn>
-        ))}
-      </div>
+      {/* Research Card */}
+      <FadeIn delay={400}>
+        <Link href="/research" className="block group">
+          <Card className="bg-card border-border hover:border-primary/50 transition-all duration-300 card-hover">
+            <CardContent className="p-6">
+              <div className="flex items-center gap-2 mb-3">
+                <Badge variant="secondary">Research</Badge>
+                <span className="text-xs text-muted-foreground">AI & ML</span>
+              </div>
+              <h3 className="text-xl font-bold mb-2 group-hover:text-primary transition-colors">
+                Autonomous Agent Research
+              </h3>
+              <p className="text-sm text-muted-foreground mb-3">
+                Researching how to make AI agents more efficient and automate human work, with focus on autonomous researcher and coding agents.
+              </p>
+              <span className="text-sm text-primary">View research →</span>
+            </CardContent>
+          </Card>
+        </Link>
+      </FadeIn>
 
       {/* Newsletter Section */}
-      <FadeIn delay={900}>
+      <FadeIn delay={500}>
         <section className="pt-8 border-t border-border">
           <div className="flex flex-col md:flex-row md:items-center justify-between gap-6">
             <div>
@@ -241,7 +165,7 @@ export default function Home() {
       </FadeIn>
 
       {/* Footer Links */}
-      <FadeIn delay={1000}>
+      <FadeIn delay={600}>
         <section className="flex flex-wrap gap-4 pt-4 text-sm">
           <a href="https://github.com/salomondiei08" target="_blank" rel="noopener noreferrer" className="text-muted-foreground hover:text-primary transition-colors">
             GitHub
