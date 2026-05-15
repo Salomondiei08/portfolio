@@ -81,14 +81,6 @@ const awards = [
   "10,000 Codeurs Ambassador - 2021",
 ];
 
-const skills = {
-  languages: ["Python", "Dart", "JavaScript", "TypeScript", "Java", "C#", "SQL"],
-  "spoken languages": ["French", "English", "Korean"],
-  frameworks: ["Flutter", "FastAPI", "Vue.js", "Express.js", ".NET"],
-  databases: ["MongoDB", "PostgreSQL", "MySQL", "Firebase"],
-  tools: ["Docker", "Terraform", "GCP", "Git"],
-  areas: ["Mobile Development", "AI/ML", "Backend Development", "Cloud Architecture"],
-};
 
 export default function AboutPage() {
   return (
@@ -257,40 +249,10 @@ export default function AboutPage() {
         </Card>
       </section>
 
-      {/* Skills */}
-      <section className="space-y-6">
-        <h2 className="text-xl font-semibold flex items-center gap-3">
-          <span className="text-primary">05.</span>
-          Skills & Technologies
-          <div className="h-px flex-1 bg-border" />
-        </h2>
-
-        <Card className="bg-card border-border">
-          <CardContent className="p-6 space-y-4">
-            {Object.entries(skills).map(([category, items]) => (
-              <div key={category}>
-                <p className="text-sm text-muted-foreground capitalize mb-2">{category}</p>
-                <div className="flex flex-wrap gap-2">
-                  {items.map((item) => (
-                    <Badge
-                      key={item}
-                      variant="secondary"
-                      className="hover:bg-primary hover:text-primary-foreground transition-colors"
-                    >
-                      {item}
-                    </Badge>
-                  ))}
-                </div>
-              </div>
-            ))}
-          </CardContent>
-        </Card>
-      </section>
-
       {/* Connect */}
       <section className="space-y-6">
         <h2 className="text-xl font-semibold flex items-center gap-3">
-          <span className="text-primary">06.</span>
+          <span className="text-primary">05.</span>
           Connect
           <div className="h-px flex-1 bg-border" />
         </h2>
