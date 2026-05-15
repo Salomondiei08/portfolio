@@ -77,7 +77,7 @@ const navigation = {
     { name: "Projects", href: "/projects", icon: <ProjectsIcon /> },
     { name: "Blog", href: "/blog", icon: <BlogIcon /> },
   ],
-  discover: [
+  more: [
     { name: "App Gallery", href: "/gallery/apps", icon: <GalleryIcon /> },
     { name: "Reading", href: "/reading", icon: <ReadingIcon /> },
   ],
@@ -285,7 +285,7 @@ export function Sidebar() {
           <div className="flex-1 overflow-y-auto overflow-x-hidden">
             <NavSection title="Main" items={navigation.main} />
             <NavSection title="Work" items={navigation.work} />
-            <NavSection title="Discover" items={navigation.discover} />
+            <NavSection title="More" items={navigation.more} />
           </div>
 
           {/* Bottom section */}
