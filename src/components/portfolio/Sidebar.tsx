@@ -72,12 +72,12 @@ const navigation = {
     { name: "Home", href: "/", icon: <HomeIcon /> },
     { name: "About", href: "/about", icon: <AboutIcon /> },
   ],
-  create: [
-    { name: "Blog", href: "/blog", icon: <BlogIcon /> },
-    { name: "Projects", href: "/projects", icon: <ProjectsIcon /> },
+  work: [
     { name: "Research", href: "/research", icon: <ResearchIcon /> },
+    { name: "Projects", href: "/projects", icon: <ProjectsIcon /> },
+    { name: "Blog", href: "/blog", icon: <BlogIcon /> },
   ],
-  explore: [
+  discover: [
     { name: "App Gallery", href: "/gallery/apps", icon: <GalleryIcon /> },
     { name: "Reading", href: "/reading", icon: <ReadingIcon /> },
   ],
@@ -284,8 +284,8 @@ export function Sidebar() {
           {/* Navigation */}
           <div className="flex-1 overflow-y-auto overflow-x-hidden">
             <NavSection title="Main" items={navigation.main} />
-            <NavSection title="Create" items={navigation.create} />
-            <NavSection title="Explore" items={navigation.explore} />
+            <NavSection title="Work" items={navigation.work} />
+            <NavSection title="Discover" items={navigation.discover} />
           </div>
 
           {/* Bottom section */}

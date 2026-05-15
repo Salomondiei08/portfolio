@@ -22,7 +22,7 @@ const experiences = [
     description: "Led end-to-end mobile app delivery from UI/UX to production and established cross-platform best practices.",
   },
   {
-    role: "Junior Software Engineer",
+    role: "Software Engineer",
     company: "Casys Technologies",
     period: "Oct 2021 - Feb 2022",
     description: "Built a JavaCard and Batch CLI tool for smart-card encoding automation, improving process speed by 300%.",

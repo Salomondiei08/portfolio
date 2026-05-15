@@ -27,7 +27,7 @@ export const portfolioProjects: PortfolioProject[] = [
     id: "oh-my-hermes",
     title: "Oh My Hermes",
     description:
-      "An open-source AI agent framework that turns Claude Code into a full CTO — from product brief to deployed code. Orchestrates multi-agent workflows, manages Kanban tasks, runs autonomous dev loops, and ships features end-to-end. 400 stars on GitHub.",
+      "An opinionated workflow layer for building, shipping, and operating apps with Hermes Agent. 400 stars on GitHub.",
     tags: ["AI Agents", "Claude Code", "Automation", "TypeScript", "Open Source"],
     image: "https://res.cloudinary.com/dadnrpnid/image/upload/v1770615297/ai_Resraercher_zjj10d.png",
     links: [
@@ -52,13 +52,22 @@ export const portfolioProjects: PortfolioProject[] = [
     ],
   },
   {
-    id: "autonomous-ai-agent-researcher",
-    title: "Autonomous AI Agent Researcher",
+    id: "kernel",
+    title: "Kernel",
     description:
-      "An end-to-end AI research assistant that takes a problem, proposes hypotheses, runs experiments, and produces research outputs.",
-    tags: ["AI", "Research", "Automation"],
-    image: "https://res.cloudinary.com/dadnrpnid/image/upload/v1770615297/ai_Resraercher_zjj10d.png",
-    links: [],
+      "A shared memory layer for AI agents. Kernel gives agents persistent, structured memory so they can learn, recall context, and collaborate across sessions.",
+    tags: ["AI Agents", "Memory", "Open Source", "TypeScript"],
+    image: "https://github.com/Salomondiei08/kernel-agent-memory/raw/main/docs/assets/kernel-logo.png",
+    links: [
+      {
+        label: "Website",
+        href: "https://www.usekernel.dev/",
+      },
+      {
+        label: "GitHub",
+        href: "https://github.com/Salomondiei08/kernel-agent-memory",
+      },
+    ],
   },
   {
     id: "tourci",

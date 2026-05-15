@@ -33,7 +33,7 @@ export default function Home() {
           <h2 className="text-xl text-muted-foreground">AI Engineer & Researcher</h2>
         </div>
         <p className="text-muted-foreground leading-relaxed max-w-2xl">
-          Building intelligent systems and researching how to make AI agents more efficient and automate human work while leading tech at Sikili.
+          Building intelligent systems and researching memory for self-learning, evolving agents.
         </p>
       </section>
 

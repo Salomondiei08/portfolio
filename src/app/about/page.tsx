@@ -6,21 +6,9 @@ import { Button } from "@/components/ui/button";
 export const metadata = {
   title: "About Salomon Diei | AI Engineer & Autonomous Agents Researcher",
   description: "Salomon Diei is an AI Engineer, CTO at Sikili, and autonomous agents researcher focused on improving agent efficiency and automating human work.",
-  keywords: [
-    "Salomon Diei biography",
-    "KOREATECH AI student",
-    "Sikili CTO",
-    "GKS scholarship recipient",
-    "Korean Government Scholarship",
-    "AI engineer South Korea",
-    "Cheonan software developer",
-    "Institut Ivoirien de Technologie alumni",
-    "Google Cloud Certified engineer",
-    "Flutter mobile developer",
-    "Gorange 5G hackathon winner",
-    "Ivorian tech entrepreneur",
-    "Futurafric technical lead",
-  ],
+  alternates: {
+    canonical: "https://salomondiei.com/about",
+  },
 };
 
 const experience = [
@@ -52,7 +40,7 @@ const experience = [
     highlights: ["Mobile Leadership", "Flutter", "UI/UX to Deployment", "Cross-platform Standards"],
   },
   {
-    role: "Junior Software Engineer",
+    role: "Software Engineer",
     company: "Casys Technologies",
     period: "Oct 2021 - Feb 2022",
     location: "Cote d'Ivoire",
@@ -88,7 +76,6 @@ const certifications = [
 const awards = [
   "GKS (Korean Government Scholarship) Recipient - 2024",
   "1st Place - Gorange 5G Hackathon - 2022",
-  "Top 10 - GDG DevFest Hackathon - 2022",
   "10,000 Codeurs Ambassador - 2021",
 ];
 
