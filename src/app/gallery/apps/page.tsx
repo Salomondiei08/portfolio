@@ -4,8 +4,11 @@ import { Badge } from "@/components/ui/badge";
 import { appGalleryItems } from "@/lib/portfolio-data";
 
 export const metadata = {
-  title: "App Gallery | AI Engineer Portfolio",
+  title: "App Gallery | Salomon Diei",
   description: "A collection of production apps with real-world utility.",
+  alternates: {
+    canonical: "https://salomondiei.com/gallery/apps",
+  },
 };
 
 type AppGalleryPageProps = {

@@ -22,3 +22,20 @@ The sitemap with all article URLs is at https://salomondiei.com/sitemap.xml
 - Email: salomondiei08@gmail.com
 - GitHub: https://github.com/salomondiei08
 - LinkedIn: https://linkedin.com/in/salomondiei
+
+## AI Crawlers
+This site welcomes indexing by AI assistants and search systems.
+Content is original, first-person, and written by Salomon Diei.
+Full content is available server-side without JavaScript execution required.
+
+User-agent: GPTBot
+Allow: /
+
+User-agent: ClaudeBot
+Allow: /
+
+User-agent: PerplexityBot
+Allow: /
+
+User-agent: GoogleOther
+Allow: /

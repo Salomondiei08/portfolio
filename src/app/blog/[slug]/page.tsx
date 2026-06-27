@@ -65,126 +65,184 @@ export default async function BlogPostPage({ params }: Props) {
     notFound();
   }
 
+  const baseUrl = "https://salomondiei.com";
+  const ogImage = post.coverImage
+    ? `${baseUrl}${post.coverImage}`
+    : `${baseUrl}/images/salomon.JPG`;
+
   // Fetch a few other posts to show in the sidebar (exclude current)
   const otherPosts = getAllPosts("blog")
     .filter((p) => p.slug !== slug)
     .slice(0, 4);
 
   return (
-    <div className="max-w-6xl mx-auto">
-      {/* Back link */}
-      <Link
-        href="/blog"
-        className="inline-flex items-center gap-1.5 text-sm text-muted-foreground hover:text-primary transition-colors mb-8"
-      >
-        ← Back to Blog
-      </Link>
+    <>
+      {/* BlogPosting structured data for Article rich results */}
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "BlogPosting",
+            "@id": `${baseUrl}/blog/${slug}#article`,
+            headline: post.title,
+            description: post.description,
+            datePublished: new Date(post.date).toISOString(),
+            dateModified: new Date(post.date).toISOString(),
+            url: `${baseUrl}/blog/${slug}`,
+            image: ogImage,
+            author: {
+              "@type": "Person",
+              "@id": `${baseUrl}/#person`,
+              name: "Salomon Diei",
+            },
+            publisher: {
+              "@type": "Person",
+              "@id": `${baseUrl}/#person`,
+              name: "Salomon Diei",
+            },
+            isPartOf: {
+              "@type": "Blog",
+              "@id": `${baseUrl}/blog#blog`,
+            },
+            ...(post.tags && post.tags.length > 0 ? { keywords: post.tags.join(", ") } : {}),
+            inLanguage: "en-US",
+            timeRequired: `PT${post.readingTime}M`,
+          }),
+        }}
+      />
 
-      {/* Cover image — full width above the columns */}
-      {post.coverImage && (
-        <div className="relative w-full aspect-[2/1] overflow-hidden rounded-xl border border-border bg-secondary/40 mb-8 shadow-lg shadow-black/10">
-          <Image
-            src={post.coverImage}
-            alt={post.coverAlt || post.title}
-            fill
-            className="object-cover"
-            sizes="(max-width: 768px) 100vw, 1024px"
-            priority
-          />
-        </div>
-      )}
+      {/* BreadcrumbList for SERP breadcrumb display */}
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "BreadcrumbList",
+            itemListElement: [
+              { "@type": "ListItem", position: 1, name: "Home", item: baseUrl },
+              { "@type": "ListItem", position: 2, name: "Blog", item: `${baseUrl}/blog` },
+              { "@type": "ListItem", position: 3, name: post.title, item: `${baseUrl}/blog/${slug}` },
+            ],
+          }),
+        }}
+      />
 
-      {/* Article header */}
-      <header className="mb-8 pb-8 border-b border-border">
-        <div className="flex items-center gap-2 text-sm text-muted-foreground mb-3">
-          <time dateTime={post.date}>
-            {format(new Date(post.date), "MMMM d, yyyy")}
-          </time>
-          <span>·</span>
-          <span>{post.readingTime} min read</span>
-        </div>
-        <h1 className="text-3xl sm:text-4xl font-bold tracking-tight leading-tight mb-4">
-          {post.title}
-        </h1>
-        <p className="text-lg text-muted-foreground leading-relaxed max-w-2xl">
-          {post.description}
-        </p>
-        {post.tags && post.tags.length > 0 && (
-          <div className="flex flex-wrap gap-2 mt-4">
-            {post.tags.map((tag) => (
-              <Badge key={tag} variant="secondary">
-                {tag}
-              </Badge>
-            ))}
+      <div className="max-w-6xl mx-auto">
+        {/* Back link — padded to meet 44px touch target minimum */}
+        <Link
+          href="/blog"
+          className="inline-flex items-center gap-1.5 text-sm text-muted-foreground hover:text-primary transition-colors mb-8 py-2"
+        >
+          ← Back to Blog
+        </Link>
+
+        {/* Cover image — full width above the columns */}
+        {post.coverImage && (
+          <div className="relative w-full aspect-[2/1] overflow-hidden rounded-xl border border-border bg-secondary/40 mb-8 shadow-lg shadow-black/10">
+            <Image
+              src={post.coverImage}
+              alt={post.coverAlt || post.title}
+              fill
+              className="object-cover"
+              sizes="(max-width: 768px) 100vw, 1024px"
+              priority
+            />
           </div>
         )}
-      </header>
 
-      {/* Two-column content layout on desktop */}
-      <div className="lg:grid lg:grid-cols-[1fr_272px] lg:gap-12">
-
-        {/* Article prose */}
-        <div
-          className="blog-content min-w-0"
-          dangerouslySetInnerHTML={{ __html: post.content }}
-        />
-
-        {/* Sticky sidebar — desktop only */}
-        <aside className="hidden lg:block">
-          <div className="sticky top-8 space-y-6">
-            {/* Newsletter */}
-            <BlogNewsletterWidget />
-
-            {/* More posts */}
-            {otherPosts.length > 0 && (
-              <div className="rounded-xl border border-border bg-card p-5 space-y-3">
-                <p className="font-semibold text-sm">More posts</p>
-                <ul className="space-y-3">
-                  {otherPosts.map((p) => (
-                    <li key={p.slug}>
-                      <Link
-                        href={`/blog/${p.slug}`}
-                        className="group block space-y-0.5"
-                      >
-                        <span className="text-sm font-medium group-hover:text-primary transition-colors line-clamp-2 leading-snug">
-                          {p.title}
-                        </span>
-                        <span className="text-xs text-muted-foreground">
-                          {format(new Date(p.date), "MMM d, yyyy")} · {p.readingTime} min
-                        </span>
-                      </Link>
-                    </li>
-                  ))}
-                </ul>
-              </div>
-            )}
+        {/* Article header */}
+        <header className="mb-8 pb-8 border-b border-border">
+          <div className="flex items-center gap-2 text-sm text-muted-foreground mb-3">
+            <time dateTime={post.date}>
+              {format(new Date(post.date), "MMMM d, yyyy")}
+            </time>
+            <span>·</span>
+            <span>{post.readingTime} min read</span>
           </div>
-        </aside>
-      </div>
-
-      {/* Mobile: newsletter + more posts below the article */}
-      <div className="lg:hidden mt-12 space-y-6">
-        <BlogNewsletterWidget />
-        {otherPosts.length > 0 && (
-          <div className="rounded-xl border border-border bg-card p-5 space-y-3">
-            <p className="font-semibold text-sm">More posts</p>
-            <ul className="space-y-3">
-              {otherPosts.map((p) => (
-                <li key={p.slug}>
-                  <Link
-                    href={`/blog/${p.slug}`}
-                    className="group block"
-                  >
-                    <span className="text-sm font-medium group-hover:text-primary transition-colors line-clamp-2">
-                      {p.title}
-                    </span>
-                  </Link>
-                </li>
+          <h1 className="text-3xl sm:text-4xl font-bold tracking-tight leading-tight mb-4">
+            {post.title}
+          </h1>
+          <p className="text-lg text-muted-foreground leading-relaxed max-w-2xl">
+            {post.description}
+          </p>
+          {post.tags && post.tags.length > 0 && (
+            <div className="flex flex-wrap gap-2 mt-4">
+              {post.tags.map((tag) => (
+                <Badge key={tag} variant="secondary">
+                  {tag}
+                </Badge>
               ))}
-            </ul>
-          </div>
-        )}
+            </div>
+          )}
+        </header>
+
+        {/* Two-column content layout on desktop */}
+        <div className="lg:grid lg:grid-cols-[1fr_272px] lg:gap-12">
+
+          {/* Article prose */}
+          <div
+            className="blog-content min-w-0"
+            dangerouslySetInnerHTML={{ __html: post.content }}
+          />
+
+          {/* Sticky sidebar — desktop only */}
+          <aside className="hidden lg:block">
+            <div className="sticky top-8 space-y-6">
+              {/* Newsletter */}
+              <BlogNewsletterWidget />
+
+              {/* More posts */}
+              {otherPosts.length > 0 && (
+                <div className="rounded-xl border border-border bg-card p-5 space-y-3">
+                  <p className="font-semibold text-sm">More posts</p>
+                  <ul className="space-y-3">
+                    {otherPosts.map((p) => (
+                      <li key={p.slug}>
+                        <Link
+                          href={`/blog/${p.slug}`}
+                          className="group block space-y-0.5"
+                        >
+                          <span className="text-sm font-medium group-hover:text-primary transition-colors line-clamp-2 leading-snug">
+                            {p.title}
+                          </span>
+                          <span className="text-xs text-muted-foreground">
+                            {format(new Date(p.date), "MMM d, yyyy")} · {p.readingTime} min
+                          </span>
+                        </Link>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              )}
+            </div>
+          </aside>
+        </div>
+
+        {/* Mobile: newsletter + more posts below the article */}
+        <div className="lg:hidden mt-12 space-y-6">
+          <BlogNewsletterWidget />
+          {otherPosts.length > 0 && (
+            <div className="rounded-xl border border-border bg-card p-5 space-y-3">
+              <p className="font-semibold text-sm">More posts</p>
+              <ul className="space-y-3">
+                {otherPosts.map((p) => (
+                  <li key={p.slug}>
+                    <Link
+                      href={`/blog/${p.slug}`}
+                      className="group block"
+                    >
+                      <span className="text-sm font-medium group-hover:text-primary transition-colors line-clamp-2">
+                        {p.title}
+                      </span>
+                    </Link>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          )}
+        </div>
       </div>
-    </div>
+    </>
   );
 }

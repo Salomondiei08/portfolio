@@ -2,8 +2,11 @@ import { Card, CardContent } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 
 export const metadata = {
-  title: "Reading | AI Engineer Portfolio",
-  description: "Books I'm reading, have read, and recommend.",
+  title: "Reading | Salomon Diei",
+  description: "Books I'm reading, have read, and recommend — with notes on what stuck.",
+  alternates: {
+    canonical: "https://salomondiei.com/reading",
+  },
 };
 
 const currentlyReading = [
@@ -221,7 +224,7 @@ export default function ReadingPage() {
       <div className="p-6 rounded-lg border border-dashed border-border text-center">
         <p className="text-sm text-muted-foreground">
           Have a book recommendation?{" "}
-          <a href="mailto:your.email@example.com" className="text-primary hover:underline">
+          <a href="mailto:salomondiei08@gmail.com" className="text-primary hover:underline">
             Let me know →
           </a>
         </p>

@@ -1,33 +1,18 @@
 import type { Metadata, Viewport } from "next";
+import dynamic from "next/dynamic";
 import "./globals.css";
 import { Sidebar } from "@/components/portfolio";
-import { ChatWidget } from "@/components/portfolio/ChatWidget";
 import { ThemeProvider } from "@/components/portfolio/ThemeProvider";
+
+// Lazy-load ChatWidget — it's not needed on initial render and adds JS weight to every page
+const ChatWidget = dynamic(
+  () => import("@/components/portfolio/ChatWidget").then((m) => ({ default: m.ChatWidget })),
+  { ssr: false }
+);
 
 export const metadata: Metadata = {
   title: "Salomon Diei | AI Engineer & Autonomous Agents Researcher",
-  description: "Salomon Diei - AI Engineer, CTO at Sikili, and researcher focused on making AI agents more efficient and automating human work. Primary focus: autonomous agent researcher and autonomous coding.",
-  keywords: [
-    // Name variations
-    "Salomon Diei", "Salomon DIEI", "salomondiei", "salomondiei08",
-    // Current roles
-    "AI Engineer", "AI Researcher", "Autonomous Agents Researcher", "CTO Sikili",
-    // Education
-    "KOREATECH", "Korea University of Technology and Education", "KOREATECH AI", "GKS Scholar", "Korean Government Scholarship",
-    // Location
-    "Cheonan South Korea", "Côte d'Ivoire", "Ivorian Software Engineer",
-    // Skills
-    "Flutter Developer", "Python Developer", "FastAPI", "Mobile Development", "Cloud Engineer",
-    "Google Cloud Certified", "GCP", "Docker", "Terraform", "Vue.js",
-    // Projects
-    "Autonomous AI Agent Researcher", "TourCI", "Help AI", "Sikili Platform",
-    // Achievements
-    "Gorange 5G Hackathon Winner",
-    // Previous work
-    "Futurafric", "BUI Corporation", "Casys Technologies",
-    // Education background
-    "Institut Ivoirien de Technologie", "Software Engineering Ivory Coast",
-  ],
+  description: "Salomon Diei, AI Engineer and CTO at Sikili, researching autonomous agents and work automation. Google Cloud Certified, GKS Scholar based in South Korea.",
   metadataBase: new URL("https://salomondiei.com"),
   authors: [{ name: "Salomon Diei", url: "https://github.com/salomondiei08" }],
   creator: "Salomon Diei",
@@ -37,7 +22,7 @@ export const metadata: Metadata = {
   },
   openGraph: {
     title: "Salomon Diei | AI Engineer & Autonomous Agents Researcher",
-    description: "AI Engineer and CTO at Sikili, researching efficient AI agents that automate human work. Focused on autonomous agent researcher systems and autonomous coding.",
+    description: "AI Engineer and CTO at Sikili, researching efficient AI agents that automate human work. Focused on autonomous agent systems and autonomous coding.",
     type: "website",
     locale: "en_US",
     url: "https://salomondiei.com",
@@ -69,7 +54,7 @@ export const metadata: Metadata = {
     },
   },
   verification: {
-    // Add these once you verify with Google/Bing
+    // Add verification tokens once you connect Google Search Console and Bing Webmaster Tools
     // google: "your-google-verification-code",
     // bing: "your-bing-verification-code",
   },
@@ -78,7 +63,7 @@ export const metadata: Metadata = {
 export const viewport: Viewport = {
   width: "device-width",
   initialScale: 1,
-  // Do NOT set maximumScale or userScalable=false — Google penalizes sites that block pinch-zoom.
+  // Do NOT set maximumScale or userScalable=false — Google penalises sites that block pinch-zoom.
   themeColor: [
     { media: "(prefers-color-scheme: light)", color: "#fafafa" },
     { media: "(prefers-color-scheme: dark)", color: "#0a0a0a" },
@@ -93,17 +78,27 @@ export default function RootLayout({
   return (
     <html lang="en" suppressHydrationWarning>
       <head>
-        {/* Structured Data for SEO */}
+        {/* Blocking theme script — runs before any CSS/render to prevent dark/light flash.
+            Reads localStorage and sets the class on <html> before React hydrates. */}
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `try{var t=localStorage.getItem('theme');if(!t)t=window.matchMedia('(prefers-color-scheme: light)').matches?'light':'dark';document.documentElement.classList.add(t,'no-transitions');requestAnimationFrame(function(){requestAnimationFrame(function(){document.documentElement.classList.remove('no-transitions')})});}catch(e){}`,
+          }}
+        />
+
+        {/* Structured Data — Person entity with @id for cross-page linkage */}
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{
             __html: JSON.stringify({
               "@context": "https://schema.org",
               "@type": "Person",
+              "@id": "https://salomondiei.com/#person",
               name: "Salomon Diei",
               alternateName: "Salomon DIEI",
               url: "https://salomondiei.com",
               image: "https://salomondiei.com/images/salomon.JPG",
+              email: "salomondiei08@gmail.com",
               sameAs: [
                 "https://github.com/salomondiei08",
                 "https://linkedin.com/in/salomondiei",
@@ -146,6 +141,26 @@ export default function RootLayout({
                 addressLocality: "Cheonan-si",
                 addressCountry: "South Korea",
               },
+            }),
+          }}
+        />
+
+        {/* WebSite entity — links the Person to a canonical web presence */}
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
+              "@context": "https://schema.org",
+              "@type": "WebSite",
+              "@id": "https://salomondiei.com/#website",
+              name: "Salomon Diei",
+              url: "https://salomondiei.com",
+              description: "AI Engineer and autonomous agents researcher. Writing about AI, machine learning, and building intelligent systems.",
+              author: {
+                "@type": "Person",
+                "@id": "https://salomondiei.com/#person",
+              },
+              inLanguage: "en-US",
             }),
           }}
         />

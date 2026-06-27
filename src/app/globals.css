@@ -185,8 +185,13 @@ button, [role="button"] {
   user-select: none;
 }
 
-/* Smooth transitions for theme switching */
-* {
+/* Smooth theme-switch transitions scoped to structural/interactive elements.
+   Avoids the INP cost of transitioning every DOM node on mobile taps. */
+body, main, aside, header, footer, nav,
+button, a, input, textarea, select,
+[role="button"], [role="tab"],
+.card, .bg-card, .bg-background, .bg-secondary, .bg-muted,
+[class*="border-"] {
   transition: background-color 0.2s ease, border-color 0.2s ease, color 0.15s ease;
 }
 

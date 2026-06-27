@@ -5,8 +5,11 @@ import { Badge } from "@/components/ui/badge";
 import { format } from "date-fns";
 
 export const metadata = {
-  title: "Blog | Salomon Diei",
-  description: "Thoughts on AI, machine learning, autonomous agents, and building intelligent systems.",
+  title: "AI, Agents & Engineering — Salomon Diei's Blog",
+  description: "Writing about AI research, autonomous agents, and building intelligent systems.",
+  alternates: {
+    canonical: "https://salomondiei.com/blog",
+  },
 };
 
 /**
@@ -18,6 +21,36 @@ export default function BlogPage() {
 
   return (
     <div className="max-w-3xl mx-auto space-y-12">
+      {/* Blog entity schema + breadcrumb */}
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "Blog",
+            "@id": "https://salomondiei.com/blog#blog",
+            name: "AI, Agents & Engineering — Salomon Diei's Blog",
+            description: "Writing about AI research, autonomous agents, and building intelligent systems.",
+            url: "https://salomondiei.com/blog",
+            author: { "@type": "Person", "@id": "https://salomondiei.com/#person", name: "Salomon Diei" },
+            inLanguage: "en-US",
+            isPartOf: { "@type": "WebSite", "@id": "https://salomondiei.com/#website" },
+          }),
+        }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "BreadcrumbList",
+            itemListElement: [
+              { "@type": "ListItem", position: 1, name: "Home", item: "https://salomondiei.com" },
+              { "@type": "ListItem", position: 2, name: "Blog", item: "https://salomondiei.com/blog" },
+            ],
+          }),
+        }}
+      />
       {/* Header */}
       <div className="space-y-2">
         <h1 className="text-3xl font-bold">Blog</h1>

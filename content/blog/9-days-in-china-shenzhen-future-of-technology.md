@@ -3,7 +3,7 @@ title: "9 Days in China — What Shenzhen Taught Me About the Future of Technolo
 date: "2026-01-31"
 description: "From cashless payments to drone deliveries, here’s why this trip completely changed my perspective."
 tags: ["China", "Shenzhen", "Travel", "Technology", "AI", "Hardware"]
-coverImage: "/images/blog/ai-ad-shenzen.jpeg"
+coverImage: "/images/blog/ai-ad-shenzen.webp"
 coverAlt: "AI advertisement at the Shenzhen airport"
 published: true
 ---
@@ -34,7 +34,7 @@ It immediately set the tone.
 
 This wasn’t just another big city — it felt like landing in a place designed for builders.
 
-![Shenzhen skyline at night](/images/blog/skyline-shenzen.jpeg)
+![Shenzhen skyline at night](/images/blog/skyline-shenzen.webp)
 *The city’s skyline felt like a preview of the future.*
 
 ---
@@ -78,7 +78,7 @@ It sounds simple, but when transportation “just works,” your whole experienc
 
 You spend time exploring — not waiting.
 
-![Shenzhen rail station](/images/blog/shenzen-station.jpeg)
+![Shenzhen rail station](/images/blog/shenzen-station.webp)
 *Fast, clean, and always on time.*
 
 ---
@@ -99,7 +99,7 @@ More comfortable streets.
 
 It genuinely felt healthier than many large cities I’ve visited.
 
-![Sea World district](/images/blog/sea-world-shenzen.jpeg)
+![Sea World district](/images/blog/sea-world-shenzen.webp)
 *Calmer streets and cleaner air made the city feel more livable.*
 
 ---
@@ -130,7 +130,7 @@ Now I understand why companies like DJI, Huawei, and Tencent are based here.
 
 The ecosystem makes speed possible.
 
-![Huaqiangbei tech district](/images/blog/ai-glasses.jpeg)
+![Huaqiangbei tech district](/images/blog/ai-glasses.webp)
 *Hardware and AI are everywhere — even in everyday retail displays.*
 
 ---
@@ -152,7 +152,7 @@ It’s daily life.
 
 Technology isn’t theoretical here — it’s deployed.
 
-![Drone and skyline view](/images/blog/helicopter-shenzen.jpeg)
+![Drone and skyline view](/images/blog/helicopter-shenzen.webp)
 *Everyday life feels like a demo that already shipped.*
 
 ---
@@ -169,7 +169,7 @@ You can focus on building instead of surviving.
 
 Which explains why there are so many founders and engineers around.
 
-![Shenzhen waterfront](/images/blog/boat-shenzen.jpeg)
+![Shenzhen waterfront](/images/blog/boat-shenzen.webp)
 *Even the waterfront felt built for momentum.*
 
 ---

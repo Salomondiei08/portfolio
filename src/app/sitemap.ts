@@ -1,32 +1,26 @@
 import { MetadataRoute } from "next";
-import { getAllPostSlugs } from "@/lib/markdown";
+import { getAllPosts } from "@/lib/markdown";
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const baseUrl = "https://salomondiei.com";
 
-  // Static pages (excluding deleted routes: /notes, /photo-gallery, /gallery)
-  const staticRoutes = [
-    { path: "", priority: 1.0, changeFrequency: "weekly" as const },
-    { path: "/about", priority: 0.9, changeFrequency: "monthly" as const },
-    { path: "/blog", priority: 0.9, changeFrequency: "weekly" as const },
-    { path: "/projects", priority: 0.8, changeFrequency: "monthly" as const },
-    { path: "/research", priority: 0.8, changeFrequency: "monthly" as const },
-    { path: "/gallery/apps", priority: 0.7, changeFrequency: "monthly" as const },
-    { path: "/reading", priority: 0.6, changeFrequency: "monthly" as const },
-  ].map(({ path, priority, changeFrequency }) => ({
-    url: `${baseUrl}${path}`,
-    lastModified: new Date(),
-    changeFrequency,
-    priority,
-  }));
+  // Static pages with real last-modified dates (update these when pages change)
+  const staticRoutes: MetadataRoute.Sitemap = [
+    { url: `${baseUrl}`,              lastModified: new Date("2026-02-14") },
+    { url: `${baseUrl}/about`,        lastModified: new Date("2026-01-01") },
+    { url: `${baseUrl}/blog`,         lastModified: new Date("2026-02-14") },
+    { url: `${baseUrl}/projects`,     lastModified: new Date("2026-01-01") },
+    { url: `${baseUrl}/research`,     lastModified: new Date("2026-01-01") },
+    { url: `${baseUrl}/gallery/apps`, lastModified: new Date("2026-01-01") },
+    { url: `${baseUrl}/reading`,      lastModified: new Date("2026-01-01") },
+  ];
 
-  // Dynamic blog post routes — included so crawlers discover individual articles
-  const blogSlugs = getAllPostSlugs("blog");
-  const blogRoutes = blogSlugs.map((slug) => ({
-    url: `${baseUrl}/blog/${slug}`,
-    lastModified: new Date(),
-    changeFrequency: "monthly" as const,
-    priority: 0.8,
+  // Blog posts using their actual publish dates.
+  // getAllPosts filters out published:false, so drafts stay out of the sitemap.
+  const blogPosts = getAllPosts("blog");
+  const blogRoutes: MetadataRoute.Sitemap = blogPosts.map((post) => ({
+    url: `${baseUrl}/blog/${post.slug}`,
+    lastModified: new Date(post.date),
   }));
 
   return [...staticRoutes, ...blogRoutes];
