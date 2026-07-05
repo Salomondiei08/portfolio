@@ -38,6 +38,13 @@ const ResearchIcon = () => (
     <path d="M9 3H5a2 2 0 00-2 2v4m6-6h10a2 2 0 012 2v4M9 3v18m0 0h10a2 2 0 002-2V9M9 21H5a2 2 0 01-2-2V9m0 0h18" />
   </svg>
 );
+const EventsIcon = () => (
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={1.5} strokeLinecap="round" strokeLinejoin="round" className="w-5 h-5">
+    <rect x="3" y="4" width="18" height="18" rx="2" />
+    <path d="M16 2v4M8 2v4M3 10h18" />
+    <path d="M8 14h.01M12 14h.01M16 14h.01M8 18h.01M12 18h.01" />
+  </svg>
+);
 const GalleryIcon = () => (
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={1.5} strokeLinecap="round" strokeLinejoin="round" className="w-5 h-5">
     <rect x="3" y="3" width="18" height="18" rx="2" />
@@ -80,6 +87,7 @@ const navigation = {
   more: [
     { name: "App Gallery", href: "/gallery/apps", icon: <GalleryIcon /> },
     { name: "Reading", href: "/reading", icon: <ReadingIcon /> },
+    { name: "Events", href: "/events", icon: <EventsIcon /> },
   ],
 };
 
@@ -96,7 +104,7 @@ export function Sidebar() {
   const [isHovered, setIsHovered] = useState(false);
   const [isTransitioning, setIsTransitioning] = useState(false);
 
-  const isExpanded = isHovered;
+  const isExpanded = mobileMenuOpen || isHovered;
 
   useEffect(() => {
     setIsTransitioning(true);
@@ -110,7 +118,7 @@ export function Sidebar() {
       <Link
         href={href}
         className={`
-          relative flex items-center gap-3 px-3 py-3 text-sm rounded-lg overflow-hidden group
+          relative flex min-h-11 min-w-11 items-center gap-3 px-3 py-3 text-sm rounded-lg overflow-hidden group
           ${isActive ? "bg-primary/10 text-primary" : "text-muted-foreground hover:text-foreground hover:bg-secondary/80"}
           ${!isExpanded ? "justify-center" : ""}
           ${isActive && !isExpanded ? "before:absolute before:left-0 before:top-1/2 before:-translate-y-1/2 before:w-0.5 before:h-6 before:bg-primary before:rounded-r-full" : ""}
@@ -241,7 +249,7 @@ export function Sidebar() {
           {/* Profile */}
           <Link
             href="/"
-            className={`flex items-center gap-3 p-2 mb-4 rounded-lg group hover:bg-secondary/50 overflow-hidden ${!isExpanded ? "justify-center" : ""}`}
+            className={`flex min-w-11 items-center gap-3 p-2 mb-4 rounded-lg group hover:bg-secondary/50 overflow-hidden ${!isExpanded ? "justify-center" : ""}`}
             style={{
               transition: "background-color 0.15s cubic-bezier(0.32, 0.72, 0, 1)"
             }}
@@ -293,7 +301,7 @@ export function Sidebar() {
             {/* Theme toggle */}
             <button
               onClick={toggleTheme}
-              className={`hidden lg:flex items-center gap-3 w-full px-3 py-2 text-sm rounded-lg text-muted-foreground hover:text-foreground hover:bg-secondary/50 ${!isExpanded ? "justify-center" : ""}`}
+              className={`hidden min-h-11 min-w-11 lg:flex items-center gap-3 w-full px-3 py-2 text-sm rounded-lg text-muted-foreground hover:text-foreground hover:bg-secondary/50 ${!isExpanded ? "justify-center" : ""}`}
               style={{
                 transition: "background-color 0.15s cubic-bezier(0.32, 0.72, 0, 1), color 0.15s cubic-bezier(0.32, 0.72, 0, 1)"
               }}
@@ -340,7 +348,7 @@ export function Sidebar() {
                   href={link.href}
                   target={link.href.startsWith("mailto") ? undefined : "_blank"}
                   rel={link.href.startsWith("mailto") ? undefined : "noopener noreferrer"}
-                  className={`p-2 text-xs text-muted-foreground hover:text-primary hover:bg-secondary/50 rounded-md ${!isExpanded ? "flex justify-center" : ""}`}
+                  className={`min-h-11 min-w-11 p-2 text-xs text-muted-foreground hover:text-primary hover:bg-secondary/50 rounded-md ${!isExpanded ? "flex items-center justify-center" : "inline-flex items-center justify-center"}`}
                   style={{
                     transition: "background-color 0.15s cubic-bezier(0.32, 0.72, 0, 1), color 0.15s cubic-bezier(0.32, 0.72, 0, 1), transform 0.15s cubic-bezier(0.32, 0.72, 0, 1)"
                   }}
@@ -355,7 +363,7 @@ export function Sidebar() {
             <a
               href="/Salomon_Academic_Resume.pdf"
               download="Salomon_Diei_Resume.pdf"
-              className={`flex items-center gap-2 px-3 py-2 text-xs text-muted-foreground hover:text-primary hover:bg-secondary/50 rounded-lg ${!isExpanded ? "justify-center" : ""}`}
+              className={`flex min-h-11 min-w-11 items-center gap-2 px-3 py-2 text-xs text-muted-foreground hover:text-primary hover:bg-secondary/50 rounded-lg ${!isExpanded ? "justify-center" : ""}`}
               style={{
                 transition: "background-color 0.15s cubic-bezier(0.32, 0.72, 0, 1), color 0.15s cubic-bezier(0.32, 0.72, 0, 1)"
               }}
