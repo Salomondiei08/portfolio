@@ -1,4 +1,8 @@
 {
+  "rewrites": [
+    { "source": "/impactia", "destination": "/impactia/index.html" },
+    { "source": "/impactia/", "destination": "/impactia/index.html" }
+  ],
   "headers": [
     {
       "source": "/images/(.*)",

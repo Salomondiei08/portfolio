@@ -1,0 +1,496 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<meta name="theme-color" content="#073d3b"/>
+<meta name="description" content="Masterclass Reinvent Labs — agents IA, mémoire et continual learning."/>
+<title>Reinvent Labs — Des agents qui s’améliorent en travaillant</title>
+<base href="/impactia/" />
+<link rel="stylesheet" href="styles.css?v=2.2.1"/>
+</head>
+<body>
+<div id="viewport"><main id="stage">
+<section class="slide cover" data-section="Ouverture">
+<div class="brand-top"><img alt="Reinvent Labs" class="logo" src="assets/logo-green.png"/></div>
+<div class="cover-grid">
+<div class="cover-copy">
+<div class="eyebrow anim">MASTERCLASS · IMPACT IA 2026</div>
+<h1 class="anim d1">Des agents qui<br/><span>s’améliorent en travaillant</span></h1>
+<p class="lede anim d2">Comment une IA continue d’apprendre après sa mise en service, à travers un cas concret.</p>
+<div class="speaker anim d3"><b>Salomon Diei</b><span>AI Researcher &amp; Engineer · Reinvent Labs</span></div>
+</div>
+<div class="hero-visual anim d2">
+<div class="orbit orbit-a"></div><div class="orbit orbit-b"></div>
+<div class="hero-core"><svg aria-hidden="true" class="icon" fill="none" height="64" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" viewbox="0 0 24 24" width="64"><path d="M9.5 4.5a3 3 0 0 0-5 2.2A3.5 3.5 0 0 0 5 13.5a3 3 0 0 0 4.5 2.6M14.5 4.5a3 3 0 0 1 5 2.2 3.5 3.5 0 0 1-.5 6.8 3 3 0 0 1-4.5 2.6M12 3v18M8 8h4M12 8h4M7.5 13H12M12 13h4.5M9 17h3M12 17h3"></path></svg></div>
+<div class="hero-node n1"><svg aria-hidden="true" class="icon" fill="none" height="28" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" viewbox="0 0 24 24" width="28"><path d="M14.7 6.3a4 4 0 0 0-5.3 5.3L3 18l3 3 6.4-6.4a4 4 0 0 0 5.3-5.3l-2.4 2.4-3-3z"></path></svg></div>
+<div class="hero-node n2"><svg aria-hidden="true" class="icon" fill="none" height="28" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" viewbox="0 0 24 24" width="28"><ellipse cx="12" cy="5" rx="7" ry="3"></ellipse><path d="M5 5v6c0 1.7 3.1 3 7 3s7-1.3 7-3V5M5 11v6c0 1.7 3.1 3 7 3s7-1.3 7-3v-6"></path></svg></div>
+<div class="hero-node n3"><svg aria-hidden="true" class="icon" fill="none" height="28" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" viewbox="0 0 24 24" width="28"><path d="M20 6v5h-5M4 18v-5h5"></path><path d="M18.4 9A7 7 0 0 0 6.2 6.2L4 8M5.6 15A7 7 0 0 0 17.8 17.8L20 16"></path></svg></div>
+<div class="hero-node n4"><svg aria-hidden="true" class="icon" fill="none" height="28" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" viewbox="0 0 24 24" width="28"><path d="m3 17 6-6 4 4 7-8"></path><path d="M15 7h5v5"></path></svg></div>
+<div class="hero-caption">EXPÉRIENCE → MÉMOIRE → ADAPTATION</div>
+</div>
+</div>
+<div class="footer-note">Côte d’Ivoire · Septembre 2026</div>
+</section>
+<section class="slide" data-section="Intervenant">
+<div class="slide-head">
+<div>
+<div class="kicker">INTRODUCTION</div>
+<h2>À propos de l’intervenant</h2>
+<p class="subtitle">Chercheur en IA à KoreaTech, avec un focus sur les systèmes de mémoire pour agents IA.</p>
+</div>
+</div>
+<div class="speaker-grid">
+<div class="identity-card anim d1">
+<h3>Salomon Diei</h3>
+<div class="identity-role">Researcher · KoreaTech · AI Agent Memory Systems</div>
+<ul class="identity-bullets">
+<li><i>1</i><div>Master en Computer Engineering à KoreaTech <span>travaux en NLP, LLMs et agents IA</span></div></li>
+<li><i>2</i><div>Recherche principale <span>mémoire long terme, continual learning et amélioration post-déploiement des agents</span></div></li>
+<li><i>3</i><div>Objectif de cette masterclass <span>montrer comment l’expérience peut devenir une meilleure décision future</span></div></li>
+</ul>
+<div class="short-note">Scannez le QR code pour retrouver mon profil, mes travaux et mes projets.</div>
+</div>
+<div class="qr-card anim d2">
+<div class="qr-image-wrap"><img alt="QR code vers le site de Salomon Diei" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAXIAAAFyAQAAAADAX2ykAAACmElEQVR4nO2bQWrkMBBFX40NvVTDHMBHsW8WcjPrKH2AgLQM2PxZlJ3uBBKSwe20obQQNHqLD6ZUv0rVJn6y8p8f4RB88MEHH3zwwX/G27JafBsAsrVAXc+GHfUEvzHfS5IKSGU5sSG9GtBIkvSev7ee4Dfm6xqhuZsgn2f/tDaAx/TOeoK/D28DQH9pfdP4y3qC35yfjXxuBGl6CD3Bb8AnyWO1L6CR2TQy+50tafrI31tP8Jvy2czMzgD1JHsqjWyoJwGz2+d99QS/Ee/G6aZJmbsJUUG5ezVI7xuYj6Y/+O/wNgA2VDOoZot/ri16XgPbhh31BL8Vj1e3Y5IgSfRlKXg10uhaDnuJPD6a/uC/xS8FkZmeu4nbhJsk+uhvHJVf4tc7VGnC43e8sdNrpRTxe0Te/ZWRCqKeBHU2wdyKVDC3W8yrBXs0/cF/h/c0663JbgJq65t0WR8ehh31BH8XvrbYUFvo14aGDWlCI03k32Pyy/3cj3ML6WV1VfUMfmfTyHrN0d84Jr88DGVrZNSTjFSwt+MlMUPk32PyrNZ5ddFjmpaGs1fCBcI/H52XLu36zFtbH93wSnhIknQ5Rf49Np8m3+ypgHc1/EufZwOf5NhTT/Db8Lf1bx4M5U4YaW7ldqu2GKnI9tET/Lb8Tf/qmon9pC941r1ukX+PyV/nJ331mtCY1k5Hjvmrg/PX+cmR2fyR35/73Tq/2jKJ9aD6g/9s+a3sd3FptM7nNFriF7itnh5Nf/Bfr/bDb+Vuao30YvRlvhnssH7cQ0/we/B9AaAR+YxPZ/2qnuD/l1/jNwmoQF9m8E9r+Jc20svKPZr+4L9eb/1nABqvdckGgmYy6t+Jfoz334PyFv/vDj744IMPPvjd+X8DzG9Dia1yzgAAAABJRU5ErkJggg=="/></div>
+<div class="qr-copy">
+<h3>Mon site</h3>
+<p>Profil, travaux, projets, publications et points de contact.</p>
+<div class="qr-url">salomon.reinvent-labs.com</div>
+<div class="qr-small">Lien : https://salomon.reinvent-labs.com/</div>
+</div>
+</div>
+</div>
+</section>
+
+<section class="slide" data-section="Des LLM aux agents">
+<div class="slide-head">
+<div><div class="kicker">01 · LES LLM</div><h2>Comment on est arrivé ici</h2><p class="subtitle">Les LLM modernes sont le résultat d’une succession d’avancées — architecture, échelle, alignement et interface.</p></div>
+<div class="head-mark">LLM → Interface → Action</div>
+</div>
+<div class="timeline"><div class="timeline-card anim d0">
+<div class="timeline-year">2017</div><div class="iconbox"><div class="asset-icon" data-label="Transformer" aria-hidden="true"><span class="asset-glyph">T</span></div></div>
+<h3>Transformer</h3><p>Self-attention et entraînement massivement parallélisable.</p></div><div class="timeline-card anim d1">
+<div class="timeline-year">2018–2021</div><div class="iconbox"><div class="asset-icon" data-label="Pré-entraînement" aria-hidden="true"><span class="asset-glyph">P</span></div></div>
+<h3>Pré-entraînement à grande échelle</h3><p>Des modèles plus gros apprennent des régularités sur d’immenses corpus.</p></div><div class="timeline-card anim d2">
+<div class="timeline-year">2022</div><div class="iconbox"><div class="asset-icon" data-label="Instruction tuning" aria-hidden="true"><span class="asset-glyph">I</span></div></div>
+<h3>Instruction tuning + RLHF</h3><p>Les modèles deviennent beaucoup meilleurs pour suivre l’intention utilisateur.</p></div><div class="timeline-card anim d3">
+<div class="timeline-year">2022</div><div class="iconbox"><div class="asset-icon" data-label="Interface conversationnelle" aria-hidden="true"><span class="asset-glyph">I</span></div></div>
+<h3>ChatGPT</h3><p>Le langage naturel devient une interface universelle vers le modèle.</p></div><div class="timeline-card anim d4">
+<div class="timeline-year">2023–2026</div><div class="iconbox"><div class="asset-icon" data-label="Outils et agents" aria-hidden="true"><span class="asset-glyph">O</span></div></div>
+<h3>Outils + multimodalité + raisonnement</h3><p>Les modèles commencent à agir dans des systèmes réels.</p></div></div>
+<div class="bottom-insight anim d5"><span class="pill green">Idée clé</span> <b>Le tournant n’est pas seulement “un modèle plus gros” :</b> c’est la combinaison modèle + entraînement + interface + outils.</div>
+<div class="source">Sources : Vaswani et al. (2017) · OpenAI/InstructGPT · OpenAI/ChatGPT</div>
+</section>
+<section class="slide" data-section="Des LLM aux agents">
+<div class="slide-head">
+<div><div class="kicker">02 · LE MODÈLE</div><h2>Un LLM reste d’abord un modèle de prédiction</h2><p class="subtitle">À l’inférence, il transforme une séquence de tokens en une distribution sur le token suivant.</p></div>
+<div class="head-mark">P(token<sub>t+1</sub> | contexte)</div>
+</div>
+<div class="two-col wide-gap">
+<div class="panel anim">
+<h3>Pipeline simplifié</h3>
+<div class="token-flow">
+<div class="token">« Réserve</div><div class="token">un</div><div class="token">vol</div><div class="token">pour</div><div class="token">Séoul</div>
+<div class="arrow-inline">→</div>
+<div class="transformer-box"><svg aria-hidden="true" class="icon" fill="none" height="42" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" viewbox="0 0 24 24" width="42"><path d="m12 2 9 5-9 5-9-5z"></path><path d="m3 12 9 5 9-5M3 17l9 5 9-5"></path></svg><b>Transformer</b><small>attention + MLP + couches répétées</small></div>
+<div class="arrow-inline">→</div>
+<div class="token next">…</div>
+</div>
+<div class="formula">P(x<sub>t+1</sub> | x<sub>1</sub>, …, x<sub>t</sub>)</div>
+</div>
+<div class="panel anim d1">
+<h3>Ce que cela donne à grande échelle</h3>
+<div class="cap-grid">
+<div class="cap"><svg aria-hidden="true" class="icon" fill="none" height="24" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" viewbox="0 0 24 24" width="24"><path d="M21 15a4 4 0 0 1-4 4H8l-5 3V7a4 4 0 0 1 4-4h10a4 4 0 0 1 4 4z"></path><path d="M8 9h8M8 13h5"></path></svg><b>Comprendre</b><span>instructions et contexte</span></div>
+<div class="cap"><svg aria-hidden="true" class="icon" fill="none" height="24" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" viewbox="0 0 24 24" width="24"><path d="M6 2h8l4 4v16H6z"></path><path d="M14 2v5h5M9 12h6M9 16h6"></path></svg><b>Générer</b><span>texte structuré</span></div>
+<div class="cap"><svg aria-hidden="true" class="icon" fill="none" height="24" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" viewbox="0 0 24 24" width="24"><path d="m8 9-4 3 4 3M16 9l4 3-4 3M14 5l-4 14"></path></svg><b>Coder</b><span>programmes et scripts</span></div>
+<div class="cap"><svg aria-hidden="true" class="icon" fill="none" height="24" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" viewbox="0 0 24 24" width="24"><path d="M4 4h7a3 3 0 0 1 3 3v13H7a3 3 0 0 0-3 3z"></path><path d="M20 4h-7a3 3 0 0 0-3 3v13h7a3 3 0 0 1 3 3z"></path></svg><b>Résumer</b><span>documents et données</span></div>
+<div class="cap"><svg aria-hidden="true" class="icon" fill="none" height="24" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" viewbox="0 0 24 24" width="24"><circle cx="6" cy="18" r="2"></circle><circle cx="18" cy="6" r="2"></circle><path d="M8 18h3c4 0 1-10 5-10h0"></path></svg><b>Raisonner</b><span>sur des étapes intermédiaires</span></div>
+<div class="cap"><svg aria-hidden="true" class="icon" fill="none" height="24" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" viewbox="0 0 24 24" width="24"><circle cx="12" cy="12" r="9"></circle><path d="M3 12h18M12 3a14 14 0 0 1 0 18M12 3a14 14 0 0 0 0 18"></path></svg><b>Traduire</b><span>entre langues</span></div>
+</div>
+</div>
+</div>
+<div class="callout anim d2"><b>Important :</b> le LLM génère une sortie. Il n’a pas, par lui-même, un navigateur, un système de fichiers, une API bancaire ou un mécanisme d’exécution.</div>
+</section>
+<section class="slide" data-section="Des LLM aux agents">
+<div class="slide-head">
+<div><div class="kicker">03 · LA LIMITE</div><h2>Un LLM seul ne peut pas agir dans le monde</h2><p class="subtitle">Le modèle peut proposer une action. Un système externe doit lui donner des moyens de l’exécuter.</p></div>
+</div>
+<div class="request-demo">
+<div class="request-card anim">
+<div class="req-user"><svg aria-hidden="true" class="icon" fill="none" height="30" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" viewbox="0 0 24 24" width="30"><circle cx="12" cy="8" r="4"></circle><path d="M4 22a8 8 0 0 1 16 0"></path></svg><b>Utilisateur</b></div>
+<div class="speech">« Trouve un vol pour Séoul vendredi, choisis celui sous mon budget et réserve-le. »</div>
+</div>
+<div class="arrow-big anim d1">→</div>
+<div class="llm-core anim d1"><svg aria-hidden="true" class="icon" fill="none" height="48" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" viewbox="0 0 24 24" width="48"><path d="M9.5 4.5a3 3 0 0 0-5 2.2A3.5 3.5 0 0 0 5 13.5a3 3 0 0 0 4.5 2.6M14.5 4.5a3 3 0 0 1 5 2.2 3.5 3.5 0 0 1-.5 6.8 3 3 0 0 1-4.5 2.6M12 3v18M8 8h4M12 8h4M7.5 13H12M12 13h4.5M9 17h3M12 17h3"></path></svg><b>LLM</b><span>génère du texte / un appel structuré</span></div>
+<div class="arrow-big anim d2">→</div>
+<div class="blocked anim d2">
+<h3>Sans système autour de lui</h3>
+<div class="block-row"><svg aria-hidden="true" class="icon" fill="none" height="23" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" viewbox="0 0 24 24" width="23"><circle cx="12" cy="12" r="9"></circle><path d="M3 12h18M12 3a14 14 0 0 1 0 18M12 3a14 14 0 0 0 0 18"></path></svg> Internet <span>indisponible</span></div>
+<div class="block-row"><svg aria-hidden="true" class="icon" fill="none" height="23" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" viewbox="0 0 24 24" width="23"><rect height="16" rx="2" width="18" x="3" y="5"></rect><path d="M7 3v4M17 3v4M3 10h18"></path></svg> Applications <span>indisponibles</span></div>
+<div class="block-row"><svg aria-hidden="true" class="icon" fill="none" height="23" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" viewbox="0 0 24 24" width="23"><path d="M6 2h8l4 4v16H6z"></path><path d="M14 2v5h5M9 12h6M9 16h6"></path></svg> Fichiers <span>indisponibles</span></div>
+<div class="block-row"><svg aria-hidden="true" class="icon" fill="none" height="23" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" viewbox="0 0 24 24" width="23"><ellipse cx="12" cy="5" rx="7" ry="3"></ellipse><path d="M5 5v6c0 1.7 3.1 3 7 3s7-1.3 7-3V5M5 11v6c0 1.7 3.1 3 7 3s7-1.3 7-3v-6"></path></svg> Bases de données <span>indisponibles</span></div>
+<div class="block-row"><svg aria-hidden="true" class="icon" fill="none" height="23" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" viewbox="0 0 24 24" width="23"><path d="M13 2 5 14h6l-1 8 8-12h-6z"></path></svg> Actions réelles <span>indisponibles</span></div>
+</div>
+</div>
+<div class="bottom-insight anim d3"><span class="pill green">Transition</span> Pour passer de <b>« produire une réponse »</b> à <b>« accomplir une tâche »</b>, il faut un système agentique.</div>
+</section>
+<section class="slide" data-section="Architecture d’un agent">
+<div class="slide-head">
+<div><div class="kicker">04 · DU LLM À L’AGENT</div><h2>Qu’est-ce qu’un agent ?</h2><p class="subtitle">Un système piloté par un LLM qui sélectionne et exécute des actions via des outils pour atteindre un objectif.</p></div>
+<div class="quote-box">Le LLM est <b>le moteur de décision</b>.<br/>L’agent est <b>le système complet</b>.</div>
+</div>
+<div class="agent-flow anim">
+<div class="flow-box"><svg aria-hidden="true" class="icon" fill="none" height="32" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" viewbox="0 0 24 24" width="32"><circle cx="12" cy="8" r="4"></circle><path d="M4 22a8 8 0 0 1 16 0"></path></svg><b>Objectif</b><span>demande / état initial</span></div>
+<div class="flow-arrow">→</div>
+<div class="flow-box primary"><svg aria-hidden="true" class="icon" fill="none" height="38" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" viewbox="0 0 24 24" width="38"><path d="M9.5 4.5a3 3 0 0 0-5 2.2A3.5 3.5 0 0 0 5 13.5a3 3 0 0 0 4.5 2.6M14.5 4.5a3 3 0 0 1 5 2.2 3.5 3.5 0 0 1-.5 6.8 3 3 0 0 1-4.5 2.6M12 3v18M8 8h4M12 8h4M7.5 13H12M12 13h4.5M9 17h3M12 17h3"></path></svg><b>Agent runtime</b><span>LLM + état + contrôle</span></div>
+<div class="flow-arrow">→</div>
+<div class="flow-box"><svg aria-hidden="true" class="icon" fill="none" height="32" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" viewbox="0 0 24 24" width="32"><path d="M14.7 6.3a4 4 0 0 0-5.3 5.3L3 18l3 3 6.4-6.4a4 4 0 0 0 5.3-5.3l-2.4 2.4-3-3z"></path></svg><b>Outils</b><span>APIs · code · recherche · fichiers</span></div>
+<div class="flow-arrow">→</div>
+<div class="flow-box"><svg aria-hidden="true" class="icon" fill="none" height="32" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" viewbox="0 0 24 24" width="32"><circle cx="12" cy="12" r="9"></circle><path d="M3 12h18M12 3a14 14 0 0 1 0 18M12 3a14 14 0 0 0 0 18"></path></svg><b>Environnement</b><span>applications · données · monde réel</span></div>
+</div>
+<div class="agent-subrow">
+<div class="mini-panel anim d1"><svg aria-hidden="true" class="icon" fill="none" height="26" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" viewbox="0 0 24 24" width="26"><ellipse cx="12" cy="5" rx="7" ry="3"></ellipse><path d="M5 5v6c0 1.7 3.1 3 7 3s7-1.3 7-3V5M5 11v6c0 1.7 3.1 3 7 3s7-1.3 7-3v-6"></path></svg><div><b>Mémoire</b><span>information persistante récupérée au besoin</span></div></div>
+<div class="mini-panel anim d2"><svg aria-hidden="true" class="icon" fill="none" height="26" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" viewbox="0 0 24 24" width="26"><path d="M12 2 20 5v6c0 5.2-3.4 9-8 11-4.6-2-8-5.8-8-11V5z"></path><path d="m8.5 12 2.2 2.2 4.8-5"></path></svg><div><b>Guardrails</b><span>permissions, règles, validation humaine</span></div></div>
+<div class="mini-panel anim d3"><svg aria-hidden="true" class="icon" fill="none" height="26" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" viewbox="0 0 24 24" width="26"><path d="M20 6v5h-5M4 18v-5h5"></path><path d="M18.4 9A7 7 0 0 0 6.2 6.2L4 8M5.6 15A7 7 0 0 0 17.8 17.8L20 16"></path></svg><div><b>Boucle de contrôle</b><span>ré-appelle le modèle jusqu’à terminaison ou escalade</span></div></div>
+</div>
+<div class="source">OpenAI : model + tools + instructions · Anthropic : model + harness + tools + environment</div>
+</section>
+<section class="slide" data-section="Architecture d’un agent">
+<div class="slide-head">
+<div>
+<div class="kicker">05 · ANATOMIE TECHNIQUE</div>
+<h2>Architecture d’un agent</h2>
+<p class="subtitle">L’agent est le système complet : LLM, mémoire et outils, qui agit sur un environnement.</p>
+</div>
+</div>
+<div class="figure-hero anim d1"><div class="diagram diagram-architecture" role="img" aria-label="Schéma simplifié d’un agent : objectif, runtime, mémoire, outils et environnement."><div class="diagram-kicker">SYSTÈME COMPLET</div><div class="architecture-map"><div class="diagram-stack diagram-stack-left"><div class="diagram-node"><b>Objectif</b><span>demande + état initial</span></div><div class="diagram-node"><b>Mémoire</b><span>contexte récupéré</span></div></div><div class="diagram-core"><span class="core-orbit"></span><b>Agent runtime</b><span>LLM · état · contrôle</span></div><div class="diagram-stack diagram-stack-right"><div class="diagram-node"><b>Outils</b><span>API · code · recherche</span></div><div class="diagram-node"><b>Environnement</b><span>applications + données</span></div></div></div><div class="diagram-loop-label">observer <i>→</i> décider <i>→</i> agir <i>→</i> vérifier</div></div></div>
+<p class="figure-caption anim d2">Point clé : la tâche entre dans l’agent. L’agent contient ses composants internes, puis agit vers un environnement externe et récupère des résultats.</p>
+</section>
+<section class="slide" data-section="Architecture d’un agent">
+<div class="slide-head">
+<div>
+<div class="kicker">06 · AUTONOMIE</div>
+<h2>L’agenticité est un continuum</h2>
+<p class="subtitle">On ne passe pas d’un coup de « simple chat » à « agent autonome ». L’autonomie augmente progressivement.</p>
+</div>
+<div class="quote-box small">Grille pédagogique <b>illustrative</b></div>
+</div>
+<div class="figure-hero anim d1"><div class="diagram diagram-continuum" role="img" aria-label="Continuum de l’agenticité, de la réponse simple à l’agent long-running."><div class="diagram-kicker">AUTONOMIE PROGRESSIVE</div><div class="continuum-track"><span class="track-line"></span><span class="track-dot d0"></span><span class="track-dot d1"></span><span class="track-dot d2"></span><span class="track-dot d3"></span><span class="track-dot d4"></span></div><div class="continuum-labels"><div><b>0</b><span>réponse</span></div><div><b>1</b><span>retrieval</span></div><div><b>2</b><span>outils</span></div><div><b>3</b><span>multi-étapes</span></div><div><b>4</b><span>long-running</span></div></div><div class="continuum-note"><strong>Plus d’initiative</strong><span>→ plus de contrôle, d’observabilité et de validation</span></div></div></div>
+<div class="panel-inline anim d2">
+<span class="chip">0 · réponse simple</span>
+<span class="chip">1 · retrieval</span>
+<span class="chip">2 · outils</span>
+<span class="chip">3 · multi-étapes</span>
+<span class="chip">4 · agent long-running</span>
+</div>
+</section>
+<section class="slide" data-section="Architecture d’un agent">
+<div class="slide-head">
+<div>
+<div class="kicker">07 · AUJOURD’HUI</div>
+<h2>Les capacités agentiques sont déjà dans les produits courants</h2>
+<p class="subtitle">ChatGPT, Claude et d’autres assistants combinent déjà recherche, fichiers, code et applications.</p>
+</div>
+</div>
+<div class="visual-grid">
+<div class="figure-hero anim d1"><div class="diagram diagram-capabilities" role="img" aria-label="Un agent relie recherche, fichiers, code et applications autour d’un même objectif."><div class="diagram-kicker">CAPACITÉS CONNECTÉES</div><div class="capability-orbit"><span class="cap-orbit orbit-one"></span><span class="cap-orbit orbit-two"></span><div class="cap-hub"><b>AGENT</b><span>objectif</span></div><div class="cap-node node-search">RECHERCHER</div><div class="cap-node node-files">FICHIERS</div><div class="cap-node node-code">CODE</div><div class="cap-node node-apps">APPS</div></div></div></div>
+<div class="key-card anim d2">
+<h3>Ce qu’ils savent déjà faire</h3>
+<ul class="key-points">
+<li><i>1</i><div>Rechercher <span>sur le web et dans des bases de connaissance</span></div></li>
+<li><i>2</i><div>Manipuler des fichiers <span>PDF, tableurs, documents, images</span></div></li>
+<li><i>3</i><div>Exécuter du code <span>analyser, transformer, tester, calculer</span></div></li>
+<li><i>4</i><div>Utiliser des apps <span>API, connecteurs, systèmes métier</span></div></li>
+</ul>
+<div class="short-note">L’agenticité dépend des permissions et des outils réellement disponibles au système.</div>
+</div>
+</div>
+</section>
+<section class="slide" data-section="Continual learning">
+<div class="slide-head">
+<div>
+<div class="kicker">08 · APRÈS LE DÉPLOIEMENT</div>
+<h2>Pourquoi un agent doit-il continuer à apprendre ?</h2>
+<p class="subtitle">Le monde change après le déploiement. Les tâches, les utilisateurs et les procédures changent aussi.</p>
+</div>
+</div>
+<div class="visual-grid">
+<div class="figure-hero anim d1"><div class="diagram diagram-shift" role="img" aria-label="Le monde déployé change : nouveaux cas, règles, feedback et distribution shift."><div class="diagram-kicker">APRÈS LE DÉPLOIEMENT</div><div class="shift-chart"><span class="axis-y">PERFORMANCE</span><span class="axis-x">TEMPS</span><span class="curve curve-old"></span><span class="curve curve-new"></span><span class="chart-label label-old">hier</span><span class="chart-label label-new">aujourd’hui</span></div><div class="shift-tags"><span>nouveaux cas</span><span>nouvelles règles</span><span>feedback humain</span></div></div></div>
+<div class="key-card anim d2">
+<h3>Ce qui évolue réellement</h3>
+<ul class="key-points">
+<li><i>+</i><div>Nouveaux cas <span>le modèle n’a pas vu toutes les situations au moment de l’entraînement</span></div></li>
+<li><i>+</i><div>Nouvelles règles <span>politiques, procédures, outils, formats, données</span></div></li>
+<li><i>+</i><div>Feedback humain <span>corrections, validations, préférences, exceptions</span></div></li>
+<li><i>+</i><div>Distribution shift <span>ce qui fonctionnait hier peut devenir faux demain</span></div></li>
+</ul>
+<div class="short-note">Un agent utile ne doit pas seulement exécuter. Il doit améliorer ses décisions futures.</div>
+</div>
+</div>
+</section>
+<section class="slide" data-section="Continual learning">
+<div class="slide-head">
+<div>
+<div class="kicker">09 · DÉFINITION</div>
+<h2>Qu’est-ce que « continuer à apprendre » ?</h2>
+<p class="subtitle">Une expérience passée change le comportement de l’agent lors des tâches futures.</p>
+</div>
+</div>
+<div class="visual-grid">
+<div class="figure-hero anim d1"><div class="diagram diagram-feedback" role="img" aria-label="Une expérience modifie la mémoire et améliore la décision future."><div class="diagram-kicker">BOUCLE D’EXPÉRIENCE</div><div class="feedback-flow"><div class="feedback-step"><b>01</b><strong>Tâche</strong><span>action + résultat</span></div><i>→</i><div class="feedback-step featured"><b>02</b><strong>Mémoire</strong><span>mise à jour utile</span></div><i>→</i><div class="feedback-step"><b>03</b><strong>Décision future</strong><span>meilleur choix</span></div></div><div class="feedback-return">la nouvelle expérience alimente la prochaine boucle</div></div></div>
+<div class="key-card anim d2">
+<h3>Idée simple</h3>
+<ul class="key-points">
+<li><i>1</i><div>Une tâche produit une action <span>et un résultat dans le monde</span></div></li>
+<li><i>2</i><div>La mémoire est mise à jour <span>si cette expérience est jugée utile</span></div></li>
+<li><i>3</i><div>La tâche suivante réutilise cela <span>pour prendre une meilleure décision</span></div></li>
+</ul>
+<div class="short-note">Apprendre ne veut pas forcément dire réentraîner le modèle. Cela peut aussi vouloir dire mettre à jour une mémoire externe.</div>
+</div>
+</div>
+</section>
+<section class="slide" data-section="Continual learning">
+<div class="slide-head">
+<div>
+<div class="kicker">10 · DEUX APPROCHES</div>
+<h2>Paramétrique vs non paramétrique</h2>
+<p class="subtitle">Deux grandes manières de continuer à apprendre après le déploiement.</p>
+</div>
+</div>
+<div class="visual-grid">
+<div class="figure-hero anim d1"><div class="diagram diagram-compare" role="img" aria-label="Comparaison de l’apprentissage paramétrique et non paramétrique."><div class="diagram-kicker">DEUX LEVIERS</div><div class="compare-grid"><div class="compare-column param"><span class="compare-mark">P</span><b>Paramétrique</b><small>modifier les poids</small><div class="weight-stack"><span></span><span></span><span></span><span></span></div><em>fine-tuning · réentraînement</em></div><div class="compare-column nonparam"><span class="compare-mark">NP</span><b>Non paramétrique</b><small>modifier l’information</small><div class="memory-stack"><span>mémoire</span><span>base externe</span><span>retrieval</span></div><em>souvent plus accessible pour un agent</em></div></div></div></div>
+<div class="key-card anim d2">
+<h3>Différence fondamentale</h3>
+<ul class="key-points">
+<li><i>P</i><div>Paramétrique <span>on modifie les poids du modèle : fine-tuning, réentraînement, adaptation plus lourde</span></div></li>
+<li><i>NP</i><div>Non paramétrique <span>on garde le modèle, mais on met à jour une mémoire ou une base externe</span></div></li>
+<li><i>✓</i><div>En pratique pour les agents <span>la mémoire externe est souvent la voie la plus accessible</span></div></li>
+</ul>
+<div class="short-note">Le paramétrique change le modèle. Le non paramétrique change l’information que l’agent peut récupérer au moment d’agir.</div>
+</div>
+</div>
+</section>
+<section class="slide" data-section="Mémoire">
+<div class="slide-head">
+<div><div class="kicker">11 · MÉMOIRE</div><h2>Une mémoire utile n’est pas un historique de chat</h2><p class="subtitle">Elle doit distinguer ce qui est temporaire, ce qui s’est passé, ce qui est vrai et comment agir.</p></div>
+</div>
+<div class="memory-types">
+<div class="memory-card anim"><div class="mem-icon"><svg aria-hidden="true" class="icon" fill="none" height="34" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" viewbox="0 0 24 24" width="34"><circle cx="12" cy="12" r="9"></circle><path d="M12 7v5l3 2"></path></svg></div><h3>Mémoire de travail</h3><p>État de la tâche actuelle : objectifs, observations, variables intermédiaires.</p><div class="example">Éphémère — disparaît après la tâche.</div></div>
+<div class="memory-card anim d1"><div class="mem-icon"><svg aria-hidden="true" class="icon" fill="none" height="34" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" viewbox="0 0 24 24" width="34"><path d="M6 2h8l4 4v16H6z"></path><path d="M14 2v5h5M9 12h6M9 16h6"></path></svg></div><h3>Mémoire épisodique</h3><p>Trajectoires et expériences spécifiques passées.</p><div class="example">« Tâche #417 : stratégie A → échec. »</div></div>
+<div class="memory-card anim d2"><div class="mem-icon"><svg aria-hidden="true" class="icon" fill="none" height="34" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" viewbox="0 0 24 24" width="34"><path d="M4 4h7a3 3 0 0 1 3 3v13H7a3 3 0 0 0-3 3z"></path><path d="M20 4h-7a3 3 0 0 0-3 3v13h7a3 3 0 0 1 3 3z"></path></svg></div><h3>Mémoire sémantique</h3><p>Faits, règles et connaissances consolidées.</p><div class="example">« Les remboursements &gt;100€ exigent validation. »</div></div>
+<div class="memory-card anim d3"><div class="mem-icon"><svg aria-hidden="true" class="icon" fill="none" height="34" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" viewbox="0 0 24 24" width="34"><circle cx="12" cy="12" r="3"></circle><path d="M19.4 15a1.8 1.8 0 0 0 .4 2l.1.1-2.8 2.8-.1-.1a1.8 1.8 0 0 0-2-.4 1.8 1.8 0 0 0-1 1.7V21h-4v-.1a1.8 1.8 0 0 0-1-1.7 1.8 1.8 0 0 0-2 .4l-.1.1-2.8-2.8.1-.1a1.8 1.8 0 0 0 .4-2A1.8 1.8 0 0 0 3 14H3v-4h.1a1.8 1.8 0 0 0 1.7-1 1.8 1.8 0 0 0-.4-2l-.1-.1 2.8-2.8.1.1a1.8 1.8 0 0 0 2 .4 1.8 1.8 0 0 0 1-1.7V3h4v.1a1.8 1.8 0 0 0 1 1.7 1.8 1.8 0 0 0 2-.4l.1-.1 2.8 2.8-.1.1a1.8 1.8 0 0 0-.4 2 1.8 1.8 0 0 0 1.7 1H21v4h-.1a1.8 1.8 0 0 0-1.5 1z"></path></svg></div><h3>Mémoire procédurale</h3><p>Procédures, stratégies ou skills réutilisables.</p><div class="example">« Vérifier X → appeler Y → confirmer Z. »</div></div>
+</div>
+<div class="bottom-insight anim d4"><b>Question centrale :</b> quelle expérience doit devenir un épisode, puis éventuellement une règle ou une procédure ?</div>
+</section>
+<section class="slide" data-section="Mémoire">
+<div class="slide-head">
+<div>
+<div class="kicker">12 · BOUCLE D’APPRENTISSAGE</div>
+<h2>Un agent qui apprend en travaillant</h2>
+<p class="subtitle">Le travail produit de l’expérience. L’expérience modifie l’apprentissage. L’apprentissage améliore le travail suivant.</p>
+</div>
+</div>
+<div class="figure-hero anim d1"><div class="diagram diagram-learning-loop" role="img" aria-label="Boucle d’apprentissage : agir, observer, retenir, adapter."><div class="diagram-kicker">UNE BOUCLE QUI S’ENRICHIT</div><div class="learning-ring"><span class="ring-line"></span><div class="learning-node ln1"><b>Agir</b><span>dans le monde</span></div><div class="learning-node ln2"><b>Observer</b><span>le résultat</span></div><div class="learning-node ln3"><b>Retenir</b><span>l’expérience utile</span></div><div class="learning-node ln4"><b>Adapter</b><span>la décision suivante</span></div><div class="learning-center">EXPÉRIENCE<br/><small>→ apprentissage réutilisable</small></div></div></div></div>
+<p class="figure-caption anim d2">Dans cette boucle, l’agent agit dans un environnement, obtient un résultat, puis transforme ce résultat en apprentissage réutilisable.</p>
+</section>
+<section class="slide" data-section="Mémoire">
+<div class="slide-head">
+<div>
+<div class="kicker">13 · CONSOLIDATION</div>
+<h2>Comment une expérience devient-elle une connaissance ?</h2>
+<p class="subtitle">Toutes les interactions ne méritent pas de devenir de la mémoire utile.</p>
+</div>
+</div>
+<div class="visual-grid">
+<div class="figure-hero anim d1"><div class="diagram diagram-consolidate" role="img" aria-label="Pipeline de consolidation : expérience, évaluation, mémoire utile, règle ou procédure."><div class="diagram-kicker">CONSOLIDER SANS TOUT STOCKER</div><div class="consolidation-pipeline"><div class="consolidation-stage"><b>EXPÉRIENCES</b><span>brutes et nombreuses</span><i>••••••••</i></div><i class="pipeline-arrow">→</i><div class="consolidation-stage focus"><b>ÉVALUATION</b><span>résultat · feedback · répétition · contexte</span><i>score</i></div><i class="pipeline-arrow">→</i><div class="consolidation-stage"><b>MÉMOIRE UTILE</b><span>épisode → règle → procédure</span><i>✓</i></div></div><div class="consolidation-foot">ce qui est appris doit rester traçable, contextualisé et réversible</div></div></div>
+<div class="key-card anim d2">
+<h3>Ce qu’on évalue</h3>
+<ul class="key-points">
+<li><i>1</i><div>Résultat <span>succès, échec, score, validation</span></div></li>
+<li><i>2</i><div>Feedback <span>retour du monde ou d’un humain</span></div></li>
+<li><i>3</i><div>Répétition <span>une règle devient plus crédible si elle se répète</span></div></li>
+<li><i>4</i><div>Contexte <span>une règle peut être locale à une situation précise</span></div></li>
+</ul>
+<div class="short-note">Le défi n’est pas seulement d’écrire en mémoire. C’est de savoir quoi retenir, quoi renforcer et quoi ignorer.</div>
+</div>
+</div>
+</section>
+<section class="slide" data-section="Cas concret">
+<div class="slide-head">
+<div><div class="kicker">14 · CAS CONCRET</div><h2>Un agent de support qui apprend de ses résultats</h2><p class="subtitle">Même modèle. Même outils. La différence vient de ce que le système conserve et réutilise.</p></div>
+</div>
+<div class="case-episodes">
+<div class="episode anim">
+<div class="ep-num">1</div><div class="case-art case-art-1" aria-hidden="true"><span>01</span><b>EXPÉRIENCE</b></div><h3>Premier cas</h3>
+<div class="ep-user">Client : « Je veux un remboursement après renouvellement. »</div>
+<div class="ep-action bad">Agent choisit la procédure A</div>
+<div class="ep-result fail"><svg aria-hidden="true" class="icon" fill="none" height="18" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" viewbox="0 0 24 24" width="18"><circle cx="12" cy="12" r="9"></circle><path d="m9 9 6 6M15 9l-6 6"></path></svg> Échec</div>
+<div class="ep-human">Correction humaine : utiliser B si renouvellement &lt; 7 jours.</div>
+</div>
+<div class="ep-arrow">→</div>
+<div class="episode anim d1">
+<div class="ep-num">2</div><div class="case-art case-art-2" aria-hidden="true"><span>02</span><b>STRUCTURE</b></div><h3>Mémoire structurée</h3>
+<div class="memory-record"><b>Contexte</b><span>renouvellement récent</span><b>Action</b><span>A</span><b>Outcome</b><span class="red">failure</span><b>Correction</b><span>B</span><b>Confiance</b><span>humaine · élevée</span></div>
+</div>
+<div class="ep-arrow">→</div>
+<div class="episode anim d2">
+<div class="ep-num">3</div><div class="case-art case-art-3" aria-hidden="true"><span>03</span><b>ADAPTATION</b></div><h3>Cas suivant</h3>
+<div class="ep-user">Situation similaire détectée</div>
+<div class="ep-action good">Retrieve → règle B</div>
+<div class="ep-result success"><svg aria-hidden="true" class="icon" fill="none" height="18" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" viewbox="0 0 24 24" width="18"><circle cx="12" cy="12" r="9"></circle><path d="m8 12 2.6 2.6L16.5 9"></path></svg> Succès</div>
+<div class="ep-human">La mémoire est renforcée par le nouvel outcome.</div>
+</div>
+</div>
+<div class="platform-mock anim d3">
+<div class="pm-head"><b>Vue d’observabilité</b><span>Ce qu’une démo enregistrée peut montrer</span></div>
+<div class="pm-grid">
+<div><label>Current task</label><b>Demande client</b><small>contexte + contrainte</small></div>
+<div><label>Retrieved memory</label><b>2 expériences pertinentes</b><small>1 succès · 1 échec</small></div>
+<div><label>Agent actions</label><b>verify → search → refund</b><small>tool calls observables</small></div>
+<div><label>Learning</label><b>Memory updated</b><small>confidence ↑ · rule reinforced</small></div>
+</div>
+</div>
+</section>
+<section class="slide" data-section="Pratique">
+<div class="slide-head">
+<div><div class="kicker">15 · CE QUI COMPTE VRAIMENT</div><h2>Mémoire ≠ apprentissage</h2><p class="subtitle">Le système devient meilleur seulement si les bonnes expériences influencent les bonnes décisions.</p></div>
+</div>
+<div class="works-fails">
+<div class="wf good anim"><h3><svg aria-hidden="true" class="icon" fill="none" height="24" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" viewbox="0 0 24 24" width="24"><circle cx="12" cy="12" r="9"></circle><path d="m8 12 2.6 2.6L16.5 9"></path></svg> Ce qui fonctionne mieux</h3>
+<div class="wf-row"><b>Mémoire liée à un outcome</b><span>succès, échec, score, feedback explicite</span></div>
+<div class="wf-row"><b>Writes sélectifs</b><span>ne pas enregistrer chaque interaction brute</span></div>
+<div class="wf-row"><b>Mémoires structurées</b><span>contexte · action · résultat · justification</span></div>
+<div class="wf-row"><b>Retrieval + reranking</b><span>pertinence sémantique + valeur / confiance</span></div>
+<div class="wf-row"><b>Expiration / dépréciation</b><span>les règles doivent pouvoir vieillir</span></div>
+<div class="wf-row"><b>Évaluation continue</b><span>benchmarks, tests, audit humain</span></div>
+</div>
+<div class="wf bad anim d1"><h3><svg aria-hidden="true" class="icon" fill="none" height="24" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" viewbox="0 0 24 24" width="24"><circle cx="12" cy="12" r="9"></circle><path d="m9 9 6 6M15 9l-6 6"></path></svg> Ce qui casse le système</h3>
+<div class="wf-row"><b>Tout stocker</b><span>bruit, coût, contradictions</span></div>
+<div class="wf-row"><b>Self-reflection sans signal</b><span>le modèle peut rationaliser une erreur</span></div>
+<div class="wf-row"><b>Similarité vectorielle seule</b><span>similaire ne signifie pas utile</span></div>
+<div class="wf-row"><b>Ne jamais oublier</b><span>stale policies et distribution shift</span></div>
+<div class="wf-row"><b>Updates invisibles</b><span>difficiles à auditer ou rollback</span></div>
+<div class="wf-row"><b>Pas de métrique d’outcome</b><span>impossible de savoir si l’agent progresse</span></div>
+</div>
+</div>
+<div class="bottom-insight anim d2"><b>Le vrai problème scientifique :</b> apprendre <u>quoi</u>, avec <u>quelle confiance</u>, pour <u>quel contexte</u>, et savoir <u>quand oublier</u>.</div>
+</section>
+<section class="slide conclusion" data-section="Conclusion">
+<div class="slide-head">
+<div><div class="kicker">16 · CONCLUSION</div><h2>De l’intelligence statique à l’expérience accumulée</h2></div>
+</div>
+<div class="takeaway-chain anim">
+<div class="take"><span>1</span><b>Les LLM</b><small>ont apporté une interface générale de raisonnement et de génération.</small></div>
+<div class="take-arrow">→</div>
+<div class="take"><span>2</span><b>Les outils</b><small>ont donné aux modèles la capacité d’agir dans des systèmes réels.</small></div>
+<div class="take-arrow">→</div>
+<div class="take"><span>3</span><b>La mémoire</b><small>permet de réutiliser l’expérience au lieu de recommencer à zéro.</small></div>
+<div class="take-arrow">→</div>
+<div class="take strong"><span>4</span><b>Le continual learning</b><small>doit transformer l’expérience en meilleure décision future.</small></div>
+</div>
+<div class="thesis anim d3">
+<div class="thesis-small">LE DÉFI N’EST PAS DE CONSTRUIRE DES AGENTS QUI SE SOUVIENNENT DE TOUT.</div>
+<div class="thesis-big">Mais des agents qui savent <span>quoi apprendre</span> de ce qu’ils vivent.</div>
+</div>
+<div class="formula-line anim d4"><span>EXPÉRIENCE</span><i>→</i><span>ÉVALUATION</span><i>→</i><span>MÉMOIRE</span><i>→</i><span>ADAPTATION</span></div>
+</section>
+<section class="slide" data-section="Accès aux slides">
+<div class="slide-head">
+<div>
+<div class="kicker">RESSOURCES</div>
+<h2>Accéder aux slides</h2>
+<p class="subtitle">Scannez ce QR code pour retrouver cette présentation en ligne.</p>
+</div>
+</div>
+<div class="qr-grid">
+<div class="qr-card anim d1">
+<div class="qr-image-wrap"><img alt="QR code vers les slides" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAXIAAAFyAQAAAADAX2ykAAACjElEQVR4nO2bQW7bMBBF31QCuqQAH8BHoW4W5GbSUXIDchmAwnQxpKykaJogsmoVwwVhm2/xgcGQM5+0KF8Z848v4eC8884777zzzv+Jlzp6gEWYB4DcA7mtjQfqcX5nPqqqagKRAYgJRK4FGelUVVXf8vfW4/zOfG4ZGlOnwCLEl97WWmIfqcf5O/HzsE7X8gB6nP8W37/7ruS+SEyoxGl5v/p4+p3/eLQIBgUyMI/dutgpZNhaII+m3/lP8bOIiAwgTwla6dwjI4uVz8fqcX4n3vJ3k6Hz0KGWtXmRmtjH6XF+Xx5rfmp/1CmEgk50qhOdgn2qnE6Ppt/5j8eav0uvhIKSe4hpEIXFJmIajtLj/L58y0vLVcCqqlA2nofehufvKXl50gIEVZ021sYiItdS2+Ej9Ti/N597iC+rzRzUjl6LdExQFx5Vv/N/5fX5WistyCL63LoiGVm8PzonX/0N8yKzAPlitqREBYGuyCyd3y+ck3/T/4YE84AAXbFIz9dXUfIFidMRepzfl2/FcQLVhJ21WNcbyqa69vr5lHz1N8zVCOuFUSg10pvJ43tCvsWXTompelW2MN1WQ7O4PL4n41d/sqCT9b/rTq1qMa9Oh8f3hPzGf7b81UTzn0N7leP782n5rfm4jTTYdUNs+7Pn7yl564+ae9EVnQUUSi/2e74UyH2rvB5Nv/Of4te7BABkzH09hOtNQ0HGI/U4vxPfzt8EtX5uRRZRt+2S78//Bx/TIpa11jOpqk75p8r4b/Q4/y3+9xeS+aJCAJ2lHsfUm/4j9Dh/H37dlQmvUq8L9VVuz3VkPFSP8/vwq38F1A25bs3mdNweYfn5e0Ze/P/dzjvvvPPOO384/ws9xLrwBKGqjQAAAABJRU5ErkJggg=="/></div>
+<div class="qr-copy">
+<h3>Slides IMPACT IA</h3>
+<p>Version en ligne de la masterclass, accessible depuis votre téléphone.</p>
+<div class="qr-url">salomon.reinvent-labs.com/impactia</div>
+<div class="qr-small">Lien : https://salomon.reinvent-labs.com/impactia</div>
+</div>
+</div>
+<div class="identity-card anim d2">
+<h3>Ce que vous y retrouverez</h3>
+<ul class="identity-bullets">
+<li><i>•</i><div>Les concepts clés <span>LLM, agent, mémoire et continual learning</span></div></li>
+<li><i>•</i><div>Les schémas utilisés <span>architecture, continuum, apprentissage et mémoire</span></div></li>
+<li><i>•</i><div>Les liens utiles <span>site personnel, entreprise et références principales</span></div></li>
+</ul>
+</div>
+</div>
+</section>
+
+<section class="slide qna" data-section="Q&amp;A">
+<div class="qna-inner">
+<div class="eyebrow anim">20 MINUTES</div>
+<h2 class="anim d1">Questions &amp; discussion</h2>
+<p class="anim d2">Mémoire · continual learning · architectures agentiques · évaluation · cas d’usage</p>
+<div class="qna-visual anim d3">
+<div><svg aria-hidden="true" class="icon" fill="none" height="44" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" viewbox="0 0 24 24" width="44"><path d="M9.5 4.5a3 3 0 0 0-5 2.2A3.5 3.5 0 0 0 5 13.5a3 3 0 0 0 4.5 2.6M14.5 4.5a3 3 0 0 1 5 2.2 3.5 3.5 0 0 1-.5 6.8 3 3 0 0 1-4.5 2.6M12 3v18M8 8h4M12 8h4M7.5 13H12M12 13h4.5M9 17h3M12 17h3"></path></svg><b>Agent</b></div><span>→</span>
+<div><svg aria-hidden="true" class="icon" fill="none" height="44" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" viewbox="0 0 24 24" width="44"><circle cx="6" cy="18" r="2"></circle><circle cx="18" cy="6" r="2"></circle><path d="M8 18h3c4 0 1-10 5-10h0"></path></svg><b>Expérience</b></div><span>→</span>
+<div><svg aria-hidden="true" class="icon" fill="none" height="44" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" viewbox="0 0 24 24" width="44"><ellipse cx="12" cy="5" rx="7" ry="3"></ellipse><path d="M5 5v6c0 1.7 3.1 3 7 3s7-1.3 7-3V5M5 11v6c0 1.7 3.1 3 7 3s7-1.3 7-3v-6"></path></svg><b>Mémoire</b></div><span>→</span>
+<div><svg aria-hidden="true" class="icon" fill="none" height="44" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" viewbox="0 0 24 24" width="44"><path d="m3 17 6-6 4 4 7-8"></path><path d="M15 7h5v5"></path></svg><b>Amélioration</b></div>
+</div>
+<div class="qna-brand"><img alt="Reinvent Labs" class="logo" src="assets/logo-green.png"/></div>
+</div>
+</section>
+<section class="slide company-final" data-section="Reinvent Labs">
+<div class="slide-head">
+<div>
+<div class="kicker">REINVENT LABS</div>
+<h2>Continuer la conversation</h2>
+<p class="subtitle">Scannez pour découvrir nos projets, nos travaux et nos offres autour des agents IA.</p>
+</div>
+</div>
+<div class="qr-grid">
+<div class="qr-card anim d1">
+<div class="qr-image-wrap"><img alt="QR code vers Reinvent Labs" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAXIAAAFyAQAAAADAX2ykAAACkUlEQVR4nO2bTWrcQBCFv0o3eDkCH2COIt3M5Gbqo8wBAq2locXLotUa2RAnJrIyClWLYfB8iweP6q6ftonPRPr2KRycd95555133vlf8bZEBJjNrAMbJjOY2m/DgXqc35nvJUkZSF2QxslM368SECRJest/tR7nd+anNUOnCFwkG4D6sST2kXqc34eP7//QCwwMMcUipmP1OP/FfOpmA0LN33+vx/m/4lv+XgRMYP3tSQagdH01AWxHII+m3/k/4pNZrZpr9Bns5fYkG5hr+XysHud34mv+3jNUUJZv6VpYEvs4Pc7vy1Obn14FjQQtnZIK9WO8lIrUGB9Nv/O/icW4DHApm05YI0FSDtJ40WK8+3synja8CKLPoWYy/TrQqK42zv09G7/Wz7leuEpdljF1iKlDyYA+d0fpcX5fvtVXUyz0N0MwR4EwCAUIhXQt0frxCD3O78u383m9ekeglltSAby++h/4PgNMEXvJoV69NhCkcXpS7Y6HI/U4vxPf6ibCksQQlnKLe9W8JrHn78n4N/1R3QUW6iHNZTm4Wzvs/p6Pb741L6md0t1QwPvf8/JtfpXbLGO1e5lvrJWW+3tGfj2fQ71m63xjk8l5Mdn9PSW/zp/bW5xxM8lah1j3xH40/c5/HJv9kQCsz50pXV8NmCP9CAaz4fONM/LV37bdDUVQIkxxnVQ+F7iUqGP0OP8l/Lo1sqG1vvZyi9SbOFnEhiP1OL8Tv9bPtGs2Q1sX3pdI3v/+J7xZF1Rf6qyek+ypPbd7dP3Ov43372PF9Lw810ndj3h/rnOQHuf35Tf90bYJzuH9zt/P51PyS/6mWkEHrM/IYDalAYDZtvyj6Xf+4zD//27nnXfeeeedP5z/CdQk+YWaTsfvAAAAAElFTkSuQmCC"/></div>
+<div class="qr-copy">
+<h3>Reinvent Labs</h3>
+<p>Recherche appliquée, produits et ingénierie autour des systèmes agentiques.</p>
+<div class="qr-url">www.reinvent-labs.com</div>
+<div class="company-logo-strip"><img alt="Reinvent Labs" class="logo" src="assets/logo-green.png"/> <span>www.reinvent-labs.com</span></div>
+</div>
+</div>
+<div class="identity-card anim d2">
+<h3>Ce que nous construisons</h3>
+<ul class="identity-bullets">
+<li><i>1</i><div>Agentic engineering <span>conception d’agents fiables, observables et utiles</span></div></li>
+<li><i>2</i><div>Mémoire &amp; apprentissage <span>systèmes qui améliorent leurs décisions en travaillant</span></div></li>
+<li><i>3</i><div>Produits et accompagnement <span>cas d’usage réels, formation et déploiement</span></div></li>
+</ul>
+</div>
+</div>
+</section>
+
+<section class="slide sources-slide" data-section="Références">
+<div class="slide-head">
+<div><div class="kicker">ANNEXE</div><h2>Références principales</h2><p class="subtitle">Sources utilisées pour structurer la partie technique et la taxonomie de la masterclass.</p></div>
+</div>
+<div class="refs">
+<div><b>Vaswani et al. (2017)</b><span>Attention Is All You Need.</span></div>
+<div><b>OpenAI</b><span>A Practical Guide to Building Agents.</span></div>
+<div><b>Anthropic (2024)</b><span>Building Effective Agents.</span></div>
+<div><b>Anthropic (2026)</b><span>Trustworthy Agents in Practice; Measuring AI Agent Autonomy in Practice.</span></div>
+<div><b>Wu et al. (2024)</b><span>Continual Learning for Large Language Models: A Survey.</span></div>
+<div><b>Zheng et al. (2024)</b><span>Towards Lifelong Learning of Large Language Models: A Survey.</span></div>
+<div><b>Shinn et al. (2023)</b><span>Reflexion: Language Agents with Verbal Reinforcement Learning.</span></div>
+</div>
+<div class="sources-note">Les niveaux d’agenticité présentés dans le deck sont une grille pédagogique illustrative, pas une normalisation officielle.</div>
+</section>
+</main></div>
+<div id="hud">
+<button aria-label="Précédente" class="hud-btn" id="prevBtn">‹</button>
+<span id="current">1</span>/<span id="total"></span>
+<div id="progress"><i></i></div>
+<span id="sectionName"></span>
+<button aria-label="Suivante" class="hud-btn" id="nextBtn">›</button>
+</div>
+<script src="presentation.js"></script>
+</body>
+</html>
