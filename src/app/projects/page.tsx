@@ -13,27 +13,12 @@ export const metadata = {
   },
 };
 
-const PLACEHOLDER_IDS = new Set(["oh-my-hermes", "aya", "help-ai"]);
-const WHITE_BG_IDS = new Set(["tourci"]);
-
-function ProjectThumbnail({ id, image, title }: { id: string; image: string; title: string }) {
-  if (PLACEHOLDER_IDS.has(id)) {
-    const initials = title.split(" ").map((w) => w[0]).join("").slice(0, 2).toUpperCase();
-    return (
-      <div className="w-14 h-14 rounded-xl bg-gradient-to-br from-primary/30 to-primary/10 flex items-center justify-center shrink-0">
-        <span className="text-primary font-bold text-lg">{initials}</span>
-      </div>
-    );
-  }
+/** Real screenshot of the project (same images as the home page). */
+function ProjectThumbnail({ cover, title }: { cover?: string; title: string }) {
+  if (!cover) return null;
   return (
-    <div className={`w-14 h-14 rounded-xl overflow-hidden shrink-0 flex items-center justify-center ${WHITE_BG_IDS.has(id) ? "bg-white p-2" : "bg-zinc-800 p-1"}`}>
-      <Image
-        src={image}
-        alt={title}
-        width={52}
-        height={52}
-        className="object-contain w-full h-full"
-      />
+    <div className="relative h-16 w-24 shrink-0 overflow-hidden rounded-md border border-border bg-muted">
+      <Image src={cover} alt={`${title} screenshot`} fill sizes="96px" className="object-cover object-top" />
     </div>
   );
 }
@@ -55,7 +40,7 @@ export default function ProjectsPage() {
           >
             <CardContent className="p-5">
               <div className="flex gap-4">
-                <ProjectThumbnail id={project.id} image={project.image} title={project.title} />
+                <ProjectThumbnail cover={project.cover} title={project.title} />
                 <div className="flex-1 min-w-0 space-y-2">
                   <div className="space-y-1">
                     <h2 className="text-lg font-semibold">{project.title}</h2>
@@ -87,8 +72,7 @@ export default function ProjectsPage() {
       </section>
 
       <Link href="/gallery/apps" className="block group">
-        <div className="relative overflow-hidden rounded-xl border border-border bg-gradient-to-br from-primary/20 via-card to-card p-6 hover:border-primary/50 transition-all duration-300">
-          <Badge className="mb-3">Vibe Coded</Badge>
+        <div className="rounded-xl border border-border bg-card p-6 hover:border-primary/50 transition-colors">
           <h2 className="text-lg font-bold mb-1 group-hover:text-primary transition-colors">App Gallery</h2>
           <p className="text-sm text-muted-foreground mb-3">Experiments and small apps.</p>
           <span className="text-sm text-primary font-medium">Explore →</span>

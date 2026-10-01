@@ -100,7 +100,7 @@ export default function AboutPage() {
           </div>
           <div>
             <h1 className="text-3xl font-bold">Salomon Diei</h1>
-            <p className="text-lg text-primary">AI Engineer & Researcher</p>
+            <p className="text-lg text-primary">AI Researcher</p>
             <p className="text-muted-foreground mt-2">
               Cheonan-si, South Korea
             </p>

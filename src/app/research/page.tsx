@@ -23,14 +23,11 @@ export default function ResearchPage() {
       </div>
 
       {/* Current Focus */}
-      <Card className="bg-gradient-to-br from-primary/10 via-card to-card border-border">
+      <Card className="bg-card border-border">
         <CardContent className="p-6">
           <div className="flex items-start gap-4">
-            <div className="w-12 h-12 rounded-lg bg-primary/20 flex items-center justify-center shrink-0">
-              <span className="text-primary font-bold">AG</span>
-            </div>
             <div>
-              <Badge className="mb-2">Active Focus</Badge>
+              <p className="mb-2 text-sm font-medium text-primary">Current focus</p>
               <h2 className="text-xl font-semibold">Agent Memory & Continuous Learning</h2>
               <p className="text-primary">Making agents that learn, retain, and self-improve</p>
               <p className="text-sm text-muted-foreground mt-2">

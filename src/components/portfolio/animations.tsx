@@ -9,40 +9,11 @@ interface FadeInProps {
 }
 
 /**
- * Fades and lifts its children in when they scroll into view.
- *
- * Only elements that start below the fold are hidden (in an effect, after
- * hydration), so above-the-fold content never flickers and nothing stays
- * invisible if JavaScript fails or a screenshot tool does not scroll.
+ * Layout wrapper kept for existing call sites. Entrance animations were
+ * removed on purpose: the site stays calm and the same on every page.
  */
-export function FadeIn({ children, delay = 0, className = "" }: FadeInProps) {
-  const ref = useRef<HTMLDivElement>(null);
-
-  useEffect(() => {
-    const el = ref.current;
-    if (!el) return;
-    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
-    if (el.getBoundingClientRect().top < window.innerHeight * 0.92) return;
-
-    el.classList.add("reveal-pending");
-    const observer = new IntersectionObserver(
-      ([entry]) => {
-        if (!entry.isIntersecting) return;
-        el.classList.add("reveal-in");
-        el.classList.remove("reveal-pending");
-        observer.disconnect();
-      },
-      { threshold: 0.12, rootMargin: "0px 0px -6% 0px" }
-    );
-    observer.observe(el);
-    return () => observer.disconnect();
-  }, []);
-
-  return (
-    <div ref={ref} className={className} style={{ ["--reveal-delay" as string]: `${delay}ms` }}>
-      {children}
-    </div>
-  );
+export function FadeIn({ children, className = "" }: FadeInProps) {
+  return <div className={className}>{children}</div>;
 }
 
 interface SlideInProps {
