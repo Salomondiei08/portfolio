@@ -7,7 +7,7 @@ export const metadata = {
   title: "App Gallery | Salomon Diei",
   description: "A collection of production apps with real-world utility.",
   alternates: {
-    canonical: "https://salomondiei.com/gallery/apps",
+    canonical: "https://salomon.reinvent-labs.com/gallery/apps",
   },
 };
 

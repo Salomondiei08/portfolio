@@ -8,7 +8,7 @@ export const metadata = {
   title: "AI, Agents & Engineering — Salomon Diei's Blog",
   description: "Writing about AI research, autonomous agents, and building intelligent systems.",
   alternates: {
-    canonical: "https://salomondiei.com/blog",
+    canonical: "https://salomon.reinvent-labs.com/blog",
   },
 };
 
@@ -28,13 +28,13 @@ export default function BlogPage() {
           __html: JSON.stringify({
             "@context": "https://schema.org",
             "@type": "Blog",
-            "@id": "https://salomondiei.com/blog#blog",
+            "@id": "https://salomon.reinvent-labs.com/blog#blog",
             name: "AI, Agents & Engineering — Salomon Diei's Blog",
             description: "Writing about AI research, autonomous agents, and building intelligent systems.",
-            url: "https://salomondiei.com/blog",
-            author: { "@type": "Person", "@id": "https://salomondiei.com/#person", name: "Salomon Diei" },
+            url: "https://salomon.reinvent-labs.com/blog",
+            author: { "@type": "Person", "@id": "https://salomon.reinvent-labs.com/#person", name: "Salomon Diei" },
             inLanguage: "en-US",
-            isPartOf: { "@type": "WebSite", "@id": "https://salomondiei.com/#website" },
+            isPartOf: { "@type": "WebSite", "@id": "https://salomon.reinvent-labs.com/#website" },
           }),
         }}
       />
@@ -45,8 +45,8 @@ export default function BlogPage() {
             "@context": "https://schema.org",
             "@type": "BreadcrumbList",
             itemListElement: [
-              { "@type": "ListItem", position: 1, name: "Home", item: "https://salomondiei.com" },
-              { "@type": "ListItem", position: 2, name: "Blog", item: "https://salomondiei.com/blog" },
+              { "@type": "ListItem", position: 1, name: "Home", item: "https://salomon.reinvent-labs.com" },
+              { "@type": "ListItem", position: 2, name: "Blog", item: "https://salomon.reinvent-labs.com/blog" },
             ],
           }),
         }}

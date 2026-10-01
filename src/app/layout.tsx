@@ -6,23 +6,23 @@ import { ThemeProvider } from "@/components/portfolio/ThemeProvider";
 export const metadata: Metadata = {
   title: "Salomon Diei | AI Engineer & Autonomous Agents Researcher",
   description: "Salomon Diei, AI researcher at KOREATECH working on memory for autonomous agents. Former CTO at Sikili, Google Cloud Certified, GKS Scholar based in South Korea.",
-  metadataBase: new URL("https://salomondiei.com"),
+  metadataBase: new URL("https://salomon.reinvent-labs.com"),
   authors: [{ name: "Salomon Diei", url: "https://github.com/salomondiei08" }],
   creator: "Salomon Diei",
   publisher: "Salomon Diei",
   alternates: {
-    canonical: "https://salomondiei.com",
+    canonical: "https://salomon.reinvent-labs.com",
   },
   openGraph: {
     title: "Salomon Diei | AI Engineer & Autonomous Agents Researcher",
     description: "AI researcher working on memory for autonomous agents: how agents retain, retrieve and learn from experience across sessions.",
     type: "website",
     locale: "en_US",
-    url: "https://salomondiei.com",
+    url: "https://salomon.reinvent-labs.com",
     siteName: "Salomon Diei Portfolio",
     images: [
       {
-        url: "https://salomondiei.com/images/salomon.JPG",
+        url: "https://salomon.reinvent-labs.com/images/salomon.JPG",
         width: 1200,
         height: 630,
         alt: "Salomon Diei - AI Engineer & Researcher",
@@ -33,7 +33,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "Salomon Diei | AI Engineer & Researcher",
     description: "AI researcher focused on memory for autonomous agents and efficient AI systems.",
-    images: ["https://salomondiei.com/images/salomon.JPG"],
+    images: ["https://salomon.reinvent-labs.com/images/salomon.JPG"],
   },
   robots: {
     index: true,
@@ -86,11 +86,11 @@ export default function RootLayout({
             __html: JSON.stringify({
               "@context": "https://schema.org",
               "@type": "Person",
-              "@id": "https://salomondiei.com/#person",
+              "@id": "https://salomon.reinvent-labs.com/#person",
               name: "Salomon Diei",
               alternateName: "Salomon DIEI",
-              url: "https://salomondiei.com",
-              image: "https://salomondiei.com/images/salomon.JPG",
+              url: "https://salomon.reinvent-labs.com",
+              image: "https://salomon.reinvent-labs.com/images/salomon.JPG",
               email: "salomondiei08@gmail.com",
               sameAs: [
                 "https://github.com/salomondiei08",
@@ -150,13 +150,13 @@ export default function RootLayout({
             __html: JSON.stringify({
               "@context": "https://schema.org",
               "@type": "WebSite",
-              "@id": "https://salomondiei.com/#website",
+              "@id": "https://salomon.reinvent-labs.com/#website",
               name: "Salomon Diei",
-              url: "https://salomondiei.com",
+              url: "https://salomon.reinvent-labs.com",
               description: "AI Engineer and autonomous agents researcher. Writing about AI, machine learning, and building intelligent systems.",
               author: {
                 "@type": "Person",
-                "@id": "https://salomondiei.com/#person",
+                "@id": "https://salomon.reinvent-labs.com/#person",
               },
               inLanguage: "en-US",
             }),

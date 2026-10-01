@@ -9,7 +9,7 @@ export const metadata = {
   title: "Projects | Salomon Diei",
   description: "Projects by Salomon Diei — Oh My Hermes, Kernel, Aya, TourCI.",
   alternates: {
-    canonical: "https://salomondiei.com/projects",
+    canonical: "https://salomon.reinvent-labs.com/projects",
   },
 };
 

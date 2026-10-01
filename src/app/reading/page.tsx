@@ -5,7 +5,7 @@ export const metadata = {
   title: "Reading | Salomon Diei",
   description: "Books I'm reading, have read, and recommend — with notes on what stuck.",
   alternates: {
-    canonical: "https://salomondiei.com/reading",
+    canonical: "https://salomon.reinvent-labs.com/reading",
   },
 };
 

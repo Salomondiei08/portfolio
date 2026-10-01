@@ -7,7 +7,7 @@ export const metadata = {
   title: "About Salomon Diei | AI Engineer & Autonomous Agents Researcher",
   description: "Salomon Diei is an AI researcher at KOREATECH working on memory for autonomous agents, and former CTO at Sikili.",
   alternates: {
-    canonical: "https://salomondiei.com/about",
+    canonical: "https://salomon.reinvent-labs.com/about",
   },
 };
 

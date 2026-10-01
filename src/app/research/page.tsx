@@ -5,7 +5,7 @@ export const metadata = {
   title: "Research | Salomon Diei - Autonomous Agents",
   description: "Research focused on building AI agent memory systems that enable agents to learn, continuously improve, and operate autonomously over time.",
   alternates: {
-    canonical: "https://salomondiei.com/research",
+    canonical: "https://salomon.reinvent-labs.com/research",
   },
 };
 

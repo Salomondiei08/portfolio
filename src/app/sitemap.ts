@@ -2,7 +2,7 @@ import { MetadataRoute } from "next";
 import { getAllPosts } from "@/lib/markdown";
 
 export default function sitemap(): MetadataRoute.Sitemap {
-  const baseUrl = "https://salomondiei.com";
+  const baseUrl = "https://salomon.reinvent-labs.com";
 
   // Static pages with real last-modified dates (update these when pages change)
   const staticRoutes: MetadataRoute.Sitemap = [

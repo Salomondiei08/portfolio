@@ -177,7 +177,7 @@ This project is open source and available under the [MIT License](LICENSE).
 
 Salomon DIEI
 
-- Website: <https://salomondiei.com>
+- Website: <https://salomon.reinvent-labs.com>
 - GitHub: [@salomondiei08](https://github.com/salomondiei08)
 - LinkedIn: [in/salomondiei](https://linkedin.com/in/salomondiei)
 - Email: <salomondiei08@gmail.com>

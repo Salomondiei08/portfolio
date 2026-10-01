@@ -7,6 +7,6 @@ export default function robots(): MetadataRoute.Robots {
       allow: "/",
       disallow: ["/api/", "/_next/"],
     },
-    sitemap: "https://salomondiei.com/sitemap.xml",
+    sitemap: "https://salomon.reinvent-labs.com/sitemap.xml",
   };
 }

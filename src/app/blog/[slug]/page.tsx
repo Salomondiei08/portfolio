@@ -18,7 +18,7 @@ export async function generateStaticParams() {
 export async function generateMetadata({ params }: Props) {
   const { slug } = await params;
   const post = await getPostBySlug("blog", slug);
-  const baseUrl = "https://salomondiei.com";
+  const baseUrl = "https://salomon.reinvent-labs.com";
 
   if (!post) {
     return { title: "Post Not Found" };
@@ -65,7 +65,7 @@ export default async function BlogPostPage({ params }: Props) {
     notFound();
   }
 
-  const baseUrl = "https://salomondiei.com";
+  const baseUrl = "https://salomon.reinvent-labs.com";
   const ogImage = post.coverImage
     ? `${baseUrl}${post.coverImage}`
     : `${baseUrl}/images/salomon.JPG`;

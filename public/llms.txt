@@ -6,17 +6,17 @@ He builds intelligent systems and researches how to make AI agents more efficien
 He was CTO at Sikili until 2026, holds a GKS scholarship, and is a Google Cloud Certified Associate Cloud Engineer.
 
 ## Pages
-- Home: https://salomondiei.com
-- About: https://salomondiei.com/about
-- Blog: https://salomondiei.com/blog
-- Projects: https://salomondiei.com/projects
-- Research: https://salomondiei.com/research
-- App Gallery: https://salomondiei.com/gallery/apps
-- Reading List: https://salomondiei.com/reading
+- Home: https://salomon.reinvent-labs.com
+- About: https://salomon.reinvent-labs.com/about
+- Blog: https://salomon.reinvent-labs.com/blog
+- Projects: https://salomon.reinvent-labs.com/projects
+- Research: https://salomon.reinvent-labs.com/research
+- App Gallery: https://salomon.reinvent-labs.com/gallery/apps
+- Reading List: https://salomon.reinvent-labs.com/reading
 
 ## Blog
-Blog posts are available at https://salomondiei.com/blog
-The sitemap with all article URLs is at https://salomondiei.com/sitemap.xml
+Blog posts are available at https://salomon.reinvent-labs.com/blog
+The sitemap with all article URLs is at https://salomon.reinvent-labs.com/sitemap.xml
 
 ## Contact
 - Email: salomondiei08@gmail.com
