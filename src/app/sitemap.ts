@@ -13,6 +13,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { url: `${baseUrl}/research`,     lastModified: new Date("2026-01-01") },
     { url: `${baseUrl}/gallery/apps`, lastModified: new Date("2026-01-01") },
     { url: `${baseUrl}/reading`,      lastModified: new Date("2026-01-01") },
+    { url: `${baseUrl}/links`,        lastModified: new Date("2026-10-02") },
   ];
 
   // Blog posts using their actual publish dates.

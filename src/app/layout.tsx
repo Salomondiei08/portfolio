@@ -103,6 +103,10 @@ export default function RootLayout({
               sameAs: [
                 "https://github.com/salomondiei08",
                 "https://linkedin.com/in/salomondiei",
+                "https://www.facebook.com/salomon.diei/",
+                "https://www.instagram.com/salomon.codes/",
+                "https://www.tiktok.com/@salomondiei",
+                "https://www.youtube.com/@Reinvent-Labs",
               ],
               jobTitle: "AI Engineer & Researcher",
               worksFor: {
