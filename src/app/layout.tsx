@@ -1,14 +1,7 @@
 import type { Metadata, Viewport } from "next";
-import dynamic from "next/dynamic";
 import "./globals.css";
-import { Sidebar } from "@/components/portfolio";
+import { SiteShell } from "@/components/portfolio/SiteShell";
 import { ThemeProvider } from "@/components/portfolio/ThemeProvider";
-
-// Lazy-load ChatWidget — it's not needed on initial render and adds JS weight to every page
-const ChatWidget = dynamic(
-  () => import("@/components/portfolio/ChatWidget").then((m) => ({ default: m.ChatWidget })),
-  { ssr: false }
-);
 
 export const metadata: Metadata = {
   title: "Salomon Diei | AI Engineer & Autonomous Agents Researcher",
@@ -172,30 +165,7 @@ export default function RootLayout({
       </head>
       <body className="antialiased min-h-screen">
         <ThemeProvider>
-          <div className="flex min-h-screen">
-            <Sidebar />
-            <main className="flex-1 min-w-0">
-              <div className="min-h-screen px-4 py-6 pt-16 lg:px-8 lg:py-8 lg:pt-8 max-w-5xl mx-auto">
-                {children}
-
-                {/* Footer */}
-                <footer className="mt-16 pt-8 border-t border-border text-center">
-                  <p className="text-sm text-muted-foreground">
-                    Made with ❤️ by{" "}
-                    <a
-                      href="https://github.com/salomondiei08"
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="inline-flex min-h-11 items-center text-primary hover:underline transition-colors"
-                    >
-                      Salomon DIEI
-                    </a>
-                  </p>
-                </footer>
-              </div>
-            </main>
-          </div>
-          <ChatWidget />
+          <SiteShell>{children}</SiteShell>
         </ThemeProvider>
       </body>
     </html>

@@ -2,6 +2,9 @@ import type { Metadata } from "next";
 import Image from "next/image";
 import {
   Facebook,
+  Globe,
+  ArrowUpRight,
+  MessageCircle,
   Instagram,
   Linkedin,
   Mail,
@@ -15,17 +18,17 @@ export const metadata: Metadata = {
   description:
     "Tous les liens de Salomon Diei: TikTok, Instagram, YouTube, LinkedIn, Facebook et email.",
   alternates: {
-    canonical: "https://salomondiei.com/links",
+    canonical: "https://salomon.reinvent-labs.com/links",
   },
   openGraph: {
     title: "Salomon Diei | Liens",
     description:
       "Ingénieur IA, chercheur et créateur de contenu sur l'intelligence artificielle, les agents IA, la programmation et la tech.",
-    url: "https://salomondiei.com/links",
+    url: "https://salomon.reinvent-labs.com/links",
     type: "profile",
     images: [
       {
-        url: "https://salomondiei.com/images/salomon-social-profile.jpg",
+        url: "https://salomon.reinvent-labs.com/images/salomon-social-profile.jpg",
         width: 720,
         height: 720,
         alt: "Salomon Diei",
@@ -37,7 +40,7 @@ export const metadata: Metadata = {
     title: "Salomon Diei | Liens",
     description:
       "Retrouve Salomon Diei sur TikTok, Instagram, YouTube, LinkedIn, Facebook et email.",
-    images: ["https://salomondiei.com/images/salomon-social-profile.jpg"],
+    images: ["https://salomon.reinvent-labs.com/images/salomon-social-profile.jpg"],
   },
 };
 
@@ -49,6 +52,12 @@ type SocialLink = {
 };
 
 const socialLinks: SocialLink[] = [
+  {
+    name: "Site web",
+    description: "Mon portfolio",
+    href: "https://salomon.reinvent-labs.com/",
+    icon: Globe,
+  },
   {
     name: "TikTok",
     description: "Contenus courts sur l'IA, les agents et la tech",
@@ -102,7 +111,7 @@ const topics = [
  */
 export default function LinksPage() {
   return (
-    <div className="mx-auto flex min-h-[calc(100vh-4rem)] w-full max-w-[36rem] flex-col px-0 py-8 sm:py-12">
+    <div className="mx-auto flex min-h-screen w-full max-w-[36rem] flex-col px-0 py-8 sm:py-12">
       <header className="flex flex-col items-center text-center">
         <div className="relative h-24 w-24 overflow-hidden rounded-full border border-border bg-secondary shadow-sm">
           <Image
@@ -115,10 +124,12 @@ export default function LinksPage() {
           />
         </div>
 
-        <p className="eyebrow mt-6">Salomon Diei</p>
-        <h1 className="mt-2 font-sans text-3xl font-bold leading-tight tracking-tight sm:text-4xl">
-          Ingénieur IA · Chercheur · Créateur de contenu
+        <h1 className="mt-6 font-sans text-3xl font-bold leading-tight">
+          Salomon Diei
         </h1>
+        <p className="mt-2 text-base leading-relaxed text-muted-foreground">
+          Ingénieur IA · Chercheur · Créateur de contenu
+        </p>
         <p className="mt-4 max-w-[31rem] text-base leading-relaxed text-muted-foreground sm:text-lg">
           Je partage du contenu sur l'intelligence artificielle, les agents IA, la programmation
           et les nouvelles technologies.
@@ -129,7 +140,7 @@ export default function LinksPage() {
         <h2 id="social-links-title" className="font-sans text-sm font-bold uppercase tracking-[0.14em] text-muted-foreground">
           Retrouve-moi ici
         </h2>
-        <ul className="mt-4 grid grid-cols-3 gap-3 sm:grid-cols-6">
+        <ul className="mt-4 grid grid-cols-3 gap-3 sm:grid-cols-7">
           {socialLinks.map((link) => (
             <li key={link.href}>
               <a
@@ -147,17 +158,25 @@ export default function LinksPage() {
             </li>
           ))}
         </ul>
-        <dl className="mt-5 grid gap-3 text-sm leading-relaxed text-muted-foreground sm:grid-cols-2">
-          {socialLinks.map((link) => (
-            <div key={link.href} className="min-w-0">
-              <dt className="font-sans font-bold text-foreground">{link.name}</dt>
-              <dd>{link.description}</dd>
-            </div>
-          ))}
-        </dl>
       </section>
 
-      <section aria-labelledby="topics-title" className="mt-8 rounded-lg border border-border bg-secondary/40 p-5">
+      <a
+        href="https://chat.whatsapp.com/IpV1ED1SUaZFUepV5SzUkM?mode=gi_t"
+        target="_blank"
+        rel="noopener noreferrer"
+        className="mt-8 flex min-h-24 items-center gap-4 rounded-lg border border-emerald-500/40 bg-emerald-500/10 p-4 transition-colors hover:bg-emerald-500/20 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-background"
+      >
+        <MessageCircle className="h-7 w-7 shrink-0 text-emerald-500" aria-hidden="true" />
+        <span className="min-w-0 flex-1">
+          <span className="block font-sans text-base font-bold">AI Connect</span>
+          <span className="mt-1 block text-sm leading-relaxed text-foreground">
+            Tu veux apprendre l&apos;IA ? Rejoins notre communauté AI Connect.
+          </span>
+        </span>
+        <ArrowUpRight className="h-5 w-5 shrink-0" aria-hidden="true" />
+      </a>
+
+      <section aria-labelledby="topics-title" className="mt-8">
         <h2 id="topics-title" className="font-sans text-sm font-bold uppercase tracking-[0.14em] text-muted-foreground">
           Mes sujets
         </h2>

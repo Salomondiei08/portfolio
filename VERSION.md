@@ -1,5 +1,7 @@
 ## Version History
 
+- 2026-10-02: Made `/links` independent of the portfolio drawer, chatbot and footer; removed social descriptions, added a website link and an AI Connect WhatsApp community tile.
+
 - 2026-10-02: Added `s.reinvent-labs.com` as a short URL redirecting to the portfolio's standalone `/links` page, with verified DNS.
 
 - 2026-10-02: Reverted the reading-first redesign back to the sidebar and card layout. Kept: Sikili CTO marked as ended in 2026, Oh My Hermes star count (850+), project screenshots in `public/images/projects/`.
