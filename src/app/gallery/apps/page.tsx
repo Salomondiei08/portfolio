@@ -1,6 +1,4 @@
-import Link from "next/link";
-import { Card, CardContent } from "@/components/ui/card";
-import { Badge } from "@/components/ui/badge";
+import { LinkRow, PageHeader, Section } from "@/components/site/Section";
 import { appGalleryItems } from "@/lib/portfolio-data";
 
 export const metadata = {
@@ -17,6 +15,10 @@ type AppGalleryPageProps = {
   };
 };
 
+/**
+ * Small apps and experiments, with a server-side search (plain GET form,
+ * so it works without JavaScript).
+ */
 export default function AppGalleryPage({ searchParams }: AppGalleryPageProps) {
   const rawQuery = Array.isArray(searchParams?.q) ? searchParams?.q[0] : (searchParams?.q ?? "");
   const query = rawQuery.trim().toLowerCase();
@@ -27,112 +29,53 @@ export default function AppGalleryPage({ searchParams }: AppGalleryPageProps) {
     );
 
   return (
-    <div className="space-y-8">
-      {/* Header */}
-      <div className="space-y-4">
-        <Link
-          href="/"
-          className="inline-flex items-center gap-2 text-sm text-muted-foreground hover:text-primary transition-colors"
-        >
-          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-4 h-4">
-            <path strokeLinecap="round" strokeLinejoin="round" d="M15.75 19.5L8.25 12l7.5-7.5" />
-          </svg>
-          Back to Home
-        </Link>
-        <h1 className="text-3xl font-bold">App Gallery</h1>
-        <p className="text-muted-foreground">
-          A focused list of live apps and tools.
-        </p>
-      </div>
+    <>
+      <PageHeader eyebrow="Apps" title="Small apps and experiments">
+        <p>Live tools I built quickly to scratch an itch. Some are useful, some are just fun.</p>
+      </PageHeader>
 
-      <section className="space-y-4">
-        <form action="/gallery/apps" method="get" className="space-y-2">
-          <label htmlFor="gallery-search" className="text-sm font-medium text-foreground">
-            Search projects
+      <Section label={`${filteredApps.length} apps`} id="apps">
+        <form action="/gallery/apps" method="get" role="search" className="mb-10 flex max-w-md flex-col gap-2 sm:flex-row">
+          <label htmlFor="gallery-search" className="sr-only">
+            Search apps
           </label>
-          <div className="flex gap-2">
-            <input
-              id="gallery-search"
-              name="q"
-              defaultValue={rawQuery}
-              placeholder="Search by title, description, or tag..."
-              className="w-full rounded-lg border border-border bg-card px-3 py-2 text-sm text-foreground placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-primary/40"
-            />
-            <button
-              type="submit"
-              className="rounded-lg bg-primary px-4 py-2 text-sm font-medium text-primary-foreground hover:opacity-90 transition-opacity min-w-20"
-            >
-              Search
-            </button>
-          </div>
+          <input
+            id="gallery-search"
+            name="q"
+            type="search"
+            defaultValue={rawQuery}
+            placeholder="Search by name or tag"
+            className="min-h-11 flex-1 rounded-md border border-input bg-background px-3.5 text-base text-foreground placeholder:text-muted-foreground focus:border-primary focus:outline-none focus:ring-2 focus:ring-primary/30 sm:text-sm"
+          />
+          <button
+            type="submit"
+            className="min-h-11 rounded-md bg-primary px-5 text-sm font-medium text-primary-foreground hover:bg-primary/90 transition-colors"
+          >
+            Search
+          </button>
         </form>
 
-        <h2 className="text-lg font-semibold flex items-center gap-3">
-          <span className="w-2 h-2 rounded-full bg-green-500" />
-          Live Apps
-          <Badge variant="secondary" className="text-xs font-normal">
-            {filteredApps.length} apps
-          </Badge>
-          <div className="h-px flex-1 bg-border" />
-        </h2>
-
-        <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
-          {filteredApps.map((app) => (
-            <Card key={app.id} className="h-full bg-card border-border hover:border-primary/50 transition-all group">
-              <CardContent className="p-5 space-y-3 h-full flex flex-col">
-                <a href={app.href} target="_blank" rel="noopener noreferrer" className="block">
-                  <div className="w-12 h-12 rounded-xl bg-primary/10 flex items-center justify-center text-xl font-bold text-primary">
-                    {app.title.charAt(0)}
-                  </div>
-                  <div>
-                    <h3 className="font-semibold group-hover:text-primary transition-colors">
-                      {app.title}
-                    </h3>
-                    <p className="text-sm text-muted-foreground mt-1 line-clamp-2">
-                      {app.description}
-                    </p>
-                  </div>
-                </a>
-
-                <div className="flex flex-wrap gap-1.5">
-                  {app.tags.map((tag) => (
-                    <Badge key={tag} variant="secondary" className="text-xs">
-                      {tag}
-                    </Badge>
-                  ))}
-                </div>
-
-                <div className="mt-auto flex flex-wrap gap-2 pt-1">
-                  <a
-                    href={app.href}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="inline-flex min-h-11 items-center justify-center rounded-lg bg-primary px-3 py-2 text-sm font-medium text-primary-foreground hover:opacity-90 transition-opacity"
-                  >
-                    {app.href.includes("github.com") ? "View Source" : "Open App"}
-                  </a>
-                  {app.sourceHref && (
-                    <a
-                      href={app.sourceHref}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="inline-flex min-h-11 items-center justify-center rounded-lg border border-border px-3 py-2 text-sm font-medium text-foreground hover:bg-muted transition-colors"
-                    >
-                      GitHub
-                    </a>
-                  )}
-                </div>
-              </CardContent>
-            </Card>
-          ))}
-        </div>
-
-        {filteredApps.length === 0 && (
-          <p className="text-sm text-muted-foreground">
-            No app matches this search.
-          </p>
+        {filteredApps.length === 0 ? (
+          <p className="text-muted-foreground">No app matches this search.</p>
+        ) : (
+          <ul className="max-w-[38rem] space-y-8">
+            {filteredApps.map((app) => {
+              const links = [
+                { label: app.href.includes("github.com") ? "Source" : "Open", href: app.href },
+                ...(app.sourceHref ? [{ label: "Source", href: app.sourceHref }] : []),
+              ];
+              return (
+                <li key={app.id} className="space-y-1.5">
+                  <h3 className="text-lg font-bold leading-snug">{app.title}</h3>
+                  <p className="font-sans text-sm text-muted-foreground">{app.tags.join(" · ")}</p>
+                  <p className="leading-relaxed text-foreground/85">{app.description}</p>
+                  <LinkRow links={links} />
+                </li>
+              );
+            })}
+          </ul>
         )}
-      </section>
-    </div>
+      </Section>
+    </>
   );
 }
