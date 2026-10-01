@@ -1,215 +1,157 @@
+import Image from "next/image";
 import Link from "next/link";
 import { format } from "date-fns";
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { Badge } from "@/components/ui/badge";
 import { NewsletterForm } from "@/components/portfolio/NewsletterForm";
-import { FadeIn, SlideIn } from "@/components/portfolio/animations";
-import { featuredProject, portfolioProjects } from "@/lib/portfolio-data";
+import { Entry, Section } from "@/components/site/Section";
+import { portfolioProjects } from "@/lib/portfolio-data";
+import { contactLinks, nowItems, researchInterests, resumeHref } from "@/lib/profile-data";
 import { getAllPosts } from "@/lib/markdown";
 
-export default function Home() {
-  const recentPosts = getAllPosts("blog").slice(0, 4).map((post) => ({
-    title: post.title,
-    date: format(new Date(post.date), "MMM d"),
-    href: `/blog/${post.slug}`,
-  }));
+/** Projects shown on the home page, in this order. The rest live on /projects. */
+const SELECTED_PROJECT_IDS = ["kernel", "oh-my-hermes", "aya"];
 
-  const otherProjects = portfolioProjects.filter((p) => p.id !== featuredProject.id).slice(0, 3);
+/**
+ * Home page, laid out like an academic homepage: who I am and what I
+ * study first, then current roles, research themes, selected work and
+ * recent writing. Each block is a labelled Section in one reading column.
+ */
+export default function Home() {
+  const recentPosts = getAllPosts("blog").slice(0, 5);
+  const selectedProjects = SELECTED_PROJECT_IDS.map((id) =>
+    portfolioProjects.find((project) => project.id === id)
+  ).filter((project): project is NonNullable<typeof project> => Boolean(project));
 
   return (
-    <div className="space-y-8">
-      {/* Hero */}
-      <section className="space-y-4 pb-2">
-        <p className="text-muted-foreground">Hello, I&apos;m</p>
-        <h1 className="text-4xl md:text-5xl font-bold tracking-tight">Salomon Diei</h1>
-        <div className="flex items-center gap-3">
-          <div className="h-px w-12 bg-primary" />
-          <h2 className="text-xl text-muted-foreground">AI Engineer & Researcher</h2>
+    <>
+      {/* Introduction */}
+      <section className="grid gap-6 pb-12 pt-8 md:grid-cols-[9rem_1fr] md:gap-10 md:pb-16 md:pt-16">
+        <div>
+          <Image
+            src="/images/salomon.JPG"
+            alt="Portrait of Salomon Diei"
+            width={144}
+            height={144}
+            priority
+            className="h-24 w-24 rounded-full object-cover md:h-36 md:w-36"
+          />
         </div>
-        <p className="text-muted-foreground leading-relaxed max-w-2xl">
-          Building intelligent systems and researching memory for self-learning, evolving agents.
-        </p>
-        <div className="flex flex-wrap gap-x-4 gap-y-1 text-sm pt-1">
-          <a href="https://github.com/salomondiei08" target="_blank" rel="noopener noreferrer" className="inline-flex min-h-11 min-w-11 items-center text-muted-foreground hover:text-primary transition-colors">GitHub</a>
-          <a href="https://linkedin.com/in/salomondiei" target="_blank" rel="noopener noreferrer" className="inline-flex min-h-11 min-w-11 items-center text-muted-foreground hover:text-primary transition-colors">LinkedIn</a>
-          <a href="mailto:salomondiei08@gmail.com" className="inline-flex min-h-11 min-w-11 items-center text-muted-foreground hover:text-primary transition-colors">Email</a>
-          <a href="/Salomon_Academic_Resume.pdf" download="Salomon_Diei_Resume.pdf" className="inline-flex min-h-11 min-w-11 items-center text-muted-foreground hover:text-primary transition-colors">Resume</a>
+        <div className="min-w-0 space-y-6">
+          <div className="space-y-2">
+            <h1 className="text-[2.25rem] font-bold leading-[1.1] tracking-tight sm:text-5xl">Salomon Diei</h1>
+            <p className="font-sans text-muted-foreground">AI researcher at KOREATECH · CTO at Sikili</p>
+          </div>
+
+          <p className="max-w-[36rem] text-xl leading-relaxed sm:text-[1.375rem]">
+            I study memory for AI agents: how an agent can keep what it learns from one task and use it to do
+            the next one better.
+          </p>
+
+          <div className="max-w-[36rem] space-y-4 leading-relaxed text-foreground/85">
+            <p>
+              I am an M.S. student in Artificial Intelligence at KOREATECH in South Korea, where I work in the
+              DICE Lab with Prof. Oh Heung Son. My research looks at memory architectures, self-evaluation and
+              long-horizon behaviour in autonomous agents.
+            </p>
+            <p>
+              Alongside research, I am CTO at Sikili, where I build the agentic tools and automation that took
+              the company from $0 to $200K ARR in its first year. Before that I built mobile and backend software
+              in Côte d&apos;Ivoire. I write about what I learn on{" "}
+              <Link href="/blog" className="text-link">my blog</Link>.
+            </p>
+          </div>
+
+          <ul className="flex flex-wrap gap-x-5 font-sans text-sm">
+            {contactLinks.map((link) => (
+              <li key={link.href}>
+                <a
+                  href={link.href}
+                  {...(link.external ? { target: "_blank", rel: "noopener noreferrer" } : {})}
+                  className="inline-flex min-h-11 items-center text-primary hover:underline underline-offset-4"
+                >
+                  {link.label}
+                </a>
+              </li>
+            ))}
+            <li>
+              <a
+                href={resumeHref}
+                download="Salomon_Diei_Resume.pdf"
+                className="inline-flex min-h-11 items-center text-primary hover:underline underline-offset-4"
+              >
+                CV (PDF)
+              </a>
+            </li>
+          </ul>
         </div>
       </section>
 
-      {/* Now + Writing */}
-      <div className="grid md:grid-cols-2 gap-4">
-        <FadeIn delay={100}>
-          <Card className="bg-card border-border hover:border-primary/50 transition-all duration-300 h-full">
-            <CardHeader className="pb-3">
-              <CardTitle className="text-base font-semibold flex items-center gap-2">
-                <span className="text-primary text-sm">01.</span>
-                Now
-              </CardTitle>
-            </CardHeader>
-            <CardContent className="space-y-4">
-              <div className="space-y-3">
-                <div className="flex items-start gap-3">
-                  <div className="w-1.5 h-1.5 rounded-full bg-primary mt-2 shrink-0" />
-                  <div>
-                    <p className="text-sm font-medium">Assistant Researcher — KOREATECH</p>
-                    <p className="text-xs text-muted-foreground">DICE Lab · memory systems for AI agents</p>
-                  </div>
-                </div>
-                <div className="flex items-start gap-3">
-                  <div className="w-1.5 h-1.5 rounded-full bg-primary mt-2 shrink-0" />
-                  <div>
-                    <p className="text-sm font-medium">CTO — Sikili</p>
-                    <p className="text-xs text-muted-foreground">Seed $800K · $0 → $200K ARR</p>
-                  </div>
-                </div>
-                <div className="flex items-start gap-3">
-                  <div className="w-1.5 h-1.5 rounded-full bg-primary/40 mt-2 shrink-0" />
-                  <div>
-                    <p className="text-sm font-medium">Open-source</p>
-                    <p className="text-xs text-muted-foreground">Oh My Hermes · 400+ stars · Kernel</p>
-                  </div>
-                </div>
-              </div>
-              <Link href="/about" className="inline-flex min-h-11 items-center text-sm text-primary hover:underline">
-                Full background →
-              </Link>
-            </CardContent>
-          </Card>
-        </FadeIn>
+      <Section label="Now" id="now">
+        <ul className="space-y-5">
+          {nowItems.map((item) => (
+            <li key={item.role}>
+              <p className="font-sans font-bold">
+                {item.role}
+                <span className="font-normal text-muted-foreground">, {item.place}</span>
+              </p>
+              <p className="text-foreground/85">{item.detail}</p>
+            </li>
+          ))}
+        </ul>
+      </Section>
 
-        <FadeIn delay={200}>
-          <Card className="bg-card border-border hover:border-primary/50 transition-all duration-300 h-full">
-            <CardHeader className="pb-3">
-              <div className="flex items-center justify-between">
-                <CardTitle className="text-base font-semibold flex items-center gap-2">
-                  <span className="text-primary text-sm">02.</span>
-                  Writing
-                </CardTitle>
-                <Link href="/blog" className="inline-flex min-h-11 items-center text-xs text-muted-foreground hover:text-primary transition-colors">
-                  View all →
-                </Link>
-              </div>
-            </CardHeader>
-            <CardContent>
-              <div className="space-y-1">
-                {recentPosts.map((post) => (
-                  <Link key={post.href} href={post.href} className="block group/post">
-                    <div className="flex min-h-11 items-center justify-between py-2 border-b border-border/50 group-hover/post:border-primary/30 transition-colors">
-                      <span className="text-sm group-hover/post:text-primary transition-colors line-clamp-1 pr-2">
-                        {post.title}
-                      </span>
-                      <span className="text-xs text-muted-foreground shrink-0">{post.date}</span>
-                    </div>
-                  </Link>
-                ))}
-              </div>
-            </CardContent>
-          </Card>
-        </FadeIn>
-      </div>
-
-      {/* Featured Project */}
-      <SlideIn direction="up" delay={300}>
-        <Link href={`/projects#${featuredProject.id}`} className="block group">
-          <Card className="bg-card border-border hover:border-primary/50 transition-all duration-300">
-            <CardContent className="p-5">
-              <div className="flex flex-col sm:flex-row gap-4">
-                <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-primary/30 to-primary/10 flex items-center justify-center shrink-0">
-                  <span className="text-primary font-bold text-base">OM</span>
-                </div>
-                <div className="flex-1 space-y-2">
-                  <div className="flex items-center gap-2 flex-wrap">
-                    <Badge variant="outline" className="text-xs border-primary/50 text-primary">Featured</Badge>
-                    <h3 className="text-base font-semibold group-hover:text-primary transition-colors">
-                      {featuredProject.title}
-                    </h3>
-                    <div className="flex flex-wrap gap-1.5">
-                      {featuredProject.tags.slice(0, 3).map((tag) => (
-                        <Badge key={tag} variant="secondary" className="text-xs px-1.5 py-0">{tag}</Badge>
-                      ))}
-                    </div>
-                  </div>
-                  <p className="text-sm text-muted-foreground">{featuredProject.description}</p>
-                </div>
-              </div>
-            </CardContent>
-          </Card>
-        </Link>
-      </SlideIn>
-
-      {/* Research + More Projects */}
-      <div className="grid md:grid-cols-2 gap-4">
-        <FadeIn delay={400}>
-          <Link href="/research" className="block group h-full">
-            <Card className="bg-card border-border hover:border-primary/50 transition-all duration-300 h-full">
-              <CardHeader className="pb-3">
-                <CardTitle className="text-base font-semibold flex items-center gap-2">
-                  <span className="text-primary text-sm">03.</span>
-                  Research
-                </CardTitle>
-              </CardHeader>
-              <CardContent className="space-y-3">
-                <p className="text-sm text-muted-foreground leading-relaxed">
-                  Focused on agent memory — how AI systems retain, retrieve, and learn from context across sessions. Working in the DICE Lab with Prof. Oh Heung Son at KOREATECH.
-                </p>
-                <div className="flex flex-wrap gap-1.5">
-                  {["Agent Memory", "Continuous Learning", "LLM Systems"].map((t) => (
-                    <Badge key={t} variant="secondary" className="text-xs px-1.5 py-0">{t}</Badge>
-                  ))}
-                </div>
-                <span className="inline-flex min-h-11 items-center text-sm text-primary">View research →</span>
-              </CardContent>
-            </Card>
-          </Link>
-        </FadeIn>
-
-        <FadeIn delay={450}>
-          <Card className="bg-card border-border h-full">
-            <CardHeader className="pb-3">
-              <div className="flex items-center justify-between">
-                <CardTitle className="text-base font-semibold flex items-center gap-2">
-                  <span className="text-primary text-sm">04.</span>
-                  More Projects
-                </CardTitle>
-                <Link href="/projects" className="inline-flex min-h-11 items-center text-xs text-muted-foreground hover:text-primary transition-colors">
-                  View all →
-                </Link>
-              </div>
-            </CardHeader>
-            <CardContent>
-              <div className="space-y-3">
-                {otherProjects.map((project) => (
-                  <Link key={project.id} href={`/projects#${project.id}`} className="flex min-h-11 items-center gap-3 group/p">
-                    <div className="w-8 h-8 rounded-lg bg-gradient-to-br from-primary/20 to-primary/5 flex items-center justify-center shrink-0">
-                      <span className="text-primary text-xs font-bold">
-                        {project.title.split(" ").map((w: string) => w[0]).join("").slice(0, 2).toUpperCase()}
-                      </span>
-                    </div>
-                    <div className="min-w-0">
-                      <p className="text-sm font-medium group-hover/p:text-primary transition-colors truncate">{project.title}</p>
-                      <p className="text-xs text-muted-foreground truncate">{project.tags.slice(0, 2).join(" · ")}</p>
-                    </div>
-                  </Link>
-                ))}
-              </div>
-            </CardContent>
-          </Card>
-        </FadeIn>
-      </div>
-
-      {/* Newsletter */}
-      <FadeIn delay={500}>
-        <section className="pt-6 border-t border-border">
-          <div className="flex flex-col md:flex-row md:items-center justify-between gap-6">
-            <div>
-              <h3 className="font-semibold mb-1">Stay Updated</h3>
-              <p className="text-sm text-muted-foreground">New research, projects, and writing.</p>
+      <Section label="Research" id="research" action={{ href: "/research", label: "Research statement" }}>
+        <dl className="grid gap-x-8 gap-y-6 sm:grid-cols-2">
+          {researchInterests.map((interest) => (
+            <div key={interest.title} className="space-y-1">
+              <dt className="font-sans font-bold">{interest.title}</dt>
+              <dd className="leading-relaxed text-foreground/85">{interest.description}</dd>
             </div>
-            <NewsletterForm />
-          </div>
-        </section>
-      </FadeIn>
-    </div>
+          ))}
+        </dl>
+      </Section>
+
+      <Section label="Selected work" id="work" action={{ href: "/projects", label: "All projects" }}>
+        <div className="space-y-8">
+          {selectedProjects.map((project) => (
+            <Entry
+              key={project.id}
+              title={project.title}
+              meta={project.tags.slice(0, 3).join(" · ")}
+              links={project.links}
+            >
+              <p>{project.description}</p>
+            </Entry>
+          ))}
+        </div>
+      </Section>
+
+      <Section label="Writing" id="writing" action={{ href: "/blog", label: "All posts" }}>
+        <ol className="divide-y divide-border">
+          {recentPosts.map((post) => (
+            <li key={post.slug}>
+              <Link
+                href={`/blog/${post.slug}`}
+                className="group grid gap-x-6 gap-y-1 py-3 sm:grid-cols-[6.5rem_1fr] sm:items-baseline"
+              >
+                <time dateTime={post.date} className="tabular font-sans text-sm text-muted-foreground">
+                  {format(new Date(post.date), "MMM yyyy")}
+                </time>
+                <span className="leading-snug group-hover:text-primary transition-colors">{post.title}</span>
+              </Link>
+            </li>
+          ))}
+        </ol>
+      </Section>
+
+      <Section label="Contact" id="contact">
+        <div className="max-w-[36rem] space-y-6">
+          <p className="leading-relaxed text-foreground/85">
+            Email is the best way to reach me. I am always happy to talk about agent memory, possible research
+            collaborations, or anything I have written. You can also get new posts and research notes by email.
+          </p>
+          <NewsletterForm />
+        </div>
+      </Section>
+    </>
   );
 }
