@@ -36,11 +36,6 @@ export const nowItems: NowItem[] = [
     place: "KOREATECH",
     detail: "GKS scholar, Sep 2024 to present.",
   },
-  {
-    role: "CTO",
-    place: "Sikili",
-    detail: "Agentic automation and internal tools. Seed $800K, $0 to $200K ARR in year one.",
-  },
 ];
 
 export type ResearchInterest = {
@@ -83,7 +78,7 @@ export const experience: Experience[] = [
   {
     role: "CTO and Supply Manager",
     company: "Sikili",
-    period: "2024 to now",
+    period: "2024 to 2026",
     location: "Remote",
     description:
       "Early team member at a seed-stage startup ($800K raised). Designed and deployed the internal tools and automation systems behind growth from $0 to $200K ARR in the first year.",

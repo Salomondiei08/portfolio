@@ -4,7 +4,7 @@ import { awards, contactLinks, education, experience, languages, resumeHref } fr
 
 export const metadata = {
   title: "About Salomon Diei | AI Engineer & Autonomous Agents Researcher",
-  description: "Salomon Diei is an AI Engineer, CTO at Sikili, and autonomous agents researcher focused on improving agent efficiency and automating human work.",
+  description: "Salomon Diei is an AI researcher at KOREATECH working on memory for autonomous agents, and former CTO at Sikili.",
   alternates: {
     canonical: "https://salomondiei.com/about",
   },
@@ -35,10 +35,9 @@ export default function AboutPage() {
               at KOREATECH.
             </p>
             <p>
-              Today I split my time between research and building. In the DICE Lab I study memory for autonomous
-              agents. As CTO at Sikili I lead technical strategy and build the agentic systems the company runs
-              on. Each side informs the other: production work shows where agents fail, and research suggests
-              how to fix it.
+              Today I focus on research. In the DICE Lab I study memory for autonomous agents. Until 2026 I was CTO
+              at Sikili, where I led technical strategy and built the agentic systems the company ran on. That
+              work showed me where agents fail in production, and it shapes the problems I study now.
             </p>
             <p>
               I am a Google Cloud Certified Associate Cloud Engineer, and I speak {languages.join(", ").replace(/, ([^,]*)$/, " and $1")}.

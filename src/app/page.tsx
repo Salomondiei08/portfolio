@@ -38,7 +38,7 @@ export default function Home() {
         <div className="min-w-0 space-y-6">
           <div className="space-y-2">
             <h1 className="text-[2.25rem] font-bold leading-[1.1] tracking-tight sm:text-5xl">Salomon Diei</h1>
-            <p className="font-sans text-muted-foreground">AI researcher at KOREATECH · CTO at Sikili</p>
+            <p className="font-sans text-muted-foreground">AI researcher · KOREATECH DICE Lab</p>
           </div>
 
           <p className="max-w-[36rem] text-xl leading-relaxed sm:text-[1.375rem]">
@@ -53,9 +53,9 @@ export default function Home() {
               long-horizon behaviour in autonomous agents.
             </p>
             <p>
-              Alongside research, I am CTO at Sikili, where I build the agentic tools and automation that took
-              the company from $0 to $200K ARR in its first year. Before that I built mobile and backend software
-              in Côte d&apos;Ivoire. I write about what I learn on{" "}
+              Until 2026 I was CTO at Sikili, where I built the agentic tools and automation that took the
+              company from $0 to $200K ARR in its first year. Before that I built mobile and backend software in
+              Côte d&apos;Ivoire. I write about what I learn on{" "}
               <Link href="/blog" className="text-link">my blog</Link>.
             </p>
           </div>

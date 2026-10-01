@@ -22,9 +22,9 @@ const sampleResponses: Record<string, string> = {
   skills:
     "Flutter, Python, FastAPI, Vue.js, Docker, and GCP. I also speak French, English, and Korean. I'm a Google Cloud Certified Associate Cloud Engineer.",
   contact:
-    "Reach me at salomondiei08@gmail.com or connect on LinkedIn/GitHub. Links are in the sidebar!",
+    "Reach me at salomondiei08@gmail.com or connect on LinkedIn/GitHub. Links are in the footer!",
   experience:
-    "I am CTO and Supply Manager (Contract) at Sikili. Previously, I was Software Engineer at BUI Corporation, Technical Lead Mobile at Futurafric IA, and Junior Software Engineer at Casys Technologies.",
+    "I am an assistant researcher in the DICE Lab at KOREATECH. Previously, I was CTO and Supply Manager at Sikili (2024 to 2026), Software Engineer at BUI Corporation, Technical Lead Mobile at Futurafric IA, and Junior Software Engineer at Casys Technologies.",
   education:
     "Research focus: efficient autonomous agents for work automation. Education: Bachelor's in Software Engineering from Institut Ivoirien de Technologie in Côte d'Ivoire.",
   hackathon:

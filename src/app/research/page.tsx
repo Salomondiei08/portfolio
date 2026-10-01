@@ -46,8 +46,9 @@ export default function ResearchPage() {
             that are not only reactive, but measurably better at a job after doing it many times.
           </p>
           <p>
-            I approach this from both sides. In the lab I build and evaluate memory systems. In industry I deploy
-            agents on real operational work, which keeps the research grounded in failures that actually happen.
+            I come to this from both sides. In the lab I build and evaluate memory systems. Before that, as a
+            startup CTO, I deployed agents on real operational work, which keeps the research grounded in failures
+            that actually happen.
           </p>
         </div>
       </Section>

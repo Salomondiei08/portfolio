@@ -3,7 +3,7 @@
 ## About
 Salomon Diei is an AI Engineer and Autonomous Agents Researcher based in South Korea.
 He builds intelligent systems and researches how to make AI agents more efficient and automate human work.
-He leads tech at Sikili, holds a GKS scholarship, and is a Google Cloud Certified Associate Cloud Engineer.
+He was CTO at Sikili until 2026, holds a GKS scholarship, and is a Google Cloud Certified Associate Cloud Engineer.
 
 ## Pages
 - Home: https://salomondiei.com

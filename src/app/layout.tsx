@@ -13,7 +13,7 @@ const ChatWidget = dynamic(
 
 export const metadata: Metadata = {
   title: "Salomon Diei | AI Engineer & Autonomous Agents Researcher",
-  description: "Salomon Diei, AI Engineer and CTO at Sikili, researching autonomous agents and work automation. Google Cloud Certified, GKS Scholar based in South Korea.",
+  description: "Salomon Diei, AI researcher at KOREATECH working on memory for autonomous agents. Former CTO at Sikili, Google Cloud Certified, GKS Scholar based in South Korea.",
   metadataBase: new URL("https://salomondiei.com"),
   authors: [{ name: "Salomon Diei", url: "https://github.com/salomondiei08" }],
   creator: "Salomon Diei",
@@ -23,7 +23,7 @@ export const metadata: Metadata = {
   },
   openGraph: {
     title: "Salomon Diei | AI Engineer & Autonomous Agents Researcher",
-    description: "AI Engineer and CTO at Sikili, researching efficient AI agents that automate human work. Focused on autonomous agent systems and autonomous coding.",
+    description: "AI researcher working on memory for autonomous agents: how agents retain, retrieve and learn from experience across sessions.",
     type: "website",
     locale: "en_US",
     url: "https://salomondiei.com",
@@ -40,7 +40,7 @@ export const metadata: Metadata = {
   twitter: {
     card: "summary_large_image",
     title: "Salomon Diei | AI Engineer & Researcher",
-    description: "AI Engineer at Sikili focused on autonomous agents, work automation, and efficient AI systems.",
+    description: "AI researcher focused on memory for autonomous agents and efficient AI systems.",
     images: ["https://salomondiei.com/images/salomon.JPG"],
   },
   robots: {
@@ -106,8 +106,9 @@ export default function RootLayout({
               ],
               jobTitle: "AI Engineer & Researcher",
               worksFor: {
-                "@type": "Organization",
-                name: "Sikili",
+                "@type": "EducationalOrganization",
+                name: "Korea University of Technology and Education",
+                alternateName: "KOREATECH",
               },
               alumniOf: [
                 {
