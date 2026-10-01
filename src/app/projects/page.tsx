@@ -1,5 +1,6 @@
 import Link from "next/link";
-import { Entry, PageHeader, Section } from "@/components/site/Section";
+import { PageHeader, Section } from "@/components/site/Section";
+import { ProjectCard } from "@/components/site/ProjectCard";
 import { appGalleryItems, portfolioProjects } from "@/lib/portfolio-data";
 
 export const metadata = {
@@ -11,8 +12,8 @@ export const metadata = {
 };
 
 /**
- * Projects as a plain annotated list, the way a CV lists software:
- * name, stack, what it does, links. Small apps follow in a compact list.
+ * Projects as screenshot cards with full descriptions and links.
+ * Small apps follow in a compact list.
  */
 export default function ProjectsPage() {
   const smallApps = appGalleryItems.slice(0, 5);
@@ -26,21 +27,11 @@ export default function ProjectsPage() {
         </p>
       </PageHeader>
 
-      <Section label="Products and tools" id="products">
-        <div className="max-w-[38rem] space-y-10">
-          {portfolioProjects.map((project) => (
-            <Entry
-              key={project.id}
-              id={project.id}
-              title={project.title}
-              meta={project.tags.join(" · ")}
-              links={project.links}
-            >
-              <p>{project.description}</p>
-            </Entry>
-          ))}
-        </div>
-      </Section>
+      <section aria-label="Products and tools" className="grid gap-5 pb-14 sm:grid-cols-2 lg:grid-cols-3">
+        {portfolioProjects.map((project, index) => (
+          <ProjectCard key={project.id} project={project} variant="full" priority={index < 3} />
+        ))}
+      </section>
 
       <Section label="Small apps" id="apps" action={{ href: "/gallery/apps", label: "All apps" }}>
         <ul className="max-w-[38rem] divide-y divide-border">
