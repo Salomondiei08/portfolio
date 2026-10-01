@@ -9,7 +9,7 @@ import { contactLinks, resumeHref } from "@/lib/profile-data";
 export function SiteFooter() {
   return (
     <footer className="border-t border-border">
-      <div className="mx-auto grid max-w-4xl gap-8 px-4 py-12 font-sans text-sm sm:px-6 md:grid-cols-[9rem_1fr_1fr] md:gap-10">
+      <div className="mx-auto grid max-w-5xl gap-8 px-4 py-12 font-sans text-sm sm:px-6 md:grid-cols-[9rem_1fr_1fr] md:gap-10">
         <p className="eyebrow">Salomon Diei</p>
 
         <nav aria-label="Footer">

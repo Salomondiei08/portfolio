@@ -35,7 +35,7 @@ export function SiteHeader() {
 
   return (
     <header className="sticky top-0 z-40 border-b border-border bg-background/90 backdrop-blur supports-[backdrop-filter]:bg-background/75">
-      <div className="mx-auto flex h-16 max-w-4xl items-center justify-between gap-4 px-4 sm:px-6">
+      <div className="mx-auto flex h-16 max-w-5xl items-center justify-between gap-4 px-4 sm:px-6">
         <Link
           href="/"
           className="inline-flex min-h-11 items-center font-sans text-base font-bold tracking-tight hover:text-primary transition-colors"
@@ -86,7 +86,7 @@ export function SiteHeader() {
 
       {menuOpen && (
         <div id="mobile-menu" className="border-t border-border bg-background md:hidden">
-          <ul className="mx-auto max-w-4xl px-4 py-2 sm:px-6">
+          <ul className="mx-auto max-w-5xl px-4 py-2 sm:px-6">
             {[...primaryNav, ...secondaryNav].map((item) => {
               const active = isActivePath(pathname, item.href);
               return (

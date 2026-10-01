@@ -178,7 +178,7 @@ export default function RootLayout({
           <div className="flex min-h-screen flex-col">
             <SiteHeader />
             {/* One centred column for every page keeps line length readable */}
-            <main id="main" className="mx-auto w-full max-w-4xl flex-1 px-4 pb-16 sm:px-6">
+            <main id="main" className="mx-auto w-full max-w-5xl flex-1 px-4 pb-16 sm:px-6">
               {children}
             </main>
             <SiteFooter />
