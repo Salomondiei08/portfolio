@@ -1,7 +1,6 @@
 import type { Metadata } from "next";
 import Image from "next/image";
 import {
-  ExternalLink,
   Facebook,
   Instagram,
   Linkedin,
@@ -127,35 +126,35 @@ export default function LinksPage() {
       </header>
 
       <section aria-labelledby="social-links-title" className="mt-8">
-        <h2 id="social-links-title" className="sr-only">
+        <h2 id="social-links-title" className="font-sans text-sm font-bold uppercase tracking-[0.14em] text-muted-foreground">
           Retrouve-moi ici
         </h2>
-        <ul className="space-y-3">
+        <ul className="mt-4 grid grid-cols-3 gap-3 sm:grid-cols-6">
           {socialLinks.map((link) => (
             <li key={link.href}>
               <a
                 href={link.href}
                 target={link.href.startsWith("mailto:") ? undefined : "_blank"}
                 rel={link.href.startsWith("mailto:") ? undefined : "noopener noreferrer"}
-                className="group flex min-h-20 items-center gap-4 rounded-lg border border-border bg-card px-4 py-3 text-card-foreground shadow-sm transition-colors hover:border-primary/60 hover:bg-secondary/50 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-background"
+                aria-label={`${link.name}: ${link.description}`}
+                className="group flex min-h-24 flex-col items-center justify-center gap-2 rounded-md px-2 py-3 text-center transition-colors hover:bg-secondary/60 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-background"
               >
-                <span className="flex h-11 w-11 shrink-0 items-center justify-center rounded-md bg-primary/10 text-primary">
+                <span className="flex h-12 w-12 items-center justify-center rounded-full border border-border bg-card text-primary shadow-sm transition-colors group-hover:border-primary/60 group-hover:bg-primary/10">
                   <link.icon className="h-5 w-5" aria-hidden="true" />
                 </span>
-                <span className="min-w-0 flex-1 text-left">
-                  <span className="block font-sans text-base font-bold leading-tight">{link.name}</span>
-                  <span className="mt-1 block text-sm leading-snug text-muted-foreground">
-                    {link.description}
-                  </span>
-                </span>
-                <ExternalLink
-                  className="h-4 w-4 shrink-0 text-muted-foreground transition-colors group-hover:text-primary"
-                  aria-hidden="true"
-                />
+                <span className="font-sans text-sm font-bold leading-tight text-foreground">{link.name}</span>
               </a>
             </li>
           ))}
         </ul>
+        <dl className="mt-5 grid gap-3 text-sm leading-relaxed text-muted-foreground sm:grid-cols-2">
+          {socialLinks.map((link) => (
+            <div key={link.href} className="min-w-0">
+              <dt className="font-sans font-bold text-foreground">{link.name}</dt>
+              <dd>{link.description}</dd>
+            </div>
+          ))}
+        </dl>
       </section>
 
       <section aria-labelledby="topics-title" className="mt-8 rounded-lg border border-border bg-secondary/40 p-5">
