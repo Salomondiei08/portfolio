@@ -4,6 +4,8 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { NewsletterForm } from "@/components/portfolio/NewsletterForm";
 import { FadeIn } from "@/components/portfolio/animations";
+import { HeroGlow, SpotlightGroup } from "@/components/portfolio/Spotlight";
+import { BookOpenText, Boxes, FlaskConical } from "lucide-react";
 import { portfolioProjects } from "@/lib/portfolio-data";
 import { getAllPosts } from "@/lib/markdown";
 
@@ -11,6 +13,7 @@ import { getAllPosts } from "@/lib/markdown";
 const focusAreas = [
   {
     label: "Research",
+    Icon: FlaskConical,
     title: "Memory for AI agents",
     body: "At KOREATECH's DICE Lab I study how agents keep what they learn across sessions and get better at a task over time.",
     href: "/research",
@@ -18,6 +21,7 @@ const focusAreas = [
   },
   {
     label: "Build",
+    Icon: Boxes,
     title: "Open-source agent tools",
     body: "Kernel gives coding agents shared memory. Oh My Hermes turns Hermes Agent into a workflow for shipping apps.",
     href: "/projects",
@@ -25,6 +29,7 @@ const focusAreas = [
   },
   {
     label: "Write",
+    Icon: BookOpenText,
     title: "Notes from the field",
     body: "Essays on agents, papers I am reading and what breaks when you put AI into production.",
     href: "/blog",
@@ -40,10 +45,29 @@ const nowItems = [
 
 const researchTopics = ["Agent memory", "Continual learning", "Self-evaluation", "LLM systems"];
 
+/** Hero statement, split so each word can blur in on its own beat. */
+const statementBefore = "I research";
+const statementKey = "memory for AI agents";
+const statementAfter = ": how an agent keeps what it learns from one task and does the next one better.";
+
+function Words({ text, offset }: { text: string; offset: number }) {
+  return (
+    <>
+      {text.split(" ").filter(Boolean).map((word, index) => (
+        <span key={`${word}-${index}`}>
+          <span className="word" style={{ ["--i" as string]: offset + index }}>
+            {word}
+          </span>{" "}
+        </span>
+      ))}
+    </>
+  );
+}
+
 /** Card title in the site's numbered style: "01. Now" */
 function NumberedTitle({ index, children }: { index: string; children: React.ReactNode }) {
   return (
-    <CardTitle className="flex items-center gap-2.5 text-lg font-bold">
+    <CardTitle className="flex items-center gap-2.5 font-display text-xl font-bold">
       <span className="text-base text-primary">{index}.</span>
       {children}
     </CardTitle>
@@ -58,7 +82,7 @@ function NumberedTitle({ index, children }: { index: string; children: React.Rea
 export default function Home() {
   const recentPosts = getAllPosts("blog").slice(0, 4).map((post) => ({
     title: post.title,
-    date: format(new Date(post.date), "MMM d, yyyy"),
+    date: format(new Date(post.date), "yyyy-MM-dd"),
     href: `/blog/${post.slug}`,
   }));
 
@@ -69,44 +93,65 @@ export default function Home() {
   return (
     <div className="space-y-10">
       {/* Hero */}
-      <section className="space-y-5 pt-2">
-        <p className="text-lg text-muted-foreground">Hello, I&apos;m</p>
-        <h1 className="text-5xl font-bold tracking-tight md:text-6xl">Salomon Diei</h1>
-        <div className="flex items-center gap-3">
-          <div className="h-px w-12 bg-primary" />
-          <p className="font-display text-xl text-muted-foreground">AI Researcher · Agent Memory</p>
-        </div>
-        <p className="max-w-3xl text-2xl leading-snug text-foreground md:text-[1.75rem]">
-          I research <span className="text-primary">memory for AI agents</span>: how an agent keeps what it learns
-          from one task and does the next one better.
-        </p>
-        <p className="max-w-2xl text-lg leading-relaxed text-muted-foreground">
-          M.S. student at KOREATECH, previously CTO at Sikili. I also build open-source tools for agents and write
-          about what I learn.
-        </p>
-        <div className="flex flex-wrap gap-x-6 gap-y-1 text-base">
-          <a href="https://github.com/salomondiei08" target="_blank" rel="noopener noreferrer" className="inline-flex min-h-11 items-center text-muted-foreground hover:text-primary transition-colors">GitHub</a>
-          <a href="https://linkedin.com/in/salomondiei" target="_blank" rel="noopener noreferrer" className="inline-flex min-h-11 items-center text-muted-foreground hover:text-primary transition-colors">LinkedIn</a>
-          <a href="mailto:salomondiei08@gmail.com" className="inline-flex min-h-11 items-center text-muted-foreground hover:text-primary transition-colors">Email</a>
-          <a href="/Salomon_Academic_Resume.pdf" download="Salomon_Diei_Resume.pdf" className="inline-flex min-h-11 items-center text-muted-foreground hover:text-primary transition-colors">Resume</a>
-        </div>
-      </section>
+      <HeroGlow>
+        <section className="space-y-5 pb-2 pt-2">
+          <p className="rise text-lg text-muted-foreground" style={{ ["--i" as string]: 0 }}>Hello, I&apos;m</p>
+          <h1 className="rise text-5xl font-bold tracking-[-0.03em] md:text-7xl" style={{ ["--i" as string]: 1 }}>
+            Salomon Diei
+          </h1>
+          <div className="rise flex items-center gap-3" style={{ ["--i" as string]: 2 }}>
+            <div className="grow-rule h-0.5 w-12 rounded-full bg-primary" />
+            <p className="font-display text-xl text-muted-foreground">AI Researcher · Agent Memory</p>
+          </div>
+          <p className="max-w-3xl text-2xl font-medium leading-snug tracking-[-0.01em] text-foreground md:text-[2rem] md:leading-[1.25]">
+            <span className="sr-only">{statementBefore} {statementKey}{statementAfter}</span>
+            <span aria-hidden="true">
+              <Words text={statementBefore} offset={0} />
+              <span className="word draw-underline text-primary" style={{ ["--i" as string]: 2 }}>{statementKey}</span>
+              <span className="word" style={{ ["--i" as string]: 3 }}>:</span>{" "}
+              <Words text={statementAfter.replace(/^:\s*/, "")} offset={4} />
+            </span>
+          </p>
+          <p className="rise max-w-2xl text-lg leading-relaxed text-muted-foreground" style={{ ["--i" as string]: 8 }}>
+            M.S. student at KOREATECH, previously CTO at Sikili. I also build open-source tools for agents and write
+            about what I learn.
+          </p>
+          <div className="rise flex flex-wrap items-center gap-x-6 gap-y-1 text-base" style={{ ["--i" as string]: 9 }}>
+            <Link
+              href="/research"
+              className="mr-1 inline-flex min-h-11 items-center rounded-lg bg-primary px-5 font-semibold text-primary-foreground shadow-[0_0_0_1px_rgb(74_222_128/0.4),0_8px_24px_-8px_rgb(74_222_128/0.45)] hover:brightness-110 transition"
+            >
+              Read the research →
+            </Link>
+            <a href="https://github.com/salomondiei08" target="_blank" rel="noopener noreferrer" className="inline-flex min-h-11 items-center text-muted-foreground hover:text-foreground transition-colors">GitHub</a>
+            <a href="https://linkedin.com/in/salomondiei" target="_blank" rel="noopener noreferrer" className="inline-flex min-h-11 items-center text-muted-foreground hover:text-foreground transition-colors">LinkedIn</a>
+            <a href="mailto:salomondiei08@gmail.com" className="inline-flex min-h-11 items-center text-muted-foreground hover:text-foreground transition-colors">Email</a>
+            <a href="/Salomon_Academic_Resume.pdf" download="Salomon_Diei_Resume.pdf" className="inline-flex min-h-11 items-center text-muted-foreground hover:text-foreground transition-colors">Resume</a>
+          </div>
+        </section>
+      </HeroGlow>
 
       {/* What I do: research leads, building and writing support it */}
-      <section aria-label="What I do" className="grid gap-4 md:grid-cols-3">
-        {focusAreas.map((area, index) => (
+      <SpotlightGroup className="space-y-10">
+      <section aria-label="What I do" className="rise grid gap-4 md:grid-cols-3" style={{ ["--i" as string]: 10 }}>
+        {focusAreas.map(({ Icon, ...area }, index) => (
           <Link
             key={area.label}
             href={area.href}
-            className={`group block rounded-xl border p-6 transition-colors ${
-              index === 0 ? "border-primary/50 bg-card" : "border-border bg-card hover:border-primary/40"
+            className={`spotlight group block rounded-xl border bg-card p-6 transition-[transform,border-color] duration-300 hover:-translate-y-0.5 ${
+              index === 0 ? "border-primary/45" : "border-border"
             }`}
           >
-            <p className="text-sm font-semibold uppercase tracking-wider text-primary">{area.label}</p>
+            <div className="flex items-center gap-2.5">
+              <span className="flex h-9 w-9 items-center justify-center rounded-lg border border-border bg-secondary text-primary">
+                <Icon className="h-[18px] w-[18px]" strokeWidth={1.75} aria-hidden="true" />
+              </span>
+              <p className="mono text-sm font-medium uppercase tracking-wider text-primary">{area.label}</p>
+            </div>
             <h2 className="mt-2 text-xl font-bold">{area.title}</h2>
             <p className="mt-2 text-base leading-relaxed text-muted-foreground">{area.body}</p>
             <p className="mt-4 text-base font-medium text-primary">
-              {area.cta} <span className="inline-block transition-transform group-hover:translate-x-0.5">→</span>
+              {area.cta} <span className="inline-block transition-transform duration-300 group-hover:translate-x-1">→</span>
             </p>
           </Link>
         ))}
@@ -115,7 +160,7 @@ export default function Home() {
       {/* 01 Now + 02 Writing */}
       <div className="grid gap-4 md:grid-cols-2">
         <FadeIn delay={100}>
-          <Card className="h-full border-border bg-card transition-colors duration-300 hover:border-primary/50">
+          <Card className="spotlight h-full border-border bg-card">
             <CardHeader className="pb-2">
               <NumberedTitle index="01">Now</NumberedTitle>
             </CardHeader>
@@ -139,7 +184,7 @@ export default function Home() {
         </FadeIn>
 
         <FadeIn delay={200}>
-          <Card className="h-full border-border bg-card transition-colors duration-300 hover:border-primary/50">
+          <Card className="spotlight h-full border-border bg-card">
             <CardHeader className="pb-2">
               <div className="flex items-center justify-between">
                 <NumberedTitle index="02">Writing</NumberedTitle>
@@ -156,7 +201,7 @@ export default function Home() {
                       <span className="block text-base leading-snug group-hover/post:text-primary transition-colors">
                         {post.title}
                       </span>
-                      <span className="text-sm text-muted-foreground">{post.date}</span>
+                      <span className="mono text-sm text-muted-foreground">{post.date}</span>
                     </Link>
                   </li>
                 ))}
@@ -168,7 +213,7 @@ export default function Home() {
 
       {/* Featured project */}
       <FadeIn delay={250}>
-        <Card className="border-border bg-card transition-colors duration-300 hover:border-primary/50">
+        <Card className="spotlight border-border bg-card">
           <CardContent className="p-6">
             <div className="flex flex-col gap-5 sm:flex-row">
               <div className="flex h-14 w-14 shrink-0 items-center justify-center rounded-xl border border-border bg-secondary">
@@ -200,7 +245,7 @@ export default function Home() {
       <div className="grid gap-4 md:grid-cols-2">
         <FadeIn delay={300}>
           <Link href="/research" className="group block h-full">
-            <Card className="h-full border-border bg-card transition-colors duration-300 group-hover:border-primary/50">
+            <Card className="spotlight h-full border-border bg-card">
               <CardHeader className="pb-2">
                 <NumberedTitle index="03">Research</NumberedTitle>
               </CardHeader>
@@ -221,7 +266,7 @@ export default function Home() {
         </FadeIn>
 
         <FadeIn delay={350}>
-          <Card className="h-full border-border bg-card">
+          <Card className="spotlight h-full border-border bg-card">
             <CardHeader className="pb-2">
               <div className="flex items-center justify-between">
                 <NumberedTitle index="04">More projects</NumberedTitle>
@@ -252,6 +297,8 @@ export default function Home() {
           </Card>
         </FadeIn>
       </div>
+
+      </SpotlightGroup>
 
       {/* Newsletter */}
       <section className="border-t border-border pt-8">

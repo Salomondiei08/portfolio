@@ -8,35 +8,38 @@ interface FadeInProps {
   className?: string;
 }
 
+/**
+ * Fades and lifts its children in when they scroll into view.
+ *
+ * Only elements that start below the fold are hidden (in an effect, after
+ * hydration), so above-the-fold content never flickers and nothing stays
+ * invisible if JavaScript fails or a screenshot tool does not scroll.
+ */
 export function FadeIn({ children, delay = 0, className = "" }: FadeInProps) {
   const ref = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
+    const el = ref.current;
+    if (!el) return;
+    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+    if (el.getBoundingClientRect().top < window.innerHeight * 0.92) return;
+
+    el.classList.add("reveal-pending");
     const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            entry.target.classList.add("animate-fade-in");
-            observer.unobserve(entry.target);
-          }
-        });
+      ([entry]) => {
+        if (!entry.isIntersecting) return;
+        el.classList.add("reveal-in");
+        el.classList.remove("reveal-pending");
+        observer.disconnect();
       },
-      { threshold: 0.1 }
+      { threshold: 0.12, rootMargin: "0px 0px -6% 0px" }
     );
-
-    if (ref.current) {
-      observer.observe(ref.current);
-    }
-
+    observer.observe(el);
     return () => observer.disconnect();
   }, []);
 
   return (
-    <div
-      ref={ref}
-      className={className}
-      style={{ animationDelay: `${delay}ms` }}
-    >
+    <div ref={ref} className={className} style={{ ["--reveal-delay" as string]: `${delay}ms` }}>
       {children}
     </div>
   );
