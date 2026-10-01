@@ -1,8 +1,9 @@
 import type { Metadata, Viewport } from "next";
 import dynamic from "next/dynamic";
 import "./globals.css";
-import { Sidebar } from "@/components/portfolio";
 import { ThemeProvider } from "@/components/portfolio/ThemeProvider";
+import { SiteHeader } from "@/components/site/SiteHeader";
+import { SiteFooter } from "@/components/site/SiteFooter";
 
 // Lazy-load ChatWidget — it's not needed on initial render and adds JS weight to every page
 const ChatWidget = dynamic(
@@ -65,8 +66,8 @@ export const viewport: Viewport = {
   initialScale: 1,
   // Do NOT set maximumScale or userScalable=false — Google penalises sites that block pinch-zoom.
   themeColor: [
-    { media: "(prefers-color-scheme: light)", color: "#fafafa" },
-    { media: "(prefers-color-scheme: dark)", color: "#0a0a0a" },
+    { media: "(prefers-color-scheme: light)", color: "#fbfaf7" },
+    { media: "(prefers-color-scheme: dark)", color: "#0c0c0d" },
   ],
 };
 
@@ -165,30 +166,21 @@ export default function RootLayout({
           }}
         />
       </head>
-      <body className="antialiased min-h-screen">
+      <body className="min-h-screen antialiased">
         <ThemeProvider>
-          <div className="flex min-h-screen">
-            <Sidebar />
-            <main className="flex-1 min-w-0">
-              <div className="min-h-screen px-4 py-6 pt-16 lg:px-8 lg:py-8 lg:pt-8 max-w-5xl mx-auto">
-                {children}
-
-                {/* Footer */}
-                <footer className="mt-16 pt-8 border-t border-border text-center">
-                  <p className="text-sm text-muted-foreground">
-                    Made with ❤️ by{" "}
-                    <a
-                      href="https://github.com/salomondiei08"
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="inline-flex min-h-11 items-center text-primary hover:underline transition-colors"
-                    >
-                      Salomon DIEI
-                    </a>
-                  </p>
-                </footer>
-              </div>
+          <a
+            href="#main"
+            className="sr-only focus:not-sr-only focus:fixed focus:left-4 focus:top-4 focus:z-50 focus:rounded-md focus:bg-background focus:px-4 focus:py-2 focus:font-sans focus:text-sm"
+          >
+            Skip to content
+          </a>
+          <div className="flex min-h-screen flex-col">
+            <SiteHeader />
+            {/* One centred column for every page keeps line length readable */}
+            <main id="main" className="mx-auto w-full max-w-4xl flex-1 px-4 pb-16 sm:px-6">
+              {children}
             </main>
+            <SiteFooter />
           </div>
           <ChatWidget />
         </ThemeProvider>

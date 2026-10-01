@@ -7,4 +7,3 @@ export { Publications } from "./Publications";
 export { Contact } from "./Contact";
 export { Navigation } from "./Navigation";
 export { Footer } from "./Footer";
-export { Sidebar } from "./Sidebar";
