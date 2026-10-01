@@ -34,7 +34,7 @@ export function FadeIn({ children, delay = 0, className = "" }: FadeInProps) {
   return (
     <div
       ref={ref}
-      className={`opacity-0 ${className}`}
+      className={className}
       style={{ animationDelay: `${delay}ms` }}
     >
       {children}
@@ -75,7 +75,7 @@ export function SlideIn({ children, direction = "up", delay = 0, className = "" 
   return (
     <div
       ref={ref}
-      className={`opacity-0 ${className}`}
+      className={className}
       style={{ animationDelay: `${delay}ms` }}
     >
       {children}

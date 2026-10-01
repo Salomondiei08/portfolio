@@ -29,11 +29,11 @@ export default function Home() {
         <p className="text-muted-foreground leading-relaxed max-w-2xl">
           Building intelligent systems and researching memory for self-learning, evolving agents.
         </p>
-        <div className="flex gap-4 text-sm pt-1">
-          <a href="https://github.com/salomondiei08" target="_blank" rel="noopener noreferrer" className="text-muted-foreground hover:text-primary transition-colors">GitHub</a>
-          <a href="https://linkedin.com/in/salomondiei" target="_blank" rel="noopener noreferrer" className="text-muted-foreground hover:text-primary transition-colors">LinkedIn</a>
-          <a href="mailto:salomondiei08@gmail.com" className="text-muted-foreground hover:text-primary transition-colors">Email</a>
-          <a href="/Salomon_Academic_Resume.pdf" download="Salomon_Diei_Resume.pdf" className="text-muted-foreground hover:text-primary transition-colors">Resume</a>
+        <div className="flex flex-wrap gap-x-4 gap-y-1 text-sm pt-1">
+          <a href="https://github.com/salomondiei08" target="_blank" rel="noopener noreferrer" className="inline-flex min-h-11 min-w-11 items-center text-muted-foreground hover:text-primary transition-colors">GitHub</a>
+          <a href="https://linkedin.com/in/salomondiei" target="_blank" rel="noopener noreferrer" className="inline-flex min-h-11 min-w-11 items-center text-muted-foreground hover:text-primary transition-colors">LinkedIn</a>
+          <a href="mailto:salomondiei08@gmail.com" className="inline-flex min-h-11 min-w-11 items-center text-muted-foreground hover:text-primary transition-colors">Email</a>
+          <a href="/Salomon_Academic_Resume.pdf" download="Salomon_Diei_Resume.pdf" className="inline-flex min-h-11 min-w-11 items-center text-muted-foreground hover:text-primary transition-colors">Resume</a>
         </div>
       </section>
 
@@ -71,7 +71,7 @@ export default function Home() {
                   </div>
                 </div>
               </div>
-              <Link href="/about" className="inline-flex text-sm text-primary hover:underline">
+              <Link href="/about" className="inline-flex min-h-11 items-center text-sm text-primary hover:underline">
                 Full background →
               </Link>
             </CardContent>
@@ -86,7 +86,7 @@ export default function Home() {
                   <span className="text-primary text-sm">02.</span>
                   Writing
                 </CardTitle>
-                <Link href="/blog" className="text-xs text-muted-foreground hover:text-primary transition-colors">
+                <Link href="/blog" className="inline-flex min-h-11 items-center text-xs text-muted-foreground hover:text-primary transition-colors">
                   View all →
                 </Link>
               </div>
@@ -95,7 +95,7 @@ export default function Home() {
               <div className="space-y-1">
                 {recentPosts.map((post) => (
                   <Link key={post.href} href={post.href} className="block group/post">
-                    <div className="flex items-center justify-between py-2 border-b border-border/50 group-hover/post:border-primary/30 transition-colors">
+                    <div className="flex min-h-11 items-center justify-between py-2 border-b border-border/50 group-hover/post:border-primary/30 transition-colors">
                       <span className="text-sm group-hover/post:text-primary transition-colors line-clamp-1 pr-2">
                         {post.title}
                       </span>
@@ -158,7 +158,7 @@ export default function Home() {
                     <Badge key={t} variant="secondary" className="text-xs px-1.5 py-0">{t}</Badge>
                   ))}
                 </div>
-                <span className="text-sm text-primary">View research →</span>
+                <span className="inline-flex min-h-11 items-center text-sm text-primary">View research →</span>
               </CardContent>
             </Card>
           </Link>
@@ -172,7 +172,7 @@ export default function Home() {
                   <span className="text-primary text-sm">04.</span>
                   More Projects
                 </CardTitle>
-                <Link href="/projects" className="text-xs text-muted-foreground hover:text-primary transition-colors">
+                <Link href="/projects" className="inline-flex min-h-11 items-center text-xs text-muted-foreground hover:text-primary transition-colors">
                   View all →
                 </Link>
               </div>
@@ -180,7 +180,7 @@ export default function Home() {
             <CardContent>
               <div className="space-y-3">
                 {otherProjects.map((project) => (
-                  <Link key={project.id} href={`/projects#${project.id}`} className="flex items-center gap-3 group/p">
+                  <Link key={project.id} href={`/projects#${project.id}`} className="flex min-h-11 items-center gap-3 group/p">
                     <div className="w-8 h-8 rounded-lg bg-gradient-to-br from-primary/20 to-primary/5 flex items-center justify-center shrink-0">
                       <span className="text-primary text-xs font-bold">
                         {project.title.split(" ").map((w: string) => w[0]).join("").slice(0, 2).toUpperCase()}

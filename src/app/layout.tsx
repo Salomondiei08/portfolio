@@ -82,7 +82,7 @@ export default function RootLayout({
             Reads localStorage and sets the class on <html> before React hydrates. */}
         <script
           dangerouslySetInnerHTML={{
-            __html: `try{var t=localStorage.getItem('theme');if(!t)t=window.matchMedia('(prefers-color-scheme: light)').matches?'light':'dark';document.documentElement.classList.add(t,'no-transitions');requestAnimationFrame(function(){requestAnimationFrame(function(){document.documentElement.classList.remove('no-transitions')})});}catch(e){}`,
+            __html: `try{var t=localStorage.getItem('theme')||'dark';document.documentElement.classList.add(t,'no-transitions');requestAnimationFrame(function(){requestAnimationFrame(function(){document.documentElement.classList.remove('no-transitions')})});}catch(e){}`,
           }}
         />
 
@@ -181,7 +181,7 @@ export default function RootLayout({
                       href="https://github.com/salomondiei08"
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="text-primary hover:underline transition-colors"
+                      className="inline-flex min-h-11 items-center text-primary hover:underline transition-colors"
                     >
                       Salomon DIEI
                     </a>

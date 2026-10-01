@@ -1,7 +1,6 @@
 /** @type {import("next").NextConfig} */
 const nextConfig = {
   images: {
-    domains: ["tour.ci", "www.tour.ci", "res.cloudinary.com", "raw.githubusercontent.com"],
     remotePatterns: [
       {
         protocol: "https",
