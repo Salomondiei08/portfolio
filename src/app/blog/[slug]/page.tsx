@@ -2,7 +2,6 @@ import { notFound } from "next/navigation";
 import Link from "next/link";
 import Image from "next/image";
 import { getAllPostSlugs, getPostBySlug, getAllPosts } from "@/lib/markdown";
-import { Badge } from "@/components/ui/badge";
 import { format } from "date-fns";
 import { BlogNewsletterWidget } from "@/components/portfolio/BlogNewsletterWidget";
 
@@ -53,9 +52,9 @@ export async function generateMetadata({ params }: Props) {
 }
 
 /**
- * Individual blog post page.
- * Desktop: two-column layout — prose content (left) + sticky sidebar (right).
- * Mobile: single column with newsletter below the article.
+ * Individual blog post page. One reading column on every screen size;
+ * newsletter signup and related posts follow the article instead of
+ * competing with it in a sidebar.
  */
 export default async function BlogPostPage({ params }: Props) {
   const { slug } = await params;
@@ -70,7 +69,7 @@ export default async function BlogPostPage({ params }: Props) {
     ? `${baseUrl}${post.coverImage}`
     : `${baseUrl}/images/salomon.JPG`;
 
-  // Fetch a few other posts to show in the sidebar (exclude current)
+  // A few other posts to suggest after the article (exclude current)
   const otherPosts = getAllPosts("blog")
     .filter((p) => p.slug !== slug)
     .slice(0, 4);
@@ -128,121 +127,67 @@ export default async function BlogPostPage({ params }: Props) {
         }}
       />
 
-      <div className="max-w-6xl mx-auto">
-        {/* Back link — padded to meet 44px touch target minimum */}
+      {/* Single measure-limited column: ~70 characters per line at body size */}
+      <article className="mx-auto max-w-[40rem] pt-8 md:pt-14">
         <Link
           href="/blog"
-          className="inline-flex items-center gap-1.5 text-sm text-muted-foreground hover:text-primary transition-colors mb-8 py-2"
+          className="inline-flex min-h-11 items-center font-sans text-sm text-muted-foreground hover:text-primary transition-colors"
         >
-          ← Back to Blog
+          ← All writing
         </Link>
 
-        {/* Cover image — full width above the columns */}
+        <header className="mb-10 mt-6 space-y-4">
+          <p className="tabular font-sans text-sm text-muted-foreground">
+            <time dateTime={post.date}>{format(new Date(post.date), "MMMM d, yyyy")}</time>
+            {" · "}
+            {post.readingTime} min read
+          </p>
+          <h1 className="text-[2rem] font-bold leading-tight tracking-tight sm:text-[2.5rem]">{post.title}</h1>
+          {post.description && (
+            <p className="text-xl leading-relaxed text-muted-foreground">{post.description}</p>
+          )}
+          {post.tags && post.tags.length > 0 && (
+            <p className="font-sans text-sm text-muted-foreground">{post.tags.join(" · ")}</p>
+          )}
+        </header>
+
         {post.coverImage && (
-          <div className="relative w-full aspect-[2/1] overflow-hidden rounded-xl border border-border bg-secondary/40 mb-8 shadow-lg shadow-black/10">
+          <div className="relative mb-10 aspect-[2/1] w-full overflow-hidden rounded-md bg-muted">
             <Image
               src={post.coverImage}
               alt={post.coverAlt || post.title}
               fill
               className="object-cover"
-              sizes="(max-width: 768px) 100vw, 1024px"
+              sizes="(max-width: 768px) 100vw, 680px"
               priority
             />
           </div>
         )}
 
-        {/* Article header */}
-        <header className="mb-8 pb-8 border-b border-border">
-          <div className="flex items-center gap-2 text-sm text-muted-foreground mb-3">
-            <time dateTime={post.date}>
-              {format(new Date(post.date), "MMMM d, yyyy")}
-            </time>
-            <span>·</span>
-            <span>{post.readingTime} min read</span>
-          </div>
-          <h1 className="text-3xl sm:text-4xl font-bold tracking-tight leading-tight mb-4">
-            {post.title}
-          </h1>
-          <p className="text-lg text-muted-foreground leading-relaxed max-w-2xl">
-            {post.description}
-          </p>
-          {post.tags && post.tags.length > 0 && (
-            <div className="flex flex-wrap gap-2 mt-4">
-              {post.tags.map((tag) => (
-                <Badge key={tag} variant="secondary">
-                  {tag}
-                </Badge>
-              ))}
-            </div>
-          )}
-        </header>
+        <div className="blog-content" dangerouslySetInnerHTML={{ __html: post.content }} />
 
-        {/* Two-column content layout on desktop */}
-        <div className="lg:grid lg:grid-cols-[1fr_272px] lg:gap-12">
-
-          {/* Article prose */}
-          <div
-            className="blog-content min-w-0"
-            dangerouslySetInnerHTML={{ __html: post.content }}
-          />
-
-          {/* Sticky sidebar — desktop only */}
-          <aside className="hidden lg:block">
-            <div className="sticky top-8 space-y-6">
-              {/* Newsletter */}
-              <BlogNewsletterWidget />
-
-              {/* More posts */}
-              {otherPosts.length > 0 && (
-                <div className="rounded-xl border border-border bg-card p-5 space-y-3">
-                  <p className="font-semibold text-sm">More posts</p>
-                  <ul className="space-y-3">
-                    {otherPosts.map((p) => (
-                      <li key={p.slug}>
-                        <Link
-                          href={`/blog/${p.slug}`}
-                          className="group block space-y-0.5"
-                        >
-                          <span className="text-sm font-medium group-hover:text-primary transition-colors line-clamp-2 leading-snug">
-                            {p.title}
-                          </span>
-                          <span className="text-xs text-muted-foreground">
-                            {format(new Date(p.date), "MMM d, yyyy")} · {p.readingTime} min
-                          </span>
-                        </Link>
-                      </li>
-                    ))}
-                  </ul>
-                </div>
-              )}
-            </div>
-          </aside>
-        </div>
-
-        {/* Mobile: newsletter + more posts below the article */}
-        <div className="lg:hidden mt-12 space-y-6">
+        <footer className="mt-16 space-y-12 border-t border-border pt-10">
           <BlogNewsletterWidget />
+
           {otherPosts.length > 0 && (
-            <div className="rounded-xl border border-border bg-card p-5 space-y-3">
-              <p className="font-semibold text-sm">More posts</p>
-              <ul className="space-y-3">
+            <nav aria-label="More writing" className="space-y-4">
+              <h2 className="eyebrow">Keep reading</h2>
+              <ul className="divide-y divide-border">
                 {otherPosts.map((p) => (
                   <li key={p.slug}>
-                    <Link
-                      href={`/blog/${p.slug}`}
-                      className="group block"
-                    >
-                      <span className="text-sm font-medium group-hover:text-primary transition-colors line-clamp-2">
-                        {p.title}
+                    <Link href={`/blog/${p.slug}`} className="group block py-3">
+                      <span className="block leading-snug group-hover:text-primary transition-colors">{p.title}</span>
+                      <span className="tabular font-sans text-sm text-muted-foreground">
+                        {format(new Date(p.date), "MMM d, yyyy")} · {p.readingTime} min
                       </span>
                     </Link>
                   </li>
                 ))}
               </ul>
-            </div>
+            </nav>
           )}
-        </div>
-      </div>
+        </footer>
+      </article>
     </>
   );
 }
