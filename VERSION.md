@@ -1,6 +1,6 @@
 ## Version History
 
-- 2026-10-02: Activated `s.reinvent-labs.com` on Vercel with verified DNS and host routing to serve the social links page at `/`.
+- 2026-10-02: Added `s.reinvent-labs.com` as a short URL redirecting to the portfolio's standalone `/links` page, with verified DNS.
 
 - 2026-10-02: Reverted the reading-first redesign back to the sidebar and card layout. Kept: Sikili CTO marked as ended in 2026, Oh My Hermes star count (850+), project screenshots in `public/images/projects/`.
 

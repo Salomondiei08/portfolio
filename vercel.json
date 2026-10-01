@@ -1,10 +1,13 @@
 {
-  "rewrites": [
+  "redirects": [
     {
       "source": "/",
       "has": [{ "type": "host", "value": "s.reinvent-labs.com" }],
-      "destination": "/links"
-    },
+      "destination": "https://salomon.reinvent-labs.com/links",
+      "permanent": false
+    }
+  ],
+  "rewrites": [
     { "source": "/impactia", "destination": "/impactia/index.html" },
     { "source": "/impactia/", "destination": "/impactia/index.html" }
   ],
