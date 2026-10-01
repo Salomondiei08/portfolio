@@ -1,13 +1,13 @@
 # Salomon Diei - AI Engineer Portfolio
 
-A calm, reading-first academic homepage for my work as an AI researcher and engineer. Built with Next.js 14, TypeScript, and Tailwind CSS.
+A modern, animated portfolio website showcasing my work as an AI Engineer and Researcher. Built with Next.js 15, TypeScript, and Tailwind CSS.
 
 ## 🚀 Features
 
 - **Responsive Design** - Fully responsive across all devices with mobile-first approach
 - **Dark/Light Mode** - Smooth theme switching with system preference detection
-- **Reading-first layout** - One centred column with section labels in the margin, clean sans body text and Futura headings
-- **Top navigation** - Sticky header with four primary links; collapses to a menu on mobile
+- **Animated UI** - Beautiful scroll-triggered animations and smooth transitions
+- **Collapsible Sidebar** - Hover-to-expand navigation with elastic animations
 - **Interactive Chat Widget** - AI-powered chatbot for quick information
 - **Blog System** - Markdown-based blog with full MDX support
 - **App Gallery** - Showcase of vibe-coded applications
@@ -16,11 +16,11 @@ A calm, reading-first academic homepage for my work as an AI researcher and engi
 
 ## 🛠️ Tech Stack
 
-- **Framework:** [Next.js 14](https://nextjs.org/) (App Router)
+- **Framework:** [Next.js 15](https://nextjs.org/) (App Router)
 - **Language:** [TypeScript](https://www.typescriptlang.org/)
 - **Styling:** [Tailwind CSS v4](https://tailwindcss.com/)
 - **UI Components:** [shadcn/ui](https://ui.shadcn.com/)
-- **Typography:** Futura for headings and UI, the platform UI sans (San Francisco, Segoe UI, Roboto) for body text. No web fonts are downloaded.
+- **Animations:** CSS animations with IntersectionObserver
 - **Deployment:** Vercel (recommended)
 
 ## 📦 Installation
@@ -64,6 +64,7 @@ portfolio/
 │   │   └── globals.css        # Global styles
 │   ├── components/
 │   │   ├── portfolio/         # Custom portfolio components
+│   │   │   ├── Sidebar.tsx    # Navigation sidebar
 │   │   │   ├── ChatWidget.tsx # Interactive chatbot
 │   │   │   ├── ThemeProvider.tsx
 │   │   │   └── animations.tsx # Animation components
@@ -107,11 +108,16 @@ Your content here...
 
 ### Navigation
 
-Update navigation links in `src/lib/site-nav.ts` (`primaryNav` appears in the header, `secondaryNav` only in the footer and mobile menu).
+Update navigation links in `src/components/portfolio/Sidebar.tsx`:
 
-### Profile content
-
-Roles, research themes, experience, education and awards live in `src/lib/profile-data.ts` and are shared by the home, research and about pages. Projects and apps live in `src/lib/portfolio-data.ts`.
+```typescript
+const navigation = {
+  main: [
+    { name: "Home", href: "/", icon: "H" },
+    // Add your links...
+  ],
+};
+```
 
 ## 🚢 Deployment
 
@@ -144,11 +150,12 @@ npm start
 
 ## 🌟 Features in Detail
 
-### Layout system
+### Animated Sidebar
 
-- `Section` (in `src/components/site/Section.tsx`) puts a small label in the left margin on desktop and stacks it on mobile
-- `PageHeader` and `Entry` keep interior pages and project lists consistent
-- Body text is capped at roughly 70 characters per line for comfortable reading
+- Collapses to icons-only by default
+- Expands smoothly on hover with elastic easing
+- Shows tooltips when collapsed
+- Fully responsive for mobile devices
 
 ### Chat Widget
 
@@ -158,7 +165,7 @@ npm start
 
 ### Theme System
 
-- Dark by default, with a light/dark toggle in the header
+- Automatic system preference detection
 - Smooth color transitions
 - Persistent user preference
 

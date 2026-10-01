@@ -1,5 +1,7 @@
 ## Version History
 
+- 2026-10-02: Reverted the reading-first redesign back to the sidebar and card layout. Kept: Sikili CTO marked as ended in 2026, Oh My Hermes star count (850+), project screenshots in `public/images/projects/`.
+
 - 2026-10-02: Added a standalone `/links` bio page for content-creator social profiles, with French copy, platform links, topics, metadata, and sitemap coverage.
 
 - 2026-10-02: Redesigned the site as a reading-first academic homepage: top navigation instead of the icon sidebar, serif body text with Futura headings, margin-labelled sections, a written research statement, CV-style about page, and year-grouped writing archive.
