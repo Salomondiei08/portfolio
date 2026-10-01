@@ -15,12 +15,6 @@ const readout = [
   { value: "FR · EN · KO", label: "Languages I work in" },
 ];
 
-const nowItems = [
-  { role: "Assistant Researcher", place: "KOREATECH, DICE Lab", detail: "Memory systems for AI agents, with Prof. Oh Heung Son." },
-  { role: "M.S. Artificial Intelligence", place: "KOREATECH", detail: "AI and machine learning research, since September 2024." },
-  { role: "Open source", place: "Kernel and Oh My Hermes", detail: "Memory and workflow tooling for coding agents." },
-];
-
 const researchThemes = [
   {
     title: "Agent memory",
@@ -170,41 +164,23 @@ export default function Home() {
         ))}
       </dl>
 
-      {/* 01 Now */}
+      {/* 01 Research */}
       <section>
-          <SectionHeading index="01" title="Now" href="/about" linkLabel="About" />
-          <Panel className="p-6 sm:p-7">
-            <ol className="grid gap-6 md:grid-cols-3 md:gap-8">
-              {nowItems.map((item, index) => (
-                <li key={item.role} className="grid grid-cols-[1.75rem_1fr] gap-2">
-                  <span className="mono pt-0.5 text-sm text-muted-foreground">{String(index + 1).padStart(2, "0")}</span>
-                  <div>
-                    <p className="text-[1.0625rem] font-semibold leading-snug">{item.role}</p>
-                    <p className="text-[0.95rem] text-muted-foreground">{item.place}</p>
-                    <p className="mt-1.5 leading-relaxed text-foreground/90">{item.detail}</p>
-                  </div>
-                </li>
-              ))}
-            </ol>
-          </Panel>
+        <SectionHeading index="01" title="Research" href="/research" linkLabel="Research statement" />
+        <div className="grid gap-4 sm:grid-cols-2">
+          {researchThemes.map((theme, index) => (
+            <Panel key={theme.title} className="p-6">
+              <p className="mono text-sm text-primary">R{index + 1}</p>
+              <h3 className="mt-2 text-lg font-bold">{theme.title}</h3>
+              <p className="mt-2 leading-relaxed text-muted-foreground">{theme.body}</p>
+            </Panel>
+          ))}
+        </div>
       </section>
 
+      {/* 02 Selected work */}
       <section>
-          <SectionHeading index="02" title="Research" href="/research" linkLabel="Research statement" />
-          <div className="grid gap-4 sm:grid-cols-2">
-            {researchThemes.map((theme, index) => (
-              <Panel key={theme.title} className="p-6">
-                <p className="mono text-sm text-primary">R{index + 1}</p>
-                <h3 className="mt-2 text-lg font-bold">{theme.title}</h3>
-                <p className="mt-2 leading-relaxed text-muted-foreground">{theme.body}</p>
-              </Panel>
-            ))}
-          </div>
-      </section>
-
-      {/* 03 Selected work */}
-      <section>
-        <SectionHeading index="03" title="Selected work" href="/projects" linkLabel="All projects" />
+        <SectionHeading index="02" title="Selected work" href="/projects" linkLabel="All projects" />
         <div className="space-y-4">
           {kernel && (
             <Panel className="grid overflow-hidden md:grid-cols-[1.15fr_1fr]">
@@ -245,10 +221,10 @@ export default function Home() {
         </div>
       </section>
 
-      {/* 04 Writing */}
+      {/* 03 Writing */}
       {latestPost && (
         <section>
-          <SectionHeading index="04" title="Writing" href="/blog" linkLabel="All posts" />
+          <SectionHeading index="03" title="Writing" href="/blog" linkLabel="All posts" />
           <div className="grid gap-4 lg:grid-cols-[1.2fr_1fr]">
             <Link href={`/blog/${latestPost.slug}`} className="group block">
               <Panel className="h-full overflow-hidden transition-colors group-hover:border-foreground/25">
@@ -286,7 +262,7 @@ export default function Home() {
       {/* Contact */}
       <Panel className="grid gap-8 p-6 sm:p-10 md:grid-cols-2 md:items-center">
         <div className="space-y-3">
-          <p className="eyebrow">05 · Contact</p>
+          <p className="eyebrow">04 · Contact</p>
           <h2 className="text-2xl font-bold sm:text-3xl">Working on agent memory too?</h2>
           <p className="text-[1.0625rem] leading-relaxed text-muted-foreground">
             I am always happy to compare notes, collaborate or talk about anything I have written.
