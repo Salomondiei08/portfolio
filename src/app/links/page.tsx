@@ -25,9 +25,9 @@ export const metadata: Metadata = {
     type: "profile",
     images: [
       {
-        url: "https://salomondiei.com/images/salomon.JPG",
-        width: 1200,
-        height: 630,
+        url: "https://salomondiei.com/images/salomon-social-profile.jpg",
+        width: 720,
+        height: 720,
         alt: "Salomon Diei",
       },
     ],
@@ -37,7 +37,7 @@ export const metadata: Metadata = {
     title: "Salomon Diei | Liens",
     description:
       "Retrouve Salomon Diei sur TikTok, Instagram, YouTube, LinkedIn, Facebook et email.",
-    images: ["https://salomondiei.com/images/salomon.JPG"],
+    images: ["https://salomondiei.com/images/salomon-social-profile.jpg"],
   },
 };
 
@@ -106,7 +106,7 @@ export default function LinksPage() {
       <header className="flex flex-col items-center text-center">
         <div className="relative h-24 w-24 overflow-hidden rounded-full border border-border bg-secondary shadow-sm">
           <Image
-            src="/images/salomon.JPG"
+            src="/images/salomon-social-profile.jpg"
             alt="Salomon Diei"
             fill
             sizes="96px"
