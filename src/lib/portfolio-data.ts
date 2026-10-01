@@ -47,7 +47,7 @@ export const portfolioProjects: PortfolioProject[] = [
     id: "aya",
     title: "Aya",
     description:
-      "An AI-powered English learning bot for French speakers in West Africa, delivered entirely through WhatsApp and Telegram. Features personalized learning plans, spaced repetition, voice exercises, and emotion-aware conversations. 100 users in 24 hours, 200 in 3 days — no ads.",
+      "An AI-powered English learning bot for French speakers in West Africa, delivered entirely through WhatsApp and Telegram. Features personalized learning plans, spaced repetition, voice exercises, and emotion-aware conversations.",
     tags: ["AI", "Telegram", "WhatsApp", "EdTech", "TypeScript"],
     image: "https://res.cloudinary.com/dadnrpnid/image/upload/v1770615297/ai_Resraercher_zjj10d.png",
     summary: "An English tutor for French speakers that lives inside WhatsApp and Telegram.",

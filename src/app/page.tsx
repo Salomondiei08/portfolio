@@ -11,13 +11,13 @@ import { getAllPosts } from "@/lib/markdown";
 const readout = [
   { value: "850+", label: "GitHub stars, Oh My Hermes" },
   { value: "$0 → $200K", label: "ARR built as CTO, Sikili" },
-  { value: "200", label: "Aya learners in 3 days" },
-  { value: "GKS", label: "Global Korea Scholar" },
+  { value: "5+ years", label: "Shipping software since 2021" },
+  { value: "FR · EN · KO", label: "Languages I work in" },
 ];
 
 const nowItems = [
   { role: "Assistant Researcher", place: "KOREATECH, DICE Lab", detail: "Memory systems for AI agents, with Prof. Oh Heung Son." },
-  { role: "M.S. Artificial Intelligence", place: "KOREATECH", detail: "Global Korea Scholarship, since September 2024." },
+  { role: "M.S. Artificial Intelligence", place: "KOREATECH", detail: "AI and machine learning research, since September 2024." },
   { role: "Open source", place: "Kernel and Oh My Hermes", detail: "Memory and workflow tooling for coding agents." },
 ];
 
