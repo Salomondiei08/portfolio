@@ -96,7 +96,7 @@ export default function Home() {
                 {recentPosts.map((post) => (
                   <Link key={post.href} href={post.href} className="block group/post">
                     <div className="flex min-h-11 items-center justify-between py-2 border-b border-border/50 group-hover/post:border-primary/30 transition-colors">
-                      <span className="text-sm group-hover/post:text-primary transition-colors line-clamp-1 pr-2">
+                      <span className="text-sm group-hover/post:text-primary transition-colors pr-2">
                         {post.title}
                       </span>
                       <span className="text-xs text-muted-foreground shrink-0">{post.date}</span>
