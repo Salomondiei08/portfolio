@@ -9,6 +9,10 @@ export type PortfolioProject = {
   description: string;
   tags: string[];
   image: string;
+  /** Local screenshot used as the card cover (public/images/projects) */
+  cover?: string;
+  /** One-sentence pitch for cards; `description` is the long form */
+  summary: string;
   links: ProjectLink[];
 };
 
@@ -27,9 +31,11 @@ export const portfolioProjects: PortfolioProject[] = [
     id: "oh-my-hermes",
     title: "Oh My Hermes",
     description:
-      "An opinionated workflow layer for building, shipping, and operating apps with Hermes Agent. 400 stars on GitHub.",
+      "An opinionated workflow layer for building, shipping, and operating apps with Hermes Agent. Over 850 stars on GitHub.",
     tags: ["AI Agents", "Claude Code", "Automation", "TypeScript", "Open Source"],
     image: "https://res.cloudinary.com/dadnrpnid/image/upload/v1770615297/ai_Resraercher_zjj10d.png",
+    summary: "A workflow layer for building, shipping and operating apps with Hermes Agent.",
+    cover: "/images/projects/oh-my-hermes.jpg",
     links: [
       {
         label: "GitHub",
@@ -44,6 +50,8 @@ export const portfolioProjects: PortfolioProject[] = [
       "An AI-powered English learning bot for French speakers in West Africa, delivered entirely through WhatsApp and Telegram. Features personalized learning plans, spaced repetition, voice exercises, and emotion-aware conversations. 100 users in 24 hours, 200 in 3 days — no ads.",
     tags: ["AI", "Telegram", "WhatsApp", "EdTech", "TypeScript"],
     image: "https://res.cloudinary.com/dadnrpnid/image/upload/v1770615297/ai_Resraercher_zjj10d.png",
+    summary: "An English tutor for French speakers that lives inside WhatsApp and Telegram.",
+    cover: "/images/projects/aya.jpg",
     links: [
       {
         label: "Website",
@@ -58,6 +66,8 @@ export const portfolioProjects: PortfolioProject[] = [
       "A shared memory layer for AI agents. Kernel gives agents persistent, structured memory so they can learn, recall context, and collaborate across sessions.",
     tags: ["AI Agents", "Memory", "Open Source", "TypeScript"],
     image: "https://raw.githubusercontent.com/Salomondiei08/kernel-agent-memory/main/docs/assets/kernel-logo.png",
+    summary: "Shared, persistent project memory for coding agents like Claude Code and Codex.",
+    cover: "/images/projects/kernel.jpg",
     links: [
       {
         label: "Website",
@@ -76,6 +86,8 @@ export const portfolioProjects: PortfolioProject[] = [
       "TourCI is the #2 tourism app in Cote d'Ivoire. It helps users discover places and explore them in 360.",
     tags: ["Tourism", "Mobile", "360"],
     image: "https://www.tour.ci/images/logo.png",
+    summary: "Discover places in Côte d'Ivoire and explore them in 360 degrees.",
+    cover: "/images/projects/tourci.jpg",
     links: [
       {
         label: "Website",
@@ -90,6 +102,8 @@ export const portfolioProjects: PortfolioProject[] = [
       "An open-source Python project using GPT-3/GPT-4 and LangChain to build a customer-service AI agent, with company help-center data vectorized in Pinecone.",
     tags: ["Python", "OpenAI", "LangChain", "Pinecone"],
     image: "https://res.cloudinary.com/dadnrpnid/image/upload/v1770615655/Gemini_Generated_Image_wy5yecwy5yecwy5y_iprjeu.png",
+    summary: "A customer-service agent built on GPT-4, LangChain and Pinecone.",
+    cover: "/images/projects/help-ai.jpg",
     links: [
       {
         label: "GitHub",
@@ -104,6 +118,8 @@ export const portfolioProjects: PortfolioProject[] = [
       "A fast photo culling tool for going through a camera SD card: page through photos, trash the ones you don't want, undo anytime. Runs entirely in the browser via the File System Access API, with an Electron desktop version for full OS-level Trash support.",
     tags: ["Next.js", "File System Access API", "Electron", "TypeScript"],
     image: "https://res.cloudinary.com/dadnrpnid/image/upload/v1770615297/ai_Resraercher_zjj10d.png",
+    summary: "Cull a camera card full of photos right in the browser, with undo.",
+    cover: "/images/projects/photo-triage.jpg",
     links: [
       {
         label: "Website",
