@@ -6,7 +6,7 @@ A calm, reading-first academic homepage for my work as an AI researcher and engi
 
 - **Responsive Design** - Fully responsive across all devices with mobile-first approach
 - **Dark/Light Mode** - Smooth theme switching with system preference detection
-- **Reading-first layout** - One centred column with section labels in the margin, serif body text and Futura headings
+- **Reading-first layout** - One centred column with section labels in the margin, clean sans body text and Futura headings
 - **Top navigation** - Sticky header with four primary links; collapses to a menu on mobile
 - **Interactive Chat Widget** - AI-powered chatbot for quick information
 - **Blog System** - Markdown-based blog with full MDX support
@@ -20,7 +20,7 @@ A calm, reading-first academic homepage for my work as an AI researcher and engi
 - **Language:** [TypeScript](https://www.typescriptlang.org/)
 - **Styling:** [Tailwind CSS v4](https://tailwindcss.com/)
 - **UI Components:** [shadcn/ui](https://ui.shadcn.com/)
-- **Typography:** Futura for headings and UI, system book serif (Iowan Old Style, Charter, Georgia) for reading. No web fonts are downloaded.
+- **Typography:** Futura for headings and UI, the platform UI sans (San Francisco, Segoe UI, Roboto) for body text. No web fonts are downloaded.
 - **Deployment:** Vercel (recommended)
 
 ## 📦 Installation

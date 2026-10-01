@@ -6,9 +6,9 @@
 /*
  * Typography system
  * Futura carries headings, navigation and labels (short, display text).
- * Long-form reading uses a book serif stack, because geometric sans faces
- * like Futura tire the eye over paragraphs. Every face below ships with the
- * OS, so nothing is downloaded and there is no layout shift on load.
+ * Body text uses the platform UI sans (San Francisco, Segoe UI, Roboto):
+ * modern, very legible at paragraph length, and already installed, so
+ * nothing is downloaded and there is no layout shift on load.
  */
 @font-face {
   font-family: 'Futura';
@@ -28,7 +28,7 @@
   --color-background: var(--background);
   --color-foreground: var(--foreground);
   --font-sans: 'Futura', 'Century Gothic', 'Avenir Next', 'Trebuchet MS', sans-serif;
-  --font-serif: 'Iowan Old Style', 'Charter', 'Bitstream Charter', 'Sitka Text', 'Cambria', 'Georgia', serif;
+  --font-body: -apple-system, BlinkMacSystemFont, 'SF Pro Text', 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
   --font-mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
   --color-ring: var(--ring);
   --color-input: var(--input);
@@ -109,16 +109,16 @@
     @apply border-border outline-ring/50;
   }
   html {
-    /* 17px base: comfortable for serif body text, still rem-relative */
-    font-size: 106.25%;
+    /* Respect the reader's browser font size (16px by default) */
+    font-size: 100%;
     -webkit-text-size-adjust: 100%;
     text-rendering: optimizeLegibility;
   }
   body {
     @apply bg-background text-foreground antialiased;
-    font-family: var(--font-serif);
-    line-height: 1.65;
-    font-feature-settings: "kern", "liga", "onum";
+    font-family: var(--font-body);
+    line-height: 1.6;
+    letter-spacing: -0.003em;
   }
   h1, h2, h3, h4, nav, button, label, input, textarea, select {
     font-family: var(--font-sans);
@@ -196,9 +196,9 @@ body, header, footer, nav, a, button, input {
 /* Article typography (markdown output) */
 .blog-content {
   color: var(--foreground);
-  font-family: var(--font-serif);
+  font-family: var(--font-body);
   font-size: 1.0625rem;
-  line-height: 1.75;
+  line-height: 1.7;
 }
 
 .blog-content > * + * {
@@ -347,7 +347,7 @@ body, header, footer, nav, a, button, input {
 
 @media (min-width: 640px) {
   .blog-content {
-    font-size: 1.125rem;
+    font-size: 1.09rem;
   }
 }
 
