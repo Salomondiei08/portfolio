@@ -97,6 +97,20 @@ export const portfolioProjects: PortfolioProject[] = [
       },
     ],
   },
+  {
+    id: "photo-triage",
+    title: "Photo Triage",
+    description:
+      "A fast photo culling tool for going through a camera SD card: page through photos, trash the ones you don't want, undo anytime. Runs entirely in the browser via the File System Access API, with an Electron desktop version for full OS-level Trash support.",
+    tags: ["Next.js", "File System Access API", "Electron", "TypeScript"],
+    image: "https://res.cloudinary.com/dadnrpnid/image/upload/v1770615297/ai_Resraercher_zjj10d.png",
+    links: [
+      {
+        label: "Website",
+        href: "https://photo-app-seven-lilac.vercel.app",
+      },
+    ],
+  },
 ];
 
 export const featuredProjectId = "oh-my-hermes";
@@ -155,5 +169,12 @@ export const appGalleryItems: AppGalleryItem[] = [
     description: "A playful proposal-themed web app project.",
     tags: ["Creative", "Web App", "Interactive"],
     href: "https://github.com/Salomondiei08/valentines-proposal-app",
+  },
+  {
+    id: "photo-triage",
+    title: "Photo Triage",
+    description: "Fast photo culling for SD cards — trash, undo, and bulk-filter by file type, right in the browser.",
+    tags: ["Photography", "Productivity", "Web Tools"],
+    href: "https://photo-app-seven-lilac.vercel.app",
   },
 ];
