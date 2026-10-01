@@ -2,8 +2,15 @@ import Image from "next/image";
 import Link from "next/link";
 import { format } from "date-fns";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { NewsletterForm } from "@/components/portfolio/NewsletterForm";
 import { portfolioProjects, type PortfolioProject } from "@/lib/portfolio-data";
 import { getAllPosts } from "@/lib/markdown";
+
+const nowItems = [
+  { title: "Assistant Researcher, KOREATECH", detail: "DICE Lab, working on memory systems for AI agents" },
+  { title: "M.S. in Artificial Intelligence, KOREATECH", detail: "Since September 2024" },
+  { title: "Open source", detail: "Kernel and Oh My Hermes (850+ stars on GitHub)" },
+];
 
 /** Card title in the site's numbered style: "01. Now" */
 function NumberedTitle({ index, children }: { index: string; children: React.ReactNode }) {
@@ -26,17 +33,16 @@ function ProjectThumb({ project, className = "" }: { project: PortfolioProject; 
 }
 
 /**
- * Home page in the original sidebar-and-cards layout, kept short on
- * purpose: who I am (photo and two paragraphs), then three projects and
- * three posts. Everything else lives on its own page.
+ * Home page in the original sidebar-and-cards layout. Deliberately plain:
+ * a real photo, first-person copy, real screenshots and no decorative
+ * effects, so it reads as a person's site rather than a template.
  */
 export default function Home() {
-  const recentPosts = getAllPosts("blog").slice(0, 3);
+  const recentPosts = getAllPosts("blog").slice(0, 4);
 
-  // Kernel first: it is the project closest to my research
-  const projects = ["kernel", "oh-my-hermes", "aya"]
-    .map((id) => portfolioProjects.find((p) => p.id === id))
-    .filter((p): p is PortfolioProject => Boolean(p));
+  // Kernel is the project closest to my research, so it is featured
+  const featured = portfolioProjects.find((p) => p.id === "kernel") ?? portfolioProjects[0];
+  const otherProjects = portfolioProjects.filter((p) => p.id !== featured.id).slice(0, 3);
 
   return (
     <div className="space-y-10">
@@ -82,36 +88,27 @@ export default function Home() {
         />
       </section>
 
-      {/* 01 Projects + 02 Writing: the only two blocks under the intro */}
+      {/* 01 Now + 02 Writing */}
       <div className="grid gap-4 md:grid-cols-2">
         <Card className="h-full border-border bg-card">
           <CardHeader className="pb-0">
-            <div className="flex items-center justify-between">
-              <NumberedTitle index="01">Projects</NumberedTitle>
-              <Link href="/projects" className="inline-flex min-h-11 items-center text-[0.95rem] text-muted-foreground hover:text-primary transition-colors">
-                View all →
-              </Link>
-            </div>
+            <NumberedTitle index="01">Now</NumberedTitle>
           </CardHeader>
-          <CardContent>
-            <ul>
-              {projects.map((project) => (
-                <li key={project.id}>
-                  <a
-                    href={project.links[0]?.href}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="group flex items-center gap-4 border-b border-border/60 py-3 last:border-0"
-                  >
-                    <ProjectThumb project={project} className="h-12 w-20" />
-                    <span className="min-w-0">
-                      <span className="block text-base font-semibold group-hover:text-primary transition-colors">{project.title}</span>
-                      <span className="block text-sm text-muted-foreground">{project.summary}</span>
-                    </span>
-                  </a>
+          <CardContent className="space-y-5">
+            <ul className="space-y-4">
+              {nowItems.map((item) => (
+                <li key={item.title} className="flex items-start gap-3">
+                  <span className="mt-2.5 h-1.5 w-1.5 shrink-0 rounded-full bg-primary" />
+                  <div>
+                    <p className="text-base font-semibold">{item.title}</p>
+                    <p className="text-[0.95rem] text-muted-foreground">{item.detail}</p>
+                  </div>
                 </li>
               ))}
             </ul>
+            <Link href="/about" className="inline-flex min-h-11 items-center text-base text-primary hover:underline">
+              Full background →
+            </Link>
           </CardContent>
         </Card>
 
@@ -138,6 +135,88 @@ export default function Home() {
           </CardContent>
         </Card>
       </div>
+
+      {/* Featured project, with a real screenshot */}
+      <Card className="overflow-hidden border-border bg-card py-0">
+        <div className="grid md:grid-cols-[1fr_1.1fr]">
+          <a href={featured.links[0]?.href} target="_blank" rel="noopener noreferrer" tabIndex={-1} aria-hidden="true" className="relative block aspect-[16/10] border-b border-border bg-muted md:aspect-auto md:border-b-0 md:border-r">
+            {featured.cover && (
+              <Image src={featured.cover} alt="" fill sizes="(max-width: 768px) 100vw, 480px" className="object-cover object-top" />
+            )}
+          </a>
+          <div className="space-y-3 p-6">
+            <p className="text-sm font-medium text-primary">Featured project</p>
+            <h3 className="text-2xl font-bold">{featured.title}</h3>
+            <p className="text-base leading-relaxed text-foreground/90">{featured.description}</p>
+            <p className="text-sm text-muted-foreground">{featured.tags.join(", ")}</p>
+            <div className="flex flex-wrap gap-x-5">
+              {featured.links.map((link) => (
+                <a key={link.href} href={link.href} target="_blank" rel="noopener noreferrer" className="inline-flex min-h-11 items-center text-base font-medium text-primary hover:underline">
+                  {link.label} ↗
+                </a>
+              ))}
+            </div>
+          </div>
+        </div>
+      </Card>
+
+      {/* 03 Research + 04 More projects */}
+      <div className="grid gap-4 md:grid-cols-2">
+        <Card className="h-full border-border bg-card">
+          <CardHeader className="pb-0">
+            <NumberedTitle index="03">Research</NumberedTitle>
+          </CardHeader>
+          <CardContent className="space-y-4">
+            <p className="text-base leading-relaxed text-foreground/90">
+              I look at how AI agents store, retrieve and learn from what happened in earlier sessions, and how they
+              can judge their own work well enough to improve without a human checking every step.
+            </p>
+            <p className="text-base leading-relaxed text-muted-foreground">
+              DICE Lab, KOREATECH, with Prof. Oh Heung Son.
+            </p>
+            <Link href="/research" className="inline-flex min-h-11 items-center text-base text-primary hover:underline">
+              More about my research →
+            </Link>
+          </CardContent>
+        </Card>
+
+        <Card className="h-full border-border bg-card">
+          <CardHeader className="pb-0">
+            <div className="flex items-center justify-between">
+              <NumberedTitle index="04">More projects</NumberedTitle>
+              <Link href="/projects" className="inline-flex min-h-11 items-center text-[0.95rem] text-muted-foreground hover:text-primary transition-colors">
+                View all →
+              </Link>
+            </div>
+          </CardHeader>
+          <CardContent>
+            <ul className="space-y-1">
+              {otherProjects.map((project) => (
+                <li key={project.id}>
+                  <Link href={`/projects#${project.id}`} className="group flex items-center gap-4 rounded-lg py-2.5">
+                    <ProjectThumb project={project} className="h-12 w-20" />
+                    <span className="min-w-0">
+                      <span className="block text-base font-semibold group-hover:text-primary transition-colors">{project.title}</span>
+                      <span className="block text-sm text-muted-foreground">{project.summary}</span>
+                    </span>
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          </CardContent>
+        </Card>
+      </div>
+
+      {/* Newsletter */}
+      <section className="border-t border-border pt-8">
+        <div className="flex flex-col justify-between gap-6 md:flex-row md:items-center">
+          <div>
+            <h2 className="mb-1 text-xl font-bold">Get new posts by email</h2>
+            <p className="text-base text-muted-foreground">Usually about agents, research, or something I built.</p>
+          </div>
+          <NewsletterForm />
+        </div>
+      </section>
     </div>
   );
 }
