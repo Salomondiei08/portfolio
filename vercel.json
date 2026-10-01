@@ -1,5 +1,10 @@
 {
   "rewrites": [
+    {
+      "source": "/",
+      "has": [{ "type": "host", "value": "s.reinvent-labs.com" }],
+      "destination": "/links"
+    },
     { "source": "/impactia", "destination": "/impactia/index.html" },
     { "source": "/impactia/", "destination": "/impactia/index.html" }
   ],
