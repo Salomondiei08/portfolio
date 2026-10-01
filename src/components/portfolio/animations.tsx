@@ -8,12 +8,38 @@ interface FadeInProps {
   className?: string;
 }
 
-/**
- * Layout wrapper kept for existing call sites. Entrance animations were
- * removed on purpose: the site stays calm and the same on every page.
- */
-export function FadeIn({ children, className = "" }: FadeInProps) {
-  return <div className={className}>{children}</div>;
+export function FadeIn({ children, delay = 0, className = "" }: FadeInProps) {
+  const ref = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add("animate-fade-in");
+            observer.unobserve(entry.target);
+          }
+        });
+      },
+      { threshold: 0.1 }
+    );
+
+    if (ref.current) {
+      observer.observe(ref.current);
+    }
+
+    return () => observer.disconnect();
+  }, []);
+
+  return (
+    <div
+      ref={ref}
+      className={className}
+      style={{ animationDelay: `${delay}ms` }}
+    >
+      {children}
+    </div>
+  );
 }
 
 interface SlideInProps {
