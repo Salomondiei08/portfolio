@@ -1,5 +1,6 @@
 import { Card, CardContent } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
+import { Button } from "@/components/ui/button";
 
 export const metadata = {
   title: "Research | Salomon Diei - Autonomous Agents",
@@ -8,6 +9,14 @@ export const metadata = {
     canonical: "https://salomon.reinvent-labs.com/research",
   },
 };
+
+/** Links for the SQE paper; the project page hosts the PDF, figures and talk. */
+const publicationLinks = [
+  { label: "Paper", href: "https://salomondiei08.github.io/sqe-experiment/assets/sqe-paper.pdf" },
+  { label: "Project page", href: "https://salomondiei08.github.io/sqe-experiment/" },
+  { label: "Code", href: "https://github.com/Salomondiei08/sqe-experiment" },
+  { label: "Dataset", href: "https://huggingface.co/datasets/TheReinventGuy/sqe-experiment" },
+];
 
 export default function ResearchPage() {
   return (
@@ -42,10 +51,47 @@ export default function ResearchPage() {
         </CardContent>
       </Card>
 
-      {/* Research Interests */}
+      {/* Publications */}
       <section className="space-y-6">
         <h2 className="text-xl font-semibold flex items-center gap-3">
           <span className="text-primary">01.</span>
+          Publications
+          <div className="h-px flex-1 bg-border" />
+        </h2>
+
+        <Card className="bg-card border-border">
+          <CardContent className="p-6 space-y-4">
+            <div className="space-y-1">
+              <h3 className="font-semibold text-lg">
+                When Does Query Expansion Help Agent Memory? A Multi-Seed Study of Selective Expansion and Gate
+                Reliability
+              </h3>
+              <p className="text-sm text-muted-foreground">
+                Salomon Diei · Preprint, 2026 · Earlier version presented at NAFSIK 2026
+              </p>
+            </div>
+            <p className="text-muted-foreground">
+              Expanding only low-confidence queries halves the cost of LLM query expansion for agent memory
+              with no loss in Recall@5, but the confidence gate picks queries no better than chance. The open
+              problem is gating, not expansion.
+            </p>
+            <div className="flex flex-wrap gap-2">
+              {publicationLinks.map((link) => (
+                <Button key={link.href} variant="outline" size="sm" asChild>
+                  <a href={link.href} target="_blank" rel="noopener noreferrer">
+                    {link.label}
+                  </a>
+                </Button>
+              ))}
+            </div>
+          </CardContent>
+        </Card>
+      </section>
+
+      {/* Research Interests */}
+      <section className="space-y-6">
+        <h2 className="text-xl font-semibold flex items-center gap-3">
+          <span className="text-primary">02.</span>
           Research Interests
           <div className="h-px flex-1 bg-border" />
         </h2>
@@ -89,7 +135,7 @@ export default function ResearchPage() {
       {/* Applied Research */}
       <section className="space-y-6">
         <h2 className="text-xl font-semibold flex items-center gap-3">
-          <span className="text-primary">02.</span>
+          <span className="text-primary">03.</span>
           Applied Research Projects
           <div className="h-px flex-1 bg-border" />
         </h2>
