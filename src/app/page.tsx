@@ -37,6 +37,56 @@ export default function Home() {
         </div>
       </section>
 
+      {/* Featured paper: placed above Now and Writing because research is the main focus */}
+      <Card className="bg-card border-primary/40 hover:border-primary/60 transition-all duration-300">
+        <CardContent className="p-5">
+          <div className="flex flex-col sm:flex-row gap-4">
+            <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-primary/30 to-primary/10 flex items-center justify-center shrink-0">
+              <span className="text-primary font-bold text-sm">SQE</span>
+            </div>
+            <div className="flex-1 space-y-2">
+              <div className="flex items-center gap-2 flex-wrap">
+                <Badge variant="outline" className="text-xs border-primary/50 text-primary">Featured paper</Badge>
+                <span className="text-xs text-muted-foreground">Preprint 2026 · Earlier version presented at NAFSIK 2026</span>
+              </div>
+              <h3 className="text-base font-semibold leading-snug">
+                <a
+                  href="https://salomondiei08.github.io/sqe-experiment/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="hover:text-primary transition-colors"
+                >
+                  When Does Query Expansion Help Agent Memory? A Multi-Seed Study of Selective Expansion and Gate
+                  Reliability
+                </a>
+              </h3>
+              <p className="text-sm text-muted-foreground">
+                Expanding only low-confidence queries halves the cost of LLM query expansion for agent memory with no
+                loss in Recall@5, but the confidence gate picks queries no better than chance.
+              </p>
+              <div className="flex flex-wrap gap-x-4">
+                {[
+                  { label: "Paper", href: "https://salomondiei08.github.io/sqe-experiment/assets/sqe-paper.pdf" },
+                  { label: "Project page", href: "https://salomondiei08.github.io/sqe-experiment/" },
+                  { label: "Code", href: "https://github.com/Salomondiei08/sqe-experiment" },
+                  { label: "Dataset", href: "https://huggingface.co/datasets/TheReinventGuy/sqe-experiment" },
+                ].map((link) => (
+                  <a
+                    key={link.href}
+                    href={link.href}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-flex min-h-11 items-center text-sm text-primary hover:underline"
+                  >
+                    {link.label} →
+                  </a>
+                ))}
+              </div>
+            </div>
+          </div>
+        </CardContent>
+      </Card>
+
       {/* Now + Writing */}
       <div className="grid md:grid-cols-2 gap-4">
         <FadeIn delay={100}>
