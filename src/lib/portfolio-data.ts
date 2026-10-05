@@ -28,6 +28,22 @@ export type AppGalleryItem = {
 // Central source of truth for projects used across pages.
 export const portfolioProjects: PortfolioProject[] = [
   {
+    id: "sqe",
+    title: "SQE: When Does Query Expansion Help Agent Memory?",
+    description:
+      "Research paper and open release. Selective query-side expansion halves the cost of LLM query expansion for agent memory with no loss in Recall@5, but its confidence gate is no better than random. 8 seeds, 4,000 queries, all data and code released. Preprint 2026; earlier version presented at NAFSIK 2026.",
+    summary: "Research paper: selective query expansion for agent memory retrieval.",
+    tags: ["Research", "Agent Memory", "Retrieval", "Paper"],
+    image: "/images/projects/sqe.png",
+    cover: "/images/projects/sqe.png",
+    links: [
+      { label: "Paper", href: "https://salomondiei08.github.io/sqe-experiment/assets/sqe-paper.pdf" },
+      { label: "Project page", href: "https://salomondiei08.github.io/sqe-experiment/" },
+      { label: "Code", href: "https://github.com/Salomondiei08/sqe-experiment" },
+      { label: "Dataset", href: "https://huggingface.co/datasets/TheReinventGuy/sqe-experiment" },
+    ],
+  },
+  {
     id: "oh-my-hermes",
     title: "Oh My Hermes",
     description:

@@ -14,7 +14,10 @@ export default function Home() {
     href: `/blog/${post.slug}`,
   }));
 
-  const otherProjects = portfolioProjects.filter((p) => p.id !== featuredProject.id).slice(0, 3);
+  // The SQE paper has its own featured card above, so it is left out of "More projects"
+  const otherProjects = portfolioProjects
+    .filter((p) => p.id !== featuredProject.id && p.id !== "sqe")
+    .slice(0, 3);
 
   return (
     <div className="space-y-8">
