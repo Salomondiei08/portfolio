@@ -1,5 +1,7 @@
 ## Version History
 
+- 2026-10-16: Refreshed social link colors, added the WhatsApp brand icon and replaced the community group with the AI Connect Community channel; added a standalone theme toggle.
+
 - 2026-10-02: Made `/links` independent of the portfolio drawer, chatbot and footer; removed social descriptions, added a website link and an AI Connect WhatsApp community tile.
 
 - 2026-10-02: Added `s.reinvent-labs.com` as a short URL redirecting to the portfolio's standalone `/links` page, with verified DNS.

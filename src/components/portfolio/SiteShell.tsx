@@ -4,6 +4,8 @@ import type { ReactNode } from "react";
 import dynamic from "next/dynamic";
 import { usePathname } from "next/navigation";
 import { Sidebar } from "./Sidebar";
+import { Moon, Sun } from "lucide-react";
+import { useTheme } from "./ThemeProvider";
 
 const ChatWidget = dynamic(
   () => import("./ChatWidget").then((module) => ({ default: module.ChatWidget })),
@@ -13,9 +15,19 @@ const ChatWidget = dynamic(
 /** Keeps the social bio page independent of the portfolio navigation. */
 export function SiteShell({ children }: { children: ReactNode }) {
   const pathname = usePathname();
+  const { theme, toggleTheme } = useTheme();
 
   if (pathname === "/links") {
-    return <main className="min-h-screen px-4">{children}</main>;
+    return (
+      <main className="min-h-screen px-4">
+        <div className="mx-auto flex max-w-[36rem] justify-end pt-3">
+          <button type="button" onClick={toggleTheme} aria-label={theme === "dark" ? "Activer le thème clair" : "Activer le thème sombre"} title={theme === "dark" ? "Thème clair" : "Thème sombre"} className="flex h-11 w-11 items-center justify-center rounded-full border border-border hover:bg-secondary focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring">
+            {theme === "dark" ? <Sun className="h-5 w-5" /> : <Moon className="h-5 w-5" />}
+          </button>
+        </div>
+        {children}
+      </main>
+    );
   }
 
   return (

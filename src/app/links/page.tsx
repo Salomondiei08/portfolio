@@ -4,7 +4,6 @@ import {
   Facebook,
   Globe,
   ArrowUpRight,
-  MessageCircle,
   Instagram,
   Linkedin,
   Mail,
@@ -12,6 +11,7 @@ import {
   Youtube,
   type LucideIcon,
 } from "lucide-react";
+import styles from "./links.module.css";
 
 export const metadata: Metadata = {
   title: "Liens | Salomon Diei",
@@ -111,7 +111,7 @@ const topics = [
  */
 export default function LinksPage() {
   return (
-    <div className="mx-auto flex min-h-screen w-full max-w-[36rem] flex-col px-0 py-8 sm:py-12">
+    <div className={`${styles.page} mx-auto flex min-h-screen w-full max-w-[36rem] flex-col px-0 py-8 sm:py-12`}>
       <header className="flex flex-col items-center text-center">
         <div className="relative h-24 w-24 overflow-hidden rounded-full border border-border bg-secondary shadow-sm">
           <Image
@@ -150,7 +150,7 @@ export default function LinksPage() {
                 aria-label={`${link.name}: ${link.description}`}
                 className="group flex min-h-24 flex-col items-center justify-center gap-2 rounded-md px-2 py-3 text-center transition-colors hover:bg-secondary/60 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-background"
               >
-                <span className="flex h-12 w-12 items-center justify-center rounded-full border border-border bg-card text-primary shadow-sm transition-colors group-hover:border-primary/60 group-hover:bg-primary/10">
+                <span data-platform={link.name} className={`${styles.socialIcon} flex h-12 w-12 items-center justify-center rounded-full border shadow-sm transition-transform group-hover:scale-105`}>
                   <link.icon className="h-5 w-5" aria-hidden="true" />
                 </span>
                 <span className="font-sans text-sm font-bold leading-tight text-foreground">{link.name}</span>
@@ -161,16 +161,16 @@ export default function LinksPage() {
       </section>
 
       <a
-        href="https://chat.whatsapp.com/IpV1ED1SUaZFUepV5SzUkM?mode=gi_t"
+        href="https://whatsapp.com/channel/0029Vabuc5aCMY0MaUTXzJ1F"
         target="_blank"
         rel="noopener noreferrer"
-        className="mt-8 flex min-h-24 items-center gap-4 rounded-lg border border-emerald-500/40 bg-emerald-500/10 p-4 transition-colors hover:bg-emerald-500/20 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-background"
+        className={`${styles.channel} mt-8 flex min-h-24 items-center gap-4 rounded-lg border p-4 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-background`}
       >
-        <MessageCircle className="h-7 w-7 shrink-0 text-emerald-500" aria-hidden="true" />
+        <span className={styles.channelIcon} aria-hidden="true"><span className={styles.whatsappIcon} /></span>
         <span className="min-w-0 flex-1">
           <span className="block font-sans text-base font-bold">AI Connect</span>
           <span className="mt-1 block text-sm leading-relaxed text-foreground">
-            Tu veux apprendre l&apos;IA ? Rejoins notre communauté AI Connect.
+            Tu veux apprendre l&apos;IA ? Suis la chaîne AI Connect Community sur WhatsApp.
           </span>
         </span>
         <ArrowUpRight className="h-5 w-5 shrink-0" aria-hidden="true" />
@@ -189,6 +189,12 @@ export default function LinksPage() {
             </li>
           ))}
         </ul>
+      </section>
+      <section aria-labelledby="partnership-title" className="mt-10 border-t border-border pt-6 text-center">
+        <h2 id="partnership-title" className="font-sans text-lg font-bold">Un partenariat ?</h2>
+        <p className="mt-2 text-sm leading-relaxed text-muted-foreground">
+          Vous voulez me contacter pour un partenariat ? N&apos;hésitez pas à m&apos;écrire.
+        </p>
       </section>
     </div>
   );
