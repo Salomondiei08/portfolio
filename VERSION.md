@@ -1,5 +1,7 @@
 ## Version History
 
+- 2026-10-16: Changed WhatsApp links to same-tab navigation and added copyable channel/contact fallbacks for restricted in-app browsers.
+
 - 2026-10-16: Refreshed social link colors, added the WhatsApp brand icon and replaced the community group with the AI Connect Community channel; added a standalone theme toggle.
 
 - 2026-10-02: Made `/links` independent of the portfolio drawer, chatbot and footer; removed social descriptions, added a website link and an AI Connect WhatsApp community tile.

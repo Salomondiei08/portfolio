@@ -12,6 +12,9 @@ import {
   type LucideIcon,
 } from "lucide-react";
 import styles from "./links.module.css";
+import { WhatsAppHelp } from "./WhatsAppHelp";
+
+const whatsappChannelUrl = "https://whatsapp.com/channel/0029Vabuc5aCMY0MaUTXzJ1F";
 
 export const metadata: Metadata = {
   title: "Liens | Salomon Diei",
@@ -161,9 +164,7 @@ export default function LinksPage() {
       </section>
 
       <a
-        href="https://whatsapp.com/channel/0029Vabuc5aCMY0MaUTXzJ1F"
-        target="_blank"
-        rel="noopener noreferrer"
+        href={whatsappChannelUrl}
         className={`${styles.channel} mt-8 flex min-h-24 items-center gap-4 rounded-lg border p-4 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-background`}
       >
         <span className={styles.channelIcon} aria-hidden="true"><span className={styles.whatsappIcon} /></span>
@@ -197,8 +198,6 @@ export default function LinksPage() {
         </p>
         <a
           href="https://wa.me/2250152375828"
-          target="_blank"
-          rel="noopener noreferrer"
           className="mt-4 inline-flex min-h-11 items-center justify-center gap-3 rounded-md px-4 py-2 font-sans text-sm font-bold text-foreground underline underline-offset-4 hover:bg-secondary focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
         >
           <span className={styles.whatsappIcon} aria-hidden="true" />
@@ -206,6 +205,7 @@ export default function LinksPage() {
           <ArrowUpRight className="h-4 w-4" aria-hidden="true" />
         </a>
       </section>
+      <WhatsAppHelp channelUrl={whatsappChannelUrl} phone="+2250152375828" />
     </div>
   );
 }
