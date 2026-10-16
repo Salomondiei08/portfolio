@@ -195,6 +195,16 @@ export default function LinksPage() {
         <p className="mt-2 text-sm leading-relaxed text-muted-foreground">
           Vous voulez me contacter pour un partenariat ? N&apos;hésitez pas à m&apos;écrire.
         </p>
+        <a
+          href="https://wa.me/2250152375828"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="mt-4 inline-flex min-h-11 items-center justify-center gap-3 rounded-md px-4 py-2 font-sans text-sm font-bold text-foreground underline underline-offset-4 hover:bg-secondary focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
+        >
+          <span className={styles.whatsappIcon} aria-hidden="true" />
+          Me contacter sur WhatsApp
+          <ArrowUpRight className="h-4 w-4" aria-hidden="true" />
+        </a>
       </section>
     </div>
   );
