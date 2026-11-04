@@ -12,7 +12,7 @@ A modern, animated portfolio website showcasing my work as an AI Engineer and Re
 - **Blog System** - Markdown-based blog with full MDX support
 - **App Gallery** - Showcase of vibe-coded applications
 - **Photography Gallery** - Personal photography collection
-- **Newsletter Integration** - Email subscription system
+- **Newsletter Integration** - Email subscription with double opt-in through Iris (set `IRIS_PUBLIC_URL`, `IRIS_LIST_ID` and `IRIS_SIGNUP_KEY`)
 
 ## 🛠️ Tech Stack
 

@@ -4,7 +4,7 @@ import { useState } from "react";
 
 /**
  * Compact newsletter subscription widget for blog article sidebars.
- * Calls the /api/newsletter endpoint which proxies to Buttondown.
+ * Calls the /api/newsletter endpoint, which starts a double opt-in through Iris.
  */
 export function BlogNewsletterWidget() {
   const [email, setEmail] = useState("");
@@ -48,7 +48,7 @@ export function BlogNewsletterWidget() {
           <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={2} stroke="currentColor" className="w-4 h-4">
             <path strokeLinecap="round" strokeLinejoin="round" d="M4.5 12.75l6 6 9-13.5" />
           </svg>
-          You&apos;re subscribed!
+          Check your inbox to confirm.
         </div>
         <p className="text-xs text-muted-foreground">Thanks for joining. New posts go straight to your inbox.</p>
       </div>

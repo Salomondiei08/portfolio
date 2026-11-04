@@ -3,57 +3,51 @@ import { NextRequest, NextResponse } from "next/server";
 /**
  * POST /api/newsletter
  *
- * Subscribes an email address to the Buttondown newsletter.
+ * Starts a newsletter subscription through Iris, the central mail hub. Iris sends a confirmation
+ * email and adds the address only after the person presses the button in it (double opt-in), so a
+ * mistyped or someone else's address never receives the newsletter.
  *
- * Setup:
- *   1. Create a free account at https://buttondown.com
- *   2. Go to Settings → API Keys and generate a key
- *   3. Add BUTTONDOWN_API_KEY=<your-key> to your .env.local file
+ * Setup (server-side environment variables, never in the browser):
+ *   IRIS_PUBLIC_URL   https://iris.reinvent-labs.com
+ *   IRIS_LIST_ID      id of the list, shown in Iris under Newsletters
+ *   IRIS_SIGNUP_KEY   the list's signup key, shown next to it under Inscription
  */
 export async function POST(req: NextRequest) {
-  const { email } = await req.json();
+  const body = (await req.json().catch(() => ({}))) as { email?: unknown };
+  const email = typeof body.email === "string" ? body.email.trim() : "";
 
-  if (!email || typeof email !== "string" || !email.includes("@")) {
+  if (!email || !email.includes("@") || email.length > 254) {
     return NextResponse.json({ error: "A valid email address is required." }, { status: 400 });
   }
 
-  const apiKey = process.env.BUTTONDOWN_API_KEY;
-
-  if (!apiKey) {
-    console.error("BUTTONDOWN_API_KEY is not set");
-    return NextResponse.json(
-      { error: "Newsletter is not configured yet. Please try again later." },
-      { status: 500 }
-    );
+  const base = process.env.IRIS_PUBLIC_URL;
+  const list = process.env.IRIS_LIST_ID;
+  const key = process.env.IRIS_SIGNUP_KEY;
+  if (!base || !list || !key) {
+    console.error("IRIS_PUBLIC_URL, IRIS_LIST_ID or IRIS_SIGNUP_KEY is not set");
+    return NextResponse.json({ error: "Newsletter is not configured yet. Please try again later." }, { status: 500 });
   }
 
-  const res = await fetch("https://api.buttondown.email/v1/subscribers", {
-    method: "POST",
-    headers: {
-      Authorization: `Token ${apiKey}`,
-      "Content-Type": "application/json",
-    },
-    body: JSON.stringify({ email_address: email }),
-  });
-
-  if (!res.ok) {
-    const data = await res.json().catch(() => ({}));
-
-    // Buttondown returns a specific error when already subscribed
-    const alreadySubscribed =
-      JSON.stringify(data).toLowerCase().includes("already subscribed") ||
-      res.status === 409;
-
-    if (alreadySubscribed) {
-      return NextResponse.json({ message: "You are already subscribed!" });
-    }
-
-    console.error("Buttondown API error:", res.status, data);
-    return NextResponse.json(
-      { error: "Could not subscribe. Please try again." },
-      { status: 500 }
-    );
+  let res: Response;
+  try {
+    res = await fetch(`${base.replace(/\/+$/, "")}/api/public/subscribe`, {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ list, email, key }),
+      signal: AbortSignal.timeout(10_000),
+    });
+  } catch (error) {
+    console.error("Iris is unreachable:", error);
+    return NextResponse.json({ error: "Could not subscribe. Please try again." }, { status: 502 });
   }
 
-  return NextResponse.json({ message: "Subscribed successfully!" });
+  if (res.status === 429) {
+    return NextResponse.json({ error: "Too many attempts. Please try again later." }, { status: 429 });
+  }
+  if (res.status !== 202) {
+    console.error("Iris refused the subscription:", res.status);
+    return NextResponse.json({ error: "Could not subscribe. Please try again." }, { status: 500 });
+  }
+
+  return NextResponse.json({ message: "Check your inbox to confirm your subscription." });
 }
