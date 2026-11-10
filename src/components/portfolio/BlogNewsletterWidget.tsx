@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import { subscribeNewsletter } from "@/lib/newsletter";
 
 /**
  * Compact newsletter subscription widget for blog article sidebars.
@@ -19,16 +20,9 @@ export function BlogNewsletterWidget() {
     setErrorMsg("");
 
     try {
-      const res = await fetch("/api/newsletter", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ email }),
-      });
-
-      const data = await res.json();
-
-      if (!res.ok) {
-        setErrorMsg(data.error || "Something went wrong. Try again.");
+      const error = await subscribeNewsletter(email);
+      if (error) {
+        setErrorMsg(error);
         setStatus("error");
         return;
       }

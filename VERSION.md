@@ -18,3 +18,5 @@
 
 - 2026-07-02: Fixed ESLint flat config compatibility, defaulted first visits to dark mode, improved mobile sidebar expansion, and made homepage animated sections render reliably in full-page/mobile views.
 - 2026-02-26: Added `PaperSnap`, `Reinvent Labs Website`, and `Valentine's Proposal App` to the App Gallery, with GitHub source links for applicable projects.
+
+- 2026-11-10: Removed unused legacy page components and shared article metadata/newsletter transport while preserving current pages and content.

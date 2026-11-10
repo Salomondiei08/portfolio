@@ -40,13 +40,27 @@ export interface BlogGalleryImage {
   date: string;
 }
 
+/** Apply the same frontmatter defaults to list cards and full articles. */
+function postMetadata(slug: string, { data, content }: ReturnType<typeof matter>): PostMeta {
+  return {
+    slug,
+    title: data.title || slug,
+    date: data.date || new Date().toISOString(),
+    description: data.description || "",
+    coverImage: data.coverImage || undefined,
+    coverAlt: data.coverAlt || "",
+    tags: data.tags || [],
+    published: data.published !== false,
+    readingTime: calculateReadingTime(content),
+  };
+}
+
 /**
  * Get all posts from a content directory (blog or notes)
  */
 export function getAllPosts(type: "blog" | "notes"): PostMeta[] {
   const directory = path.join(contentDirectory, type);
 
-  // Create directory if it doesn't exist
   if (!fs.existsSync(directory)) {
     fs.mkdirSync(directory, { recursive: true });
     return [];
@@ -59,19 +73,7 @@ export function getAllPosts(type: "blog" | "notes"): PostMeta[] {
       const slug = fileName.replace(/\.md$/, "");
       const fullPath = path.join(directory, fileName);
       const fileContents = fs.readFileSync(fullPath, "utf8");
-      const { data, content } = matter(fileContents);
-
-      return {
-        slug,
-        title: data.title || slug,
-        date: data.date || new Date().toISOString(),
-        description: data.description || "",
-        coverImage: data.coverImage || undefined,
-        coverAlt: data.coverAlt || "",
-        tags: data.tags || [],
-        published: data.published !== false,
-        readingTime: calculateReadingTime(content),
-      };
+      return postMetadata(slug, matter(fileContents));
     })
     .filter((post) => post.published)
     .sort((a, b) => (new Date(b.date).getTime() - new Date(a.date).getTime()));
@@ -91,23 +93,10 @@ export async function getPostBySlug(type: "blog" | "notes", slug: string): Promi
   }
 
   const fileContents = fs.readFileSync(fullPath, "utf8");
-  const { data, content } = matter(fileContents);
+  const parsed = matter(fileContents);
+  const processedContent = await remark().use(remarkGfm).use(html).process(parsed.content);
 
-  const processedContent = await remark().use(remarkGfm).use(html).process(content);
-  const contentHtml = processedContent.toString();
-
-  return {
-    slug,
-    title: data.title || slug,
-    date: data.date || new Date().toISOString(),
-    description: data.description || "",
-    coverImage: data.coverImage || undefined,
-    coverAlt: data.coverAlt || "",
-    tags: data.tags || [],
-    published: data.published !== false,
-    readingTime: calculateReadingTime(content),
-    content: contentHtml,
-  };
+  return { ...postMetadata(slug, parsed), content: processedContent.toString() };
 }
 
 /**
