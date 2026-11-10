@@ -4,7 +4,7 @@ import { useState } from "react";
 
 /**
  * Newsletter subscription form.
- * Calls POST /api/newsletter → Buttondown.
+ * Calls POST /api/newsletter, which starts a double opt-in through Iris.
  */
 export function NewsletterForm() {
   const [email, setEmail] = useState("");
@@ -48,7 +48,7 @@ export function NewsletterForm() {
         <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={2} stroke="currentColor" className="w-5 h-5">
           <path strokeLinecap="round" strokeLinejoin="round" d="M4.5 12.75l6 6 9-13.5" />
         </svg>
-        <span className="text-sm font-medium">You&apos;re subscribed!</span>
+        <span className="text-sm font-medium">Check your inbox to confirm.</span>
       </div>
     );
   }
