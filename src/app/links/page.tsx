@@ -15,6 +15,8 @@ import styles from "./links.module.css";
 import { WhatsAppHelp } from "./WhatsAppHelp";
 
 const whatsappChannelUrl = "https://whatsapp.com/channel/0029Vabuc5aCMY0MaUTXzJ1F";
+/** Invite link of the AI Connect community group on Telegram (no member limit, unlike WhatsApp groups). */
+const telegramGroupUrl = "https://t.me/+v3gpomcWB4RjMjU0";
 
 export const metadata: Metadata = {
   title: "Liens | Salomon Diei",
@@ -172,6 +174,20 @@ export default function LinksPage() {
           <span className="block font-sans text-base font-bold">AI Connect</span>
           <span className="mt-1 block text-sm leading-relaxed text-foreground">
             Tu veux apprendre l&apos;IA ? Suis la chaîne AI Connect Community sur WhatsApp.
+          </span>
+        </span>
+        <ArrowUpRight className="h-5 w-5 shrink-0" aria-hidden="true" />
+      </a>
+
+      <a
+        href={telegramGroupUrl}
+        className={`${styles.telegramChannel} mt-3 flex min-h-24 items-center gap-4 rounded-lg border p-4 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-background`}
+      >
+        <span className={styles.telegramChannelIcon} aria-hidden="true"><span className={styles.telegramIcon} /></span>
+        <span className="min-w-0 flex-1">
+          <span className="block font-sans text-base font-bold">Groupe Telegram</span>
+          <span className="mt-1 block text-sm leading-relaxed text-foreground">
+            Rejoins le groupe Telegram de la communauté AI Connect pour échanger et suivre les lives.
           </span>
         </span>
         <ArrowUpRight className="h-5 w-5 shrink-0" aria-hidden="true" />

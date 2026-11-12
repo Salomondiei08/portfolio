@@ -7,6 +7,7 @@
   --social-facebook: #1877f2;
   --social-email: #f4b400;
   --social-whatsapp: #25d366;
+  --social-telegram: #26a5e4;
 }
 
 .socialIcon {
@@ -50,4 +51,35 @@
   border-radius: 50%;
   background: var(--social-whatsapp);
   color: #111111;
+}
+
+/* Telegram group card: same shape as the WhatsApp channel card, in Telegram blue. */
+.telegramChannel {
+  border-color: color-mix(in srgb, var(--social-telegram) 45%, var(--border));
+  background: color-mix(in srgb, var(--social-telegram) 10%, var(--background));
+}
+
+.telegramChannel:hover {
+  background: color-mix(in srgb, var(--social-telegram) 18%, var(--background));
+}
+
+.telegramChannelIcon {
+  display: flex;
+  width: 3rem;
+  height: 3rem;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  border-radius: 50%;
+  background: var(--social-telegram);
+  color: #ffffff;
+}
+
+.telegramIcon {
+  display: inline-block;
+  width: 1.5rem;
+  height: 1.5rem;
+  flex-shrink: 0;
+  background: currentColor;
+  mask: url('/images/telegram.svg') center / contain no-repeat;
 }
