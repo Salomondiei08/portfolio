@@ -1,10 +1,11 @@
 .page {
   --social-web: #6554c0;
-  --social-tiktok: #25f4ee;
-  --social-instagram: #c13584;
-  --social-youtube: #cd201f;
+  /* Real brand colours (each brand's own guidelines). */
+  --social-tiktok: #000000;
+  --social-instagram: radial-gradient(circle at 30% 107%, #fdf497 0%, #fdf497 5%, #fd5949 45%, #d6249f 60%, #285aeb 90%);
+  --social-youtube: #ffffff;
   --social-linkedin: #0a66c2;
-  --social-facebook: #1877f2;
+  --social-facebook: #0866ff;
   --social-email: #f4b400;
   --social-whatsapp: #25d366;
   --social-telegram: #26a5e4;
@@ -16,7 +17,7 @@
   border-color: transparent;
 }
 
-.socialIcon[data-platform="TikTok"] { background: var(--social-tiktok); color: #111111; }
+.socialIcon[data-platform="TikTok"] { background: var(--social-tiktok); box-shadow: inset 0 0 0 1px rgb(255 255 255 / 0.18); }
 .socialIcon[data-platform="Instagram"] { background: var(--social-instagram); }
 .socialIcon[data-platform="YouTube"] { background: var(--social-youtube); }
 .socialIcon[data-platform="LinkedIn"] { background: var(--social-linkedin); }
@@ -50,7 +51,7 @@
   flex-shrink: 0;
   border-radius: 50%;
   background: var(--social-whatsapp);
-  color: #111111;
+  color: #ffffff;
 }
 
 /* Telegram group card: same shape as the WhatsApp channel card, in Telegram blue. */
@@ -63,23 +64,3 @@
   background: color-mix(in srgb, var(--social-telegram) 18%, var(--background));
 }
 
-.telegramChannelIcon {
-  display: flex;
-  width: 3rem;
-  height: 3rem;
-  align-items: center;
-  justify-content: center;
-  flex-shrink: 0;
-  border-radius: 50%;
-  background: var(--social-telegram);
-  color: #ffffff;
-}
-
-.telegramIcon {
-  display: inline-block;
-  width: 1.5rem;
-  height: 1.5rem;
-  flex-shrink: 0;
-  background: currentColor;
-  mask: url('/images/telegram.svg') center / contain no-repeat;
-}

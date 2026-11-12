@@ -1,16 +1,8 @@
 import type { Metadata } from "next";
 import Image from "next/image";
-import {
-  Facebook,
-  Globe,
-  ArrowUpRight,
-  Instagram,
-  Linkedin,
-  Mail,
-  Music2,
-  Youtube,
-  type LucideIcon,
-} from "lucide-react";
+import type { ComponentType } from "react";
+import { ArrowUpRight, Globe, Mail } from "lucide-react";
+import { FacebookIcon, InstagramIcon, LinkedInIcon, TelegramIcon, TikTokIcon, YouTubeIcon } from "./BrandIcons";
 import styles from "./links.module.css";
 import { WhatsAppHelp } from "./WhatsAppHelp";
 
@@ -53,7 +45,7 @@ type SocialLink = {
   name: string;
   description: string;
   href: string;
-  icon: LucideIcon;
+  icon: ComponentType<{ className?: string }>;
 };
 
 const socialLinks: SocialLink[] = [
@@ -67,31 +59,31 @@ const socialLinks: SocialLink[] = [
     name: "TikTok",
     description: "Contenus courts sur l'IA, les agents et la tech",
     href: "https://www.tiktok.com/@salomondiei",
-    icon: Music2,
+    icon: TikTokIcon,
   },
   {
     name: "Instagram",
     description: "Coulisses, projets et contenus tech",
     href: "https://www.instagram.com/salomon.codes/",
-    icon: Instagram,
+    icon: InstagramIcon,
   },
   {
     name: "YouTube",
     description: "Vidéos, formations et démonstrations",
     href: "https://www.youtube.com/@Reinvent-Labs",
-    icon: Youtube,
+    icon: YouTubeIcon,
   },
   {
     name: "LinkedIn",
     description: "Parcours, recherche, projets et actualités professionnelles",
     href: "https://linkedin.com/in/salomondiei",
-    icon: Linkedin,
+    icon: LinkedInIcon,
   },
   {
     name: "Facebook",
     description: "Publications et contenus en français",
     href: "https://www.facebook.com/salomon.diei/",
-    icon: Facebook,
+    icon: FacebookIcon,
   },
   {
     name: "Email",
@@ -156,7 +148,7 @@ export default function LinksPage() {
                 className="group flex min-h-24 flex-col items-center justify-center gap-2 rounded-md px-2 py-3 text-center transition-colors hover:bg-secondary/60 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-background"
               >
                 <span data-platform={link.name} className={`${styles.socialIcon} flex h-12 w-12 items-center justify-center rounded-full border shadow-sm transition-transform group-hover:scale-105`}>
-                  <link.icon className="h-5 w-5" aria-hidden="true" />
+                  <link.icon className="h-6 w-6" aria-hidden="true" />
                 </span>
                 <span className="font-sans text-sm font-bold leading-tight text-foreground">{link.name}</span>
               </a>
@@ -183,7 +175,7 @@ export default function LinksPage() {
         href={telegramGroupUrl}
         className={`${styles.telegramChannel} mt-3 flex min-h-24 items-center gap-4 rounded-lg border p-4 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-background`}
       >
-        <span className={styles.telegramChannelIcon} aria-hidden="true"><span className={styles.telegramIcon} /></span>
+        <TelegramIcon className="h-12 w-12 shrink-0" />
         <span className="min-w-0 flex-1">
           <span className="block font-sans text-base font-bold">Groupe Telegram</span>
           <span className="mt-1 block text-sm leading-relaxed text-foreground">
