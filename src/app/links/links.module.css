@@ -64,3 +64,37 @@
   background: color-mix(in srgb, var(--social-telegram) 18%, var(--background));
 }
 
+
+/* Academy card: Reinvent Labs logo colours (deep teal ground, logo green glow and button). */
+.academy {
+  --academy-green: #00dc82;
+  --academy-teal: #005653;
+  position: relative;
+  overflow: hidden;
+  background:
+    radial-gradient(120% 90% at 100% 0%, color-mix(in srgb, var(--academy-green) 45%, transparent) 0%, transparent 60%),
+    linear-gradient(150deg, #00403d 0%, var(--academy-teal) 55%, #00302e 100%);
+  box-shadow: 0 20px 50px -20px color-mix(in srgb, var(--academy-teal) 70%, transparent);
+  transition: transform 160ms cubic-bezier(0.23, 1, 0.32, 1), box-shadow 160ms cubic-bezier(0.23, 1, 0.32, 1);
+}
+
+@media (hover: hover) {
+  .academy:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 26px 60px -20px color-mix(in srgb, var(--academy-green) 55%, transparent);
+  }
+}
+
+.academy:active {
+  transform: scale(0.99);
+}
+
+.academyButton {
+  background: var(--academy-green);
+  color: #00302e;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .academy { transition: none; }
+  .academy:hover, .academy:active { transform: none; }
+}

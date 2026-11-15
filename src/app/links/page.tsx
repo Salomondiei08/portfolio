@@ -9,6 +9,8 @@ import { WhatsAppHelp } from "./WhatsAppHelp";
 const whatsappChannelUrl = "https://whatsapp.com/channel/0029Vabuc5aCMY0MaUTXzJ1F";
 /** Invite link of the AI Connect community group on Telegram (no member limit, unlike WhatsApp groups). */
 const telegramGroupUrl = "https://t.me/+v3gpomcWB4RjMjU0";
+/** Reinvent Labs Academy: the paid training offer, shown first and large on purpose. */
+const academyUrl = "https://academy.reinvent-labs.com/";
 
 export const metadata: Metadata = {
   title: "Liens | Salomon Diei",
@@ -128,10 +130,34 @@ export default function LinksPage() {
           Ingénieur IA · Chercheur · Créateur de contenu
         </p>
         <p className="mt-4 max-w-[31rem] text-base leading-relaxed text-muted-foreground sm:text-lg">
-          Je partage du contenu sur l'intelligence artificielle, les agents IA, la programmation
+          Je partage du contenu sur l&apos;intelligence artificielle, les agents IA, la programmation
           et les nouvelles technologies.
         </p>
       </header>
+
+      {/* The academy is the main call to action of this page, so it sits above every other link. */}
+      <a
+        href={academyUrl}
+        target="_blank"
+        rel="noopener noreferrer"
+        className={`${styles.academy} mt-8 block rounded-2xl p-6 sm:p-8 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-background`}
+      >
+        <span className="flex items-center gap-3">
+          <Image src="/images/reinvent-labs-mark.png" alt="" width={44} height={44} className="h-11 w-11 shrink-0" />
+          <span className="font-sans text-xs font-bold uppercase tracking-[0.16em] text-white/80">Formations IA</span>
+        </span>
+        <span className="mt-5 block font-sans text-3xl font-bold leading-tight text-white sm:text-4xl">
+          Reinvent Labs Academy
+        </span>
+        <span className="mt-3 block text-base leading-relaxed text-white/85 sm:text-lg">
+          Apprends l&apos;IA en pratique : agents IA, automatisation et productivité. Vidéos, PDF et
+          accompagnement.
+        </span>
+        <span className={`${styles.academyButton} mt-6 inline-flex min-h-12 items-center gap-2 rounded-full px-6 font-sans text-base font-bold`}>
+          Voir les formations
+          <ArrowUpRight className="h-5 w-5" aria-hidden="true" />
+        </span>
+      </a>
 
       <section aria-labelledby="social-links-title" className="mt-8">
         <h2 id="social-links-title" className="font-sans text-sm font-bold uppercase tracking-[0.14em] text-muted-foreground">
