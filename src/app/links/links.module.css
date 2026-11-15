@@ -1,117 +1,197 @@
 /*
- * Bio-link page. One loud block (the free course, in the Reinvent Labs logo colours); everything
- * else is quiet and uses the site's theme tokens so light and dark both read well.
+ * One-screen bio page. The academy block is the only coloured surface: the Reinvent Labs logo
+ * green with deep teal type. Everything else is plain text and quiet buttons on the site theme.
  */
 .page {
-  --rl-green: #00dc82;
-  --rl-green-deep: #00b86b;
-  --rl-teal: #005653;
-  --rl-teal-deep: #00302e;
-  /* Brand colours of each platform, from their own guidelines. */
-  --social-tiktok: #000000;
-  --social-instagram: radial-gradient(circle at 30% 107%, #fdf497 0%, #fdf497 5%, #fd5949 45%, #d6249f 60%, #285aeb 90%);
-  --social-youtube: #ffffff;
-  --social-linkedin: #0a66c2;
-  --social-facebook: #0866ff;
-  --social-web: #005653;
-  --social-email: #f4b400;
-  --social-whatsapp: #25d366;
-  --social-telegram: #26a5e4;
+  --green: #00dc82;
+  --green-hover: #22e897;
+  --teal: #00302e;
+  --wa: #25d366;
+  font-family: var(--font-links-text), system-ui, sans-serif;
 }
 
-/* The free course: deep teal from the logo, a single soft green light from the top corner. */
-.free {
+.name {
+  font-family: var(--font-links-display), sans-serif;
+  font-size: 1.15rem;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  line-height: 1.2;
+}
+
+.role {
+  margin-top: 0.15rem;
+  font-size: 0.92rem;
+  color: var(--muted-foreground);
+}
+
+/* Academy block */
+.academy {
+  border-radius: 1.75rem;
+  padding: 1.4rem 1.3rem 1.25rem;
+  background: var(--green);
+  color: var(--teal);
+}
+
+.academyName {
+  font-size: 0.92rem;
+  font-weight: 600;
+  opacity: 0.8;
+}
+
+.headline {
+  margin-top: 0.55rem;
+  font-family: var(--font-links-display), sans-serif;
+  font-size: 1.85rem;
+  font-weight: 700;
+  line-height: 1.08;
+  letter-spacing: -0.035em;
+}
+
+.cta {
+  margin-top: 1.15rem;
+  display: flex;
+  min-height: 3.5rem;
+  align-items: center;
+  justify-content: center;
+  border-radius: 1.1rem;
+  background: var(--teal);
   color: #ffffff;
-  background:
-    radial-gradient(90% 70% at 100% 0%, color-mix(in srgb, var(--rl-green) 38%, transparent) 0%, transparent 65%),
-    linear-gradient(160deg, #004a47 0%, var(--rl-teal) 45%, var(--rl-teal-deep) 100%);
-  box-shadow: 0 24px 48px -28px color-mix(in srgb, var(--rl-teal) 80%, transparent);
-}
-
-.freeTag {
-  background: color-mix(in srgb, var(--rl-green) 22%, transparent);
-  color: #b8ffdf;
-}
-
-.freeButton {
-  background: var(--rl-green);
-  color: var(--rl-teal-deep);
-  transition: background-color 120ms ease, transform 120ms cubic-bezier(0.23, 1, 0.32, 1);
+  font-size: 1.05rem;
+  font-weight: 600;
+  transition: transform 120ms cubic-bezier(0.23, 1, 0.32, 1), background-color 120ms ease;
 }
 
 @media (hover: hover) {
-  .freeButton:hover { background: #2ef0a0; }
+  .cta:hover { background: #014a46; }
 }
 
-.freeButton:active { transform: scale(0.98); }
+.cta:active { transform: scale(0.98); }
 
-.launch { color: var(--rl-green-deep); }
+.ctaNote {
+  margin-top: 0.55rem;
+  text-align: center;
+  font-size: 0.85rem;
+  font-weight: 500;
+  opacity: 0.8;
+}
 
-/* Price list: rows separated by hairlines, price aligned right in tabular figures. */
-.priceList { border-top: 1px solid var(--border); }
+.courses {
+  margin-top: 1.1rem;
+  padding-top: 1rem;
+  border-top: 1px solid color-mix(in srgb, var(--teal) 18%, transparent);
+}
 
-.priceRow {
-  border-bottom: 1px solid var(--border);
-  border-radius: 0;
+.coursesLabel {
+  font-size: 0.88rem;
+  font-weight: 600;
+}
+
+.chip {
+  display: inline-flex;
+  min-height: 2.75rem;
+  align-items: center;
+  border-radius: 999px;
+  padding: 0 1rem;
+  background: color-mix(in srgb, #ffffff 55%, var(--green));
+  color: var(--teal);
+  font-size: 0.92rem;
+  font-weight: 600;
   transition: background-color 120ms ease;
 }
 
 @media (hover: hover) {
-  .priceRow:hover { background: color-mix(in srgb, var(--rl-green) 6%, transparent); }
+  .chip:hover { background: #ffffff; }
 }
 
-/* Build Sprint: a live programme, set apart by a tinted ground rather than a border. */
-.sprint { background: color-mix(in srgb, var(--rl-teal) 9%, var(--background)); }
-
-/* Community doors: each tinted with its platform's colour. */
-.community { transition: background-color 120ms ease; }
-.whatsapp { background: color-mix(in srgb, var(--social-whatsapp) 12%, var(--background)); }
-.telegram { background: color-mix(in srgb, var(--social-telegram) 12%, var(--background)); }
-
-@media (hover: hover) {
-  .whatsapp:hover { background: color-mix(in srgb, var(--social-whatsapp) 20%, var(--background)); }
-  .telegram:hover { background: color-mix(in srgb, var(--social-telegram) 20%, var(--background)); }
-}
-
-.whatsappBadge {
+/* Community doors */
+.door {
   display: flex;
-  width: 2.5rem;
-  height: 2.5rem;
+  min-height: 3.5rem;
   align-items: center;
   justify-content: center;
-  border-radius: 50%;
-  background: var(--social-whatsapp);
-  color: #ffffff;
+  gap: 0.6rem;
+  border-radius: 1.1rem;
+  border: 1px solid var(--border);
+  background: var(--background);
+  font-size: 0.95rem;
+  font-weight: 600;
+  transition: background-color 120ms ease;
 }
 
-.whatsappIcon {
+@media (hover: hover) {
+  .door:hover { background: var(--secondary); }
+}
+
+.waIcon {
   display: inline-block;
   width: 1.5rem;
   height: 1.5rem;
   flex-shrink: 0;
-  background: currentColor;
+  background: var(--wa);
   mask: url('/images/whatsapp.svg') center / contain no-repeat;
 }
 
-/* Social icons in each platform's own colour. */
-.socialIcon {
+/* Community */
+.communityLabel {
+  margin-top: 1.1rem;
+  font-size: 0.88rem;
+  font-weight: 600;
+  color: var(--muted-foreground);
+}
+
+/* Networks: a 44 px tap target around a 36 px disc in each platform's own colour (the marks are white). */
+.social {
+  display: flex;
+  width: 2.75rem;
+  height: 2.75rem;
+  align-items: center;
+  justify-content: center;
+  border-radius: 999px;
+}
+
+.socialDisc {
+  display: flex;
+  width: 2.25rem;
+  height: 2.25rem;
+  align-items: center;
+  justify-content: center;
+  border-radius: 999px;
   color: #ffffff;
-  background: var(--social-web);
+  background: #005653;
   transition: transform 120ms cubic-bezier(0.23, 1, 0.32, 1);
 }
 
 @media (hover: hover) {
-  .socialIcon:hover { transform: translateY(-2px); }
+  .social:hover .socialDisc { transform: translateY(-2px); }
 }
 
-.socialIcon[data-platform="TikTok"] { background: var(--social-tiktok); box-shadow: inset 0 0 0 1px rgb(255 255 255 / 0.18); }
-.socialIcon[data-platform="Instagram"] { background: var(--social-instagram); }
-.socialIcon[data-platform="YouTube"] { background: var(--social-youtube); box-shadow: inset 0 0 0 1px var(--border); }
-.socialIcon[data-platform="LinkedIn"] { background: var(--social-linkedin); }
-.socialIcon[data-platform="Facebook"] { background: var(--social-facebook); }
-.socialIcon[data-platform="Email"] { background: var(--social-email); color: #111111; }
+.socialDisc[data-platform="TikTok"] { background: #000000; box-shadow: inset 0 0 0 1px rgb(255 255 255 / 0.2); }
+.socialDisc[data-platform="Instagram"] { background: radial-gradient(circle at 30% 107%, #fdf497 0%, #fdf497 5%, #fd5949 45%, #d6249f 60%, #285aeb 90%); }
+.socialDisc[data-platform="YouTube"] { background: #ffffff; box-shadow: inset 0 0 0 1px var(--border); }
+.socialDisc[data-platform="LinkedIn"] { background: #0a66c2; }
+.socialDisc[data-platform="Facebook"] { background: #0866ff; }
+.socialDisc[data-platform="Email"] { background: #f4b400; color: #111111; }
+
+.partner {
+  margin-top: 1rem;
+  align-self: center;
+  display: inline-flex;
+  min-height: 2.75rem;
+  align-items: center;
+  font-size: 0.92rem;
+  font-weight: 600;
+  text-decoration: underline;
+  text-underline-offset: 4px;
+  color: var(--muted-foreground);
+}
+
+.help {
+  margin-top: auto;
+  padding-top: 2rem;
+  font-size: 0.85rem;
+}
 
 @media (prefers-reduced-motion: reduce) {
-  .freeButton, .priceRow, .community, .socialIcon { transition: none; }
-  .freeButton:active, .socialIcon:hover { transform: none; }
+  .cta, .chip, .door, .socialDisc { transition: none; }
+  .cta:active { transform: none; }
 }
