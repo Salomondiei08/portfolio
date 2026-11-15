@@ -41,11 +41,12 @@ export const metadata: Metadata = {
   },
 };
 
-/** Paid courses, by name only: the academy page carries the details. */
+/** The courses, each with what it teaches in a few words and its price (launch price for paid ones). */
 const courses = [
-  { name: "Vibe Coder Pro", href: `${ACADEMY}/cours/vibe-coder-pro` },
-  { name: "AI Agent Builder", href: `${ACADEMY}/cours/ai-agent-builder` },
-  { name: "AI in Business", href: `${ACADEMY}/cours/ai-in-business` },
+  { name: "Être plus productif grâce\u00a0à\u00a0l'IA", kind: "ChatGPT et agents, les bases", price: "Gratuit", free: true, href: `${ACADEMY}/cours/etre-plus-productif-grace-a-l-ia` },
+  { name: "Vibe Coder Pro", kind: "Crée ton appli sans coder", price: "35 000 F", free: false, href: `${ACADEMY}/cours/vibe-coder-pro` },
+  { name: "AI Agent Builder", kind: "Crée tes agents IA", price: "35 000 F", free: false, href: `${ACADEMY}/cours/ai-agent-builder` },
+  { name: "AI in Business", kind: "L'IA pour ton activité", price: "35 000 F", free: false, href: `${ACADEMY}/cours/ai-in-business` },
 ];
 
 type SocialLink = { name: string; href: string; icon: ComponentType<{ className?: string }> };
@@ -80,24 +81,27 @@ export default function LinksPage() {
       <section aria-labelledby="academy" className={`${styles.academy} mt-5`}>
         <p className={styles.academyName}>Reinvent Labs Academy</p>
         <h2 id="academy" className={styles.headline}>
-          Apprends l&apos;IA. Construis ton appli.
+          Apprends l&apos;IA en pratique.
         </h2>
+        {/* The courses first, so people see what they get; the action comes last. */}
+        <ul className={styles.courseList}>
+          {courses.map((c) => (
+            <li key={c.href}>
+              <a href={c.href} {...external} className={`${styles.courseRow} ${focus}`}>
+                <span className="min-w-0">
+                  <span className={styles.courseName}>{c.name}</span>
+                  <span className={styles.courseKind}>{c.kind}</span>
+                </span>
+                <span className={c.free ? styles.priceFree : styles.price}>{c.price}</span>
+              </a>
+            </li>
+          ))}
+        </ul>
+        <p className={styles.launch}>Prix de lancement, −30 % (au lieu de 50 000 F)</p>
         <a href={`${ACADEMY}/cours/etre-plus-productif-grace-a-l-ia`} {...external} className={`${styles.cta} ${focus}`}>
           Commencer gratuitement
         </a>
         <p className={styles.ctaNote}>Sans carte bancaire. Sur ton téléphone.</p>
-        <div className={styles.courses}>
-          <p className={styles.coursesLabel}>Ensuite, 35 000 FCFA au lieu de 50 000 :</p>
-          <ul className="mt-2 flex flex-wrap gap-2">
-            {courses.map((c) => (
-              <li key={c.href}>
-                <a href={c.href} {...external} className={`${styles.chip} ${focus}`}>
-                  {c.name}
-                </a>
-              </li>
-            ))}
-          </ul>
-        </div>
       </section>
 
       {/* The community: two doors, one row. */}

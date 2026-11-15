@@ -75,32 +75,63 @@
   opacity: 0.8;
 }
 
-.courses {
-  margin-top: 1.1rem;
-  padding-top: 1rem;
-  border-top: 1px solid color-mix(in srgb, var(--teal) 18%, transparent);
+/* Course list: one row per course, name and what it teaches on the left, price on the right. */
+.courseList {
+  margin-top: 1rem;
+  border-top: 1px solid color-mix(in srgb, var(--teal) 16%, transparent);
 }
 
-.coursesLabel {
-  font-size: 0.88rem;
-  font-weight: 600;
-}
-
-.chip {
-  display: inline-flex;
-  min-height: 2.75rem;
+.courseRow {
+  display: flex;
+  min-height: 3.4rem;
   align-items: center;
-  border-radius: 999px;
-  padding: 0 1rem;
-  background: color-mix(in srgb, #ffffff 55%, var(--green));
-  color: var(--teal);
-  font-size: 0.92rem;
-  font-weight: 600;
-  transition: background-color 120ms ease;
+  justify-content: space-between;
+  gap: 0.75rem;
+  padding: 0.55rem 0;
+  border-bottom: 1px solid color-mix(in srgb, var(--teal) 16%, transparent);
 }
 
 @media (hover: hover) {
-  .chip:hover { background: #ffffff; }
+  .courseRow:hover .courseName { text-decoration: underline; text-underline-offset: 3px; }
+}
+
+.courseName {
+  display: block;
+  font-size: 0.98rem;
+  font-weight: 600;
+  line-height: 1.25;
+}
+
+.courseKind {
+  display: block;
+  margin-top: 0.1rem;
+  font-size: 0.85rem;
+  opacity: 0.75;
+}
+
+.price {
+  flex-shrink: 0;
+  font-size: 0.95rem;
+  font-weight: 600;
+  font-variant-numeric: tabular-nums;
+  white-space: nowrap;
+}
+
+.priceFree {
+  flex-shrink: 0;
+  border-radius: 999px;
+  padding: 0.2rem 0.65rem;
+  background: var(--teal);
+  color: #ffffff;
+  font-size: 0.85rem;
+  font-weight: 600;
+}
+
+.launch {
+  margin-top: 0.6rem;
+  font-size: 0.82rem;
+  font-weight: 500;
+  opacity: 0.75;
 }
 
 /* Community doors */
@@ -192,6 +223,6 @@
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .cta, .chip, .door, .socialDisc { transition: none; }
+  .cta, .door, .socialDisc { transition: none; }
   .cta:active { transform: none; }
 }
