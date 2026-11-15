@@ -44,9 +44,9 @@ export const metadata: Metadata = {
 /** The courses, each with what it teaches in a few words and its price (launch price for paid ones). */
 const courses = [
   { name: "Être plus productif grâce\u00a0à\u00a0l'IA", kind: "ChatGPT et agents, les bases", price: "Gratuit", free: true, href: `${ACADEMY}/cours/etre-plus-productif-grace-a-l-ia` },
-  { name: "Vibe Coder Pro", kind: "Crée ton appli sans coder", price: "35 000 F", free: false, href: `${ACADEMY}/cours/vibe-coder-pro` },
-  { name: "AI Agent Builder", kind: "Crée tes agents IA", price: "35 000 F", free: false, href: `${ACADEMY}/cours/ai-agent-builder` },
-  { name: "AI in Business", kind: "L'IA pour ton activité", price: "35 000 F", free: false, href: `${ACADEMY}/cours/ai-in-business` },
+  { name: "Vibe Coder Pro", kind: "Crée ton appli sans coder", price: "35 000 FCFA", free: false, href: `${ACADEMY}/cours/vibe-coder-pro` },
+  { name: "AI Agent Builder", kind: "Crée tes agents IA", price: "35 000 FCFA", free: false, href: `${ACADEMY}/cours/ai-agent-builder` },
+  { name: "AI in Business", kind: "L'IA pour ton activité", price: "35 000 FCFA", free: false, href: `${ACADEMY}/cours/ai-in-business` },
 ];
 
 type SocialLink = { name: string; href: string; icon: ComponentType<{ className?: string }> };
@@ -79,7 +79,10 @@ export default function LinksPage() {
 
       {/* The academy: the one big block, one main action. */}
       <section aria-labelledby="academy" className={`${styles.academy} mt-5`}>
-        <p className={styles.academyName}>Reinvent Labs Academy</p>
+        <p className={styles.academyName}>
+          <Image src="/images/reinvent-labs-mark.png" alt="" width={24} height={24} className="h-6 w-6" />
+          Reinvent Labs Academy
+        </p>
         <h2 id="academy" className={styles.headline}>
           Apprends l&apos;IA en pratique.
         </h2>
@@ -97,7 +100,7 @@ export default function LinksPage() {
             </li>
           ))}
         </ul>
-        <p className={styles.launch}>Prix de lancement, −30 % (au lieu de 50 000 F)</p>
+        <p className={styles.launch}>Prix de lancement : −30 % sur les formations payantes.</p>
         <a href={`${ACADEMY}/cours/etre-plus-productif-grace-a-l-ia`} {...external} className={`${styles.cta} ${focus}`}>
           Commencer gratuitement
         </a>
