@@ -41,12 +41,11 @@ export const metadata: Metadata = {
   },
 };
 
-/** The courses, each with what it teaches in a few words and its price (launch price for paid ones). */
+/** The paid courses, each with what it teaches in a few words and its launch price (was 50 000). */
 const courses = [
-  { name: "Être plus productif grâce\u00a0à\u00a0l'IA", kind: "ChatGPT et agents, les bases", price: "Gratuit", free: true, href: `${ACADEMY}/cours/etre-plus-productif-grace-a-l-ia` },
-  { name: "Vibe Coder Pro", kind: "Crée ton appli ou ton SaaS comme un pro, sans savoir coder", price: "35 000 FCFA", free: false, href: `${ACADEMY}/cours/vibe-coder-pro` },
-  { name: "AI Agent Builder", kind: "Crée et déploie de vrais agents en production", price: "35 000 FCFA", free: false, href: `${ACADEMY}/cours/ai-agent-builder` },
-  { name: "AI in Business", kind: "Utilise l'IA pour accélérer ton business", price: "35 000 FCFA", free: false, href: `${ACADEMY}/cours/ai-in-business` },
+  { name: "Vibe Coder Pro", kind: "Crée ton appli ou ton SaaS comme un pro, sans savoir coder", price: "35 000 FCFA", href: `${ACADEMY}/cours/vibe-coder-pro` },
+  { name: "AI Agent Builder", kind: "Crée et déploie de vrais agents en production", price: "35 000 FCFA", href: `${ACADEMY}/cours/ai-agent-builder` },
+  { name: "AI in Business", kind: "Utilise l'IA pour accélérer ton business", price: "35 000 FCFA", href: `${ACADEMY}/cours/ai-in-business` },
 ];
 
 type SocialLink = { name: string; href: string; icon: ComponentType<{ className?: string }> };
@@ -86,12 +85,7 @@ export default function LinksPage() {
         <h2 id="academy" className={styles.headline}>
           Apprends l&apos;IA en pratique.
         </h2>
-        {/* One launch-offer line instead of a tag on every row: the rows then only show old and new price. */}
-        <p className={styles.offer}>
-          <span className={styles.promo}>−30&nbsp;%</span>
-          Prix de lancement sur les formations
-        </p>
-        {/* The courses first, so people see what they get; the action comes last. */}
+        {/* Paid courses first, so people see what they get; the free course is the button at the end. */}
         <ul className={styles.courseList}>
           {courses.map((c) => (
             <li key={c.href}>
@@ -100,14 +94,10 @@ export default function LinksPage() {
                   <span className={styles.courseName}>{c.name}</span>
                   <span className={styles.courseKind}>{c.kind}</span>
                 </span>
-                {c.free ? (
-                  <span className={styles.priceFree}>{c.price}</span>
-                ) : (
-                  <span className={styles.priceBox} aria-label={`${c.price}, au lieu de 50 000 FCFA, promotion de 30 %`}>
-                    <s className={styles.priceWas}>50 000</s>
-                    <span className={styles.price}>{c.price}</span>
-                  </span>
-                )}
+                <span className={styles.priceBox} aria-label={`${c.price} au lieu de 50 000 FCFA`}>
+                  <s className={styles.priceWas}>50 000</s>
+                  <span className={styles.price}>{c.price}</span>
+                </span>
               </a>
             </li>
           ))}
@@ -115,7 +105,7 @@ export default function LinksPage() {
         <a href={`${ACADEMY}/cours/etre-plus-productif-grace-a-l-ia`} {...external} className={`${styles.cta} ${focus}`}>
           Commencer gratuitement
         </a>
-        <p className={styles.ctaNote}>Sans carte bancaire. Sur ton téléphone.</p>
+        <p className={styles.ctaNote}>Ton premier cours est offert.</p>
       </section>
 
       {/* The community: two doors, one row. */}

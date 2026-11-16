@@ -122,16 +122,7 @@
   white-space: nowrap;
 }
 
-/* Promotion: one offer line above the list; each row shows the old price crossed out above the new one. */
-.offer {
-  display: flex;
-  align-items: center;
-  gap: 0.5rem;
-  margin-top: 0.9rem;
-  font-size: 0.85rem;
-  font-weight: 500;
-  color: var(--muted-foreground);
-}
+/* Launch price: the old price crossed out above the new one. */
 
 .priceBox {
   display: flex;
@@ -147,29 +138,8 @@
   font-variant-numeric: tabular-nums;
 }
 
-.promo {
-  border-radius: 999px;
-  padding: 0.05rem 0.45rem;
-  background: #fee2e2;
-  color: #b91c1c;
-  font-size: 0.75rem;
-  font-weight: 700;
-}
 
-:global(.dark) .promo {
-  background: #450a0a;
-  color: #fca5a5;
-}
 
-.priceFree {
-  flex-shrink: 0;
-  border-radius: 999px;
-  padding: 0.2rem 0.65rem;
-  background: var(--green);
-  color: var(--teal);
-  font-size: 0.85rem;
-  font-weight: 600;
-}
 
 /* Community doors */
 .door {
