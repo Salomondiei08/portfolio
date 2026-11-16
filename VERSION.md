@@ -1,5 +1,7 @@
 ## Version History
 
+- 2026-11-16: Put paid programmes first and condensed their benefits; moved the clearly labelled free course to the end of the bio-page Academy block.
+
 - 2026-11-16: Clarified the free course's learning outcomes and dedicated entry button; paid programmes explain concrete projects and their preorder terms with explicit programme links.
 
 - 2026-11-16: Simplified the Academy bio-page block with compact course descriptions, neutral current prices and one main action; removed discount badges and repetitive sales copy while preserving referral tags.

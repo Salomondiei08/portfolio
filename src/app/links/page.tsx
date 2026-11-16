@@ -26,7 +26,7 @@ export const metadata: Metadata = {
   alternates: { canonical: "https://salomon.reinvent-labs.com/links" },
   openGraph: {
     title: "Salomon Diei | Liens",
-    description: "Apprends l'IA avec Reinvent Labs Academy. La première formation est gratuite.",
+    description: "Crée tes applis et tes agents avec l’IA. Découvre aussi un cours gratuit pour démarrer.",
     url: "https://salomon.reinvent-labs.com/links",
     type: "profile",
     images: [{ url: "https://salomon.reinvent-labs.com/images/salomon-social-profile.jpg", width: 720, height: 720, alt: "Salomon Diei" }],
@@ -34,16 +34,16 @@ export const metadata: Metadata = {
   twitter: {
     card: "summary_large_image",
     title: "Salomon Diei | Liens",
-    description: "Apprends l'IA avec Reinvent Labs Academy. La première formation est gratuite.",
+    description: "Crée tes applis et tes agents avec l’IA. Découvre aussi un cours gratuit pour démarrer.",
     images: ["https://salomon.reinvent-labs.com/images/salomon-social-profile.jpg"],
   },
 };
 
 /** Outcomes reflect the published programmes; checkout stays on each course page. */
 const courses = [
-  { name: "Vibe Coder Pro", kind: "Passe de ton idée à une appli en ligne, même sans être développeur.", price: "35 000 FCFA", href: `${ACADEMY}/cours/vibe-coder-pro${academyReferral}&utm_content=course_vibe_coder_pro` },
-  { name: "AI Agent Builder", kind: "Construis un agent WhatsApp qui répond à tes clients à partir de tes documents.", price: "35 000 FCFA", href: `${ACADEMY}/cours/ai-agent-builder${academyReferral}&utm_content=course_ai_agent_builder` },
-  { name: "AI in Business", kind: "Crée tes contenus, prépare tes relances et réponds à tes clients avec l’IA.", price: "35 000 FCFA", href: `${ACADEMY}/cours/ai-in-business${academyReferral}&utm_content=course_ai_in_business` },
+  { name: "Vibe Coder Pro", kind: "Crée et publie ton appli avec l’IA.", price: "35 000 FCFA", href: `${ACADEMY}/cours/vibe-coder-pro${academyReferral}&utm_content=course_vibe_coder_pro` },
+  { name: "AI Agent Builder", kind: "Ton agent WhatsApp, relié à tes documents.", price: "35 000 FCFA", href: `${ACADEMY}/cours/ai-agent-builder${academyReferral}&utm_content=course_ai_agent_builder` },
+  { name: "AI in Business", kind: "Crée tes contenus et prépare tes relances.", price: "35 000 FCFA", href: `${ACADEMY}/cours/ai-in-business${academyReferral}&utm_content=course_ai_in_business` },
 ];
 
 type SocialLink = { name: string; href: string; icon: ComponentType<{ className?: string }> };
@@ -79,37 +79,31 @@ export default function LinksPage() {
           <Image src="/images/reinvent-labs-mark.png" alt="" width={24} height={24} className="h-6 w-6 shrink-0" />
           Reinvent Labs Academy
         </h2>
-        <p className={styles.headline}>Crée ton appli.<br />Automatise tes tâches.</p>
+        <p className={styles.paidNote}>Précommande, accès à vie.</p>
+        <ul className={styles.courseList}>
+          {courses.map((c) => (
+            <li key={c.href}>
+              <a href={c.href} {...external} className={`${styles.courseRow} ${focus}`}>
+                <span className={styles.courseHeader}>
+                  <span className={styles.courseName}>{c.name} <ArrowUpRight aria-hidden="true" className="h-3.5 w-3.5 shrink-0" /></span>
+                  <span className={styles.price}>{c.price}</span>
+                </span>
+                <span className={styles.courseKind}>{c.kind}</span>
+              </a>
+            </li>
+          ))}
+        </ul>
 
         <section aria-labelledby="free-course" className={styles.freeCourse}>
           <a href={`${ACADEMY}/cours/etre-plus-productif-grace-a-l-ia${academyReferral}&utm_content=course_productivity`} {...external} className={`${styles.freeHeading} ${focus}`}>
             <h3 id="free-course" className={styles.courseName}>Productivité avec l’IA</h3>
             <span className={styles.price}>Gratuit</span>
           </a>
-          <p className={styles.freeDescription}>Écris de meilleurs prompts avec ChatGPT, analyse tes documents et découvre les agents IA.</p>
+          <p className={styles.freeDescription}>Les bases de ChatGPT et des agents IA.</p>
           <a href={`${ACADEMY}/cours/etre-plus-productif-grace-a-l-ia${academyReferral}&utm_content=start_free`} {...external} className={`${styles.cta} ${focus}`}>
             Découvrir le cours gratuit <ArrowUpRight aria-hidden="true" className="h-4 w-4 shrink-0" />
           </a>
         </section>
-
-        <h3 className={styles.paidHeading}>Choisis ton projet</h3>
-        <p className={styles.paidNote}>En précommande. Paiement unique, accès à vie.</p>
-        <ul className={styles.courseList}>
-          {courses.map((c) => (
-            <li key={c.href}>
-              <a href={c.href} {...external} className={`${styles.courseRow} ${focus}`}>
-                <span className={styles.courseHeader}>
-                  <span className={styles.courseName}>{c.name}</span>
-                  <span className={styles.price}>{c.price}</span>
-                </span>
-                <span className={styles.courseKind}>{c.kind}</span>
-                <span className={styles.courseLink}>
-                  Voir le programme <ArrowUpRight aria-hidden="true" className="h-3.5 w-3.5" />
-                </span>
-              </a>
-            </li>
-          ))}
-        </ul>
       </section>
 
       {/* The community: two doors, one row. */}
