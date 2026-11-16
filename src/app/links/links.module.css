@@ -82,7 +82,7 @@
 
 /* Course list: one row per course, name and what it teaches on the left, price on the right. */
 .courseList {
-  margin-top: 1rem;
+  margin-top: 0.6rem;
   border-top: 1px solid var(--border);
 }
 
@@ -122,20 +122,27 @@
   white-space: nowrap;
 }
 
-/* Promotion: the old price crossed out and a −30 % tag above the new price. */
+/* Promotion: one offer line above the list; each row shows the old price crossed out above the new one. */
+.offer {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-top: 0.9rem;
+  font-size: 0.85rem;
+  font-weight: 500;
+  color: var(--muted-foreground);
+}
+
 .priceBox {
   display: flex;
   flex-shrink: 0;
   flex-direction: column;
   align-items: flex-end;
-  gap: 0.15rem;
+  gap: 0.05rem;
 }
 
 .priceWas {
-  display: flex;
-  align-items: center;
-  gap: 0.4rem;
-  font-size: 0.8rem;
+  font-size: 0.78rem;
   color: var(--muted-foreground);
   font-variant-numeric: tabular-nums;
 }
@@ -162,13 +169,6 @@
   color: var(--teal);
   font-size: 0.85rem;
   font-weight: 600;
-}
-
-.launch {
-  margin-top: 0.6rem;
-  font-size: 0.82rem;
-  font-weight: 500;
-  color: var(--muted-foreground);
 }
 
 /* Community doors */

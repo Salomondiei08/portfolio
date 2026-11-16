@@ -86,6 +86,11 @@ export default function LinksPage() {
         <h2 id="academy" className={styles.headline}>
           Apprends l&apos;IA en pratique.
         </h2>
+        {/* One launch-offer line instead of a tag on every row: the rows then only show old and new price. */}
+        <p className={styles.offer}>
+          <span className={styles.promo}>−30&nbsp;%</span>
+          Prix de lancement sur les formations
+        </p>
         {/* The courses first, so people see what they get; the action comes last. */}
         <ul className={styles.courseList}>
           {courses.map((c) => (
@@ -99,10 +104,7 @@ export default function LinksPage() {
                   <span className={styles.priceFree}>{c.price}</span>
                 ) : (
                   <span className={styles.priceBox} aria-label={`${c.price}, au lieu de 50 000 FCFA, promotion de 30 %`}>
-                    <span className={styles.priceWas}>
-                      <span className={styles.promo}>−30 %</span>
-                      <s>50 000</s>
-                    </span>
+                    <s className={styles.priceWas}>50 000</s>
                     <span className={styles.price}>{c.price}</span>
                   </span>
                 )}
@@ -110,7 +112,6 @@ export default function LinksPage() {
             </li>
           ))}
         </ul>
-        <p className={styles.launch}>Prix de lancement sur les formations payantes.</p>
         <a href={`${ACADEMY}/cours/etre-plus-productif-grace-a-l-ia`} {...external} className={`${styles.cta} ${focus}`}>
           Commencer gratuitement
         </a>
