@@ -8,11 +8,8 @@ import styles from "./links.module.css";
 import { WhatsAppHelp } from "./WhatsAppHelp";
 
 /*
- * Bio-link page (s.reinvent-labs.com), opened from a TikTok or Instagram bio on a phone.
- * Rule: everything that matters fits on one phone screen, no scrolling. Only what makes
- * people act stays: who this is, the academy (one main button, the paid courses as names),
- * the community, the networks, a partnership link. The WhatsApp help sits below the fold.
- * Type: Unbounded for display, Onest for text. Colour: the Reinvent Labs logo green.
+ * Mobile bio page: a compact Academy catalogue and one primary action.
+ * Keep campaign labels stable when editing copy so attribution remains comparable.
  */
 const display = Unbounded({ subsets: ["latin"], weight: ["600", "700"], variable: "--font-links-display" });
 const text = Onest({ subsets: ["latin"], weight: ["400", "500", "600"], variable: "--font-links-text" });
@@ -42,12 +39,12 @@ export const metadata: Metadata = {
   },
 };
 
-/** The courses, each with what it teaches in a few words and its price (launch price for paid ones). */
+/** Short catalogue labels; the destination pages carry the full course details. */
 const courses = [
-  { name: "Être plus productif grâce\u00a0à\u00a0l'IA", kind: "ChatGPT et agents, les bases", price: "Gratuit", free: true, href: `${ACADEMY}/cours/etre-plus-productif-grace-a-l-ia${academyReferral}&utm_content=course_productivity` },
-  { name: "Vibe Coder Pro", kind: "Crée ton appli ou ton SaaS comme un pro, sans savoir coder", price: "35 000 FCFA", free: false, href: `${ACADEMY}/cours/vibe-coder-pro${academyReferral}&utm_content=course_vibe_coder_pro` },
-  { name: "AI Agent Builder", kind: "Crée et déploie de vrais agents en production", price: "35 000 FCFA", free: false, href: `${ACADEMY}/cours/ai-agent-builder${academyReferral}&utm_content=course_ai_agent_builder` },
-  { name: "AI in Business", kind: "Utilise l'IA pour accélérer ton business", price: "35 000 FCFA", free: false, href: `${ACADEMY}/cours/ai-in-business${academyReferral}&utm_content=course_ai_in_business` },
+  { name: "Productivité avec l’IA", kind: "ChatGPT et agents", price: "Gratuit", href: `${ACADEMY}/cours/etre-plus-productif-grace-a-l-ia${academyReferral}&utm_content=course_productivity` },
+  { name: "Vibe Coder Pro", kind: "Créer ton application", price: "35 000 FCFA", href: `${ACADEMY}/cours/vibe-coder-pro${academyReferral}&utm_content=course_vibe_coder_pro` },
+  { name: "AI Agent Builder", kind: "Construire tes agents IA", price: "35 000 FCFA", href: `${ACADEMY}/cours/ai-agent-builder${academyReferral}&utm_content=course_ai_agent_builder` },
+  { name: "AI in Business", kind: "L’IA dans ton activité", price: "35 000 FCFA", href: `${ACADEMY}/cours/ai-in-business${academyReferral}&utm_content=course_ai_in_business` },
 ];
 
 type SocialLink = { name: string; href: string; icon: ComponentType<{ className?: string }> };
@@ -78,16 +75,11 @@ export default function LinksPage() {
         </div>
       </header>
 
-      {/* The academy: the one big block, one main action. */}
       <section aria-labelledby="academy" className={`${styles.academy} mt-5`}>
-        <p className={styles.academyName}>
-          <Image src="/images/reinvent-labs-mark.png" alt="" width={24} height={24} className="h-6 w-6" />
-          Reinvent Labs Academy
-        </p>
-        <h2 id="academy" className={styles.headline}>
-          Apprends l&apos;IA en pratique.
+        <h2 id="academy" className={styles.academyName}>
+          <Image src="/images/reinvent-labs-mark.png" alt="" width={32} height={32} className="h-8 w-8 shrink-0" />
+          <span>Reinvent Labs <span className={styles.academyTitle}>Academy</span></span>
         </h2>
-        {/* The courses first, so people see what they get; the action comes last. */}
         <ul className={styles.courseList}>
           {courses.map((c) => (
             <li key={c.href}>
@@ -96,26 +88,14 @@ export default function LinksPage() {
                   <span className={styles.courseName}>{c.name}</span>
                   <span className={styles.courseKind}>{c.kind}</span>
                 </span>
-                {c.free ? (
-                  <span className={styles.priceFree}>{c.price}</span>
-                ) : (
-                  <span className={styles.priceBox} aria-label={`${c.price}, au lieu de 50 000 FCFA, promotion de 30 %`}>
-                    <span className={styles.priceWas}>
-                      <span className={styles.promo}>−30 %</span>
-                      <s>50 000</s>
-                    </span>
-                    <span className={styles.price}>{c.price}</span>
-                  </span>
-                )}
+                <span className={styles.price}>{c.price}</span>
               </a>
             </li>
           ))}
         </ul>
-        <p className={styles.launch}>Prix de lancement sur les formations payantes.</p>
         <a href={`${ACADEMY}/cours/etre-plus-productif-grace-a-l-ia${academyReferral}&utm_content=start_free`} {...external} className={`${styles.cta} ${focus}`}>
           Commencer gratuitement
         </a>
-        <p className={styles.ctaNote}>Sans carte bancaire. Sur ton téléphone.</p>
       </section>
 
       {/* The community: two doors, one row. */}
