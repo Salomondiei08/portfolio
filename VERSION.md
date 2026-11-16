@@ -1,5 +1,7 @@
 ## Version History
 
+- 2026-11-16: Added portfolio referral campaign tags to the five Academy links on the bio-links page, distinguishing each course and the free-start button.
+
 - 2026-10-16: Changed WhatsApp links to same-tab navigation and added copyable channel/contact fallbacks for restricted in-app browsers.
 
 - 2026-10-16: Refreshed social link colors, added the WhatsApp brand icon and replaced the community group with the AI Connect Community channel; added a standalone theme toggle.

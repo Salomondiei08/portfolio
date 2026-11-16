@@ -18,6 +18,7 @@ const display = Unbounded({ subsets: ["latin"], weight: ["600", "700"], variable
 const text = Onest({ subsets: ["latin"], weight: ["400", "500", "600"], variable: "--font-links-text" });
 
 const ACADEMY = "https://academy.reinvent-labs.com";
+const academyReferral = "?utm_source=portfolio&utm_medium=referral&utm_campaign=bio_links";
 const whatsappChannelUrl = "https://whatsapp.com/channel/0029Vabuc5aCMY0MaUTXzJ1F";
 /** Invite link of the AI Connect community group on Telegram (no member limit, unlike WhatsApp groups). */
 const telegramGroupUrl = "https://t.me/+v3gpomcWB4RjMjU0";
@@ -43,10 +44,10 @@ export const metadata: Metadata = {
 
 /** The courses, each with what it teaches in a few words and its price (launch price for paid ones). */
 const courses = [
-  { name: "Être plus productif grâce\u00a0à\u00a0l'IA", kind: "ChatGPT et agents, les bases", price: "Gratuit", free: true, href: `${ACADEMY}/cours/etre-plus-productif-grace-a-l-ia` },
-  { name: "Vibe Coder Pro", kind: "Crée ton appli ou ton SaaS comme un pro, sans savoir coder", price: "35 000 FCFA", free: false, href: `${ACADEMY}/cours/vibe-coder-pro` },
-  { name: "AI Agent Builder", kind: "Crée et déploie de vrais agents en production", price: "35 000 FCFA", free: false, href: `${ACADEMY}/cours/ai-agent-builder` },
-  { name: "AI in Business", kind: "Utilise l'IA pour accélérer ton business", price: "35 000 FCFA", free: false, href: `${ACADEMY}/cours/ai-in-business` },
+  { name: "Être plus productif grâce\u00a0à\u00a0l'IA", kind: "ChatGPT et agents, les bases", price: "Gratuit", free: true, href: `${ACADEMY}/cours/etre-plus-productif-grace-a-l-ia${academyReferral}&utm_content=course_productivity` },
+  { name: "Vibe Coder Pro", kind: "Crée ton appli ou ton SaaS comme un pro, sans savoir coder", price: "35 000 FCFA", free: false, href: `${ACADEMY}/cours/vibe-coder-pro${academyReferral}&utm_content=course_vibe_coder_pro` },
+  { name: "AI Agent Builder", kind: "Crée et déploie de vrais agents en production", price: "35 000 FCFA", free: false, href: `${ACADEMY}/cours/ai-agent-builder${academyReferral}&utm_content=course_ai_agent_builder` },
+  { name: "AI in Business", kind: "Utilise l'IA pour accélérer ton business", price: "35 000 FCFA", free: false, href: `${ACADEMY}/cours/ai-in-business${academyReferral}&utm_content=course_ai_in_business` },
 ];
 
 type SocialLink = { name: string; href: string; icon: ComponentType<{ className?: string }> };
@@ -111,7 +112,7 @@ export default function LinksPage() {
           ))}
         </ul>
         <p className={styles.launch}>Prix de lancement sur les formations payantes.</p>
-        <a href={`${ACADEMY}/cours/etre-plus-productif-grace-a-l-ia`} {...external} className={`${styles.cta} ${focus}`}>
+        <a href={`${ACADEMY}/cours/etre-plus-productif-grace-a-l-ia${academyReferral}&utm_content=start_free`} {...external} className={`${styles.cta} ${focus}`}>
           Commencer gratuitement
         </a>
         <p className={styles.ctaNote}>Sans carte bancaire. Sur ton téléphone.</p>
