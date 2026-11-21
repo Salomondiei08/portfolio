@@ -25,25 +25,25 @@ const experience = [
     role: "Software Engineer (Full-time)",
     company: "BUI Corporation",
     period: "May 2024 - Jun 2024",
-    location: "Cote d'Ivoire",
+    location: "Côte d'Ivoire",
     description:
-      "Contributed to mobile and backend application development while collaborating with cross-functional teams on scalable software architecture.",
-    highlights: ["Mobile Development", "Backend Development", "Scalable Architecture", "Team Collaboration"],
+      "Built mobile and backend features for production client apps.",
+    highlights: ["Mobile Development", "Backend Development", "Production Delivery"],
   },
   {
     role: "Technical Lead Mobile",
     company: "Futurafric IA",
     period: "Aug 2023 - May 2024",
-    location: "Cote d'Ivoire",
+    location: "Côte d'Ivoire",
     description:
-      "Oversaw end-to-end mobile app development from UI/UX design to deployment, led the mobile team, and established best practices for cross-platform delivery.",
-    highlights: ["Mobile Leadership", "Flutter", "UI/UX to Deployment", "Cross-platform Standards"],
+      "Led the Flutter mobile team from UI/UX specs to store releases, owning code reviews and cross-platform architecture.",
+    highlights: ["Mobile Leadership", "Flutter", "App Releases", "Architecture"],
   },
   {
     role: "Software Engineer",
     company: "Casys Technologies",
     period: "Oct 2021 - Feb 2022",
-    location: "Cote d'Ivoire",
+    location: "Côte d'Ivoire",
     description:
       "Developed a CLI tool to automate smart card encoding with JavaCard and Batch, improving process speed by 300%.",
     highlights: ["JavaCard", "Batch", "CLI Automation", "Process Optimization"],
@@ -119,9 +119,7 @@ export default function AboutPage() {
             I speak French, English, and Korean.
           </p>
           <p className="text-muted-foreground leading-relaxed">
-            I&apos;m passionate about building innovative solutions that make a real impact.
-            My hackathon wins and industry experience drive me to constantly push boundaries
-            and explore new technologies.
+            Alongside my research in Korea, I run Reinvent Labs, where we build AI agents for companies, ship our own products (Aya, OneGallery), and teach practical AI in French through Reinvent Labs Academy.
           </p>
         </div>
 

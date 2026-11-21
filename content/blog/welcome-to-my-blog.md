@@ -3,7 +3,7 @@ title: "Welcome to My Blog"
 date: "2024-01-15"
 description: "An introduction to my blog where I share thoughts on AI, machine learning, and research."
 tags: ["AI", "Introduction", "Personal"]
-published: true
+published: false
 ---
 
 # Welcome to My Blog

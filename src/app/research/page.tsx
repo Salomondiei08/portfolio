@@ -25,9 +25,8 @@ export default function ResearchPage() {
       <div className="space-y-4">
         <h1 className="text-3xl font-bold">Research</h1>
         <p className="text-muted-foreground max-w-2xl">
-          I am researching how to make AI agents truly autonomous — not just reactive, but capable of
-          learning from their own experience and improving over time. The focus is on memory, self-correction,
-          and long-horizon reasoning.
+          I study how AI agents store, retrieve, and update memory across sessions so they make fewer
+          repeated mistakes on long tasks.
         </p>
       </div>
 
@@ -40,11 +39,11 @@ export default function ResearchPage() {
             </div>
             <div>
               <Badge className="mb-2">Active Focus</Badge>
-              <h2 className="text-xl font-semibold">Agent Memory & Continuous Learning</h2>
-              <p className="text-primary">Making agents that learn, retain, and self-improve</p>
+              <h2 className="text-xl font-semibold">Agent Memory & Retrieval Reliability</h2>
+              <p className="text-primary">DICE Lab · KOREATECH</p>
               <p className="text-sm text-muted-foreground mt-2">
-                Researching memory architectures that allow agents to retain knowledge across sessions,
-                learn from past decisions, and continuously improve their own reasoning and execution quality.
+                Measuring when memory retrieval and query expansion actually improve agent recall,
+                how to gate expensive LLM calls reliably, and how to evaluate memory across seeds.
               </p>
             </div>
           </div>

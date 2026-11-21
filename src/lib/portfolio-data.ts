@@ -99,7 +99,7 @@ export const portfolioProjects: PortfolioProject[] = [
     id: "tourci",
     title: "TourCI",
     description:
-      "TourCI is the #2 tourism app in Cote d'Ivoire. It helps users discover places and explore them in 360.",
+      "TourCI is the #2 tourism app in Côte d'Ivoire. It helps users discover places and explore them in 360 degrees.",
     tags: ["Tourism", "Mobile", "360"],
     image: "https://www.tour.ci/images/logo.png",
     summary: "Discover places in Côte d'Ivoire and explore them in 360 degrees.",
@@ -182,7 +182,7 @@ export const appGalleryItems: AppGalleryItem[] = [
   {
     id: "papersnap",
     title: "PaperSnap",
-    description: "A document-focused app by Reinvent Labs for snapping and working with papers.",
+    description: "Capture, clean up, and organize documents from your browser.",
     tags: ["Documents", "Productivity", "Reinvent Labs"],
     href: "https://papersnap.reinvent-labs.com",
     sourceHref: "https://github.com/Salomondiei08/papersnap",
@@ -190,7 +190,7 @@ export const appGalleryItems: AppGalleryItem[] = [
   {
     id: "reinvent-labs-website",
     title: "Reinvent Labs Website",
-    description: "Official Reinvent Labs website and company web presence.",
+    description: "Company site for Reinvent Labs — AI agents, integrations, and custom apps.",
     tags: ["Website", "Company", "Reinvent Labs"],
     href: "https://www.reinvent-labs.com/",
     sourceHref: "https://github.com/Salomondiei08/reinventweb",

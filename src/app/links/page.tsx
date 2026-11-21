@@ -72,7 +72,7 @@ export default function LinksPage() {
         </div>
         <div className="min-w-0">
           <h1 className={styles.name}>Salomon Diei</h1>
-          <p className={styles.role}>Ingénieur IA, je t&apos;apprends l&apos;IA</p>
+          <p className={styles.role}>Ingénieur IA · Fondateur de Reinvent Labs</p>
         </div>
       </header>
 
